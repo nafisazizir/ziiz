@@ -81,7 +81,7 @@ export function Playground() {
   }, [])
 
   return (
-    <div className="flex h-svh flex-col gap-2 bg-muted/40 p-3 pt-2 md:p-4 md:pt-2 dark:bg-background">
+    <div className="flex h-svh flex-col gap-2 bg-background p-3 pt-2 md:p-4 md:pt-2">
       <header className="flex h-9 shrink-0 items-center justify-between gap-2 px-1">
         <div className="flex min-w-0 items-baseline gap-2 text-sm">
           <span className="font-semibold tracking-tight">ziiz</span>
@@ -100,8 +100,8 @@ export function Playground() {
         </div>
         <ModeSwitcher />
       </header>
-      <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl ring ring-foreground/10 md:ring-muted dark:ring-foreground/10">
-        <div className="absolute inset-0 bg-muted dark:bg-muted/30" />
+      <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl ring ring-foreground/10">
+        <div className="absolute inset-0 bg-background" />
         <iframe
           key={currentItem.name}
           src={`/preview/${currentItem.name}`}

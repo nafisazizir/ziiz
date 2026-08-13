@@ -2,9 +2,6 @@
 
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { MoonIcon, SunIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { useTheme } from "next-themes"
 
 import {
   DEFAULT_ITEM,
@@ -12,7 +9,6 @@ import {
   PLAYGROUND_ITEMS,
   type PlaygroundItem,
 } from "@/lib/playground"
-import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandDialog,
@@ -22,7 +18,6 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
-import { Kbd, KbdGroup } from "@/components/ui/kbd"
 
 const BLOCKS = PLAYGROUND_ITEMS.filter((item) => item.type === "block")
 const EXAMPLES = PLAYGROUND_ITEMS.filter((item) => item.type === "example")
@@ -31,7 +26,9 @@ const EXAMPLES = PLAYGROUND_ITEMS.filter((item) => item.type === "example")
 // "component" narrows to the right group.
 function getCommandValue(item: PlaygroundItem) {
   return `${item.title} ${
-    item.type === "block" ? "block blocks component components" : "component components"
+    item.type === "block"
+      ? "block blocks component components"
+      : "component components"
   }`
 }
 
@@ -41,15 +38,17 @@ export function Playground() {
   const [open, setOpen] = React.useState(false)
 
   const currentItem =
-    getPlaygroundItem(searchParams.get("item")) ?? getPlaygroundItem(DEFAULT_ITEM)!
+    getPlaygroundItem(searchParams.get("item")) ??
+    getPlaygroundItem(DEFAULT_ITEM)!
 
   const selectItem = React.useCallback(
     (name: string) => {
       setOpen(false)
       if (name !== currentItem.name) {
-        router.replace(name === DEFAULT_ITEM ? "/" : `/?item=${name}`, {
-          scroll: false,
-        })
+        router.replace(
+          name === DEFAULT_ITEM ? "/preview" : `/preview?item=${name}`,
+          { scroll: false }
+        )
       }
     },
     [router, currentItem.name]
@@ -81,25 +80,7 @@ export function Playground() {
   }, [])
 
   return (
-    <div className="flex h-svh flex-col gap-2 bg-background p-3 pt-2 md:p-4 md:pt-2">
-      <header className="flex h-9 shrink-0 items-center justify-between gap-2 px-1">
-        <div className="flex min-w-0 items-baseline gap-2 text-sm">
-          <span className="font-semibold tracking-tight">ziiz</span>
-          <span className="text-muted-foreground">/</span>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="flex min-w-0 cursor-pointer items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <span className="truncate">{currentItem.title}</span>
-            <KbdGroup>
-              <Kbd>⌘</Kbd>
-              <Kbd>P</Kbd>
-            </KbdGroup>
-          </button>
-        </div>
-        <ModeSwitcher />
-      </header>
+    <div className="flex min-h-0 flex-1 flex-col bg-background p-6 pt-2">
       <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl ring ring-foreground/10">
         <div className="absolute inset-0 bg-background" />
         <iframe
@@ -109,7 +90,11 @@ export function Playground() {
           title="Preview"
         />
       </div>
-      <CommandDialog open={open} onOpenChange={setOpen} className="animate-none!">
+      <CommandDialog
+        open={open}
+        onOpenChange={setOpen}
+        className="animate-none!"
+      >
         <Command loop>
           <CommandInput placeholder="Search" />
           <CommandList>
@@ -131,25 +116,5 @@ export function Playground() {
         </Command>
       </CommandDialog>
     </div>
-  )
-}
-
-function ModeSwitcher() {
-  const { resolvedTheme, setTheme } = useTheme()
-
-  return (
-    <Button
-      variant="ghost"
-      size="icon-sm"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-    >
-      <HugeiconsIcon icon={SunIcon} strokeWidth={2} className="dark:hidden" />
-      <HugeiconsIcon
-        icon={MoonIcon}
-        strokeWidth={2}
-        className="hidden dark:block"
-      />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
   )
 }

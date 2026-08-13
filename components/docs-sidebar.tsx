@@ -5,7 +5,10 @@ import { usePathname } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 
-const FOUNDATION = [{ name: "Introduction", href: "/" }]
+const FOUNDATION = [
+  { name: "Introduction", href: "/" },
+  { name: "Colors", href: "/colors" },
+]
 
 export function DocsSidebar() {
   const pathname = usePathname()

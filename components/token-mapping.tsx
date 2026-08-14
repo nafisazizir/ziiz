@@ -92,9 +92,7 @@ export function TokenMapping() {
       </Table>
       {GROUPS.map((group) => (
         <section key={group.label}>
-          <h3 className="mt-8 scroll-m-24 text-base font-semibold tracking-tight">
-            {group.label}
-          </h3>
+          <h3 className="text-heading-16 mt-8 scroll-m-24">{group.label}</h3>
           <Table className="mt-2">
             <TableBody>
               {group.rows.map((row) => (
@@ -102,10 +100,10 @@ export function TokenMapping() {
                   <TableCell className="w-12">
                     <Swatch token={row.token} className="size-8" />
                   </TableCell>
-                  <TableCell className="w-2/5 font-mono text-[13px]">
+                  <TableCell className="text-label-13-mono w-2/5">
                     --{row.slot}
                   </TableCell>
-                  <TableCell className="font-mono text-[13px] text-muted-foreground">
+                  <TableCell className="text-label-13-mono text-gray-900">
                     --ds-{row.token}
                   </TableCell>
                 </TableRow>

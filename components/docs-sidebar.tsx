@@ -36,7 +36,7 @@ export function DocsSidebar() {
                       aria-current={isActive ? "page" : undefined}
                     />
                   }
-                  className="text-foreground/80 aria-[current=page]:bg-accent aria-[current=page]:text-accent-foreground"
+                  className="text-label-14 text-gray-900 hover:text-gray-1000 aria-[current=page]:bg-gray-100 aria-[current=page]:text-gray-1000"
                 >
                   {item.name}
                 </Button>
@@ -58,7 +58,7 @@ function SidebarGroup({
 }) {
   return (
     <div className="flex flex-col gap-1 pb-6">
-      <div className="flex h-8 items-center px-2 text-xs font-medium text-muted-foreground">
+      <div className="text-label-13 flex h-8 items-center px-2 text-gray-900">
         {label}
       </div>
       <ul className="flex flex-col gap-0.5">{children}</ul>

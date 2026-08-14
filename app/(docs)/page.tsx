@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight">
+    <h1 className="text-heading-40 scroll-m-24 tracking-tighter">
       Introduction
     </h1>
   )

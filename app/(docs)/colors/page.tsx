@@ -11,17 +11,15 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight">
-        Colors
-      </h1>
-      <p className="mt-4 text-muted-foreground">
+      <h1 className="text-heading-40 scroll-m-24 tracking-tighter">Colors</h1>
+      <p className="mt-4 text-gray-900">
         Learn how to work with our color system.
       </p>
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Scales
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         There are 10 color scales in the system: backgrounds, gray, gray alpha,
         blue, red, amber, green, teal, purple, and pink. Values are defined in
         oklch, so wide-gamut color renders on supported browsers and displays.
@@ -29,7 +27,7 @@ export default function Page() {
         the sections below describe each role once, and it applies to every
         scale. The swatches use gray as the representative ramp.
       </p>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         The scales are hand-tuned per step, not interpolated — some steps
         deliberately reverse (Color 4 on the alpha scale is lighter than Color
         3), so treat every step as a named role, never a point on a gradient.
@@ -38,10 +36,10 @@ export default function Page() {
         <ColorScales />
       </div>
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Backgrounds
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         There are two background colors for pages and UI components. In most
         instances, you should use Background 1—especially when color is being
         placed on top of the background. Background 2 should be used sparingly
@@ -62,19 +60,19 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Colors 1–3: Component backgrounds
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         The first three colors are component backgrounds, on every scale: Color
         1 at rest, Color 2 on hover, Color 3 when pressed or selected. In
         practice there are two ladders.
       </p>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         Filled components — secondary buttons, badges — step 1 → 2 → 3 as
         written.
       </p>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         Components that rest transparent — ghost buttons, menu items — use the
         alpha scale instead, hovering to alpha Color 1 and pressing to alpha
         Color 3, so the state reads over any surface.
@@ -87,13 +85,13 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Colors 4–6: Borders
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         These three colors are designed for UI component borders.
       </p>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         In practice, borders default to the alpha scale, alpha hairlines hold up
         over any surface.
       </p>
@@ -105,10 +103,10 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Colors 7–8: High contrast backgrounds
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         These two colors are designed for high contrast UI component
         backgrounds.
       </p>
@@ -127,10 +125,10 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Colors 9–10: Text and icons
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         These two colors are designed for accessible text and icons.
       </p>
       <ColorUsageList
@@ -148,12 +146,12 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         shadcn mapping
       </h2>
-      <p className="mt-3 text-muted-foreground">
+      <p className="mt-3 text-gray-900">
         The shadcn semantic slots are pure{" "}
-        <code className="rounded-sm bg-muted px-1 py-0.5 font-mono text-[13px]">
+        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
           var(--ds-*)
         </code>{" "}
         aliases onto the ramp, never values.

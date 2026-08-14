@@ -69,7 +69,9 @@ export function Swatch({
         ) : null}
       </TooltipTrigger>
       <TooltipContent>
-        <span className="font-mono">{copied ? "Copied" : `--ds-${token}`}</span>
+        <span className="text-label-12-mono">
+          {copied ? "Copied" : `--ds-${token}`}
+        </span>
       </TooltipContent>
     </Tooltip>
   )
@@ -84,12 +86,12 @@ export function ColorScales() {
           {STEPS.map((step) => (
             <div
               key={step}
-              className="pb-1 text-center text-xs text-muted-foreground"
+              className="text-label-12 pb-1 text-center text-gray-900"
             >
               {step}
             </div>
           ))}
-          <div className="pr-2 text-xs text-muted-foreground">Background</div>
+          <div className="text-label-12 pr-2 text-gray-900">Background</div>
           <Swatch token="background-100" className="aspect-square w-full" />
           <Swatch token="background-200" className="aspect-square w-full" />
           {STEPS.slice(2).map((step) => (
@@ -97,7 +99,7 @@ export function ColorScales() {
           ))}
           {SCALES.map((scale) => (
             <React.Fragment key={scale.token}>
-              <div className="pr-2 text-xs text-muted-foreground">
+              <div className="text-label-12 pr-2 text-gray-900">
                 {scale.label}
               </div>
               {STEPS.map((step) => (
@@ -131,14 +133,14 @@ export function ColorUsageList({
             <Swatch token={item.token} className="size-9 shrink-0 rounded-md" />
             <div className="flex flex-1 flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
               <div>
-                <div className="text-sm font-medium">{item.name}</div>
-                <div className="font-mono text-[13px] text-muted-foreground">
+                <div className="text-label-14 font-medium text-gray-1000">
+                  {item.name}
+                </div>
+                <div className="text-label-13-mono text-gray-900">
                   var(--ds-{item.token})
                 </div>
               </div>
-              <div className="text-[13px] text-muted-foreground">
-                {item.usage}
-              </div>
+              <div className="text-copy-13 text-gray-900">{item.usage}</div>
             </div>
           </div>
         ))}

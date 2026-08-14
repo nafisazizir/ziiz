@@ -12,7 +12,7 @@ export default function DocsLayout({
       <div className="flex w-full items-start px-6">
         <DocsSidebar />
         <main className="min-w-0 flex-1">
-          <article className="mx-auto w-full max-w-2xl px-1 py-10 text-[15px] leading-7 lg:px-8">
+          <article className="text-copy-16 mx-auto w-full max-w-2xl px-1 py-10 lg:px-8">
             {children}
           </article>
         </main>

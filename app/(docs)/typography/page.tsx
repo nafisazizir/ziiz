@@ -10,32 +10,32 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight">
+      <h1 className="text-heading-40 scroll-m-24 tracking-tighter">
         Typography
       </h1>
       <p className="mt-4 text-gray-900">
         Rules of typesetting throughout the system.
       </p>
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Usage
       </h2>
       <p className="mt-3 text-gray-900">
         Our typography styles can be consumed as Tailwind classes. The classes
         below pre-set a combination of{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono text-[13px]">
+        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
           font-size
         </code>
         ,{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono text-[13px]">
+        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
           line-height
         </code>
         ,{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono text-[13px]">
+        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
           letter-spacing
         </code>
         , and{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono text-[13px]">
+        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
           font-weight
         </code>{" "}
         for you.
@@ -43,7 +43,7 @@ export default function Page() {
       <p className="mt-3 text-gray-900">
         To make use of the <strong>Subtle</strong> and <strong>Strong</strong>{" "}
         modifiers, all you have to do is use the{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 font-mono text-[13px]">
+        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
           &lt;strong&gt;
         </code>{" "}
         element nested as the descendant of a given typography class:
@@ -54,7 +54,7 @@ export default function Page() {
         </code>
       </pre>
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Headings
       </h2>
       <p className="mt-3 text-gray-900">Used to introduce pages or sections.</p>
@@ -89,7 +89,7 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Buttons
       </h2>
       <p className="mt-3 text-gray-900">
@@ -116,7 +116,7 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Label
       </h2>
       <p className="mt-3 text-gray-900">
@@ -167,7 +167,7 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-xl font-semibold tracking-tight">
+      <h2 className="text-heading-24 mt-12 scroll-m-24">
         Copy
       </h2>
       <p className="mt-3 text-gray-900">

@@ -40,7 +40,7 @@ export default function Page() {
         </code>{" "}
         for you.
       </p>
-      <p className="mt-3 text-gray-900">
+      <p className="text-copy-16 mt-3 text-gray-900">
         To make use of the <strong>Subtle</strong> and <strong>Strong</strong>{" "}
         modifiers, all you have to do is use the{" "}
         <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 const FOUNDATION = [
   { name: "Introduction", href: "/" },
   { name: "Colors", href: "/colors" },
+  { name: "Typography", href: "/typography" },
 ]
 
 export function DocsSidebar() {

@@ -7,8 +7,6 @@ import { siteConfig } from "@/lib/config"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-const FOUNDATION = [{ name: "Introduction", href: "/" }]
-
 export function MobileNav({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false)
 
@@ -67,7 +65,7 @@ export function MobileNav({ className }: { className?: string }) {
                 Foundation
               </div>
               <div className="flex flex-col gap-3">
-                {FOUNDATION.map(({ name, href }) => (
+                {siteConfig.foundationItems.map(({ name, href }) => (
                   <MobileLink key={name} href={href} onOpenChange={setOpen}>
                     {name}
                   </MobileLink>

@@ -3,14 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { siteConfig } from "@/lib/config"
 import { Button } from "@/components/ui/button"
-
-const FOUNDATION = [
-  { name: "Introduction", href: "/" },
-  { name: "Colors", href: "/colors" },
-  { name: "Typography", href: "/typography" },
-  { name: "Materials", href: "/materials" },
-]
 
 export function DocsSidebar() {
   const pathname = usePathname()
@@ -19,7 +13,7 @@ export function DocsSidebar() {
     <aside className="sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block">
       <nav className="h-full scrollbar-none overflow-y-auto py-10">
         <SidebarGroup label="Foundation">
-          {FOUNDATION.map((item) => {
+          {siteConfig.foundationItems.map((item) => {
             const isActive =
               item.href === "/"
                 ? pathname === item.href

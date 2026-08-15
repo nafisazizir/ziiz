@@ -522,6 +522,48 @@
   }
 }
 
+/* Material */
+
+@utility material-base {
+  box-shadow: var(--ds-shadow-border);
+  @apply bg-background-100 rounded-md;
+}
+
+@utility material-small {
+  box-shadow: var(--ds-shadow-border-small);
+  @apply bg-background-100 rounded-md;
+}
+
+@utility material-medium {
+  box-shadow: var(--ds-shadow-border-medium);
+  @apply bg-background-100 rounded-xl;
+}
+
+@utility material-large {
+  box-shadow: var(--ds-shadow-border-large);
+  @apply bg-background-100 rounded-xl;
+}
+
+@utility material-tooltip {
+  box-shadow: var(--ds-shadow-tooltip);
+  @apply bg-background-100 rounded-md;
+}
+
+@utility material-menu {
+  box-shadow: var(--ds-shadow-menu);
+  @apply bg-background-100 rounded-md;
+}
+
+@utility material-modal {
+  box-shadow: var(--ds-shadow-modal);
+  @apply bg-background-100 rounded-xl;
+}
+
+@utility material-fullscreen {
+  box-shadow: var(--ds-shadow-fullscreen);
+  @apply bg-background-100 rounded-xl;
+}
+
 /* Typography Heading */
 
 @utility text-heading-72 {

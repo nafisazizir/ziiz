@@ -9,6 +9,7 @@ const FOUNDATION = [
   { name: "Introduction", href: "/" },
   { name: "Colors", href: "/colors" },
   { name: "Typography", href: "/typography" },
+  { name: "Materials", href: "/materials" },
 ]
 
 export function DocsSidebar() {

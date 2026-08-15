@@ -23,12 +23,12 @@ export default function Page() {
         There are 10 color scales in the system: backgrounds, gray, gray alpha,
         blue, red, amber, green, teal, purple, and pink. Values are defined in
         oklch, so wide-gamut color renders on supported browsers and displays.
-        Every non-background scale has the same 10 steps with the same roles —
-        the sections below describe each role once, and it applies to every
+        Every non-background scale has the same 10 steps with the same roles.
+        The sections below describe each role once, and it applies to every
         scale. The swatches use gray as the representative ramp.
       </p>
       <p className="mt-3 text-gray-900">
-        The scales are hand-tuned per step, not interpolated — some steps
+        The scales are hand-tuned per step, not interpolated. Some steps
         deliberately reverse (Color 4 on the alpha scale is lighter than Color
         3), so treat every step as a named role, never a point on a gradient.
       </p>
@@ -41,7 +41,7 @@ export default function Page() {
       </h2>
       <p className="mt-3 text-gray-900">
         There are two background colors for pages and UI components. In most
-        instances, you should use Background 1—especially when color is being
+        instances, you should use Background 1, especially when color is being
         placed on top of the background. Background 2 should be used sparingly
         when a subtle background differentiation is needed.
       </p>
@@ -69,11 +69,12 @@ export default function Page() {
         practice there are two ladders.
       </p>
       <p className="mt-3 text-gray-900">
-        Filled components — secondary buttons, badges — step 1 → 2 → 3 as
+        Filled components, like secondary buttons and badges, step 1 → 2 → 3 as
         written.
       </p>
       <p className="mt-3 text-gray-900">
-        Components that rest transparent — ghost buttons, menu items — use the
+        Components that rest transparent, like ghost buttons and menu items,
+        use the
         alpha scale instead, hovering to alpha Color 1 and pressing to alpha
         Color 3, so the state reads over any surface.
       </p>

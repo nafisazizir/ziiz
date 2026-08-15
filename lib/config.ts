@@ -12,7 +12,6 @@ export const siteConfig = {
     },
   ],
   foundationItems: [
-    { name: "Introduction", href: "/" },
     { name: "Colors", href: "/colors" },
     { name: "Typography", href: "/typography" },
     { name: "Materials", href: "/materials" },

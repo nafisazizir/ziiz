@@ -11,7 +11,7 @@ export function DocsSidebar() {
 
   return (
     <aside className="sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block">
-      <nav className="h-full scrollbar-none overflow-y-auto py-10">
+      <nav className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10">
         <SidebarGroup label="Foundation">
           {siteConfig.foundationItems.map((item) => {
             const isActive =

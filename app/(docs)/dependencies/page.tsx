@@ -57,6 +57,24 @@ function StatBadge({
   )
 }
 
+function ChipRow({ label, items }: { label: string; items: string[] }) {
+  if (items.length === 0) return null
+
+  return (
+    <div className="mt-2 flex flex-wrap items-center gap-1 pl-4.5">
+      <span className="mr-1 text-label-12 text-gray-900">{label}</span>
+      {items.map((c) => (
+        <code
+          key={c}
+          className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono"
+        >
+          {c}
+        </code>
+      ))}
+    </div>
+  )
+}
+
 function ComponentRow({ node }: { node: ComponentNode }) {
   const clean = node.aliasClasses.length === 0
 
@@ -121,18 +139,9 @@ function ComponentRow({ node }: { node: ComponentNode }) {
           {node.externalUses} call {node.externalUses === 1 ? "site" : "sites"}{" "}
           outside <InlineCode>ui</InlineCode>
         </p>
-        {!clean && (
-          <div className="mt-2 flex flex-wrap gap-1 pl-4.5">
-            {node.aliasClasses.map((c) => (
-              <code
-                key={c}
-                className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono"
-              >
-                {c}
-              </code>
-            ))}
-          </div>
-        )}
+        <ChipRow label="aliases" items={node.aliasClasses} />
+        <ChipRow label="raw type" items={node.typeClasses} />
+        <ChipRow label="shadows" items={node.shadowClasses} />
       </AccordionContent>
     </AccordionItem>
   )
@@ -202,11 +211,20 @@ export default function Page() {
       <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
         <li>
           A component is <InlineCode>alias-free</InlineCode> when none of its
-          classes resolve
-          through the shadcn slot aliases (<InlineCode>bg-muted</InlineCode>,{" "}
+          classes resolve through the shadcn slot aliases (
+          <InlineCode>bg-muted</InlineCode>,{" "}
           <InlineCode>text-primary-foreground</InlineCode>,{" "}
           <InlineCode>border-input</InlineCode>, …). Alias-free is necessary,
           not sufficient: the on-touch pass also covers shape and materials.
+        </li>
+        <li>
+          <em>Raw type</em> counts Tailwind size and weight utilities (
+          <InlineCode>text-sm</InlineCode>, <InlineCode>font-medium</InlineCode>
+          , …), which the migration replaces with the 31 named type roles.{" "}
+          <em>Shadows</em> counts bare <InlineCode>shadow-*</InlineCode>{" "}
+          utilities: the ramp already remaps their values, but elevation should
+          land as a composed <InlineCode>material-*</InlineCode>. Neither
+          affects the dot, which tracks alias classes only.
         </li>
         <li>
           Edges are <InlineCode>@/components/ui/*</InlineCode> imports between

@@ -12,6 +12,10 @@ export type ComponentNode = {
   externalUses: number
   /** Distinct shadcn slot classes still present in the file */
   aliasClasses: string[]
+  /** Distinct raw Tailwind type classes that should resolve to type roles */
+  typeClasses: string[]
+  /** Distinct bare shadow utilities that should become a material */
+  shadowClasses: string[]
   /** Longest dependency chain below this node (0 = leaf) */
   tier: number
 }
@@ -31,6 +35,17 @@ const UI_IMPORT_RE = /@\/components\/ui\/([a-z0-9-]+)/g
 // rather than the ramp (layer 2a). Matching classes are what the on-touch
 // migration renames. `background`/`border` require no suffix so the ramp's
 // bg-background-100 / border-gray-* stay unmatched.
+// Raw Tailwind type utilities. Authoring vocabulary for type is the 31 roles
+// (text-label-14, text-copy-16, ...), which are separate utilities — nothing
+// remaps these, so any hit is off-system.
+const TYPE_CLASS_RE =
+  /(?:text-(?:xs|sm|base|lg|[2-9]?xl)|font-(?:thin|extralight|light|normal|medium|semibold|bold|extrabold|black|mono))(?:\/\d+)?(?![\w-])/g
+
+// Bare shadow utilities. The ramp remaps their values onto --ds-shadow-*, so
+// they render correctly, but elevation should be a composed material-* (ring +
+// shadow + radius), not a lone shadow.
+const SHADOW_CLASS_RE = /(?<![\w-])shadow-(?:2xs|xs|sm|md|lg|xl|2xl)(?![\w-])/g
+
 const ALIAS_CLASS_RE =
   /(?:bg|text|border|ring|inset-ring|outline|fill|stroke|from|via|to|divide|caret|placeholder|decoration|accent|shadow)-(?:(?:primary|secondary|muted|accent|destructive|card|popover)(?:-foreground)?|sidebar(?:-[a-z]+)*|chart-\d|input|ring|foreground|border(?![\w-])|background(?![\w-]))(?:\/\d{1,3})?(?![\w-])/g
 
@@ -67,16 +82,17 @@ export function getComponentGraph(): ComponentGraph {
       ),
     ].sort()
 
-    const aliasClasses = [
-      ...new Set([...source.matchAll(ALIAS_CLASS_RE)].map((m) => m[0])),
-    ].sort()
+    const distinct = (re: RegExp) =>
+      [...new Set([...source.matchAll(re)].map((m) => m[0]))].sort()
 
     byName.set(name, {
       name,
       dependsOn,
       usedBy: [],
       externalUses: 0,
-      aliasClasses,
+      aliasClasses: distinct(ALIAS_CLASS_RE),
+      typeClasses: distinct(TYPE_CLASS_RE),
+      shadowClasses: distinct(SHADOW_CLASS_RE),
       tier: 0,
     })
   }

@@ -8,10 +8,6 @@ questions and the per-component decision log.
 
 ## Open questions (resolve before the component that hits them)
 
-- Default button hover: which ramp step replaces `hover:bg-primary/80`?
-  (Resolve during the `button` pilot, on `/preview`.)
-- Destructive in dark: dim to `/60` or keep flat red-800? (First
-  destructive-heavy component.)
 - Card/sidebar: material or plain border? (First in-page surface.)
 
 ## Decision log (per-component calls)
@@ -20,4 +16,6 @@ questions and the per-component decision log.
 | ---- | --------- | ---- |
 | 2026-08-15 | (system) | Controls are flat: Vega `shadow-xs`/`sm` deleted from all controls; elevation exists only as `material-*` on floating surfaces. |
 | 2026-08-15 | (system) | No press animation: Vega's `active:*translate-y-px` nudge deleted from buttons; control transitions narrowed to colors. Functional motion (switch, accordion, overlays) untouched. |
-| 2026-08-15 | (system) | Focus: two-signature system adopted (replacing an earlier "keep shadcn's halo" deferral), in gray, composed inline from ring utilities — offset ring `ring-2 ring-gray-600 ring-offset-2 ring-offset-background-100` on click controls, halo `ring-3 ring-gray-600/50` on fields. No focus tokens: same-day `--ds-focus-halo` mint, `--shadow-focus-ring` exposure, and a blue→gray re-point of `--ds-focus-ring` were all reverted (token stays vendor-verbatim, unused); shadcn `ring-ring/50` cluster deleted on migration. |
+| 2026-08-15 | (system) | Focus: shadcn's halo, kept, one signature for every control — `focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50`, a pure ramp respelling of the stock cluster (`--ring` = `--ds-gray-600`), so focus is a zero-visual-change pass. No focus tokens. The `/50` stays an opacity modifier, not a `gray-alpha-*` step: alpha's roles are backgrounds/borders/text (no halo tier), the halo should stay derived from the border color, and dark alpha steps are white-based and would brighten it. An offset ring (2px gap + 2px stroke) was prototyped at gray-600 and gray-1000 and rejected both times — don't revisit. |
+| 2026-08-15 | (infra) | `cn()` merge fix, surfaced by the pilot: stock tailwind-merge classifies `text-button-12`/`text-label-14`-style roles as text *colors*, silently dropping a real color earlier in the chain (xs default button rendered white-on-white). `lib/utils.ts` now uses `extendTailwindMerge` registering all 31 type roles under the `font-size` group and the 8 `material-*` utilities as their own group. Prerequisite for every later migration. |
+| 2026-08-15 | button | Migrated (pilot). Final calls: default hover `hover:bg-gray-950` — the vendor button's hover (`hsl(0,0%,22%)` light / `hsl(0,0%,80%)` dark) lands on this ramp step in both themes; destructive rebuilt as a solid fill `bg-red-800 text-white hover:bg-red-900`, settling "destructive in dark" as flat red-800 with no `/60` dims, no red focus overrides, `text-white` kept (ramp has no white utility; `text-background-100` flips to black in dark); outline flat in both themes — dark-only wash deleted per decision 7 (`bg-background-100` + `border-gray-alpha-400` + `hover:bg-gray-100`); ghost hovers the alpha ladder (`hover:bg-gray-alpha-100`, also `aria-expanded:`) per /colors' transparent-resting rule while filled variants step the solid ramp (secondary `hover:bg-gray-200`); type roles `text-button-14` base, `text-button-12` on xs; caller overrides migrated in-pass (5× `bg-muted`→`bg-gray-100`, 6× `text-muted-foreground`→`text-gray-900`, one redundant ghost-hover override deleted; `InputGroupButton`/`Addon` sites deferred to input-group). Verified on `/preview`, both themes. |

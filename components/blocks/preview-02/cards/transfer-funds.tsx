@@ -46,7 +46,7 @@ export function TransferFunds() {
           Move money between your connected accounts.
         </CardDescription>
         <CardAction>
-          <Button variant="ghost" size="icon-sm" className="bg-muted">
+          <Button variant="ghost" size="icon-sm" className="bg-gray-100">
             <IconPlaceholder
               lucide="XIcon"
               tabler="IconX"

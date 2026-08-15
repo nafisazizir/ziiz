@@ -177,7 +177,7 @@ function BubbleCollapsible() {
                   render={
                     <Button
                       variant="link"
-                      className="gap-1 p-0 text-muted-foreground"
+                      className="gap-1 p-0 text-gray-900"
                     />
                   }
                 >

@@ -53,7 +53,7 @@ function EmptyBasic() {
           <Button
             variant="link"
             render={<a href="#" />}
-            className="text-muted-foreground"
+            className="text-gray-900"
             nativeButton={false}
           >
             Learn more{" "}
@@ -86,7 +86,7 @@ function EmptyWithMutedBackground() {
           <Button
             variant="link"
             render={<a href="#" />}
-            className="text-muted-foreground"
+            className="text-gray-900"
             nativeButton={false}
           >
             Learn more{" "}
@@ -244,7 +244,7 @@ function EmptyInCard() {
           <Button
             variant="link"
             render={<a href="#" />}
-            className="text-muted-foreground"
+            className="text-gray-900"
             nativeButton={false}
           >
             Learn more{" "}

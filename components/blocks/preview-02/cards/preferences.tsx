@@ -43,7 +43,7 @@ export function Preferences() {
           Manage your account settings and notifications.
         </CardDescription>
         <CardAction>
-          <Button variant="ghost" size="icon-sm" className="bg-muted">
+          <Button variant="ghost" size="icon-sm" className="bg-gray-100">
             <IconPlaceholder
               lucide="XIcon"
               tabler="IconX"

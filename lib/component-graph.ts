@@ -16,6 +16,8 @@ export type ComponentNode = {
   typeClasses: string[]
   /** Distinct bare shadow utilities that should become a material */
   shadowClasses: string[]
+  /** Distinct literal border/radius values that bypass the radius scale */
+  shapeClasses: string[]
   /** Longest dependency chain below this node (0 = leaf) */
   tier: number
 }
@@ -23,7 +25,17 @@ export type ComponentNode = {
 export type ComponentGraph = {
   nodes: ComponentNode[]
   tiers: ComponentNode[][]
-  totals: { total: number; alias: number; clean: number }
+  totals: { total: number; pending: number; clean: number }
+}
+
+/** True when no off-system classes of any tracked kind remain. */
+export function isClean(node: ComponentNode): boolean {
+  return (
+    node.aliasClasses.length === 0 &&
+    node.typeClasses.length === 0 &&
+    node.shadowClasses.length === 0 &&
+    node.shapeClasses.length === 0
+  )
 }
 
 const UI_DIR = path.join(process.cwd(), "components/ui")
@@ -37,14 +49,26 @@ const UI_IMPORT_RE = /@\/components\/ui\/([a-z0-9-]+)/g
 // bg-background-100 / border-gray-* stay unmatched.
 // Raw Tailwind type utilities. Authoring vocabulary for type is the 31 roles
 // (text-label-14, text-copy-16, ...), which are separate utilities — nothing
-// remaps these, so any hit is off-system.
+// remaps these, so any hit is off-system. Covers sizes and weights plus the
+// tracking/leading utilities and literal sizes (text-[0.8rem]) the roles
+// absorb.
 const TYPE_CLASS_RE =
-  /(?:text-(?:xs|sm|base|lg|[2-9]?xl)|font-(?:thin|extralight|light|normal|medium|semibold|bold|extrabold|black|mono))(?:\/\d+)?(?![\w-])/g
+  /(?:text-(?:xs|sm|base|lg|[2-9]?xl|\[[0-9.][^\]]*\])|font-(?:thin|extralight|light|normal|medium|semibold|bold|extrabold|black|mono)|tracking-(?:tighter|tight|normal|wide|wider|widest|\[[^\]]+\])|leading-(?:none|tight|snug|normal|relaxed|loose|\d+|\[[^\]]+\]))(?:\/\d+)?(?![\w-])/g
 
-// Bare shadow utilities. The ramp remaps their values onto --ds-shadow-*, so
-// they render correctly, but elevation should be a composed material-* (ring +
-// shadow + radius), not a lone shadow.
-const SHADOW_CLASS_RE = /(?<![\w-])shadow-(?:2xs|xs|sm|md|lg|xl|2xl)(?![\w-])/g
+// Bare shadow utilities, including the suffixless `shadow` and arbitrary
+// values (shadow-[...]). The ramp remaps the named values onto --ds-shadow-*,
+// so they render correctly, but elevation should be a composed material-*
+// (ring + shadow + radius), not a lone shadow. `shadow-none` stays unmatched:
+// it introduces no elevation.
+const SHADOW_CLASS_RE =
+  /(?<![\w-])shadow(?:-(?:2xs|xs|sm|md|lg|xl|2xl|\[[^\]]+\]))?(?![\w-])/g
+
+// Literal shape values that bypass the radius scale: rounded-[2px],
+// border-[1.5px]. The generic rounded-* scale and structural border widths
+// are sanctioned (decision 4), as are token-derived arbitraries —
+// rounded-[min(var(--radius-md),8px)] and rounded-[inherit] pass.
+const SHAPE_CLASS_RE =
+  /(?<![\w-])(?:rounded(?:-(?:t|b|l|r|tl|tr|bl|br|s|e|ss|se|es|ee))?-\[(?![^\]]*(?:var\(|inherit))[^\]]+\]|border(?:-(?:t|b|l|r|x|y|s|e))?-\[(?![^\]]*var\()[^\]]+\])(?![\w-])/g
 
 const ALIAS_CLASS_RE =
   /(?:bg|text|border|ring|inset-ring|outline|fill|stroke|from|via|to|divide|caret|placeholder|decoration|accent|shadow)-(?:(?:primary|secondary|muted|accent|destructive|card|popover)(?:-foreground)?|sidebar(?:-[a-z]+)*|chart-\d|input|ring|foreground|border(?![\w-])|background(?![\w-]))(?:\/\d{1,3})?(?![\w-])/g
@@ -93,6 +117,7 @@ export function getComponentGraph(): ComponentGraph {
       aliasClasses: distinct(ALIAS_CLASS_RE),
       typeClasses: distinct(TYPE_CLASS_RE),
       shadowClasses: distinct(SHADOW_CLASS_RE),
+      shapeClasses: distinct(SHAPE_CLASS_RE),
       tier: 0,
     })
   }
@@ -144,10 +169,10 @@ export function getComponentGraph(): ComponentGraph {
       )
   )
 
-  const alias = nodes.filter((n) => n.aliasClasses.length > 0).length
+  const pending = nodes.filter((n) => !isClean(n)).length
   return {
     nodes,
     tiers,
-    totals: { total: nodes.length, alias, clean: nodes.length - alias },
+    totals: { total: nodes.length, pending, clean: nodes.length - pending },
   }
 }

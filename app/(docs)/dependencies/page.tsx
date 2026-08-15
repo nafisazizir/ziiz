@@ -1,6 +1,10 @@
 import type { Metadata } from "next"
 
-import { getComponentGraph, type ComponentNode } from "@/lib/component-graph"
+import {
+  getComponentGraph,
+  isClean,
+  type ComponentNode,
+} from "@/lib/component-graph"
 import { cn } from "@/lib/utils"
 import {
   Accordion,
@@ -76,7 +80,7 @@ function ChipRow({ label, items }: { label: string; items: string[] }) {
 }
 
 function ComponentRow({ node }: { node: ComponentNode }) {
-  const clean = node.aliasClasses.length === 0
+  const clean = isClean(node)
 
   return (
     <AccordionItem value={node.name} id={node.name} className="scroll-m-24">
@@ -111,6 +115,24 @@ function ComponentRow({ node }: { node: ComponentNode }) {
             className="bg-red-200 text-red-900"
           />
           <StatBadge
+            count={node.typeClasses.length}
+            singular="raw type"
+            plural="raw type"
+            className="bg-amber-200 text-amber-900"
+          />
+          <StatBadge
+            count={node.shadowClasses.length}
+            singular="shadow"
+            plural="shadows"
+            className="bg-teal-200 text-teal-900"
+          />
+          <StatBadge
+            count={node.shapeClasses.length}
+            singular="raw shape"
+            plural="raw shape"
+            className="bg-pink-200 text-pink-900"
+          />
+          <StatBadge
             count={node.dependsOn.length}
             singular="dep"
             plural="deps"
@@ -142,6 +164,7 @@ function ComponentRow({ node }: { node: ComponentNode }) {
         <ChipRow label="aliases" items={node.aliasClasses} />
         <ChipRow label="raw type" items={node.typeClasses} />
         <ChipRow label="shadows" items={node.shadowClasses} />
+        <ChipRow label="raw shape" items={node.shapeClasses} />
       </AccordionContent>
     </AccordionItem>
   )
@@ -169,21 +192,22 @@ export default function Page() {
       <p className="mt-3 text-gray-900">
         Scanned from the working tree at render time.{" "}
         <span className="text-gray-1000">
-          {totals.alias} of {totals.total}
+          {totals.pending} of {totals.total}
         </span>{" "}
-        components still carry shadcn slot classes;{" "}
-        <span className="text-gray-1000">{totals.clean}</span> are alias-free.
+        components still carry off-system classes — shadcn slot aliases, raw
+        type utilities, bare shadows, or literal shape values;{" "}
+        <span className="text-gray-1000">{totals.clean}</span> are clean.
         Within a tier, components with the most dependents come first: they
         unlock the most downstream work.
       </p>
       <p className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1 text-copy-14 text-gray-900">
         <span className="flex items-center gap-2">
           <span aria-hidden className="size-2.5 rounded-full bg-amber-700" />
-          has alias classes
+          has off-system classes
         </span>
         <span className="flex items-center gap-2">
           <span aria-hidden className="size-2.5 rounded-full bg-green-700" />
-          alias-free
+          clean
         </span>
       </p>
 
@@ -210,21 +234,34 @@ export default function Page() {
       <h2 className="mt-12 scroll-m-24 text-heading-24">How status is read</h2>
       <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
         <li>
-          A component is <InlineCode>alias-free</InlineCode> when none of its
-          classes resolve through the shadcn slot aliases (
-          <InlineCode>bg-muted</InlineCode>,{" "}
-          <InlineCode>text-primary-foreground</InlineCode>,{" "}
-          <InlineCode>border-input</InlineCode>, …). Alias-free is necessary,
-          not sufficient: the on-touch pass also covers shape and materials.
+          A component is <InlineCode>clean</InlineCode> when it carries no
+          off-system classes of any tracked kind: shadcn slot aliases, raw
+          type, bare shadows, and raw shape. The dot and the meter track all
+          four. Clean is necessary, not sufficient: the on-touch pass also
+          covers judgment calls (hover steps, material assignment) no scan can
+          verify.
         </li>
         <li>
-          <em>Raw type</em> counts Tailwind size and weight utilities (
+          <em>Aliases</em> are classes that resolve through the shadcn slot
+          layer (<InlineCode>bg-muted</InlineCode>,{" "}
+          <InlineCode>text-primary-foreground</InlineCode>,{" "}
+          <InlineCode>border-input</InlineCode>, …). <em>Raw type</em> counts
+          Tailwind size, weight, tracking and leading utilities (
           <InlineCode>text-sm</InlineCode>, <InlineCode>font-medium</InlineCode>
-          , …), which the migration replaces with the 31 named type roles.{" "}
-          <em>Shadows</em> counts bare <InlineCode>shadow-*</InlineCode>{" "}
-          utilities: the ramp already remaps their values, but elevation should
-          land as a composed <InlineCode>material-*</InlineCode>. Neither
-          affects the dot, which tracks alias classes only.
+          , <InlineCode>tracking-widest</InlineCode>,{" "}
+          <InlineCode>leading-none</InlineCode>, literal{" "}
+          <InlineCode>text-[0.8rem]</InlineCode>), which the migration replaces
+          with the 31 named type roles. <em>Shadows</em> counts bare and
+          arbitrary <InlineCode>shadow-*</InlineCode> utilities: the ramp
+          already remaps the named values, but elevation should land as a
+          composed <InlineCode>material-*</InlineCode>. <em>Raw shape</em>{" "}
+          counts literal border and radius values (
+          <InlineCode>rounded-[2px]</InlineCode>,{" "}
+          <InlineCode>border-[1.5px]</InlineCode>) that bypass the radius
+          scale — the generic <InlineCode>rounded-*</InlineCode> scale,
+          structural border widths, and token-derived arbitraries like{" "}
+          <InlineCode>rounded-[min(var(--radius-md),8px)]</InlineCode> are
+          sanctioned and stay unflagged.
         </li>
         <li>
           Edges are <InlineCode>@/components/ui/*</InlineCode> imports between

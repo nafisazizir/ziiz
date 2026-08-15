@@ -173,7 +173,10 @@ cluster.
 
 ### 5. Verify
 
-1. `/dependencies` — the component's alias list is empty and the meter drops.
+1. `/dependencies` — the component's row is green and the meter drops. The
+   dot requires every tracked list to be empty — aliases, raw type, shadows,
+   and raw shape (literal `rounded-[2px]`/`border-[1.5px]` values; the
+   generic `rounded-*` scale and token-derived arbitraries stay sanctioned).
 2. `/preview`, both themes — passes 1/2/4 render pixel-identical; the only
    visible diffs are pass 3's shadow/material change. Tab through the
    component to confirm focus still renders the shadcn halo unchanged.

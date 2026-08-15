@@ -46,7 +46,7 @@ function SidebarItem({
         render={
           <Link href={item.href} aria-current={isActive ? "page" : undefined} />
         }
-        className="text-label-14 text-gray-900 hover:text-gray-1000 aria-[current=page]:bg-gray-100 aria-[current=page]:text-gray-1000"
+        className="aria-[current=page]:bg-gray-100 aria-[current=page]:text-gray-1000"
       >
         {item.name}
       </Button>
@@ -63,7 +63,7 @@ function SidebarGroup({
 }) {
   return (
     <div className="flex flex-col gap-1 pb-6">
-      <div className="flex h-8 items-center px-2 text-label-13 text-gray-900">
+      <div className="flex h-8 items-center px-2.5 text-label-13 text-gray-900">
         {label}
       </div>
       <ul className="flex flex-col gap-0.5">{children}</ul>

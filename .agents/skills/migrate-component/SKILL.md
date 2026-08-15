@@ -51,21 +51,19 @@ These are settled. Apply them; don't relitigate them mid-migration.
    rejected; the border/wash carries the edge. Elevation exists only on
    floating surfaces, and only as a `material-*` utility — never a bare
    `shadow-*` class.
-3. **Focus: two signatures, both gray, both composed inline from ring
-   utilities over the ramp.** There are no focus tokens; the classes are the
-   signature:
-   - **Click controls** (button, toggle, checkbox, radio, switch, tabs
-     trigger, menu triggers): `focus-visible:ring-2
-     focus-visible:ring-gray-600 focus-visible:ring-offset-2
-     focus-visible:ring-offset-background-100` — a 2px background gap then a
-     2px solid gray-600 ring.
-   - **Text-entry fields** (input, textarea, otp, editable comboboxes):
-     `focus-visible:border-gray-600 focus-visible:ring-3
-     focus-visible:ring-gray-600/50` — the soft halo.
-   - shadcn's `focus-visible:border-ring focus-visible:ring-3
-     focus-visible:ring-ring/50` cluster is deleted wherever it appears.
-   - A control that isn't clearly one or the other (select trigger reads as
-     both) is a stop-and-resolve at its turn; log the call.
+3. **Focus: the shadcn halo, kept, in gray, spelled in ramp vocabulary.**
+   One signature for every control, click or text-entry:
+   `focus-visible:border-gray-600 focus-visible:ring-3
+   focus-visible:ring-gray-600/50` — the solid gray-600 border for the crisp
+   edge, the translucent 3px halo for the glow. This is a pure rename of
+   shadcn's `focus-visible:border-ring focus-visible:ring-3
+   focus-visible:ring-ring/50` cluster (`--ring` already resolves to
+   `--ds-gray-600`), so migration changes focus vocabulary, never focus
+   pixels. There are no focus tokens. The `/50` is deliberate state opacity
+   (decision 5's carve-out), never swapped for a `gray-alpha-*` step — the
+   halo stays derived from the border color, and no alpha tier has a halo
+   role. An offset ring was prototyped on the pilot and rejected; don't
+   revisit.
 4. **Radius: keep the generic `rounded-*` scale.** No semantic shape tokens.
    The scale resolves through `--radius: 0.875rem` (Large); migration never
    changes a component's radius classes unless they visibly break on
@@ -117,9 +115,9 @@ read there in this session — never from memory of what shadcn or "a design
 system" usually does. If the foundations don't contain what a pass needs,
 that's a stop-and-resolve.
 
-Do all five passes in one sitting per component. Passes 1 and 2 are renames
-with zero visual change; passes 3 and 4 carry the visible changes (shadow
-removal, materials, focus signature); pass 5 proves it.
+Do all five passes in one sitting per component. Passes 1, 2, and 4 are
+renames with zero visual change; pass 3 carries the visible changes (shadow
+removal, materials); pass 5 proves it.
 
 ### 1. Color — alias → ramp
 
@@ -164,9 +162,10 @@ cluster.
 
 ### 4. Shape & interaction
 
-- **Focus — apply decision 3's signature.** Delete the shadcn focus cluster
-  and apply the control's signature: the offset ring on click controls, the
-  halo on text-entry fields. This is a visible change, verified in pass 5.
+- **Focus — apply decision 3's signature.** Rename the shadcn focus cluster
+  to its ramp spelling: `focus-visible:border-gray-600 focus-visible:ring-3
+  focus-visible:ring-gray-600/50`. Pixel-identical to stock; pass 5 confirms
+  no visible change on focus.
 - **Radius — rename only (decision 4).** Radius classes stay exactly as
   shipped; don't redesign shape.
 - **States.** Keep `disabled:`, `aria-invalid:`, `aria-expanded:` behavior;
@@ -175,9 +174,9 @@ cluster.
 ### 5. Verify
 
 1. `/dependencies` — the component's alias list is empty and the meter drops.
-2. `/preview`, both themes — passes 1/2 render pixel-identical; the only
-   visible diffs are pass 3's shadow/material change and pass 4's focus
-   signature (tab through the component to check it).
+2. `/preview`, both themes — passes 1/2/4 render pixel-identical; the only
+   visible diffs are pass 3's shadow/material change. Tab through the
+   component to confirm focus still renders the shadcn halo unchanged.
 3. Visit the out-of-`ui` call sites listed on the row. If a caller passes
    alias classes into this component via `className`, migrate those overrides
    in the same pass.

@@ -16,4 +16,5 @@ export const siteConfig = {
     { name: "Typography", href: "/typography" },
     { name: "Materials", href: "/materials" },
   ],
+  componentItems: [{ name: "Dependencies", href: "/dependencies" }],
 }

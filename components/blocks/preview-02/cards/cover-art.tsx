@@ -15,7 +15,7 @@ export function CoverArt() {
       <CardContent className="flex flex-col gap-3">
         <Label
           htmlFor="cover-art"
-          className="text-center text-xs font-normal tracking-wider text-muted-foreground uppercase"
+          className="text-center text-label-12 text-gray-900 uppercase"
         >
           Cover Art
         </Label>

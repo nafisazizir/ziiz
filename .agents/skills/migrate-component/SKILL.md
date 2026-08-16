@@ -108,9 +108,10 @@ above:
   passes 1–3 (a hover step, a role choice, a material assignment) are made
   against this reasoning, not just token names.
 
-Plus `MIGRATION.md` (open questions that gate this component, prior calls)
-and the component's row on `/dependencies` (its alias classes, dependents,
-call sites). Every substitution in passes 1–4 must be traceable to something
+Plus `MIGRATION.md` (open questions that gate this component, prior calls,
+and any dependent notes filed against this component by an earlier
+migration — they are part of this pass's scope) and the component's row on
+`/dependencies` (its alias classes, dependents, call sites). Every substitution in passes 1–4 must be traceable to something
 read there in this session — never from memory of what shadcn or "a design
 system" usually does. If the foundations don't contain what a pass needs,
 that's a stop-and-resolve.
@@ -183,7 +184,20 @@ cluster.
 3. Visit the out-of-`ui` call sites listed on the row. If a caller passes
    alias classes into this component via `className`, migrate those overrides
    in the same pass.
-4. `grep -n 'shadow-\|bg-muted\|bg-accent\|muted-foreground\|text-sm\|font-medium' components/ui/<name>.tsx`
+4. **Dependents** — for each dependent listed on the row, render it on
+   `/preview` in every state this migration touched (rest, hover, focus,
+   invalid, disabled…), both themes. Wrappers that reset or override this
+   component (`border-0 bg-transparent`-style reset lists, `cn()` overrides)
+   were written against the pre-migration contract: they silently miss
+   anything the migration *added* (a new state class outranks a plain
+   override on specificity) and keep dead resets for anything it *removed*.
+   Don't fix the dependent — one component per pass — but log every
+   regression and now-stale override in `MIGRATION.md` under "Dependent
+   notes", with the mechanism and the intended fix, so the dependent's own
+   migration pass inherits the history. If a regression is visibly broken
+   (not merely off-system), stop and resolve with the human whether it
+   warrants an out-of-band patch or waits for the dependent's pass.
+5. `grep -n 'shadow-\|bg-muted\|bg-accent\|muted-foreground\|text-sm\|font-medium' components/ui/<name>.tsx`
    comes back clean (or only deliberate keeps, called out in the summary).
 
 Then hand off: report the diff, the judgment calls made, and anything

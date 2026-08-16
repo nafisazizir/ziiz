@@ -10,6 +10,30 @@ questions and the per-component decision log.
 
 - Card/sidebar: material or plain border? (First in-page surface.)
 
+## Dependent notes (regressions filed against a not-yet-migrated component)
+
+Filed by a migration pass that changed a contract its dependents relied on.
+Each note is scope for the named component's own migration pass; delete the
+note when that pass absorbs it.
+
+- **input-group** (from input, 2026-08-16): the `InputGroupInput` /
+  `InputGroupTextarea` reset list (`rounded-none border-0 bg-transparent …
+  aria-invalid:ring-0`) predates input's migration and doesn't cancel the new
+  invalid fill `aria-invalid:bg-red-100` — the compound variant out-specifies
+  plain `bg-transparent`, so the inner control paints a *square* red-100
+  rectangle inside the group's rounded border (visible corner bleed /
+  "missing border" on invalid). Fix in input-group's pass: move the invalid
+  fill to the group (`has-[[data-slot][aria-invalid=true]]:bg-red-100` on
+  `InputGroup`, where it respects the rounding) and add
+  `aria-invalid:bg-transparent` to the control reset. **combobox needs no
+  separate fix** — `ComboboxInput` is `InputGroup` + `InputGroupInput` +
+  a trailing addon button; it inherits both the bug and the fix.
+- **sidebar** (from input, 2026-08-16): `SidebarInput`'s override
+  `bg-background shadow-none` now cancels input's wash
+  (`bg-gray-alpha-400/30`) via tailwind-merge, and the `shadow-none` is dead
+  (migrated input ships no shadow). In sidebar's pass: decide whether the
+  solid background is deliberate; migrate or delete the alias override.
+
 ## Decision log (per-component calls)
 
 | date | component | call |

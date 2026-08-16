@@ -74,7 +74,7 @@ function EmptyBasic() {
 function EmptyWithMutedBackground() {
   return (
     <Example title="With Muted Background">
-      <Empty className="bg-muted">
+      <Empty className="bg-gray-100">
         <EmptyHeader>
           <EmptyTitle>No results found</EmptyTitle>
           <EmptyDescription>
@@ -181,7 +181,7 @@ function EmptyWithIcon() {
 function EmptyWithMutedBackgroundAlt() {
   return (
     <Example title="With Muted Background Alt">
-      <Empty className="bg-muted/50">
+      <Empty className="bg-gray-100/50">
         <EmptyHeader>
           <EmptyTitle>404 - Not Found</EmptyTitle>
           <EmptyDescription>

@@ -51,8 +51,8 @@ export function AssignIssue() {
   return (
     <Card className="w-full max-w-sm" size="sm">
       <CardHeader className="border-b">
-        <CardTitle className="text-sm">Assign Issue</CardTitle>
-        <CardDescription className="text-sm">
+        <CardTitle>Assign Issue</CardTitle>
+        <CardDescription>
           Select users to assign to this issue.
         </CardDescription>
         <CardAction>

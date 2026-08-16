@@ -101,7 +101,7 @@ export function UsageCard() {
   return (
     <Card className="w-full max-w-sm gap-4">
       <CardHeader>
-        <CardTitle className="px-1 text-sm">
+        <CardTitle className="px-1 text-heading-14">
           5 days remaining in cycle
         </CardTitle>
       </CardHeader>

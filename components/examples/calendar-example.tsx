@@ -222,7 +222,7 @@ function CalendarWithTime() {
             className="p-0"
           />
         </CardContent>
-        <CardFooter className="border-t bg-card">
+        <CardFooter className="border-t bg-background-100">
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="time-from">Start Time</FieldLabel>

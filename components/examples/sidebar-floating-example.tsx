@@ -232,7 +232,7 @@ export default function SidebarFloatingExample() {
           <SidebarGroup>
             <Card size="sm" className="-mx-2">
               <CardHeader>
-                <CardTitle className="text-sm">
+                <CardTitle>
                   Subscribe to our newsletter
                 </CardTitle>
                 <CardDescription>

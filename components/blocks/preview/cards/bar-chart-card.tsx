@@ -54,7 +54,7 @@ export function BarChartCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Traffic channels</CardTitle>
+        <CardTitle className="text-heading-20">Traffic channels</CardTitle>
         <CardDescription className="line-clamp-2 text-sm leading-snug">
           Monthly desktop and mobile traffic for the last six months—compare
           volume and mix across platforms and devices at a glance.

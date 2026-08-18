@@ -139,7 +139,7 @@ export function PieChartCard() {
         </div>
         <Progress
           value={topBrowserShare}
-          className="**:data-[slot=progress-indicator]:bg-chart-3"
+          className="**:data-[slot=progress-indicator]:bg-green-700"
         />
       </CardFooter>
     </Card>

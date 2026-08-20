@@ -73,10 +73,11 @@ export default function Page() {
         written.
       </p>
       <p className="mt-3 text-gray-900">
-        Components that rest transparent, like ghost buttons and menu items,
-        use the
-        alpha scale instead, hovering to alpha Color 1 and pressing to alpha
-        Color 3, so the state reads over any surface.
+        If a component&rsquo;s default background is Background 1 — the page
+        surface showing through, like ghost buttons, menu items and tab chips —
+        the ladder shifts down a rung: Color 1 is the hover background and
+        Color 2 the active background. Components that rest transparent take
+        that shift on the alpha scale, so the state reads over any surface.
       </p>
       <ColorUsageList
         items={[

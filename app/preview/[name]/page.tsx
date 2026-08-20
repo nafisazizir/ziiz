@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 
+import { PALETTE_KEY_FORWARD_SCRIPT } from "@/lib/palette"
 import {
   getPlaygroundItem,
   PLAYGROUND_ITEMS,
@@ -18,20 +19,7 @@ export const dynamicParams = false
 // preview is loading. The parent window owns the actual palette.
 function KeyForwardScript() {
   return (
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
-          document.addEventListener("keydown", function (e) {
-            if ((e.key === "p" || e.key === "k") && (e.metaKey || e.ctrlKey)) {
-              e.preventDefault();
-              if (window.parent && window.parent !== window) {
-                window.parent.postMessage({ type: "ziiz-palette", key: e.key }, "*");
-              }
-            }
-          });
-        `,
-      }}
-    />
+    <script dangerouslySetInnerHTML={{ __html: PALETTE_KEY_FORWARD_SCRIPT }} />
   )
 }
 

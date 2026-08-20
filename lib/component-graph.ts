@@ -28,14 +28,47 @@ export type ComponentGraph = {
   totals: { total: number; pending: number; clean: number }
 }
 
+export type OffSystemKind = {
+  /** The `ComponentNode` field holding the matched classes */
+  key: "aliasClasses" | "typeClasses" | "shadowClasses" | "shapeClasses"
+  /** How the kind reads in a chip row */
+  label: string
+  /** How the kind reads in a count, e.g. "1 alias" / "2 aliases" */
+  singular: string
+  plural: string
+}
+
+/** The tracked kinds of off-system class, in reporting order. */
+export const OFF_SYSTEM_KINDS: OffSystemKind[] = [
+  {
+    key: "aliasClasses",
+    label: "aliases",
+    singular: "alias",
+    plural: "aliases",
+  },
+  {
+    key: "typeClasses",
+    label: "raw type",
+    singular: "raw type",
+    plural: "raw type",
+  },
+  {
+    key: "shadowClasses",
+    label: "shadows",
+    singular: "shadow",
+    plural: "shadows",
+  },
+  {
+    key: "shapeClasses",
+    label: "raw shape",
+    singular: "raw shape",
+    plural: "raw shape",
+  },
+]
+
 /** True when no off-system classes of any tracked kind remain. */
 export function isClean(node: ComponentNode): boolean {
-  return (
-    node.aliasClasses.length === 0 &&
-    node.typeClasses.length === 0 &&
-    node.shadowClasses.length === 0 &&
-    node.shapeClasses.length === 0
-  )
+  return OFF_SYSTEM_KINDS.every((kind) => node[kind.key].length === 0)
 }
 
 const UI_DIR = path.join(process.cwd(), "components/ui")

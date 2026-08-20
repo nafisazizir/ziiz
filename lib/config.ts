@@ -1,3 +1,7 @@
+export type NavItem = { name: string; href: string }
+
+export type NavGroup = { label: string; items: NavItem[] }
+
 export const siteConfig = {
   name: "ziiz",
   description: "A design-system exploration.",
@@ -11,10 +15,19 @@ export const siteConfig = {
       label: "Preview",
     },
   ],
-  foundationItems: [
-    { name: "Colors", href: "/colors" },
-    { name: "Typography", href: "/typography" },
-    { name: "Materials", href: "/materials" },
-  ],
-  componentItems: [{ name: "Dependencies", href: "/dependencies" }],
+  /** Rendered by both the docs sidebar and the mobile nav. */
+  docsGroups: [
+    {
+      label: "Foundation",
+      items: [
+        { name: "Colors", href: "/colors" },
+        { name: "Typography", href: "/typography" },
+        { name: "Materials", href: "/materials" },
+      ],
+    },
+    {
+      label: "Components",
+      items: [{ name: "Dependencies", href: "/dependencies" }],
+    },
+  ] satisfies NavGroup[],
 }

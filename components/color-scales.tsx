@@ -5,6 +5,7 @@ import { Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
+import { SpecList, SpecRow } from "@/components/spec-list"
 import {
   Tooltip,
   TooltipContent,
@@ -124,12 +125,9 @@ export function ColorUsageList({
 }) {
   return (
     <TooltipProvider>
-      <div className="mt-4 flex flex-col">
+      <SpecList>
         {items.map((item) => (
-          <div
-            key={item.token}
-            className="flex items-center gap-4 border-b py-3 last:border-b-0"
-          >
+          <SpecRow key={item.token} className="flex items-center gap-4 py-3">
             <Swatch token={item.token} className="size-9 shrink-0 rounded-md" />
             <div className="flex flex-1 flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
               <div>
@@ -142,9 +140,9 @@ export function ColorUsageList({
               </div>
               <div className="text-copy-13 text-gray-900">{item.usage}</div>
             </div>
-          </div>
+          </SpecRow>
         ))}
-      </div>
+      </SpecList>
     </TooltipProvider>
   )
 }

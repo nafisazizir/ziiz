@@ -3,9 +3,18 @@ import type { Metadata } from "next"
 import {
   getComponentGraph,
   isClean,
+  OFF_SYSTEM_KINDS,
   type ComponentNode,
+  type OffSystemKind,
 } from "@/lib/component-graph"
 import { cn } from "@/lib/utils"
+import {
+  DocsHeading,
+  DocsList,
+  DocsPageHeader,
+  DocsParagraph,
+  InlineCode,
+} from "@/components/docs-prose"
 import {
   Accordion,
   AccordionContent,
@@ -20,11 +29,30 @@ export const metadata: Metadata = {
     "The components/ui import graph in topological order: which components to migrate first.",
 }
 
-function InlineCode({ children }: { children: React.ReactNode }) {
+/** Badge tint per off-system kind, keyed by its `ComponentNode` field. */
+const KIND_BADGE_CLASS: Record<OffSystemKind["key"], string> = {
+  aliasClasses: "bg-red-200 text-red-900",
+  typeClasses: "bg-amber-200 text-amber-900",
+  shadowClasses: "bg-teal-200 text-teal-900",
+  shapeClasses: "bg-pink-200 text-pink-900",
+}
+
+function StatusDot({
+  clean,
+  className,
+}: {
+  clean: boolean
+  className?: string
+}) {
   return (
-    <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
-      {children}
-    </code>
+    <span
+      aria-hidden
+      className={cn(
+        "size-2.5 shrink-0 rounded-full",
+        clean ? "bg-green-700" : "bg-amber-700",
+        className
+      )}
+    />
   )
 }
 
@@ -68,12 +96,7 @@ function ChipRow({ label, items }: { label: string; items: string[] }) {
     <div className="mt-2 flex flex-wrap items-center gap-1 pl-4.5">
       <span className="mr-1 text-label-12 text-gray-900">{label}</span>
       {items.map((c) => (
-        <code
-          key={c}
-          className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono"
-        >
-          {c}
-        </code>
+        <InlineCode key={c}>{c}</InlineCode>
       ))}
     </div>
   )
@@ -86,13 +109,7 @@ function ComponentRow({ node }: { node: ComponentNode }) {
     <AccordionItem value={node.name} id={node.name} className="scroll-m-24">
       <AccordionTrigger className="items-center gap-2 py-3 text-label-14 text-gray-1000">
         <span className="flex flex-1 items-center gap-2">
-          <span
-            aria-hidden
-            className={cn(
-              "size-2.5 shrink-0 rounded-full",
-              clean ? "bg-green-700" : "bg-amber-700"
-            )}
-          />
+          <StatusDot clean={clean} />
           {node.name}
         </span>
         <span className="flex flex-wrap items-center justify-end gap-2">
@@ -108,30 +125,15 @@ function ComponentRow({ node }: { node: ComponentNode }) {
             plural="sites"
             className="bg-gray-200 text-gray-900"
           />
-          <StatBadge
-            count={node.aliasClasses.length}
-            singular="alias"
-            plural="aliases"
-            className="bg-red-200 text-red-900"
-          />
-          <StatBadge
-            count={node.typeClasses.length}
-            singular="raw type"
-            plural="raw type"
-            className="bg-amber-200 text-amber-900"
-          />
-          <StatBadge
-            count={node.shadowClasses.length}
-            singular="shadow"
-            plural="shadows"
-            className="bg-teal-200 text-teal-900"
-          />
-          <StatBadge
-            count={node.shapeClasses.length}
-            singular="raw shape"
-            plural="raw shape"
-            className="bg-pink-200 text-pink-900"
-          />
+          {OFF_SYSTEM_KINDS.map((kind) => (
+            <StatBadge
+              key={kind.key}
+              count={node[kind.key].length}
+              singular={kind.singular}
+              plural={kind.plural}
+              className={KIND_BADGE_CLASS[kind.key]}
+            />
+          ))}
           <StatBadge
             count={node.dependsOn.length}
             singular="dep"
@@ -161,10 +163,9 @@ function ComponentRow({ node }: { node: ComponentNode }) {
           {node.externalUses} call {node.externalUses === 1 ? "site" : "sites"}{" "}
           outside <InlineCode>ui</InlineCode>
         </p>
-        <ChipRow label="aliases" items={node.aliasClasses} />
-        <ChipRow label="raw type" items={node.typeClasses} />
-        <ChipRow label="shadows" items={node.shadowClasses} />
-        <ChipRow label="raw shape" items={node.shapeClasses} />
+        {OFF_SYSTEM_KINDS.map((kind) => (
+          <ChipRow key={kind.key} label={kind.label} items={node[kind.key]} />
+        ))}
       </AccordionContent>
     </AccordionItem>
   )
@@ -180,49 +181,52 @@ export default function Page() {
 
   return (
     <>
-      <h1 className="scroll-m-24 text-heading-40 tracking-tighter">
-        Dependencies
-      </h1>
-      <p className="mt-4 text-gray-900">
-        Every component in <InlineCode>components/ui</InlineCode>, its internal
-        imports, and the topological order for the ramp-vocabulary migration:
-        each tier depends only on the tiers above it, so working top to bottom
-        means every component is validated against parts that are already done.
-      </p>
-      <p className="mt-3 text-gray-900">
+      <DocsPageHeader
+        title="Dependencies"
+        description={
+          <>
+            Every component in <InlineCode>components/ui</InlineCode>, its
+            internal imports, and the topological order for the ramp-vocabulary
+            migration: each tier depends only on the tiers above it, so working
+            top to bottom means every component is validated against parts that
+            are already done.
+          </>
+        }
+      />
+      <DocsParagraph>
         Scanned from the working tree at render time.{" "}
         <span className="text-gray-1000">
           {totals.pending} of {totals.total}
         </span>{" "}
         components still carry off-system classes — shadcn slot aliases, raw
         type utilities, bare shadows, or literal shape values;{" "}
-        <span className="text-gray-1000">{totals.clean}</span> are clean.
-        Within a tier, components with the most dependents come first: they
-        unlock the most downstream work.
-      </p>
-      <p className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1 text-copy-14 text-gray-900">
+        <span className="text-gray-1000">{totals.clean}</span> are clean. Within
+        a tier, components with the most dependents come first: they unlock the
+        most downstream work.
+      </DocsParagraph>
+      <DocsParagraph className="flex flex-wrap items-center gap-x-6 gap-y-1 text-copy-14">
         <span className="flex items-center gap-2">
-          <span aria-hidden className="size-2.5 rounded-full bg-amber-700" />
+          <StatusDot clean={false} />
           has off-system classes
         </span>
         <span className="flex items-center gap-2">
-          <span aria-hidden className="size-2.5 rounded-full bg-green-700" />
+          <StatusDot clean />
           clean
         </span>
-      </p>
+      </DocsParagraph>
 
       {tiers.map((tier, i) => (
         <section key={i}>
-          <h2 id={`tier-${i}`} className="mt-12 scroll-m-24 text-heading-24">
+          <DocsHeading id={`tier-${i}`}>
             Tier {i}
             <span className="ml-2 text-gray-900">
               — {tier.length} {tier.length === 1 ? "component" : "components"}
             </span>
-          </h2>
-          <p className="mt-3 text-gray-900">
+          </DocsHeading>
+          <DocsParagraph>
             {TIER_INTROS[i] ??
               `Longest dependency chain of ${i}. Migrate after tier ${i - 1}.`}
-          </p>
+          </DocsParagraph>
           <Accordion className="mt-4 material-base px-4">
             {tier.map((node) => (
               <ComponentRow key={node.name} node={node} />
@@ -231,15 +235,14 @@ export default function Page() {
         </section>
       ))}
 
-      <h2 className="mt-12 scroll-m-24 text-heading-24">How status is read</h2>
-      <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
+      <DocsHeading>How status is read</DocsHeading>
+      <DocsList>
         <li>
           A component is <InlineCode>clean</InlineCode> when it carries no
-          off-system classes of any tracked kind: shadcn slot aliases, raw
-          type, bare shadows, and raw shape. The dot and the meter track all
-          four. Clean is necessary, not sufficient: the on-touch pass also
-          covers judgment calls (hover steps, material assignment) no scan can
-          verify.
+          off-system classes of any tracked kind: shadcn slot aliases, raw type,
+          bare shadows, and raw shape. The dot and the meter track all four.
+          Clean is necessary, not sufficient: the on-touch pass also covers
+          judgment calls (hover steps, material assignment) no scan can verify.
         </li>
         <li>
           <em>Aliases</em> are classes that resolve through the shadcn slot
@@ -257,9 +260,9 @@ export default function Page() {
           composed <InlineCode>material-*</InlineCode>. <em>Raw shape</em>{" "}
           counts literal border and radius values (
           <InlineCode>rounded-[2px]</InlineCode>,{" "}
-          <InlineCode>border-[1.5px]</InlineCode>) that bypass the radius
-          scale — the generic <InlineCode>rounded-*</InlineCode> scale,
-          structural border widths, and token-derived arbitraries like{" "}
+          <InlineCode>border-[1.5px]</InlineCode>) that bypass the radius scale
+          — the generic <InlineCode>rounded-*</InlineCode> scale, structural
+          border widths, and token-derived arbitraries like{" "}
           <InlineCode>rounded-[min(var(--radius-md),8px)]</InlineCode> are
           sanctioned and stay unflagged.
         </li>
@@ -276,7 +279,7 @@ export default function Page() {
           surfaces (including <InlineCode>/preview</InlineCode>) where a
           migration can be visually validated.
         </li>
-      </ul>
+      </DocsList>
     </>
   )
 }

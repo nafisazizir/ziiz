@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { SpecToken, SpecUsage } from "@/components/spec-list"
 
 export type MaterialVariant = {
   /** The utility class, e.g. "material-base" */
@@ -24,16 +25,10 @@ export function MaterialList({ items }: { items: MaterialVariant[] }) {
             <span className="text-label-14">{item.name}</span>
           </div>
           <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <code className="text-label-13-mono text-gray-900">
-              {item.className}
-            </code>
-            <code className="text-label-13-mono text-gray-900">
-              {item.radius}
-            </code>
+            <SpecToken>{item.className}</SpecToken>
+            <SpecToken>{item.radius}</SpecToken>
           </div>
-          {item.usage ? (
-            <p className="text-copy-13 mt-2 text-gray-900">{item.usage}</p>
-          ) : null}
+          {item.usage ? <SpecUsage>{item.usage}</SpecUsage> : null}
         </div>
       ))}
     </div>

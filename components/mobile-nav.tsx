@@ -44,50 +44,45 @@ export function MobileNav({ className }: { className?: string }) {
       {open && (
         <div className="fixed inset-x-0 top-(--header-height) bottom-0 z-50 scrollbar-none overflow-y-auto bg-background/90 backdrop-blur lg:hidden">
           <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
-            <div className="flex flex-col gap-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                Menu
-              </div>
-              <div className="flex flex-col gap-3">
-                {siteConfig.navItems.map((item, index) => (
-                  <MobileLink
-                    key={index}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.label}
-                  </MobileLink>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                Foundation
-              </div>
-              <div className="flex flex-col gap-3">
-                {siteConfig.foundationItems.map(({ name, href }) => (
+            <MobileNavGroup label="Menu">
+              {siteConfig.navItems.map((item) => (
+                <MobileLink
+                  key={item.href}
+                  href={item.href}
+                  onOpenChange={setOpen}
+                >
+                  {item.label}
+                </MobileLink>
+              ))}
+            </MobileNavGroup>
+            {siteConfig.docsGroups.map((group) => (
+              <MobileNavGroup key={group.label} label={group.label}>
+                {group.items.map(({ name, href }) => (
                   <MobileLink key={name} href={href} onOpenChange={setOpen}>
                     {name}
                   </MobileLink>
                 ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                Components
-              </div>
-              <div className="flex flex-col gap-3">
-                {siteConfig.componentItems.map(({ name, href }) => (
-                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
-                    {name}
-                  </MobileLink>
-                ))}
-              </div>
-            </div>
+              </MobileNavGroup>
+            ))}
           </div>
         </div>
       )}
     </>
+  )
+}
+
+function MobileNavGroup({
+  label,
+  children,
+}: {
+  label: string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="text-sm font-medium text-muted-foreground">{label}</div>
+      <div className="flex flex-col gap-3">{children}</div>
+    </div>
   )
 }
 

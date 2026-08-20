@@ -1,63 +1,47 @@
 import type { Metadata } from "next"
 
+import {
+  DocsHeading,
+  DocsPageHeader,
+  DocsParagraph,
+  InlineCode,
+} from "@/components/docs-prose"
 import { TypeVariantList } from "@/components/type-scale"
 
-export const metadata: Metadata = {
+const page = {
   title: "Typography",
   description: "Rules of typesetting throughout the system.",
 }
 
+export const metadata: Metadata = page
+
 export default function Page() {
   return (
     <>
-      <h1 className="text-heading-40 scroll-m-24 tracking-tighter">
-        Typography
-      </h1>
-      <p className="mt-4 text-gray-900">
-        Rules of typesetting throughout the system.
-      </p>
+      <DocsPageHeader {...page} />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Usage
-      </h2>
-      <p className="mt-3 text-gray-900">
+      <DocsHeading>Usage</DocsHeading>
+      <DocsParagraph>
         Our typography styles can be consumed as Tailwind classes. The classes
-        below pre-set a combination of{" "}
-        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
-          font-size
-        </code>
-        ,{" "}
-        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
-          line-height
-        </code>
-        ,{" "}
-        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
-          letter-spacing
-        </code>
-        , and{" "}
-        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
-          font-weight
-        </code>{" "}
-        for you.
-      </p>
-      <p className="text-copy-16 mt-3 text-gray-900">
+        below pre-set a combination of <InlineCode>font-size</InlineCode>,{" "}
+        <InlineCode>line-height</InlineCode>,{" "}
+        <InlineCode>letter-spacing</InlineCode>, and{" "}
+        <InlineCode>font-weight</InlineCode> for you.
+      </DocsParagraph>
+      <DocsParagraph className="text-copy-16">
         To make use of the <strong>Subtle</strong> and <strong>Strong</strong>{" "}
         modifiers, all you have to do is use the{" "}
-        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
-          &lt;strong&gt;
-        </code>{" "}
-        element nested as the descendant of a given typography class:
-      </p>
+        <InlineCode>&lt;strong&gt;</InlineCode> element nested as the descendant
+        of a given typography class:
+      </DocsParagraph>
       <pre className="mt-4 overflow-x-auto rounded-lg border bg-background-200 p-4">
         <code className="text-copy-13-mono">
           {`<p className="text-copy-16">\n  Copy 16 <strong>with Strong</strong>\n</p>`}
         </code>
       </pre>
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Headings
-      </h2>
-      <p className="mt-3 text-gray-900">Used to introduce pages or sections.</p>
+      <DocsHeading>Headings</DocsHeading>
+      <DocsParagraph>Used to introduce pages or sections.</DocsParagraph>
       <TypeVariantList
         items={[
           { className: "text-heading-72", name: "Heading 72" },
@@ -89,12 +73,10 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Buttons
-      </h2>
-      <p className="mt-3 text-gray-900">
+      <DocsHeading>Buttons</DocsHeading>
+      <DocsParagraph>
         Only to be used within components that render buttons.
-      </p>
+      </DocsParagraph>
       <TypeVariantList
         items={[
           {
@@ -116,13 +98,11 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Label
-      </h2>
-      <p className="mt-3 text-gray-900">
+      <DocsHeading>Label</DocsHeading>
+      <DocsParagraph>
         Designed for single-lines, and given ample line-height for highlighting
         &amp; marrying up with icons.
-      </p>
+      </DocsParagraph>
       <TypeVariantList
         items={[
           { className: "text-label-20", name: "Label 20" },
@@ -167,13 +147,11 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Copy
-      </h2>
-      <p className="mt-3 text-gray-900">
+      <DocsHeading>Copy</DocsHeading>
+      <DocsParagraph>
         Designed for multiple lines of text, having a higher line height than
         Label.
-      </p>
+      </DocsParagraph>
       <TypeVariantList
         items={[
           {

@@ -1,6 +1,7 @@
 "use client"
 
 import { Swatch } from "@/components/color-scales"
+import { DocsSubheading } from "@/components/docs-prose"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import {
   Table,
@@ -92,7 +93,7 @@ export function TokenMapping() {
       </Table>
       {GROUPS.map((group) => (
         <section key={group.label}>
-          <h3 className="text-heading-16 mt-8 scroll-m-24">{group.label}</h3>
+          <DocsSubheading className="mt-8">{group.label}</DocsSubheading>
           <Table className="mt-2">
             <TableBody>
               {group.rows.map((row) => (

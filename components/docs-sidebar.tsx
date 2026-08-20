@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { siteConfig } from "@/lib/config"
+import { siteConfig, type NavItem } from "@/lib/config"
 import { Button } from "@/components/ui/button"
 
 export function DocsSidebar() {
@@ -12,28 +12,19 @@ export function DocsSidebar() {
   return (
     <aside className="sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block">
       <nav className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10">
-        <SidebarGroup label="Foundation">
-          {siteConfig.foundationItems.map((item) => (
-            <SidebarItem key={item.href} item={item} pathname={pathname} />
-          ))}
-        </SidebarGroup>
-        <SidebarGroup label="Components">
-          {siteConfig.componentItems.map((item) => (
-            <SidebarItem key={item.href} item={item} pathname={pathname} />
-          ))}
-        </SidebarGroup>
+        {siteConfig.docsGroups.map((group) => (
+          <SidebarGroup key={group.label} label={group.label}>
+            {group.items.map((item) => (
+              <SidebarItem key={item.href} item={item} pathname={pathname} />
+            ))}
+          </SidebarGroup>
+        ))}
       </nav>
     </aside>
   )
 }
 
-function SidebarItem({
-  item,
-  pathname,
-}: {
-  item: { name: string; href: string }
-  pathname: string
-}) {
+function SidebarItem({ item, pathname }: { item: NavItem; pathname: string }) {
   const isActive =
     item.href === "/" ? pathname === item.href : pathname.startsWith(item.href)
 

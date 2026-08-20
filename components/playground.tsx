@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 
+import { isPaletteShortcut, PALETTE_MESSAGE_TYPE } from "@/lib/palette"
 import {
   DEFAULT_ITEM,
   getPlaygroundItem,
@@ -56,7 +57,7 @@ export function Playground() {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if ((e.key === "p" || e.key === "k") && (e.metaKey || e.ctrlKey)) {
+      if (isPaletteShortcut(e)) {
         e.preventDefault()
         setOpen((o) => !o)
       }
@@ -71,7 +72,7 @@ export function Playground() {
       if (event.origin !== window.location.origin) {
         return
       }
-      if (event.data?.type === "ziiz-palette") {
+      if (event.data?.type === PALETTE_MESSAGE_TYPE) {
         setOpen((o) => !o)
       }
     }

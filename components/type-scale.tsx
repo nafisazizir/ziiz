@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { SpecList, SpecRow, SpecToken, SpecUsage } from "@/components/spec-list"
 
 export type TypeVariant = {
   /** The utility class, e.g. "text-heading-72" */
@@ -12,9 +13,9 @@ export type TypeVariant = {
 
 export function TypeVariantList({ items }: { items: TypeVariant[] }) {
   return (
-    <div className="mt-4 flex flex-col">
+    <SpecList>
       {items.map((item) => (
-        <div key={item.className} className="border-b py-5 last:border-b-0">
+        <SpecRow key={item.className}>
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
             <div className={cn("min-w-0", item.className)}>
               {item.name}
@@ -25,15 +26,11 @@ export function TypeVariantList({ items }: { items: TypeVariant[] }) {
                 </>
               ) : null}
             </div>
-            <code className="text-label-13-mono text-gray-900">
-              {item.className}
-            </code>
+            <SpecToken>{item.className}</SpecToken>
           </div>
-          {item.usage ? (
-            <p className="text-copy-13 mt-2 text-gray-900">{item.usage}</p>
-          ) : null}
-        </div>
+          {item.usage ? <SpecUsage>{item.usage}</SpecUsage> : null}
+        </SpecRow>
       ))}
-    </div>
+    </SpecList>
   )
 }

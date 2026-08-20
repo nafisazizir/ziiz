@@ -18,12 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 
 export function RecentTransactions() {
@@ -62,9 +57,7 @@ export function RecentTransactions() {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="text-sm text-muted-foreground">
-                Today, 10:24 AM
-              </TableCell>
+              <TableCell className="text-gray-900">Today, 10:24 AM</TableCell>
               <TableCell className="text-right">
                 <span className="text-sm font-semibold tabular-nums">
                   -$6.50
@@ -114,9 +107,7 @@ export function RecentTransactions() {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="text-sm text-muted-foreground">
-                Yesterday
-              </TableCell>
+              <TableCell className="text-gray-900">Yesterday</TableCell>
               <TableCell className="text-right">
                 <span className="text-sm font-semibold tabular-nums">
                   -$142.30
@@ -164,9 +155,7 @@ export function RecentTransactions() {
                   <span className="text-sm text-muted-foreground">Income</span>
                 </div>
               </TableCell>
-              <TableCell className="text-sm text-muted-foreground">
-                Oct 12
-              </TableCell>
+              <TableCell className="text-gray-900">Oct 12</TableCell>
               <TableCell className="text-right">
                 <span className="text-sm font-semibold text-emerald-500 tabular-nums">
                   +$4,200.00
@@ -216,9 +205,7 @@ export function RecentTransactions() {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="text-sm text-muted-foreground">
-                Oct 11
-              </TableCell>
+              <TableCell className="text-gray-900">Oct 11</TableCell>
               <TableCell className="text-right">
                 <span className="text-sm font-semibold tabular-nums">
                   -$24.10
@@ -268,9 +255,7 @@ export function RecentTransactions() {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="text-sm text-muted-foreground">
-                Oct 10
-              </TableCell>
+              <TableCell className="text-gray-900">Oct 10</TableCell>
               <TableCell className="text-right">
                 <span className="text-sm font-semibold tabular-nums">
                   -$19.99

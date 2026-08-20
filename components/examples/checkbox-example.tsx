@@ -2,10 +2,7 @@
 
 import * as React from "react"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   Field,
@@ -202,7 +199,9 @@ function CheckboxInTable() {
                   }
                 />
               </TableCell>
-              <TableCell className="font-medium">{row.name}</TableCell>
+              <TableCell>
+                <strong>{row.name}</strong>
+              </TableCell>
               <TableCell>{row.email}</TableCell>
               <TableCell>{row.role}</TableCell>
             </TableRow>

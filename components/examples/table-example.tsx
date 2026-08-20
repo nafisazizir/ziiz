@@ -1,9 +1,6 @@
 "use client"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -108,7 +105,9 @@ function TableBasic() {
         <TableBody>
           {invoices.slice(0, 3).map((invoice) => (
             <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
+              <TableCell>
+                <strong>{invoice.invoice}</strong>
+              </TableCell>
               <TableCell>{invoice.paymentStatus}</TableCell>
               <TableCell>{invoice.paymentMethod}</TableCell>
               <TableCell className="text-right">
@@ -138,7 +137,9 @@ function TableWithFooter() {
         <TableBody>
           {invoices.slice(0, 3).map((invoice) => (
             <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
+              <TableCell>
+                <strong>{invoice.invoice}</strong>
+              </TableCell>
               <TableCell>{invoice.paymentStatus}</TableCell>
               <TableCell>{invoice.paymentMethod}</TableCell>
               <TableCell className="text-right">
@@ -171,17 +172,23 @@ function TableSimple() {
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell className="font-medium">Sarah Chen</TableCell>
+            <TableCell>
+              <strong>Sarah Chen</strong>
+            </TableCell>
             <TableCell>sarah.chen@acme.com</TableCell>
             <TableCell className="text-right">Admin</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Marc Rodriguez</TableCell>
+            <TableCell>
+              <strong>Marc Rodriguez</strong>
+            </TableCell>
             <TableCell>marcus.rodriguez@acme.com</TableCell>
             <TableCell className="text-right">User</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Emily Watson</TableCell>
+            <TableCell>
+              <strong>Emily Watson</strong>
+            </TableCell>
             <TableCell>emily.watson@acme.com</TableCell>
             <TableCell className="text-right">User</TableCell>
           </TableRow>
@@ -204,7 +211,9 @@ function TableWithBadges() {
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell className="font-medium">Design homepage</TableCell>
+            <TableCell>
+              <strong>Design homepage</strong>
+            </TableCell>
             <TableCell>
               <span className="inline-flex items-center rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400">
                 Completed
@@ -217,7 +226,9 @@ function TableWithBadges() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Implement API</TableCell>
+            <TableCell>
+              <strong>Implement API</strong>
+            </TableCell>
             <TableCell>
               <span className="inline-flex items-center rounded-full bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-700 dark:text-yellow-400">
                 In Progress
@@ -230,7 +241,9 @@ function TableWithBadges() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Write tests</TableCell>
+            <TableCell>
+              <strong>Write tests</strong>
+            </TableCell>
             <TableCell>
               <span className="inline-flex items-center rounded-full bg-gray-500/10 px-2 py-1 text-xs font-medium text-gray-700 dark:text-gray-400">
                 Pending
@@ -261,7 +274,9 @@ function TableWithActions() {
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell className="font-medium">Wireless Mouse</TableCell>
+            <TableCell>
+              <strong>Wireless Mouse</strong>
+            </TableCell>
             <TableCell>$29.99</TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
@@ -291,7 +306,9 @@ function TableWithActions() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Mechanical Keyboard</TableCell>
+            <TableCell>
+              <strong>Mechanical Keyboard</strong>
+            </TableCell>
             <TableCell>$129.99</TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
@@ -321,7 +338,9 @@ function TableWithActions() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">USB-C Hub</TableCell>
+            <TableCell>
+              <strong>USB-C Hub</strong>
+            </TableCell>
             <TableCell>$49.99</TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
@@ -395,7 +414,9 @@ function TableWithSelect() {
         <TableBody>
           {tasks.map((item) => (
             <TableRow key={item.task}>
-              <TableCell className="font-medium">{item.task}</TableCell>
+              <TableCell>
+                <strong>{item.task}</strong>
+              </TableCell>
               <TableCell>
                 <Select
                   items={people}
@@ -442,7 +463,9 @@ function TableWithInput() {
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell className="font-medium">Wireless Mouse</TableCell>
+            <TableCell>
+              <strong>Wireless Mouse</strong>
+            </TableCell>
             <TableCell>
               <Input
                 type="number"
@@ -454,7 +477,9 @@ function TableWithInput() {
             <TableCell>$29.99</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Mechanical Keyboard</TableCell>
+            <TableCell>
+              <strong>Mechanical Keyboard</strong>
+            </TableCell>
             <TableCell>
               <Input
                 type="number"
@@ -466,7 +491,9 @@ function TableWithInput() {
             <TableCell>$129.99</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">USB-C Hub</TableCell>
+            <TableCell>
+              <strong>USB-C Hub</strong>
+            </TableCell>
             <TableCell>
               <Input
                 type="number"

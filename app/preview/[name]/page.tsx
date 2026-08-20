@@ -25,7 +25,7 @@ function KeyForwardScript() {
             if ((e.key === "p" || e.key === "k") && (e.metaKey || e.ctrlKey)) {
               e.preventDefault();
               if (window.parent && window.parent !== window) {
-                window.parent.postMessage({ type: "ziiz-palette", key: e.key }, "*");
+                window.parent.postMessage({ type: "ziiz-palette", key: e.key }, window.location.origin);
               }
             }
           });

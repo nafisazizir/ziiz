@@ -14,6 +14,14 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+// close() rejects when the context is already closing; log instead of leaving
+// a floating promise that surfaces as an unhandled rejection.
+function closeAudioContext(context: AudioContext) {
+  context.close().catch((error) => {
+    console.error("LiveWaveform: failed to close the audio context", error)
+  })
+}
+
 const LiveWaveform = ({
   active = false,
   processing = false,
@@ -37,7 +45,7 @@ const LiveWaveform = ({
   onStreamEnd,
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & {
+}: Omit<React.HTMLAttributes<HTMLDivElement>, "onError"> & {
   active?: boolean
   processing?: boolean
   deviceId?: string
@@ -227,8 +235,9 @@ const LiveWaveform = ({
         audioContextRef.current &&
         audioContextRef.current.state !== "closed"
       ) {
-        audioContextRef.current.close()
+        closeAudioContext(audioContextRef.current)
         audioContextRef.current = null
+        analyserRef.current = null
       }
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
@@ -236,8 +245,14 @@ const LiveWaveform = ({
       }
       return
     }
+    let cancelled = false
     const setupMicrophone = async () => {
       try {
+        if (!navigator.mediaDevices?.getUserMedia) {
+          throw new Error(
+            "Microphone capture is unavailable (getUserMedia is not supported in this context)"
+          )
+        }
         const stream = await navigator.mediaDevices.getUserMedia({
           audio: deviceId
             ? {
@@ -252,6 +267,12 @@ const LiveWaveform = ({
                 autoGainControl: true,
               },
         })
+        if (cancelled) {
+          // The effect was torn down while permission was pending; the stream
+          // would otherwise stay open with no reference to stop it.
+          stream.getTracks().forEach((track) => track.stop())
+          return
+        }
         streamRef.current = stream
         onStreamReady?.(stream)
         const AudioContextConstructor =
@@ -268,11 +289,20 @@ const LiveWaveform = ({
         analyserRef.current = analyser
         historyRef.current = []
       } catch (error) {
-        onError?.(error as Error)
+        const failure =
+          error instanceof Error ? error : new Error(String(error))
+        if (onError) {
+          onError(failure)
+        } else {
+          // Without a handler the waveform would just stay blank, so make the
+          // failure visible instead of dropping it.
+          console.error("LiveWaveform: microphone setup failed", failure)
+        }
       }
     }
-    setupMicrophone()
+    void setupMicrophone()
     return () => {
+      cancelled = true
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((track) => track.stop())
         streamRef.current = null
@@ -282,8 +312,9 @@ const LiveWaveform = ({
         audioContextRef.current &&
         audioContextRef.current.state !== "closed"
       ) {
-        audioContextRef.current.close()
+        closeAudioContext(audioContextRef.current)
         audioContextRef.current = null
+        analyserRef.current = null
       }
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
@@ -492,13 +523,20 @@ export function LiveWaveformCard() {
   const [active, setActive] = useState(false)
   const [processing, setProcessing] = useState(true)
   const [mode, setMode] = useState<"static" | "scrolling">("static")
+  const [error, setError] = useState<string | null>(null)
 
   const handleToggleActive = () => {
+    setError(null)
     setActive(!active)
     if (!active) {
       setProcessing(false)
     }
   }
+
+  const handleError = React.useCallback((failure: Error) => {
+    setError(failure.message || "Could not access the microphone")
+    setActive(false)
+  }, [])
 
   const handleToggleProcessing = () => {
     setProcessing(!processing)
@@ -526,7 +564,13 @@ export function LiveWaveformCard() {
           fadeEdges={true}
           barColor="gray"
           historySize={120}
+          onError={handleError}
         />
+        {error ? (
+          <p role="alert" className="mt-2 text-copy-13 text-red-900">
+            {error}
+          </p>
+        ) : null}
       </CardContent>
       <CardFooter className="gap-2">
         <Button

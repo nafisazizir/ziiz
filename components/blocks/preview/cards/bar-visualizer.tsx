@@ -82,7 +82,11 @@ function createAudioAnalyser(
 
   const cleanup = () => {
     source.disconnect()
-    audioContext.close()
+    // close() rejects when the context is already closing; report it instead
+    // of leaving a floating promise behind.
+    audioContext.close().catch((error) => {
+      console.error("BarVisualizer: failed to close the audio context", error)
+    })
   }
 
   return { analyser, audioContext, cleanup }
@@ -124,12 +128,28 @@ function useMultibandVolume(
       return
     }
 
-    const { analyser, cleanup } = createAudioAnalyser(mediaStream, {
-      fftSize,
-      smoothingTimeConstant,
-      minDecibels,
-      maxDecibels,
-    })
+    // Constructing an AudioContext can throw (unsupported browser, blocked
+    // autoplay policy); without this the whole tree would unmount.
+    let audio: ReturnType<typeof createAudioAnalyser> | null = null
+    try {
+      audio = createAudioAnalyser(mediaStream, {
+        fftSize,
+        smoothingTimeConstant,
+        minDecibels,
+        maxDecibels,
+      })
+    } catch (error) {
+      console.error("BarVisualizer: could not analyse the media stream", error)
+    }
+
+    if (!audio) {
+      const emptyBands = new Array(bands).fill(0)
+      bandsRef.current = emptyBands
+      setFrequencyBands(emptyBands)
+      return
+    }
+
+    const { analyser, cleanup } = audio
 
     const bufferLength = analyser.frequencyBinCount
     const dataArray = new Float32Array(bufferLength)

@@ -87,10 +87,21 @@ function walk(dir: string, out: string[] = []): string[] {
 }
 
 export function getComponentGraph(): ComponentGraph {
-  const files = fs
-    .readdirSync(UI_DIR)
-    .filter((f) => f.endsWith(".tsx"))
-    .sort()
+  let entries: string[]
+  try {
+    entries = fs.readdirSync(UI_DIR)
+  } catch (cause) {
+    throw new Error(
+      `Could not read the component directory at ${UI_DIR}. The graph is scanned from the working tree, so it has to run from the repository root.`,
+      { cause }
+    )
+  }
+
+  const files = entries.filter((f) => f.endsWith(".tsx")).sort()
+
+  if (files.length === 0) {
+    throw new Error(`No components found in ${UI_DIR}.`)
+  }
 
   const byName = new Map<string, ComponentNode>()
 
@@ -146,7 +157,13 @@ export function getComponentGraph(): ComponentGraph {
   const resolving = new Set<string>()
   function tierOf(name: string): number {
     const node = byName.get(name)!
-    if (resolving.has(name)) return 0 // cycle guard; none exist today
+    if (resolving.has(name)) {
+      // Tiers are only meaningful for a DAG, so a cycle invalidates the whole
+      // migration order rather than just this node.
+      throw new Error(
+        `Dependency cycle in components/ui through "${name}" (${[...resolving].join(" -> ")}). The tier order assumes an acyclic graph.`
+      )
+    }
     resolving.add(name)
     node.tier = node.dependsOn.length
       ? 1 + Math.max(...node.dependsOn.map(tierOf))

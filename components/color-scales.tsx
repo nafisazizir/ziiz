@@ -33,12 +33,44 @@ export function Swatch({
   token: string
   className?: string
 }) {
-  const [copied, setCopied] = React.useState(false)
+  const [status, setStatus] = React.useState<"idle" | "copied" | "failed">(
+    "idle"
+  )
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  React.useEffect(
+    () => () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    },
+    []
+  )
 
   const style: React.CSSProperties = {
     backgroundColor: `var(--ds-${token})`,
     boxShadow: "var(--ds-shadow-border-inset)",
+  }
+
+  const copy = async (element: HTMLElement) => {
+    const value = getComputedStyle(element)
+      .getPropertyValue(`--ds-${token}`)
+      .trim()
+
+    let next: "copied" | "failed" = "copied"
+    try {
+      if (!navigator.clipboard) {
+        throw new Error("Clipboard API unavailable (requires a secure context)")
+      }
+      await navigator.clipboard.writeText(value)
+    } catch (error) {
+      // Writing can be rejected by permissions or an insecure context; the
+      // swatch has to say so rather than claim a copy that never happened.
+      console.error(`Failed to copy --ds-${token} to the clipboard`, error)
+      next = "failed"
+    }
+
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setStatus(next)
+    timeoutRef.current = setTimeout(() => setStatus("idle"), 1200)
   }
 
   return (
@@ -51,16 +83,10 @@ export function Swatch({
         )}
         style={style}
         onClick={(event) => {
-          const value = getComputedStyle(event.currentTarget)
-            .getPropertyValue(`--ds-${token}`)
-            .trim()
-          navigator.clipboard.writeText(value)
-          if (timeoutRef.current) clearTimeout(timeoutRef.current)
-          setCopied(true)
-          timeoutRef.current = setTimeout(() => setCopied(false), 1200)
+          void copy(event.currentTarget)
         }}
       >
-        {copied ? (
+        {status === "copied" ? (
           <HugeiconsIcon
             icon={Tick02Icon}
             strokeWidth={2}
@@ -70,7 +96,11 @@ export function Swatch({
       </TooltipTrigger>
       <TooltipContent>
         <span className="text-label-12-mono">
-          {copied ? "Copied" : `--ds-${token}`}
+          {status === "copied"
+            ? "Copied"
+            : status === "failed"
+              ? "Copy failed"
+              : `--ds-${token}`}
         </span>
       </TooltipContent>
     </Tooltip>

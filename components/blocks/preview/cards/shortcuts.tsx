@@ -25,7 +25,7 @@ export function Shortcuts() {
       <CardContent>
         <div className="flex flex-col gap-3">
           <div className="text-sm font-medium">Shortcuts</div>
-          <ItemGroup className="gap-2 text-muted-foreground" data-size="xs">
+          <ItemGroup className="gap-2 text-gray-900" data-size="xs">
             {shortcuts.map(({ label, keys }, i) => (
               <React.Fragment key={label}>
                 {i > 0 && <ItemSeparator />}

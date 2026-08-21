@@ -35,13 +35,14 @@ function ItemSeparator({
 }
 
 const itemVariants = cva(
-  "group/item flex w-full flex-wrap items-center rounded-md border text-sm transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors [a]:hover:bg-muted",
+  "group/item flex w-full flex-wrap items-center rounded-md border text-label-14 transition-colors duration-100 outline-none focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 [a]:transition-colors [a]:hover:bg-gray-alpha-100",
   {
     variants: {
       variant: {
         default: "border-transparent",
-        outline: "border-border",
-        muted: "border-transparent bg-muted/50",
+        outline: "border-gray-alpha-400",
+        muted:
+          "border-transparent bg-gray-100 [a]:hover:bg-gray-200",
       },
       size: {
         default: "gap-3.5 px-4 py-3.5",
@@ -130,7 +131,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="item-title"
       className={cn(
-        "line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4",
+        "line-clamp-1 flex w-fit items-center gap-2 text-heading-14 underline-offset-4",
         className
       )}
       {...props}
@@ -143,7 +144,7 @@ function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="item-description"
       className={cn(
-        "line-clamp-2 text-left text-sm leading-normal font-normal text-muted-foreground group-data-[size=xs]/item:text-xs [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary",
+        "line-clamp-2 text-left text-copy-14 text-gray-900 group-data-[size=xs]/item:text-copy-13 [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-gray-1000",
         className
       )}
       {...props}

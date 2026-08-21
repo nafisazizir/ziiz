@@ -80,7 +80,7 @@ export function ContributionHistory() {
         <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2">
           <Item variant="muted" className="flex-col items-stretch">
             <ItemContent className="gap-1">
-              <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+              <ItemDescription className="text-xs font-medium tracking-wider text-gray-900 uppercase">
                 Upcoming
               </ItemDescription>
               <span className="cn-font-heading text-lg font-semibold">
@@ -93,7 +93,7 @@ export function ContributionHistory() {
           </Item>
           <Item variant="muted" className="flex-col items-stretch">
             <ItemContent className="gap-1">
-              <ItemDescription className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+              <ItemDescription className="text-xs font-medium tracking-wider text-gray-900 uppercase">
                 Auto-Save Plan
               </ItemDescription>
               <span className="cn-font-heading text-lg font-semibold">

@@ -80,7 +80,7 @@ export function ActivateAgentDialog() {
                 />
               </ItemMedia>
               <ItemContent>
-                <ItemTitle className="inline leading-relaxed font-normal text-muted-foreground *:[strong]:font-medium *:[strong]:text-foreground">
+                <ItemTitle className="inline leading-relaxed font-normal text-gray-900 *:[strong]:font-medium *:[strong]:text-gray-1000">
                   {feature.content}
                 </ItemTitle>
               </ItemContent>

@@ -114,7 +114,7 @@ export function UsageCard() {
               className="px-0 group-hover/item-group:bg-transparent"
               render={<a href="#" />}
             >
-              <ItemMedia variant="icon" className="text-primary">
+              <ItemMedia variant="icon" className="text-gray-1000">
                 <CircularGauge percentage={item.percentage} />
               </ItemMedia>
               <ItemContent className="inline-block truncate">

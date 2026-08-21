@@ -329,7 +329,7 @@ function ButtonGroupWithInputGroup() {
           <InputGroupInput placeholder="Type to search..." />
           <InputGroupAddon
             align="inline-start"
-            className="text-muted-foreground"
+            className="text-gray-900"
           >
             <IconPlaceholder
               lucide="SearchIcon"
@@ -354,12 +354,12 @@ function ButtonGroupWithFields() {
           <ButtonGroup>
             <InputGroup>
               <InputGroupInput id="width" />
-              <InputGroupAddon className="text-muted-foreground">
+              <InputGroupAddon className="text-gray-900">
                 W
               </InputGroupAddon>
               <InputGroupAddon
                 align="inline-end"
-                className="text-muted-foreground"
+                className="text-gray-900"
               >
                 px
               </InputGroupAddon>

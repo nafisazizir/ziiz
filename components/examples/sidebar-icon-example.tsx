@@ -245,7 +245,7 @@ export default function SidebarIconExample() {
                   render={
                     <SidebarMenuButton
                       size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                      className="data-open:bg-gray-alpha-200 data-open:text-gray-1000"
                     />
                   }
                 >
@@ -382,7 +382,7 @@ export default function SidebarIconExample() {
                   render={
                     <SidebarMenuButton
                       size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                      className="data-open:bg-gray-alpha-200 data-open:text-gray-1000"
                     />
                   }
                 >

@@ -171,7 +171,7 @@ export default function SidebarFloatingExample() {
   }
 
   return (
-    <SidebarProvider className="bg-background">
+    <SidebarProvider className="bg-background-100">
       <Sidebar variant="floating">
         <SidebarHeader>
           <SidebarMenu>
@@ -195,7 +195,7 @@ export default function SidebarFloatingExample() {
                   <SidebarMenuItem>
                     <DropdownMenuTrigger
                       render={
-                        <SidebarMenuButton className="data-popup-open:bg-sidebar-accent data-popup-open:text-sidebar-accent-foreground" />
+                        <SidebarMenuButton className="data-popup-open:bg-gray-alpha-200 data-popup-open:text-gray-1000" />
                       }
                     >
                       {item.title}{" "}
@@ -244,7 +244,7 @@ export default function SidebarFloatingExample() {
                   <Field>
                     <SidebarInput type="email" placeholder="Email" />
                     <Button
-                      className="w-full bg-sidebar-primary text-sidebar-primary-foreground"
+                      className="w-full bg-gray-1000 text-background-200"
                       size="sm"
                     >
                       Subscribe

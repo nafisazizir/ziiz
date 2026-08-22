@@ -184,7 +184,7 @@ function QuestionnaireDialog() {
                 Answer three questions to shape the next prototype.
               </DialogDescription>
               <QuestionnaireProgress
-                className="font-semibold tracking-widest text-foreground uppercase"
+                className="font-semibold tracking-widest text-gray-1000 uppercase"
                 render={(props, state) => (
                   <span {...props}>
                     Question {state.current} of {state.total}

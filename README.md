@@ -1,21 +1,27 @@
-# Next.js template
+# ziiz
 
-This is a Next.js template with shadcn/ui.
+A design-system exploration. The token foundation (Geist ramp, named type
+roles, materials) is the product; the app is the playground that dogfoods it.
 
-## Adding components
-
-To add components to your app, run the following command:
+```
+apps/www          Next.js playground — docs pages, component examples, previews
+packages/theme    @ziiz/theme — theme.css (the design layer) + shadcn.css (slot bridge)
+```
 
 ```bash
-npx shadcn@latest add button
+pnpm dev          # apps/www on http://localhost:3000
+pnpm build
+pnpm typecheck
+pnpm lint
+pnpm format
 ```
 
-This will place the ui components in the `components` directory.
+A consuming app takes the design layer with one import in its Tailwind entry:
 
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
+```css
+@import "tailwindcss";
+@import "@ziiz/theme/theme.css";
+@import "@ziiz/theme/shadcn.css"; /* only if it runs stock shadcn components */
 ```
+
+Components live in `apps/www/components/ui` until the registry lands.

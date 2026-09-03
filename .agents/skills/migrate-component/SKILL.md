@@ -26,13 +26,15 @@ a pass resolves something.
 
 The Foundations system, live in code:
 
-- **`app/globals.css`** — the entire foundation, in order: the raw `--ds-*`
-  ramp (the only place literal colors exist), the `:root` slot block (each
-  shadcn alias and the ramp token it resolves to), the ramp exposed as
+- **`packages/theme/theme.css`** — the entire foundation, in order: the raw
+  `--ds-*` ramp (the only place literal colors exist), the ramp exposed as
   Tailwind utilities (`bg-gray-*`, `bg-background-*`, 8 hues), the 8
   `material-*` utilities, the 31 `text-*` type roles.
+- **`packages/theme/shadcn.css`** — the slot bridge: each shadcn alias and
+  the ramp token it resolves to. The app entry `apps/www/app/globals.css`
+  imports both.
 - **`/colors`, `/typography`, `/materials`** — the docs pages rendering it
-  (source: `app/(docs)/*/page.tsx` and the preview components they render —
+  (source: `apps/www/app/(docs)/*/page.tsx` and the preview components they render —
   `color-scales.tsx`, `token-mapping.tsx`, `type-scale.tsx`,
   `material-scale.tsx`).
 - **`/dependencies`** — the migration dashboard: per-component alias classes,
@@ -99,7 +101,8 @@ call once; everything after is repetition.
 Before editing anything, read both layers of the source of truth listed
 above:
 
-- **The tokens** — the four blocks of `app/globals.css`.
+- **The tokens** — `packages/theme/theme.css`, plus the slot bridge in
+  `packages/theme/shadcn.css`.
 - **The semantics** — the foundation docs pages `/colors`, `/typography`,
   `/materials`. They carry the reasoning the tokens alone don't: what each
   ramp tier is *for* (backgrounds vs borders vs text tiers, alpha vs solid),
@@ -197,7 +200,7 @@ cluster.
    migration pass inherits the history. If a regression is visibly broken
    (not merely off-system), stop and resolve with the human whether it
    warrants an out-of-band patch or waits for the dependent's pass.
-5. `grep -n 'shadow-\|bg-muted\|bg-accent\|muted-foreground\|text-sm\|font-medium' components/ui/<name>.tsx`
+5. `grep -n 'shadow-\|bg-muted\|bg-accent\|muted-foreground\|text-sm\|font-medium' apps/www/components/ui/<name>.tsx`
    comes back clean (or only deliberate keeps, called out in the summary).
 
 Then hand off: report the diff, the judgment calls made, and anything

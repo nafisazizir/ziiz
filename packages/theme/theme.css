@@ -1,44 +1,19 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+/* ziiz design layer: ramp tokens, Tailwind theme mapping, base styles, materials
+   and type roles. Import-free on purpose — only Tailwind directives and plain
+   CSS — so a consuming app can pull in the whole design system with a single
+   `@import "@ziiz/theme/theme.css"` without re-bundling Tailwind, animation
+   presets or the shadcn slot bridge (that lives in ./shadcn.css). */
 
 @custom-variant dark (&:is(.dark *));
 
+/* Font contract: the app provides --font-sans / --font-mono (next/font or
+   @font-face); the type roles below only ever reference these. */
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --color-foreground: var(--foreground);
-  --color-background: var(--background);
+
+  /* Multiplicative radius scale off --radius; materials pin onto it. */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -46,41 +21,6 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-}
-
-:root {
-  --background: var(--ds-background-100);
-  --foreground: var(--ds-gray-1000);
-  --card: var(--ds-background-100);
-  --card-foreground: var(--ds-gray-1000);
-  --popover: var(--ds-background-100);
-  --popover-foreground: var(--ds-gray-1000);
-  --primary: var(--ds-gray-1000);
-  --primary-foreground: var(--ds-background-100);
-  --secondary: var(--ds-gray-100);
-  --secondary-foreground: var(--ds-gray-1000);
-  --muted: var(--ds-gray-100);
-  --muted-foreground: var(--ds-gray-900);
-  --accent: var(--ds-gray-100);
-  --accent-foreground: var(--ds-gray-1000);
-  --destructive: var(--ds-red-800);
-  --border: var(--ds-gray-alpha-400);
-  --input: var(--ds-gray-alpha-400);
-  --ring: var(--ds-gray-600);
-  --chart-1: var(--ds-blue-700);
-  --chart-2: var(--ds-amber-700);
-  --chart-3: var(--ds-green-700);
-  --chart-4: var(--ds-purple-700);
-  --chart-5: var(--ds-pink-700);
-  --radius: 0.875rem;
-  --sidebar: var(--ds-background-200);
-  --sidebar-foreground: var(--ds-gray-1000);
-  --sidebar-primary: var(--ds-gray-1000);
-  --sidebar-primary-foreground: var(--ds-background-200);
-  --sidebar-accent: var(--ds-gray-100);
-  --sidebar-accent-foreground: var(--ds-gray-1000);
-  --sidebar-border: var(--ds-gray-alpha-400);
-  --sidebar-ring: var(--ds-gray-600);
 }
 
 /* ziiz theme tokens */
@@ -198,6 +138,7 @@
 }
 
 :root {
+  --radius: 0.875rem;
   --ds-black: oklch(0 0 0);
   --ds-white: oklch(1 0 0);
   --ds-background-100: oklch(1 0 0);
@@ -504,10 +445,10 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-gray-alpha-400 outline-gray-600/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background-100 text-gray-1000;
   }
   ::selection {
     background-color: var(--ds-gray-1000);

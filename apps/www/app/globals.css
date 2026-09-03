@@ -1,0 +1,9 @@
+@import "tailwindcss" source("../");
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* The design layer lives in packages/theme. theme.css is the ramp, type roles
+   and materials; shadcn.css bridges shadcn's slot names onto the ramp for
+   components and call sites that still speak that vocabulary. */
+@import "@ziiz/theme/theme.css";
+@import "@ziiz/theme/shadcn.css";

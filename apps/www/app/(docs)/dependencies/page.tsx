@@ -196,9 +196,9 @@ export default function Page() {
         </span>{" "}
         components still carry off-system classes — shadcn slot aliases, raw
         type utilities, bare shadows, or literal shape values;{" "}
-        <span className="text-gray-1000">{totals.clean}</span> are clean.
-        Within a tier, components with the most dependents come first: they
-        unlock the most downstream work.
+        <span className="text-gray-1000">{totals.clean}</span> are clean. Within
+        a tier, components with the most dependents come first: they unlock the
+        most downstream work.
       </p>
       <p className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1 text-copy-14 text-gray-900">
         <span className="flex items-center gap-2">
@@ -235,11 +235,10 @@ export default function Page() {
       <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
         <li>
           A component is <InlineCode>clean</InlineCode> when it carries no
-          off-system classes of any tracked kind: shadcn slot aliases, raw
-          type, bare shadows, and raw shape. The dot and the meter track all
-          four. Clean is necessary, not sufficient: the on-touch pass also
-          covers judgment calls (hover steps, material assignment) no scan can
-          verify.
+          off-system classes of any tracked kind: shadcn slot aliases, raw type,
+          bare shadows, and raw shape. The dot and the meter track all four.
+          Clean is necessary, not sufficient: the on-touch pass also covers
+          judgment calls (hover steps, material assignment) no scan can verify.
         </li>
         <li>
           <em>Aliases</em> are classes that resolve through the shadcn slot
@@ -257,9 +256,9 @@ export default function Page() {
           composed <InlineCode>material-*</InlineCode>. <em>Raw shape</em>{" "}
           counts literal border and radius values (
           <InlineCode>rounded-[2px]</InlineCode>,{" "}
-          <InlineCode>border-[1.5px]</InlineCode>) that bypass the radius
-          scale — the generic <InlineCode>rounded-*</InlineCode> scale,
-          structural border widths, and token-derived arbitraries like{" "}
+          <InlineCode>border-[1.5px]</InlineCode>) that bypass the radius scale
+          — the generic <InlineCode>rounded-*</InlineCode> scale, structural
+          border widths, and token-derived arbitraries like{" "}
           <InlineCode>rounded-[min(var(--radius-md),8px)]</InlineCode> are
           sanctioned and stay unflagged.
         </li>

@@ -11,14 +11,12 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1 className="text-heading-40 scroll-m-24 tracking-tighter">Colors</h1>
+      <h1 className="scroll-m-24 text-heading-40 tracking-tighter">Colors</h1>
       <p className="mt-4 text-gray-900">
         Learn how to work with our color system.
       </p>
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Scales
-      </h2>
+      <h2 className="mt-12 scroll-m-24 text-heading-24">Scales</h2>
       <p className="mt-3 text-gray-900">
         There are 10 color scales in the system: backgrounds, gray, gray alpha,
         blue, red, amber, green, teal, purple, and pink. Values are defined in
@@ -36,9 +34,7 @@ export default function Page() {
         <ColorScales />
       </div>
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Backgrounds
-      </h2>
+      <h2 className="mt-12 scroll-m-24 text-heading-24">Backgrounds</h2>
       <p className="mt-3 text-gray-900">
         There are two background colors for pages and UI components. In most
         instances, you should use Background 1, especially when color is being
@@ -60,7 +56,7 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
+      <h2 className="mt-12 scroll-m-24 text-heading-24">
         Colors 1–3: Component backgrounds
       </h2>
       <p className="mt-3 text-gray-900">
@@ -75,9 +71,9 @@ export default function Page() {
       <p className="mt-3 text-gray-900">
         If a component&rsquo;s default background is Background 1 — the page
         surface showing through, like ghost buttons, menu items and tab chips —
-        the ladder shifts down a rung: Color 1 is the hover background and
-        Color 2 the active background. Components that rest transparent take
-        that shift on the alpha scale, so the state reads over any surface.
+        the ladder shifts down a rung: Color 1 is the hover background and Color
+        2 the active background. Components that rest transparent take that
+        shift on the alpha scale, so the state reads over any surface.
       </p>
       <ColorUsageList
         items={[
@@ -87,9 +83,7 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        Colors 4–6: Borders
-      </h2>
+      <h2 className="mt-12 scroll-m-24 text-heading-24">Colors 4–6: Borders</h2>
       <p className="mt-3 text-gray-900">
         These three colors are designed for UI component borders.
       </p>
@@ -105,7 +99,7 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
+      <h2 className="mt-12 scroll-m-24 text-heading-24">
         Colors 7–8: High contrast backgrounds
       </h2>
       <p className="mt-3 text-gray-900">
@@ -127,7 +121,7 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
+      <h2 className="mt-12 scroll-m-24 text-heading-24">
         Colors 9–10: Text and icons
       </h2>
       <p className="mt-3 text-gray-900">
@@ -148,12 +142,10 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="text-heading-24 mt-12 scroll-m-24">
-        shadcn mapping
-      </h2>
+      <h2 className="mt-12 scroll-m-24 text-heading-24">shadcn mapping</h2>
       <p className="mt-3 text-gray-900">
         The shadcn semantic slots are pure{" "}
-        <code className="text-copy-13-mono rounded-sm bg-gray-100 px-1 py-0.5">
+        <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
           var(--ds-*)
         </code>{" "}
         aliases onto the ramp, never values.

@@ -34,10 +34,10 @@ import { WeeklyFitnessSummary } from "@/components/blocks/preview/cards/weekly-f
 
 export default function PreviewExample() {
   return (
-    <div className="overflow-x-auto overflow-y-hidden bg-background contain-[paint] [--gap:--spacing(4)] 3xl:[--gap:--spacing(12)] md:[--gap:--spacing(10)] style-lyra:md:[--gap:--spacing(6)] style-mira:md:[--gap:--spacing(6)]">
+    <div className="3xl:[--gap:--spacing(12)] style-lyra:md:[--gap:--spacing(6)] style-mira:md:[--gap:--spacing(6)] overflow-x-auto overflow-y-hidden bg-background contain-[paint] [--gap:--spacing(4)] md:[--gap:--spacing(10)]">
       <div className="flex w-full min-w-max justify-center">
         <div
-          className="grid w-[2400px] grid-cols-7 items-start gap-(--gap) bg-background p-(--gap) md:w-[3000px] style-lyra:md:w-[2600px] style-mira:md:w-[2600px] *:[div]:gap-(--gap)"
+          className="style-lyra:md:w-[2600px] style-mira:md:w-[2600px] grid w-[2400px] grid-cols-7 items-start gap-(--gap) bg-background p-(--gap) md:w-[3000px] *:[div]:gap-(--gap)"
           data-slot="capture-target"
         >
           <div className="flex flex-col p-px [contain-intrinsic-size:380px_1200px] [content-visibility:auto]">

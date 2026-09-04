@@ -21,10 +21,7 @@ import {
   FieldTitle,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/components/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 
 export function ReceivingMethod() {
@@ -60,7 +57,7 @@ export function ReceivingMethod() {
             <FieldLegend variant="label">Receiving Method</FieldLegend>
             <RadioGroup
               defaultValue="bank"
-              className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 style-sera:grid-cols-1"
+              className="style-sera:grid-cols-1 grid grid-cols-1 items-start gap-3 md:grid-cols-2"
             >
               <FieldLabel htmlFor="method-bank">
                 <Field orientation="horizontal" className="pb-2.5">

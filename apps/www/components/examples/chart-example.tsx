@@ -22,10 +22,7 @@ import {
   XAxis,
 } from "recharts"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import {
   Card,
   CardContent,

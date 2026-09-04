@@ -1,9 +1,6 @@
 "use client"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 

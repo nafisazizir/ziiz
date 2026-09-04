@@ -2,10 +2,7 @@
 
 import * as React from "react"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 

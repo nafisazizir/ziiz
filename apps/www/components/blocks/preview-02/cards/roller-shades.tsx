@@ -11,10 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Slider } from "@/components/ui/slider"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 export function RollerShades() {
   const [position, setPosition] = React.useState([50])

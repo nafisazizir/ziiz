@@ -1,7 +1,4 @@
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import {
   Accordion,
   AccordionContent,
@@ -132,7 +129,7 @@ function AccordionWithBorders() {
 
   return (
     <Example title="With Borders">
-      <Accordion className="mx-auto max-w-lg style-vega:gap-2 style-nova:gap-2 style-lyra:gap-2">
+      <Accordion className="style-vega:gap-2 style-nova:gap-2 style-lyra:gap-2 mx-auto max-w-lg">
         {items.map((item) => (
           <AccordionItem
             key={item.value}
@@ -142,7 +139,7 @@ function AccordionWithBorders() {
             <AccordionTrigger className="style-vega:px-4 style-vega:text-sm style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:text-sm style-mira:text-xs style-luma:text-sm">
               {item.trigger}
             </AccordionTrigger>
-            <AccordionContent className="text-gray-900 style-vega:px-4 style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:px-0 style-mira:px-0 style-luma:px-0">
+            <AccordionContent className="style-vega:px-4 style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-maia:px-0 style-mira:px-0 style-luma:px-0 text-gray-900">
               {item.content}
             </AccordionContent>
           </AccordionItem>
@@ -314,7 +311,7 @@ function AccordionWithDisabled() {
 
   return (
     <Example title="With Disabled">
-      <Accordion className="mx-auto max-w-lg overflow-hidden border border-gray-alpha-400 style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg style-luma:rounded-xl">
+      <Accordion className="style-vega:rounded-lg style-nova:rounded-lg style-lyra:rounded-none style-maia:rounded-lg style-mira:rounded-lg style-luma:rounded-xl mx-auto max-w-lg overflow-hidden border border-gray-alpha-400">
         {items.map((item) => (
           <AccordionItem
             key={item.value}

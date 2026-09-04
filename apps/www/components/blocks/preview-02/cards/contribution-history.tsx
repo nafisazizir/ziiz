@@ -19,11 +19,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart"
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-} from "@/components/ui/item"
+import { Item, ItemContent, ItemDescription } from "@/components/ui/item"
 
 const chartData = [
   { month: "Dec", amount: 800 },

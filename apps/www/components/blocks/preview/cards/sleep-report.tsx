@@ -12,10 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  ChartContainer,
-  type ChartConfig,
-} from "@/components/ui/chart"
+import { ChartContainer, type ChartConfig } from "@/components/ui/chart"
 
 const sleepChartData = [
   { hour: "10pm", deep: 0, light: 30, rem: 0 },

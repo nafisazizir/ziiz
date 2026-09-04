@@ -1,10 +1,7 @@
 import * as React from "react"
 import Image from "next/image"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 
@@ -39,7 +36,7 @@ export default function ScrollAreaExample() {
 function ScrollAreaVertical() {
   return (
     <Example title="Vertical">
-      <ScrollArea className="mx-auto h-72 w-48 rounded-md border style-luma:rounded-2xl style-rhea:rounded-2xl">
+      <ScrollArea className="style-luma:rounded-2xl style-rhea:rounded-2xl mx-auto h-72 w-48 rounded-md border">
         <div className="p-4">
           <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
           {tags.map((tag) => (
@@ -57,7 +54,7 @@ function ScrollAreaVertical() {
 function ScrollAreaHorizontal() {
   return (
     <Example title="Horizontal">
-      <ScrollArea className="mx-auto w-full max-w-96 rounded-md border p-4 style-luma:rounded-2xl style-rhea:rounded-2xl">
+      <ScrollArea className="style-luma:rounded-2xl style-rhea:rounded-2xl mx-auto w-full max-w-96 rounded-md border p-4">
         <div className="flex gap-4">
           {works.map((artwork) => (
             <figure key={artwork.artist} className="shrink-0">

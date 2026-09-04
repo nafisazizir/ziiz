@@ -32,7 +32,7 @@ export function MaterialList({ items }: { items: MaterialVariant[] }) {
             </code>
           </div>
           {item.usage ? (
-            <p className="text-copy-13 mt-2 text-gray-900">{item.usage}</p>
+            <p className="mt-2 text-copy-13 text-gray-900">{item.usage}</p>
           ) : null}
         </div>
       ))}

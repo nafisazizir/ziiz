@@ -1,14 +1,8 @@
 "use client"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button } from "@/components/ui/button"
-import {
-  ButtonGroup,
-  ButtonGroupText,
-} from "@/components/ui/button-group"
+import { ButtonGroup, ButtonGroupText } from "@/components/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -327,10 +321,7 @@ function ButtonGroupWithInputGroup() {
       <div className="flex flex-col gap-4">
         <InputGroup>
           <InputGroupInput placeholder="Type to search..." />
-          <InputGroupAddon
-            align="inline-start"
-            className="text-gray-900"
-          >
+          <InputGroupAddon align="inline-start" className="text-gray-900">
             <IconPlaceholder
               lucide="SearchIcon"
               tabler="IconSearch"
@@ -354,13 +345,8 @@ function ButtonGroupWithFields() {
           <ButtonGroup>
             <InputGroup>
               <InputGroupInput id="width" />
-              <InputGroupAddon className="text-gray-900">
-                W
-              </InputGroupAddon>
-              <InputGroupAddon
-                align="inline-end"
-                className="text-gray-900"
-              >
+              <InputGroupAddon className="text-gray-900">W</InputGroupAddon>
+              <InputGroupAddon align="inline-end" className="text-gray-900">
                 px
               </InputGroupAddon>
             </InputGroup>

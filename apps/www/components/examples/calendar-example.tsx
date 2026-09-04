@@ -5,10 +5,7 @@ import { addDays, format } from "date-fns"
 import { type DateRange } from "react-day-picker"
 import { es } from "react-day-picker/locale"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button } from "@/components/ui/button"
 import { Calendar, CalendarDayButton } from "@/components/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"

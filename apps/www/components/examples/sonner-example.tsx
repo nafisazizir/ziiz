@@ -2,10 +2,7 @@
 
 import { toast } from "sonner"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button } from "@/components/ui/button"
 
 export default function SonnerExample() {

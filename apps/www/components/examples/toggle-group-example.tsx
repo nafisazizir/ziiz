@@ -2,15 +2,8 @@
 
 import * as React from "react"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/components/ui/field"
+import { Example, ExampleWrapper } from "@/components/example"
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -20,10 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 
 export default function ToggleGroupExample() {

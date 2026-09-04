@@ -27,10 +27,7 @@ import {
   ItemFooter,
   ItemGroup,
 } from "@/components/ui/item"
-import {
-  NativeSelect,
-  NativeSelectOption,
-} from "@/components/ui/native-select"
+import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import { Progress } from "@/components/ui/progress"
 
 export function SavingsTargets() {

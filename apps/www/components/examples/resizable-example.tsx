@@ -3,10 +3,7 @@
 import * as React from "react"
 import type { Layout } from "react-resizable-panels"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import {
   ResizableHandle,
   ResizablePanel,

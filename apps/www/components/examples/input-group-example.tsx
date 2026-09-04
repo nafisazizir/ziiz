@@ -3,15 +3,9 @@
 import { useState } from "react"
 import { toast } from "sonner"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button } from "@/components/ui/button"
-import {
-  ButtonGroup,
-  ButtonGroupText,
-} from "@/components/ui/button-group"
+import { ButtonGroup, ButtonGroupText } from "@/components/ui/button-group"
 import {
   Card,
   CardContent,

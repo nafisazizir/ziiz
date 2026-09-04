@@ -15,10 +15,7 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 
 const HOLDINGS = [

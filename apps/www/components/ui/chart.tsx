@@ -65,7 +65,7 @@ function ChartContainer({
         data-slot="chart"
         data-chart={chartId}
         className={cn(
-          "text-label-12 flex aspect-video justify-center [&_.recharts-cartesian-axis-tick_text]:fill-gray-900 [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-gray-alpha-400/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-gray-alpha-400 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-gray-alpha-400 [&_.recharts-radial-bar-background-sector]:fill-gray-100 [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-gray-100 [&_.recharts-reference-line_[stroke='#ccc']]:stroke-gray-alpha-400 [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "flex aspect-video justify-center text-label-12 [&_.recharts-cartesian-axis-tick_text]:fill-gray-900 [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-gray-alpha-400/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-gray-alpha-400 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-gray-alpha-400 [&_.recharts-radial-bar-background-sector]:fill-gray-100 [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-gray-100 [&_.recharts-reference-line_[stroke='#ccc']]:stroke-gray-alpha-400 [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
           className
         )}
         {...props}
@@ -191,7 +191,7 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "material-tooltip text-label-12 grid min-w-32 items-start gap-1.5 px-2.5 py-1.5",
+        "grid min-w-32 items-start gap-1.5 material-tooltip px-2.5 py-1.5 text-label-12",
         className
       )}
     >

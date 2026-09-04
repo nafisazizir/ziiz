@@ -2,15 +2,8 @@
 
 import * as React from "react"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Example, ExampleWrapper } from "@/components/example"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -610,7 +603,7 @@ function DropdownMenuWithAvatar() {
             render={
               <Button
                 variant="outline"
-                className="h-12 justify-start px-2 md:max-w-[200px] style-sera:font-normal style-sera:tracking-normal style-sera:normal-case"
+                className="style-sera:font-normal style-sera:tracking-normal style-sera:normal-case h-12 justify-start px-2 md:max-w-[200px]"
               />
             }
           >

@@ -1,7 +1,4 @@
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import {
   Field,
   FieldContent,
@@ -10,10 +7,7 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/components/ui/field"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/components/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 export default function RadioGroupExample() {
   return (

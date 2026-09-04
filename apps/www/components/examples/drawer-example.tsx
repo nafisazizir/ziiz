@@ -1,9 +1,6 @@
 "use client"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
@@ -177,7 +174,7 @@ function DrawerCustomWidthAndHeight() {
               {Array.from({ length: 10 }).map((_, index) => (
                 <p
                   key={index}
-                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                  className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
                 >
                   {PARAGRAPHS[index % PARAGRAPHS.length]}
                 </p>
@@ -205,7 +202,7 @@ function DrawerCustomWidthAndHeight() {
               {Array.from({ length: 10 }).map((_, index) => (
                 <p
                   key={index}
-                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                  className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
                 >
                   {PARAGRAPHS[index % PARAGRAPHS.length]}
                 </p>
@@ -231,7 +228,7 @@ function DrawerCustomWidthAndHeight() {
               {Array.from({ length: 10 }).map((_, index) => (
                 <p
                   key={index}
-                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                  className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
                 >
                   {PARAGRAPHS[index % PARAGRAPHS.length]}
                 </p>
@@ -257,7 +254,7 @@ function DrawerCustomWidthAndHeight() {
               {Array.from({ length: 10 }).map((_, index) => (
                 <p
                   key={index}
-                  className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                  className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
                 >
                   {PARAGRAPHS[index % PARAGRAPHS.length]}
                 </p>
@@ -334,7 +331,7 @@ function DrawerScrollable() {
                 {Array.from({ length: 20 }).map((_, index) => (
                   <p
                     key={index}
-                    className="mb-4 leading-normal style-lyra:mb-2 style-lyra:leading-relaxed"
+                    className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
                   >
                     {PARAGRAPHS[index % PARAGRAPHS.length]}
                   </p>

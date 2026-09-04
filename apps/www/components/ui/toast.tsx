@@ -6,7 +6,14 @@ import { Toast as ToastPrimitive } from "@base-ui/react/toast"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { Cancel01Icon, CheckmarkCircle02Icon, InformationCircleIcon, Alert02Icon, MultiplicationSignCircleIcon, Loading03Icon } from "@hugeicons/core-free-icons"
+import {
+  Cancel01Icon,
+  CheckmarkCircle02Icon,
+  InformationCircleIcon,
+  Alert02Icon,
+  MultiplicationSignCircleIcon,
+  Loading03Icon,
+} from "@hugeicons/core-free-icons"
 
 const toast = ToastPrimitive.createToastManager()
 
@@ -36,7 +43,7 @@ function Toast({ className, ...props }: ToastPrimitive.Root.Props) {
     <ToastPrimitive.Root
       data-slot="toast"
       className={cn(
-        "group/toast material-modal pointer-events-auto absolute right-0 bottom-0 z-[calc(1000-var(--toast-index))] w-full origin-bottom border border-transparent text-gray-1000 will-change-transform outline-none select-none focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50",
+        "group/toast pointer-events-auto absolute right-0 bottom-0 z-[calc(1000-var(--toast-index))] w-full origin-bottom material-modal border border-transparent text-gray-1000 will-change-transform outline-none select-none focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50",
         "[--gap:0.75rem] [--height:var(--toast-frontmost-height,var(--toast-height))] [--offset-y:calc(var(--toast-offset-y)*-1+calc(var(--toast-index)*var(--gap)*-1)+var(--toast-swipe-movement-y))] [--peek:0.75rem] [--scale:calc(max(0,1-(var(--toast-index)*0.1)))] [--shrink:calc(1-var(--scale))]",
         "h-(--height) [transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))] [transition:transform_500ms_cubic-bezier(0.22,1,0.36,1),opacity_500ms,height_150ms]",
         "after:absolute after:top-full after:left-0 after:h-[calc(var(--gap)+1px)] after:w-full after:content-['']",
@@ -138,13 +145,21 @@ function ToastIcon({ type }: { type: string | undefined }) {
 
   if (type === "success") {
     icon = (
-      <HugeiconsIcon icon={CheckmarkCircle02Icon} strokeWidth={2} aria-hidden="true" />
+      <HugeiconsIcon
+        icon={CheckmarkCircle02Icon}
+        strokeWidth={2}
+        aria-hidden="true"
+      />
     )
   }
 
   if (type === "info") {
     icon = (
-      <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={2} aria-hidden="true" />
+      <HugeiconsIcon
+        icon={InformationCircleIcon}
+        strokeWidth={2}
+        aria-hidden="true"
+      />
     )
   }
 
@@ -156,13 +171,23 @@ function ToastIcon({ type }: { type: string | undefined }) {
 
   if (type === "error") {
     icon = (
-      <HugeiconsIcon icon={MultiplicationSignCircleIcon} strokeWidth={2} className="text-red-800" aria-hidden="true" />
+      <HugeiconsIcon
+        icon={MultiplicationSignCircleIcon}
+        strokeWidth={2}
+        className="text-red-800"
+        aria-hidden="true"
+      />
     )
   }
 
   if (type === "loading") {
     icon = (
-      <HugeiconsIcon icon={Loading03Icon} strokeWidth={2} className="animate-spin" aria-hidden="true" />
+      <HugeiconsIcon
+        icon={Loading03Icon}
+        strokeWidth={2}
+        className="animate-spin"
+        aria-hidden="true"
+      />
     )
   }
 

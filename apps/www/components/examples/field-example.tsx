@@ -3,10 +3,7 @@
 import { useState } from "react"
 import { REGEXP_ONLY_DIGITS } from "input-otp"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -31,10 +28,7 @@ import {
   NativeSelectOptGroup,
   NativeSelectOption,
 } from "@/components/ui/native-select"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/components/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
   Select,
   SelectContent,

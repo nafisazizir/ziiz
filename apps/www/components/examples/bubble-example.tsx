@@ -3,10 +3,7 @@
 import * as React from "react"
 import { toast } from "sonner"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import {
   Bubble,
   BubbleContent,
@@ -14,10 +11,7 @@ import {
   BubbleReactions,
 } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
-import {
-  Collapsible,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Marker, MarkerContent } from "@/components/ui/marker"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 

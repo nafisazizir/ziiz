@@ -2,11 +2,7 @@
 
 import * as React from "react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -52,9 +48,7 @@ export function AssignIssue() {
     <Card className="w-full max-w-sm" size="sm">
       <CardHeader className="border-b">
         <CardTitle>Assign Issue</CardTitle>
-        <CardDescription>
-          Select users to assign to this issue.
-        </CardDescription>
+        <CardDescription>Select users to assign to this issue.</CardDescription>
         <CardAction>
           <Tooltip>
             <TooltipTrigger

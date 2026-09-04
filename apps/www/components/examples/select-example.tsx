@@ -1,9 +1,6 @@
 "use client"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -26,10 +23,7 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item"
-import {
-  NativeSelect,
-  NativeSelectOption,
-} from "@/components/ui/native-select"
+import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import {
   Select,
   SelectContent,

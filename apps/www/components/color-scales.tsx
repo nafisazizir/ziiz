@@ -86,12 +86,12 @@ export function ColorScales() {
           {STEPS.map((step) => (
             <div
               key={step}
-              className="text-label-12 pb-1 text-center text-gray-900"
+              className="pb-1 text-center text-label-12 text-gray-900"
             >
               {step}
             </div>
           ))}
-          <div className="text-label-12 pr-2 text-gray-900">Background</div>
+          <div className="pr-2 text-label-12 text-gray-900">Background</div>
           <Swatch token="background-100" className="aspect-square w-full" />
           <Swatch token="background-200" className="aspect-square w-full" />
           {STEPS.slice(2).map((step) => (
@@ -99,7 +99,7 @@ export function ColorScales() {
           ))}
           {SCALES.map((scale) => (
             <React.Fragment key={scale.token}>
-              <div className="text-label-12 pr-2 text-gray-900">
+              <div className="pr-2 text-label-12 text-gray-900">
                 {scale.label}
               </div>
               {STEPS.map((step) => (

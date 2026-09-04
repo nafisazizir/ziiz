@@ -1,9 +1,6 @@
 import Link from "next/link"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,

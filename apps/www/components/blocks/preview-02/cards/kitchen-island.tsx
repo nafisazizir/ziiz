@@ -20,10 +20,7 @@ import {
 } from "@/components/ui/item"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 
 const SCENES = {

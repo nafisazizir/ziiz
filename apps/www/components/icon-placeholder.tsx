@@ -20,9 +20,7 @@ export function IconPlaceholder({
   phosphor?: string
   remixicon?: string
 } & Omit<React.ComponentProps<"svg">, "strokeWidth">) {
-  const icon = hugeicons
-    ? icons[hugeicons as keyof typeof icons]
-    : undefined
+  const icon = hugeicons ? icons[hugeicons as keyof typeof icons] : undefined
 
   if (!icon) {
     return null

@@ -133,7 +133,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-copy-14 text-left text-gray-900 group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
+        "text-left text-copy-14 text-gray-900 group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
         "last:mt-0 nth-last-2:-mt-1",
         "[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-gray-1000",
         className
@@ -155,7 +155,7 @@ function FieldSeparator({
       data-slot="field-separator"
       data-content={!!children}
       className={cn(
-        "text-label-14 relative -my-2 h-5 group-data-[variant=outline]/field-group:-mb-2",
+        "relative -my-2 h-5 text-label-14 group-data-[variant=outline]/field-group:-mb-2",
         className
       )}
       {...props}

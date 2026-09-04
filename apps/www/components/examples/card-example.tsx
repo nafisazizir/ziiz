@@ -2,10 +2,7 @@
 
 import * as React from "react"
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/components/example"
+import { Example, ExampleWrapper } from "@/components/example"
 import {
   Avatar,
   AvatarFallback,
@@ -25,10 +22,7 @@ import {
 } from "@/components/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IconPlaceholder } from "@/components/icon-placeholder"
 
 const spacingOptions = [
@@ -147,7 +141,7 @@ function CardCustomSpacing() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-2 rounded-lg bg-muted/50 p-3 text-sm style-lyra:rounded-none style-sera:rounded-none">
+            <div className="style-lyra:rounded-none style-sera:rounded-none grid gap-2 rounded-lg bg-muted/50 p-3 text-sm">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-muted-foreground">Checks passed</span>
                 <span className="font-medium">24 / 26</span>

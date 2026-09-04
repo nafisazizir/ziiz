@@ -14,11 +14,7 @@ import {
 } from "@/components/ui/card"
 
 type AgentState =
-  | "connecting"
-  | "initializing"
-  | "listening"
-  | "speaking"
-  | "thinking"
+  "connecting" | "initializing" | "listening" | "speaking" | "thinking"
 
 type AnimationState = AgentState | undefined
 
@@ -59,9 +55,11 @@ function createAudioAnalyser(
   mediaStream: MediaStream,
   options: AudioAnalyserOptions = {}
 ) {
-  const audioContext = new (window.AudioContext ||
+  const audioContext = new (
+    window.AudioContext ||
     (window as unknown as { webkitAudioContext: typeof AudioContext })
-      .webkitAudioContext)()
+      .webkitAudioContext
+  )()
   const source = audioContext.createMediaStreamSource(mediaStream)
   const analyser = audioContext.createAnalyser()
 

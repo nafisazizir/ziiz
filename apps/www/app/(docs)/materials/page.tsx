@@ -102,16 +102,16 @@ export default function Page() {
       <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
         <li>
           Reach for a material instead of composing background, border, shadow,
-          and radius by hand. The class encodes the elevation role, not just
-          the look.
+          and radius by hand. The class encodes the elevation role, not just the
+          look.
         </li>
         <li>
           Pick the type from where the element sits in the layered hierarchy:{" "}
           <InlineCode>base</InlineCode> and <InlineCode>small</InlineCode> for
           resting surfaces, <InlineCode>medium</InlineCode> and{" "}
           <InlineCode>large</InlineCode> for raised content,{" "}
-          <InlineCode>tooltip</InlineCode> and <InlineCode>menu</InlineCode>{" "}
-          for popovers, <InlineCode>modal</InlineCode> and{" "}
+          <InlineCode>tooltip</InlineCode> and <InlineCode>menu</InlineCode> for
+          popovers, <InlineCode>modal</InlineCode> and{" "}
           <InlineCode>fullscreen</InlineCode> for takeovers.
         </li>
         <li>

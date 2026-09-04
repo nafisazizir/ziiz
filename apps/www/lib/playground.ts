@@ -44,7 +44,11 @@ export const PLAYGROUND_ITEMS: PlaygroundItem[] = [
   { name: "label-example", title: "Label", type: "example" },
   { name: "menubar-example", title: "Menubar", type: "example" },
   { name: "native-select-example", title: "Native Select", type: "example" },
-  { name: "navigation-menu-example", title: "Navigation Menu", type: "example" },
+  {
+    name: "navigation-menu-example",
+    title: "Navigation Menu",
+    type: "example",
+  },
   { name: "pagination-example", title: "Pagination", type: "example" },
   { name: "popover-example", title: "Popover", type: "example" },
   { name: "progress-example", title: "Progress", type: "example" },
@@ -56,7 +60,11 @@ export const PLAYGROUND_ITEMS: PlaygroundItem[] = [
   { name: "separator-example", title: "Separator", type: "example" },
   { name: "sheet-example", title: "Sheet", type: "example" },
   { name: "sidebar-example", title: "Sidebar", type: "example" },
-  { name: "sidebar-floating-example", title: "Sidebar (Floating)", type: "example" },
+  {
+    name: "sidebar-floating-example",
+    title: "Sidebar (Floating)",
+    type: "example",
+  },
   { name: "sidebar-icon-example", title: "Sidebar (Icon)", type: "example" },
   { name: "sidebar-inset-example", title: "Sidebar (Inset)", type: "example" },
   { name: "skeleton-example", title: "Skeleton", type: "example" },
@@ -83,58 +91,77 @@ export const PLAYGROUND_LOADERS: Record<
   string,
   () => Promise<{ default: React.ComponentType }>
 > = {
-  "preview": () => import("@/components/blocks/preview"),
+  preview: () => import("@/components/blocks/preview"),
   "preview-02": () => import("@/components/blocks/preview-02"),
   "preview-03": () => import("@/components/blocks/preview-03"),
   "accordion-example": () => import("@/components/examples/accordion-example"),
   "alert-example": () => import("@/components/examples/alert-example"),
-  "alert-dialog-example": () => import("@/components/examples/alert-dialog-example"),
-  "aspect-ratio-example": () => import("@/components/examples/aspect-ratio-example"),
-  "attachment-example": () => import("@/components/examples/attachment-example"),
+  "alert-dialog-example": () =>
+    import("@/components/examples/alert-dialog-example"),
+  "aspect-ratio-example": () =>
+    import("@/components/examples/aspect-ratio-example"),
+  "attachment-example": () =>
+    import("@/components/examples/attachment-example"),
   "avatar-example": () => import("@/components/examples/avatar-example"),
   "badge-example": () => import("@/components/examples/badge-example"),
-  "breadcrumb-example": () => import("@/components/examples/breadcrumb-example"),
+  "breadcrumb-example": () =>
+    import("@/components/examples/breadcrumb-example"),
   "bubble-example": () => import("@/components/examples/bubble-example"),
   "button-example": () => import("@/components/examples/button-example"),
-  "button-group-example": () => import("@/components/examples/button-group-example"),
+  "button-group-example": () =>
+    import("@/components/examples/button-group-example"),
   "calendar-example": () => import("@/components/examples/calendar-example"),
   "card-example": () => import("@/components/examples/card-example"),
   "carousel-example": () => import("@/components/examples/carousel-example"),
   "chart-example": () => import("@/components/examples/chart-example"),
   "checkbox-example": () => import("@/components/examples/checkbox-example"),
-  "collapsible-example": () => import("@/components/examples/collapsible-example"),
+  "collapsible-example": () =>
+    import("@/components/examples/collapsible-example"),
   "combobox-example": () => import("@/components/examples/combobox-example"),
   "command-example": () => import("@/components/examples/command-example"),
-  "context-menu-example": () => import("@/components/examples/context-menu-example"),
+  "context-menu-example": () =>
+    import("@/components/examples/context-menu-example"),
   "dialog-example": () => import("@/components/examples/dialog-example"),
   "drawer-example": () => import("@/components/examples/drawer-example"),
-  "dropdown-menu-example": () => import("@/components/examples/dropdown-menu-example"),
+  "dropdown-menu-example": () =>
+    import("@/components/examples/dropdown-menu-example"),
   "empty-example": () => import("@/components/examples/empty-example"),
   "field-example": () => import("@/components/examples/field-example"),
-  "hover-card-example": () => import("@/components/examples/hover-card-example"),
+  "hover-card-example": () =>
+    import("@/components/examples/hover-card-example"),
   "input-example": () => import("@/components/examples/input-example"),
-  "input-group-example": () => import("@/components/examples/input-group-example"),
+  "input-group-example": () =>
+    import("@/components/examples/input-group-example"),
   "input-otp-example": () => import("@/components/examples/input-otp-example"),
   "item-example": () => import("@/components/examples/item-example"),
   "kbd-example": () => import("@/components/examples/kbd-example"),
   "label-example": () => import("@/components/examples/label-example"),
   "menubar-example": () => import("@/components/examples/menubar-example"),
-  "native-select-example": () => import("@/components/examples/native-select-example"),
-  "navigation-menu-example": () => import("@/components/examples/navigation-menu-example"),
-  "pagination-example": () => import("@/components/examples/pagination-example"),
+  "native-select-example": () =>
+    import("@/components/examples/native-select-example"),
+  "navigation-menu-example": () =>
+    import("@/components/examples/navigation-menu-example"),
+  "pagination-example": () =>
+    import("@/components/examples/pagination-example"),
   "popover-example": () => import("@/components/examples/popover-example"),
   "progress-example": () => import("@/components/examples/progress-example"),
-  "questionnaire-example": () => import("@/components/examples/questionnaire-example"),
-  "radio-group-example": () => import("@/components/examples/radio-group-example"),
+  "questionnaire-example": () =>
+    import("@/components/examples/questionnaire-example"),
+  "radio-group-example": () =>
+    import("@/components/examples/radio-group-example"),
   "resizable-example": () => import("@/components/examples/resizable-example"),
-  "scroll-area-example": () => import("@/components/examples/scroll-area-example"),
+  "scroll-area-example": () =>
+    import("@/components/examples/scroll-area-example"),
   "select-example": () => import("@/components/examples/select-example"),
   "separator-example": () => import("@/components/examples/separator-example"),
   "sheet-example": () => import("@/components/examples/sheet-example"),
   "sidebar-example": () => import("@/components/examples/sidebar-example"),
-  "sidebar-floating-example": () => import("@/components/examples/sidebar-floating-example"),
-  "sidebar-icon-example": () => import("@/components/examples/sidebar-icon-example"),
-  "sidebar-inset-example": () => import("@/components/examples/sidebar-inset-example"),
+  "sidebar-floating-example": () =>
+    import("@/components/examples/sidebar-floating-example"),
+  "sidebar-icon-example": () =>
+    import("@/components/examples/sidebar-icon-example"),
+  "sidebar-inset-example": () =>
+    import("@/components/examples/sidebar-inset-example"),
   "skeleton-example": () => import("@/components/examples/skeleton-example"),
   "slider-example": () => import("@/components/examples/slider-example"),
   "sonner-example": () => import("@/components/examples/sonner-example"),
@@ -145,6 +172,7 @@ export const PLAYGROUND_LOADERS: Record<
   "textarea-example": () => import("@/components/examples/textarea-example"),
   "toast-example": () => import("@/components/examples/toast-example"),
   "toggle-example": () => import("@/components/examples/toggle-example"),
-  "toggle-group-example": () => import("@/components/examples/toggle-group-example"),
+  "toggle-group-example": () =>
+    import("@/components/examples/toggle-group-example"),
   "tooltip-example": () => import("@/components/examples/tooltip-example"),
 }

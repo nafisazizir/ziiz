@@ -12,7 +12,7 @@ export type MaterialVariant = {
 
 export function MaterialList({ items }: { items: MaterialVariant[] }) {
   return (
-    <div className="mt-4 grid gap-x-6 gap-y-8 sm:grid-cols-2">
+    <div className="not-typeset mt-4 grid gap-x-6 gap-y-8 sm:grid-cols-2">
       {items.map((item) => (
         <div key={item.className}>
           <div

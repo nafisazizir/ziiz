@@ -81,37 +81,39 @@ const GROUPS: {
 export function TokenMapping() {
   return (
     <TooltipProvider>
-      <Table className="mt-6">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-12" />
-            <TableHead className="w-2/5">shadcn token</TableHead>
-            <TableHead>ziiz token</TableHead>
-          </TableRow>
-        </TableHeader>
-      </Table>
-      {GROUPS.map((group) => (
-        <section key={group.label}>
-          <h3 className="mt-8 scroll-m-24 text-heading-16">{group.label}</h3>
-          <Table className="mt-2">
-            <TableBody>
-              {group.rows.map((row) => (
-                <TableRow key={row.slot}>
-                  <TableCell className="w-12">
-                    <Swatch token={row.token} className="size-8" />
-                  </TableCell>
-                  <TableCell className="w-2/5 text-label-13-mono">
-                    --{row.slot}
-                  </TableCell>
-                  <TableCell className="text-label-13-mono text-gray-900">
-                    --ds-{row.token}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </section>
-      ))}
+      <div className="not-typeset">
+        <Table className="mt-6">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-12" />
+              <TableHead className="w-2/5">shadcn token</TableHead>
+              <TableHead>ziiz token</TableHead>
+            </TableRow>
+          </TableHeader>
+        </Table>
+        {GROUPS.map((group) => (
+          <section key={group.label}>
+            <h3 className="mt-8 scroll-m-24 text-heading-16">{group.label}</h3>
+            <Table className="mt-2">
+              <TableBody>
+                {group.rows.map((row) => (
+                  <TableRow key={row.slot}>
+                    <TableCell className="w-12">
+                      <Swatch token={row.token} className="size-8" />
+                    </TableCell>
+                    <TableCell className="w-2/5 text-label-13-mono">
+                      --{row.slot}
+                    </TableCell>
+                    <TableCell className="text-label-13-mono text-gray-900">
+                      --ds-{row.token}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </section>
+        ))}
+      </div>
     </TooltipProvider>
   )
 }

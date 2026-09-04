@@ -12,7 +12,7 @@ export type TypeVariant = {
 
 export function TypeVariantList({ items }: { items: TypeVariant[] }) {
   return (
-    <div className="mt-4 flex flex-col">
+    <div className="not-typeset mt-4 flex flex-col">
       {items.map((item) => (
         <div key={item.className} className="border-b py-5 last:border-b-0">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">

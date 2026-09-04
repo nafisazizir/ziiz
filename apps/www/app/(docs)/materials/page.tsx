@@ -1,35 +1,26 @@
 import type { Metadata } from "next"
 
+import { DocsPage } from "@/components/docs-page"
 import { MaterialList } from "@/components/material-scale"
 
-export const metadata: Metadata = {
-  title: "Materials",
-  description:
-    "Elevation presets combining background, border, shadow, and radius.",
-}
+const title = "Materials"
+const description =
+  "Elevation presets combining background, border, shadow, and radius."
 
-function InlineCode({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
-      {children}
-    </code>
-  )
-}
+export const metadata: Metadata = { title, description }
 
 export default function Page() {
   return (
-    <>
-      <h1 className="scroll-m-24 text-heading-40 tracking-tighter">
-        Materials
-      </h1>
-      <p className="mt-4 text-gray-900">
-        Elevation presets combining background, border, shadow, and radius.
-      </p>
-
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Surface</h2>
-      <p className="mt-3 text-gray-900">
+    <DocsPage title={title} description={description}>
+      <h2>Surface</h2>
+      <p>
         Four levels of elevation for elements that sit in the page. Radius steps
         up with elevation.
+      </p>
+      <p>
+        Components ship flat: card, sidebar and every control draw a plain
+        hairline and use no Surface material. These tiers are for application
+        surfaces that need a lift the components do not provide.
       </p>
       <MaterialList
         items={[
@@ -38,19 +29,20 @@ export default function Page() {
             name: "Base",
             radius: "rounded-md",
             usage:
-              "The resting surface: hairline border, no shadow. Inputs and flush containers.",
+              "The resting surface: hairline ring, no shadow. Flush containers and grouped lists.",
           },
           {
             className: "material-small",
             name: "Small",
             radius: "rounded-md",
-            usage: "A subtle lift for small cards and wells at rest.",
+            usage:
+              "The lightest lift, for tiles and wells that need to read as separate from the page.",
           },
           {
             className: "material-medium",
             name: "Medium",
             radius: "rounded-xl",
-            usage: "Raised surfaces: cards at rest or on hover.",
+            usage: "Raised surfaces: panels and pinned toolbars.",
           },
           {
             className: "material-large",
@@ -61,8 +53,8 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Floating</h2>
-      <p className="mt-3 text-gray-900">
+      <h2>Floating</h2>
+      <p>
         Four levels of elevation for elements that float above the page, ordered
         from closest to furthest off the surface.
       </p>
@@ -73,33 +65,36 @@ export default function Page() {
             name: "Tooltip",
             radius: "rounded-md",
             usage:
-              "The lightest floating material, and the only floating element that carries an arrow stem.",
+              "The lightest floating material. Chart tooltips sit on it; the tooltip component itself is an inverted bubble with no material.",
           },
           {
             className: "material-menu",
             name: "Menu",
             radius: "rounded-md",
-            usage: "Dropdown and context menus, selects, comboboxes.",
+            usage:
+              "Dropdown and context menus, selects, comboboxes, popovers, hover cards.",
           },
           {
             className: "material-modal",
             name: "Modal",
             radius: "rounded-xl",
-            usage: "Dialogs and command menus, floating above an overlay.",
+            usage:
+              "Dialogs, drawers, sheets, toasts and command menus, floating above an overlay.",
           },
           {
             className: "material-fullscreen",
             name: "Fullscreen",
             radius: "rounded-xl",
-            usage: "The highest elevation: sheets and fullscreen takeovers.",
+            usage:
+              "The highest elevation, reserved for fullscreen takeovers. No component uses it yet; sheets sit on Modal.",
           },
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Best practices</h2>
+      <h2>Best practices</h2>
 
-      <h3 className="mt-6 scroll-m-24 text-heading-16">When to use</h3>
-      <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
+      <h3>When to use</h3>
+      <ul>
         <li>
           Reach for a material instead of composing background, border, shadow,
           and radius by hand. The class encodes the elevation role, not just the
@@ -107,12 +102,10 @@ export default function Page() {
         </li>
         <li>
           Pick the type from where the element sits in the layered hierarchy:{" "}
-          <InlineCode>base</InlineCode> and <InlineCode>small</InlineCode> for
-          resting surfaces, <InlineCode>medium</InlineCode> and{" "}
-          <InlineCode>large</InlineCode> for raised content,{" "}
-          <InlineCode>tooltip</InlineCode> and <InlineCode>menu</InlineCode> for
-          popovers, <InlineCode>modal</InlineCode> and{" "}
-          <InlineCode>fullscreen</InlineCode> for takeovers.
+          <code>base</code> and <code>small</code> for resting surfaces,{" "}
+          <code>medium</code> and <code>large</code> for raised content,{" "}
+          <code>tooltip</code> and <code>menu</code> for popovers,{" "}
+          <code>modal</code> and <code>fullscreen</code> for takeovers.
         </li>
         <li>
           Never stack two materials on the same element. If a child needs more
@@ -120,13 +113,12 @@ export default function Page() {
         </li>
       </ul>
 
-      <h3 className="mt-6 scroll-m-24 text-heading-16">Behavior</h3>
-      <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
+      <h3>Behavior</h3>
+      <ul>
         <li>
           Keep the elevation choice in step with the element&apos;s{" "}
-          <InlineCode>z-index</InlineCode> band, so a{" "}
-          <InlineCode>tooltip</InlineCode>-typed surface never renders visually
-          beneath a <InlineCode>base</InlineCode> card.
+          <code>z-index</code> band, so a <code>tooltip</code>-typed surface
+          never renders visually beneath a <code>base</code> card.
         </li>
         <li>
           Favor the lowest tier that still reads as separated from its
@@ -138,13 +130,13 @@ export default function Page() {
         </li>
       </ul>
 
-      <h3 className="mt-6 scroll-m-24 text-heading-16">Accessibility</h3>
-      <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-900">
+      <h3>Accessibility</h3>
+      <ul>
         <li>
           Materials are decorative chrome. Semantics live on the role-bearing
-          element: <InlineCode>role=&quot;dialog&quot;</InlineCode> on a modal,{" "}
-          <InlineCode>role=&quot;tooltip&quot;</InlineCode> on a tooltip, never
-          on the class.
+          element: <code>role=&quot;dialog&quot;</code> on a modal,{" "}
+          <code>role=&quot;tooltip&quot;</code> on a tooltip, never on the
+          class.
         </li>
         <li>
           Elevation is never the only signal: pair floating surfaces with focus
@@ -157,6 +149,6 @@ export default function Page() {
           lands.
         </li>
       </ul>
-    </>
+    </DocsPage>
   )
 }

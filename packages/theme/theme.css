@@ -1,5 +1,5 @@
-/* ziiz design layer: ramp tokens, Tailwind theme mapping, base styles, materials
-   and type roles. Import-free on purpose — only Tailwind directives and plain
+/* ziiz design layer: ramp tokens, Tailwind theme mapping, base styles, materials,
+   type roles and the prose layer. Import-free on purpose — only Tailwind directives and plain
    CSS — so a consuming app can pull in the whole design system with a single
    `@import "@ziiz/theme/theme.css"` without re-bundling Tailwind, animation
    presets or the shadcn slot bridge (that lives in ./shadcn.css). */
@@ -639,6 +639,197 @@
 
 @utility text-copy-13-mono {
   @apply font-mono text-[13px] leading-[18px] font-normal;
+}
+
+/* Prose
+
+   Typesetting for long-form content: docs bodies, blog articles, rendered
+   markdown. It lives here so an .mdx file stays plain markdown and a page never
+   repeats type roles element by element.
+
+   Structure follows shadcn's typeset. Every rule is `.typeset *` narrowed with
+   :where(), so it carries one class of specificity and any utility on the
+   element wins; a `.not-typeset` (or `data-not-typeset`) subtree opts out,
+   which is how a doc primitive with its own chrome sits inside a body.
+   Bindings follow Geist: each element maps to a named type role, so size,
+   leading, tracking and weight come from the role and only rhythm and color
+   are set here. Rhythm is rem, not em, because the roles are fixed px. */
+
+@layer components {
+  .typeset {
+    @apply text-copy-16 text-gray-900;
+    overflow-wrap: break-word;
+  }
+
+  .typeset
+    *:not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ) {
+    /* Flow: blocks own the space above them. */
+    &:where(p, ul, ol, dl) {
+      @apply mt-3;
+    }
+    &:where(pre, blockquote, details) {
+      @apply mt-4;
+    }
+    &:where(table, figure, img, video) {
+      @apply mt-6;
+    }
+    &:where(hr) {
+      @apply mt-12;
+    }
+
+    /* Headings, one role step below the page title (text-heading-40). */
+    &:where(h1, h2, h3, h4, h5, h6) {
+      @apply scroll-m-24 text-gray-1000;
+    }
+    &:where(h1) {
+      @apply mt-12 text-heading-32;
+    }
+    &:where(h2) {
+      @apply mt-12 text-heading-24;
+    }
+    &:where(h3) {
+      @apply mt-8 text-heading-20;
+    }
+    &:where(h4) {
+      @apply mt-6 text-heading-16;
+    }
+    &:where(h5, h6) {
+      @apply mt-6 text-heading-14;
+    }
+    &:where(hr + :is(h1, h2, h3, h4)) {
+      @apply mt-8;
+    }
+
+    /* Headings own the space below them. */
+    &:where(h1 + *) {
+      @apply mt-4;
+    }
+    &:where(h2 + *, h3 + *, h4 + *, h5 + *, h6 + *) {
+      @apply mt-3;
+    }
+
+    /* Inline semantics. `strong` is the Copy roles' Strong modifier, spelled
+       out because the role sits on .typeset, not on each paragraph. */
+    &:where(a) {
+      @apply text-gray-1000 underline decoration-gray-alpha-600 underline-offset-2 hover:decoration-gray-1000;
+    }
+    &:where(strong, b) {
+      @apply font-medium text-gray-1000;
+    }
+    &:where(:not(pre) > code) {
+      @apply rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono;
+    }
+    &:where(kbd) {
+      @apply rounded-sm border border-b-2 border-gray-alpha-400 px-1.5 py-0.5 text-label-12 text-gray-1000;
+    }
+
+    /* Lists. */
+    &:where(ul) {
+      @apply list-disc;
+    }
+    &:where(ol) {
+      @apply list-decimal;
+    }
+    &:where(ul ul) {
+      @apply list-[circle];
+    }
+    &:where(ul, ol) {
+      @apply pl-5;
+    }
+    &:where(li + li, li > p, li > ul, li > ol) {
+      @apply mt-2;
+    }
+
+    /* Quotes, rules, code blocks. */
+    &:where(blockquote) {
+      @apply border-l-2 border-gray-alpha-400 pl-4;
+    }
+    &:where(hr) {
+      border: 0;
+      border-top: 1px solid var(--ds-gray-alpha-400);
+    }
+    &:where(pre) {
+      @apply overflow-x-auto rounded-lg border bg-background-200 p-4 text-copy-13-mono text-gray-1000;
+    }
+
+    /* Tables, mirroring the table component; the first column sits flush with
+       the prose. */
+    &:where(table) {
+      @apply w-full text-left;
+      font-variant-numeric: tabular-nums;
+    }
+    &:where(tr) {
+      @apply border-b border-gray-alpha-400;
+    }
+    &:where(tbody tr:last-child) {
+      @apply border-b-0;
+    }
+    &:where(th) {
+      @apply h-10 px-2 align-middle text-heading-14 whitespace-nowrap text-gray-1000;
+    }
+    &:where(td) {
+      @apply p-2 align-top text-copy-14;
+    }
+    &:where(th:first-child, td:first-child) {
+      @apply pl-0;
+    }
+
+    /* Media. */
+    &:where(img, video) {
+      @apply h-auto max-w-full rounded-lg;
+    }
+    &:where(p > img) {
+      @apply mt-0;
+    }
+    &:where(figcaption) {
+      @apply mt-2 text-copy-13 text-gray-900;
+    }
+  }
+
+  /* The first child adds no space above. Last so it wins ties. */
+  .typeset
+    > :where(:first-child):not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ),
+  .typeset
+    > :where(:first-child)
+    > :where(:first-child):not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ),
+  .typeset
+    :where(
+      li > :first-child,
+      blockquote > :first-child,
+      td > :first-child,
+      th > :first-child,
+      figure > :first-child
+    ):not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ) {
+    margin-top: 0;
+  }
 }
 
 @utility extend-touch-target {

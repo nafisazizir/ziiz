@@ -2,7 +2,7 @@
   "name": "@ziiz/theme",
   "version": "0.0.1",
   "private": true,
-  "description": "ziiz design layer: ramp tokens, type roles, materials, and the shadcn slot bridge, as Tailwind v4 CSS.",
+  "description": "ziiz design layer: ramp tokens, type roles, materials, prose, and the shadcn slot bridge, as Tailwind v4 CSS.",
   "type": "module",
   "sideEffects": [
     "./theme.css",

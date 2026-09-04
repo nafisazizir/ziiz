@@ -8,16 +8,6 @@ questions and the per-component decision log.
 
 ## Open questions (resolve before the component that hits them)
 
-- /materials Surface-tier copy is stale after card settled flat (2026-08-16):
-  material-medium still says "Raised surfaces: cards at rest or on hover" and
-  material-small "small cards and wells at rest", but in-page surfaces are now
-  flat by decision and no ui component uses a Surface material. Reconcile the
-  docs page with the human. (The material-tooltip flag from tooltip's pass is
-  resolved: chart's pass re-homed material-tooltip onto the chart tooltip
-  bubble on 2026-08-16, though the "carries an arrow stem" copy is now stale —
-  the chart tooltip has no arrow.) (Sidebar's pass applied card's flat plain-border
-  precedent on 2026-08-22 and uses no Surface material either, so the stale
-  copy stands unreconciled.)
 - Stock Tailwind palette leak: the theme overrides only steps 100–1000 of
   the 8 hues, so the default palette's other colors (`sky-*`, `yellow-*`,
   `*-50`, `*-950`, …) still compile and get used by accident (badge-example's
@@ -58,6 +48,7 @@ _None open._
 
 | date | component | call |
 | ---- | --------- | ---- |
+| 2026-09-03 | (docs) | /materials copy reconciled with the flat-surfaces decision (prose-layer pass): the Surface section now states that card, sidebar and every control ship flat and that the four Surface tiers are for application surfaces; per-tier usage rewritten off "cards at rest or on hover" / "small cards and wells"; Tooltip no longer claims an arrow stem (the chart tooltip bubble is its only home; the tooltip component is an inverted bubble with no material); Menu/Modal/Fullscreen usage lists the components actually on each tier (no component uses Fullscreen; sheets sit on Modal). Closes the open question from 2026-08-16. |
 | 2026-08-15 | (system) | Controls are flat: Vega `shadow-xs`/`sm` deleted from all controls; elevation exists only as `material-*` on floating surfaces. |
 | 2026-08-15 | (system) | Press animation is a scale press on button-like controls (button base; extended to toggle 2026-08-16, resolved with the human): `active:scale-[0.97]`, disabled under reduced motion (`motion-reduce:active:scale-100`); transitions are `transition-[color,background-color,border-color,scale]` at `duration-200` with an ease-out-expo curve `ease-[cubic-bezier(0.16,1,0.3,1)]` (shared by the color hovers, not just the scale — note the list excludes `box-shadow`, so the focus halo appears instantly on these controls). Vega's `active:*translate-y-px` nudge stays deleted. Functional motion (switch, accordion, overlays) untouched. |
 | 2026-08-15 | (system) | Focus: shadcn's halo, kept, one signature for every control — `focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50`, a pure ramp respelling of the stock cluster (`--ring` = `--ds-gray-600`), so focus is a zero-visual-change pass. No focus tokens. The `/50` stays an opacity modifier, not a `gray-alpha-*` step: alpha's roles are backgrounds/borders/text (no halo tier), the halo should stay derived from the border color, and dark alpha steps are white-based and would brighten it. An offset ring (2px gap + 2px stroke) was prototyped at gray-600 and gray-1000 and rejected both times — don't revisit. |

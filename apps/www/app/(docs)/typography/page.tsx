@@ -1,59 +1,54 @@
 import type { Metadata } from "next"
 
+import { DocsPage } from "@/components/docs-page"
 import { TypeVariantList } from "@/components/type-scale"
 
-export const metadata: Metadata = {
-  title: "Typography",
-  description: "Rules of typesetting throughout the system.",
-}
+const title = "Typography"
+const description = "Rules of typesetting throughout the system."
+
+export const metadata: Metadata = { title, description }
 
 export default function Page() {
   return (
-    <>
-      <h1 className="scroll-m-24 text-heading-40 tracking-tighter">
-        Typography
-      </h1>
-      <p className="mt-4 text-gray-900">
-        Rules of typesetting throughout the system.
-      </p>
-
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Usage</h2>
-      <p className="mt-3 text-gray-900">
+    <DocsPage title={title} description={description}>
+      <h2>Usage</h2>
+      <p>
         Our typography styles can be consumed as Tailwind classes. The classes
-        below pre-set a combination of{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
-          font-size
-        </code>
-        ,{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
-          line-height
-        </code>
-        ,{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
-          letter-spacing
-        </code>
-        , and{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
-          font-weight
-        </code>{" "}
-        for you.
+        below pre-set a combination of <code>font-size</code>,{" "}
+        <code>line-height</code>, <code>letter-spacing</code>, and{" "}
+        <code>font-weight</code> for you.
       </p>
-      <p className="mt-3 text-copy-16 text-gray-900">
+      <p>
         To make use of the <strong>Subtle</strong> and <strong>Strong</strong>{" "}
-        modifiers, all you have to do is use the{" "}
-        <code className="rounded-sm bg-gray-100 px-1 py-0.5 text-copy-13-mono">
-          &lt;strong&gt;
-        </code>{" "}
+        modifiers, all you have to do is use the <code>&lt;strong&gt;</code>{" "}
         element nested as the descendant of a given typography class:
       </p>
-      <pre className="mt-4 overflow-x-auto rounded-lg border bg-background-200 p-4">
-        <code className="text-copy-13-mono">
+      <pre>
+        <code>
           {`<p className="text-copy-16">\n  Copy 16 <strong>with Strong</strong>\n</p>`}
         </code>
       </pre>
 
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Headings</h2>
-      <p className="mt-3 text-gray-900">Used to introduce pages or sections.</p>
+      <h2>Prose</h2>
+      <p>
+        Long-form content — docs bodies, blog articles, rendered markdown — is
+        typeset as a whole rather than element by element. Add{" "}
+        <code>typeset</code> to the container and every heading, paragraph,
+        list, link, code span and table inside it binds to a type role with the
+        rhythm set here. Headings map one step below the page title:{" "}
+        <code>h1</code> to Heading 32, <code>h2</code> to Heading 24,{" "}
+        <code>h3</code> to Heading 20, <code>h4</code> to Heading 16.
+      </p>
+      <p>
+        Every rule is scoped with <code>:where()</code>, so a utility on the
+        element still wins, and a subtree marked <code>not-typeset</code> opts
+        out entirely. That is how a component with its own chrome sits inside a
+        body without inheriting paragraph margins or code chips. This page is
+        typeset; the specimen lists below are not.
+      </p>
+
+      <h2>Headings</h2>
+      <p>Used to introduce pages or sections.</p>
       <TypeVariantList
         items={[
           { className: "text-heading-72", name: "Heading 72" },
@@ -85,10 +80,8 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Buttons</h2>
-      <p className="mt-3 text-gray-900">
-        Only to be used within components that render buttons.
-      </p>
+      <h2>Buttons</h2>
+      <p>Only to be used within components that render buttons.</p>
       <TypeVariantList
         items={[
           {
@@ -110,8 +103,8 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Label</h2>
-      <p className="mt-3 text-gray-900">
+      <h2>Label</h2>
+      <p>
         Designed for single-lines, and given ample line-height for highlighting
         &amp; marrying up with icons.
       </p>
@@ -159,8 +152,8 @@ export default function Page() {
         ]}
       />
 
-      <h2 className="mt-12 scroll-m-24 text-heading-24">Copy</h2>
-      <p className="mt-3 text-gray-900">
+      <h2>Copy</h2>
+      <p>
         Designed for multiple lines of text, having a higher line height than
         Label.
       </p>
@@ -210,6 +203,6 @@ export default function Page() {
           },
         ]}
       />
-    </>
+    </DocsPage>
   )
 }

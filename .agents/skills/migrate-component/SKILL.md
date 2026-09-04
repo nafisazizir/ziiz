@@ -56,10 +56,10 @@ These are settled. Apply them; don't relitigate them mid-migration.
 3. **Focus: the shadcn halo, kept, in gray, spelled in ramp vocabulary.**
    One signature for every control, click or text-entry:
    `focus-visible:border-gray-600 focus-visible:ring-3
-   focus-visible:ring-gray-600/50` — the solid gray-600 border for the crisp
+focus-visible:ring-gray-600/50` — the solid gray-600 border for the crisp
    edge, the translucent 3px halo for the glow. This is a pure rename of
    shadcn's `focus-visible:border-ring focus-visible:ring-3
-   focus-visible:ring-ring/50` cluster (`--ring` already resolves to
+focus-visible:ring-ring/50` cluster (`--ring` already resolves to
    `--ds-gray-600`), so migration changes focus vocabulary, never focus
    pixels. There are no focus tokens. The `/50` is deliberate state opacity
    (decision 5's carve-out), never swapped for a `gray-alpha-*` step — the
@@ -105,7 +105,7 @@ above:
   `packages/theme/shadcn.css`.
 - **The semantics** — the foundation docs pages `/colors`, `/typography`,
   `/materials`. They carry the reasoning the tokens alone don't: what each
-  ramp tier is *for* (backgrounds vs borders vs text tiers, alpha vs solid),
+  ramp tier is _for_ (backgrounds vs borders vs text tiers, alpha vs solid),
   which type role fits which surface (label vs copy vs heading, when mono),
   and which material belongs to which elevation role. Judgment calls in
   passes 1–3 (a hover step, a role choice, a material assignment) are made
@@ -134,7 +134,7 @@ that's a stop-and-resolve.
 
 Then eliminate the opacity hacks (decision 5): each `hover:bg-x/80` or
 `color-mix()` hover becomes a ramp step, chosen on `/preview` and logged.
-Opacity kept deliberately as *state* (`disabled:opacity-50`, the focus
+Opacity kept deliberately as _state_ (`disabled:opacity-50`, the focus
 halo's `ring-gray-600/50`, the input wash `/30`) is fine — the rule targets
 color-mixing hovers, not state opacity.
 
@@ -168,7 +168,7 @@ cluster.
 
 - **Focus — apply decision 3's signature.** Rename the shadcn focus cluster
   to its ramp spelling: `focus-visible:border-gray-600 focus-visible:ring-3
-  focus-visible:ring-gray-600/50`. Pixel-identical to stock; pass 5 confirms
+focus-visible:ring-gray-600/50`. Pixel-identical to stock; pass 5 confirms
   no visible change on focus.
 - **Radius — rename only (decision 4).** Radius classes stay exactly as
   shipped; don't redesign shape.
@@ -192,8 +192,8 @@ cluster.
    invalid, disabled…), both themes. Wrappers that reset or override this
    component (`border-0 bg-transparent`-style reset lists, `cn()` overrides)
    were written against the pre-migration contract: they silently miss
-   anything the migration *added* (a new state class outranks a plain
-   override on specificity) and keep dead resets for anything it *removed*.
+   anything the migration _added_ (a new state class outranks a plain
+   override on specificity) and keep dead resets for anything it _removed_.
    Don't fix the dependent — one component per pass — but log every
    regression and now-stale override in `MIGRATION.md` under "Dependent
    notes", with the mechanism and the intended fix, so the dependent's own

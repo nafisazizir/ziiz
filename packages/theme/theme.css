@@ -471,174 +471,174 @@
 
 @utility material-base {
   box-shadow: var(--ds-shadow-border);
-  @apply bg-background-100 rounded-md;
+  @apply rounded-md bg-background-100;
 }
 
 @utility material-small {
   box-shadow: var(--ds-shadow-border-small);
-  @apply bg-background-100 rounded-md;
+  @apply rounded-md bg-background-100;
 }
 
 @utility material-medium {
   box-shadow: var(--ds-shadow-border-medium);
-  @apply bg-background-100 rounded-xl;
+  @apply rounded-xl bg-background-100;
 }
 
 @utility material-large {
   box-shadow: var(--ds-shadow-border-large);
-  @apply bg-background-100 rounded-xl;
+  @apply rounded-xl bg-background-100;
 }
 
 @utility material-tooltip {
   box-shadow: var(--ds-shadow-tooltip);
-  @apply bg-background-100 rounded-md;
+  @apply rounded-md bg-background-100;
 }
 
 @utility material-menu {
   box-shadow: var(--ds-shadow-menu);
-  @apply bg-background-100 rounded-md;
+  @apply rounded-md bg-background-100;
 }
 
 @utility material-modal {
   box-shadow: var(--ds-shadow-modal);
-  @apply bg-background-100 rounded-xl;
+  @apply rounded-xl bg-background-100;
 }
 
 @utility material-fullscreen {
   box-shadow: var(--ds-shadow-fullscreen);
-  @apply bg-background-100 rounded-xl;
+  @apply rounded-xl bg-background-100;
 }
 
 /* Typography Heading */
 
 @utility text-heading-72 {
-  @apply font-sans font-[450] text-[72px] leading-[72px] tracking-[-4.32px];
+  @apply font-sans text-[72px] leading-[72px] font-[450] tracking-[-4.32px];
 }
 
 @utility text-heading-64 {
-  @apply font-sans font-[450] text-[64px] leading-[64px] tracking-[-3.84px];
+  @apply font-sans text-[64px] leading-[64px] font-[450] tracking-[-3.84px];
 }
 
 @utility text-heading-56 {
-  @apply font-sans font-[450] text-[56px] leading-[56px] tracking-[-3.36px];
+  @apply font-sans text-[56px] leading-[56px] font-[450] tracking-[-3.36px];
 }
 
 @utility text-heading-48 {
-  @apply font-sans font-[450] text-[48px] leading-[56px] tracking-[-2.88px];
+  @apply font-sans text-[48px] leading-[56px] font-[450] tracking-[-2.88px];
 }
 
 @utility text-heading-40 {
-  @apply font-sans font-[450] text-[40px] leading-[48px] tracking-[-2.4px];
+  @apply font-sans text-[40px] leading-[48px] font-[450] tracking-[-2.4px];
 }
 
 @utility text-heading-32 {
-  @apply font-sans font-[450] [&>strong]:font-medium [&>strong]:text-gray-900 text-[32px] leading-[40px] tracking-[-1.28px];
+  @apply font-sans text-[32px] leading-[40px] font-[450] tracking-[-1.28px] [&>strong]:font-medium [&>strong]:text-gray-900;
 }
 
 @utility text-heading-24 {
-  @apply font-sans font-[450] [&>strong]:font-medium [&>strong]:text-gray-900 text-[24px] leading-[32px] tracking-[-0.96px];
+  @apply font-sans text-[24px] leading-[32px] font-[450] tracking-[-0.96px] [&>strong]:font-medium [&>strong]:text-gray-900;
 }
 
 @utility text-heading-20 {
-  @apply font-sans font-[450] [&>strong]:font-medium [&>strong]:text-gray-900 text-[20px] leading-[26px] tracking-[-0.4px];
+  @apply font-sans text-[20px] leading-[26px] font-[450] tracking-[-0.4px] [&>strong]:font-medium [&>strong]:text-gray-900;
 }
 
 @utility text-heading-16 {
-  @apply font-sans font-[450] [&>strong]:font-medium [&>strong]:text-gray-900 text-[16px] leading-[24px] tracking-[-0.32px];
+  @apply font-sans text-[16px] leading-[24px] font-[450] tracking-[-0.32px] [&>strong]:font-medium [&>strong]:text-gray-900;
 }
 
 @utility text-heading-14 {
-  @apply font-sans font-[450] text-[14px] leading-[20px] tracking-[-0.28px];
+  @apply font-sans text-[14px] leading-[20px] font-[450] tracking-[-0.28px];
 }
 
 /* Typography Button */
 
 @utility text-button-16 {
-  @apply font-sans font-medium text-[16px] leading-[20px];
+  @apply font-sans text-[16px] leading-[20px] font-medium;
 }
 
 @utility text-button-14 {
-  @apply font-sans font-medium text-[14px] leading-[20px];
+  @apply font-sans text-[14px] leading-[20px] font-medium;
 }
 
 @utility text-button-12 {
-  @apply font-sans font-medium text-[12px] leading-[16px];
+  @apply font-sans text-[12px] leading-[16px] font-medium;
 }
 
 /* Typography Label */
 
 @utility text-label-20 {
-  @apply font-sans font-normal text-[20px] leading-[32px];
+  @apply font-sans text-[20px] leading-[32px] font-normal;
 }
 
 @utility text-label-18 {
-  @apply font-sans font-normal text-[18px] leading-[20px];
+  @apply font-sans text-[18px] leading-[20px] font-normal;
 }
 
 @utility text-label-16 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[16px] leading-[20px];
+  @apply font-sans text-[16px] leading-[20px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-label-16-mono {
-  @apply font-mono font-normal text-[16px] leading-[20px];
+  @apply font-mono text-[16px] leading-[20px] font-normal;
 }
 
 @utility text-label-14 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[14px] leading-[20px];
+  @apply font-sans text-[14px] leading-[20px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-label-14-mono {
-  @apply font-mono font-normal text-[14px] leading-[20px];
+  @apply font-mono text-[14px] leading-[20px] font-normal;
 }
 
 @utility text-label-13 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[13px] leading-[16px];
+  @apply font-sans text-[13px] leading-[16px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-label-13-mono {
-  @apply font-mono font-normal text-[13px] leading-[20px];
+  @apply font-mono text-[13px] leading-[20px] font-normal;
 }
 
 @utility text-label-12 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[12px] leading-[16px];
+  @apply font-sans text-[12px] leading-[16px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-label-12-mono {
-  @apply font-mono font-normal text-[12px] leading-[16px];
+  @apply font-mono text-[12px] leading-[16px] font-normal;
 }
 
 /* Typography Copy */
 
 @utility text-copy-24 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[24px] leading-[36px];
+  @apply font-sans text-[24px] leading-[36px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-copy-20 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[20px] leading-[36px];
+  @apply font-sans text-[20px] leading-[36px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-copy-18 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[18px] leading-[28px];
+  @apply font-sans text-[18px] leading-[28px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-copy-16 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[16px] leading-[24px];
+  @apply font-sans text-[16px] leading-[24px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-copy-14 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[14px] leading-[20px];
+  @apply font-sans text-[14px] leading-[20px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-copy-14-mono {
-  @apply font-mono font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[14px] leading-[20px];
+  @apply font-mono text-[14px] leading-[20px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-copy-13 {
-  @apply font-sans font-normal [&>strong]:font-medium [&>strong]:text-gray-1000 text-[13px] leading-[18px];
+  @apply font-sans text-[13px] leading-[18px] font-normal [&>strong]:font-medium [&>strong]:text-gray-1000;
 }
 
 @utility text-copy-13-mono {
-  @apply font-mono font-normal text-[13px] leading-[18px];
+  @apply font-mono text-[13px] leading-[18px] font-normal;
 }
 
 @utility extend-touch-target {

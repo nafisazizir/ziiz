@@ -1,8 +1,9 @@
-/* ziiz design layer: ramp tokens, Tailwind theme mapping, base styles, materials
-   and type roles. Import-free on purpose — only Tailwind directives and plain
-   CSS — so a consuming app can pull in the whole design system with a single
-   `@import "@ziiz/theme/theme.css"` without re-bundling Tailwind, animation
-   presets or the shadcn slot bridge (that lives in ./shadcn.css). */
+/* ziiz design layer: ramp tokens, Tailwind theme mapping, base styles,
+   materials, type roles and the prose layer. Import-free on purpose — only
+   Tailwind directives and plain CSS — so a consuming app can pull in the whole
+   design system with a single `@import "@ziiz/theme/theme.css"` without
+   re-bundling Tailwind, animation presets or the shadcn slot bridge (that
+   lives in ./shadcn.css). */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -516,19 +517,19 @@
 }
 
 @utility text-heading-64 {
-  @apply font-sans text-[64px] leading-[64px] font-[450] tracking-[-3.84px];
+  @apply font-sans text-[64px] leading-[64px] font-[450] tracking-[-2.56px];
 }
 
 @utility text-heading-56 {
-  @apply font-sans text-[56px] leading-[56px] font-[450] tracking-[-3.36px];
+  @apply font-sans text-[56px] leading-[56px] font-[450] tracking-[-2.24px];
 }
 
 @utility text-heading-48 {
-  @apply font-sans text-[48px] leading-[56px] font-[450] tracking-[-2.88px];
+  @apply font-sans text-[48px] leading-[56px] font-[450] tracking-[-1.92px];
 }
 
 @utility text-heading-40 {
-  @apply font-sans text-[40px] leading-[48px] font-[450] tracking-[-2.4px];
+  @apply font-sans text-[40px] leading-[48px] font-[450] tracking-[-1.6px];
 }
 
 @utility text-heading-32 {
@@ -639,6 +640,535 @@
 
 @utility text-copy-13-mono {
   @apply font-mono text-[13px] leading-[18px] font-normal;
+}
+
+/* Prose. shadcn's typeset, rebound onto ziiz. Structure and selectors are
+   shadcn's verbatim (`.typeset *` narrowed with :where(), `.not-typeset` opts
+   out). What changes: every element binds to a named type role instead of
+   an em scale, colors come from the ramp, and rhythm is rem, not em, because
+   the roles are fixed px. A role is never overridden: no weight, size or
+   leading is set on an element that carries one. Rhythm follows the Vercel
+   blog article; body copy stays Copy 16 on Color 9, as the docs pages set
+   it. Diff this file against shadcn/typeset to see it. */
+
+@layer components {
+  .typeset {
+    /* Rhythm. --typeset-flow is the gap between blocks, --typeset-section
+       the gap above a section heading; the rest derives from these two. */
+    --typeset-flow: 1.5rem;
+    --typeset-section: 4.5rem;
+  }
+}
+
+@layer components {
+  .typeset {
+    @apply text-copy-16 text-gray-900;
+    overflow-wrap: break-word;
+    margin-trim: block-start;
+    text-wrap: pretty;
+
+    --typeset-muted: var(--ds-gray-900);
+    --typeset-rule: var(--ds-gray-alpha-400);
+  }
+
+  .typeset
+    *:not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ) {
+    /* Paragraphs. */
+    &:where(p) {
+      margin-block-start: var(--typeset-flow);
+      margin-block-end: 0;
+    }
+
+    /* Headings. */
+    &:where(h1, h2, h3, h4, h5, h6) {
+      @apply text-gray-1000;
+      margin-block-end: 0;
+      text-wrap: balance;
+    }
+    &:where(h1) {
+      @apply text-heading-40;
+      margin-block-start: var(--typeset-section);
+    }
+    &:where(h2) {
+      @apply text-heading-32;
+      margin-block-start: var(--typeset-section);
+    }
+    /* Smaller steps are fractions of the section gap, so one knob moves them
+       all: 64, 48 and 32px at the default 72. */
+    &:where(h3) {
+      @apply text-heading-24;
+      margin-block-start: calc(var(--typeset-section) * 8 / 9);
+    }
+    &:where(h4) {
+      @apply text-heading-20;
+      margin-block-start: calc(var(--typeset-section) * 2 / 3);
+    }
+    &:where(h5) {
+      @apply text-heading-16;
+      margin-block-start: calc(var(--typeset-section) * 4 / 9);
+    }
+    &:where(h6) {
+      @apply text-heading-14;
+      margin-block-start: calc(var(--typeset-section) * 4 / 9);
+    }
+    /* Anchors. Clears the sticky site header. */
+    &:where([id]) {
+      scroll-margin-block-start: 6rem;
+    }
+
+    /* Headings own the space below them. The article keeps one gap
+       everywhere, so this is the flow gap, not a tighter one. */
+    &:where(h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + *) {
+      margin-block-start: var(--typeset-flow);
+    }
+
+    /* Links. */
+    &:where(a) {
+      color: var(--ds-gray-1000);
+      text-decoration-line: underline;
+      text-decoration-color: var(--ds-gray-700);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+    &:where(a:hover) {
+      text-decoration-color: currentColor;
+    }
+    &:where(a:focus-visible) {
+      outline: 2px solid var(--ds-gray-600);
+      outline-offset: 4px;
+      border-radius: 0.125em;
+    }
+
+    /* Inline semantics. */
+    /* The Copy roles' Strong modifier, spelled out because the role sits on
+       the container, not on each paragraph. */
+    &:where(strong, b) {
+      @apply font-medium text-gray-1000;
+    }
+    &:where(mark) {
+      background-color: var(--ds-blue-200);
+      color: var(--ds-blue-900);
+      padding: 0.05em 0.15em;
+      border-radius: 0.2em;
+    }
+    &:where(abbr[title]) {
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 0.2em;
+      cursor: help;
+    }
+    &:where(del, s) {
+      color: var(--typeset-muted);
+      text-decoration-line: line-through;
+    }
+    &:where(sup, sub) {
+      font-size: 0.75em;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+    }
+    &:where(sup) {
+      top: -0.5em;
+    }
+    &:where(sub) {
+      bottom: -0.25em;
+    }
+    &:where(sup a) {
+      text-decoration-line: none;
+    }
+
+    /* Lists. */
+    &:where(ul) {
+      list-style-type: disc;
+    }
+    &:where(ol) {
+      list-style-type: decimal;
+    }
+    &:where(ul ul) {
+      list-style-type: circle;
+    }
+    &:where(ul ul ul) {
+      list-style-type: square;
+    }
+    &:where(ol[type="a" i]) {
+      list-style-type: lower-alpha;
+    }
+    &:where(ol[type="i" i]) {
+      list-style-type: lower-roman;
+    }
+    &:where(ol[type="A" s]) {
+      list-style-type: upper-alpha;
+    }
+    &:where(ol[type="I" s]) {
+      list-style-type: upper-roman;
+    }
+    &:where(ul, ol) {
+      margin-block-start: var(--typeset-flow);
+      margin-block-end: 0;
+      padding-inline-start: 1.25rem;
+    }
+    &:where(li) {
+      margin-block-start: 0.5rem;
+      padding-inline-start: 0.5rem;
+    }
+    &:where(li > p, li > ul, li > ol) {
+      margin-block-start: 0.5rem;
+    }
+    &:where(ul > li)::marker {
+      color: var(--ds-gray-600);
+    }
+    &:where(ol > li)::marker {
+      color: var(--ds-gray-600);
+    }
+
+    /* GFM task lists. */
+    &:where(ul.contains-task-list) {
+      list-style-type: none;
+      padding-inline-start: 0.25em;
+    }
+    &:where(li.task-list-item > input[type="checkbox"]) {
+      margin-inline-end: 0.5em;
+      vertical-align: -0.1em;
+      accent-color: var(--ds-gray-1000);
+    }
+
+    /* Disclosures, shaped like the Accordion component: the summary as the
+       trigger with the chevron at the end, the content flush beneath. Type
+       stays the body role throughout and rows carry no hairline. The
+       component is the source of truth for the shape; mirror it here when
+       it changes. Adjacent details stack into one accordion. */
+    &:where(details) {
+      margin-block-start: var(--typeset-flow);
+      margin-block-end: 0;
+    }
+    &:where(details + details) {
+      margin-block-start: 0;
+    }
+    &:where(details[open]) {
+      padding-block-end: 1rem;
+    }
+    &:where(summary) {
+      @apply rounded-md text-gray-1000;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-block: 1rem;
+      border: 1px solid transparent;
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+    }
+    &:where(summary)::-webkit-details-marker {
+      display: none;
+    }
+    &:where(summary:hover) {
+      text-decoration-line: underline;
+    }
+    &:where(summary:focus-visible) {
+      border-color: var(--ds-gray-600);
+      box-shadow: 0 0 0 3px
+        color-mix(in oklab, var(--ds-gray-600) 50%, transparent);
+    }
+    &:where(summary)::after {
+      content: "";
+      flex-shrink: 0;
+      width: 1rem;
+      height: 1rem;
+      margin-inline-start: auto;
+      background-color: var(--ds-gray-900);
+      mask: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 9C18 9 13.5811 15 12 15C10.4188 15 6 9 6 9'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+    }
+    &:where(details[open] > summary)::after {
+      transform: rotate(180deg);
+    }
+    &:where(details > :not(summary)) {
+      margin-block-start: 1rem;
+    }
+    &:where(details > summary + *) {
+      margin-block-start: 0;
+    }
+
+    /* Keyboard keys. */
+    /* Keyboard keys, matching the ui Kbd component. */
+    &:where(kbd) {
+      @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--radius-sm),6px)] bg-gray-100 px-1 text-label-12 text-gray-900;
+    }
+
+    /* Definition lists. */
+    &:where(dl) {
+      margin-block-start: var(--typeset-flow);
+      margin-block-end: 0;
+    }
+    &:where(dt) {
+      @apply text-gray-1000;
+      margin-block-start: var(--typeset-flow);
+    }
+    &:where(dt + dt) {
+      margin-block-start: 0.25em;
+    }
+    &:where(dd) {
+      margin-block-start: 0.25em;
+      margin-inline-start: 0;
+      padding-inline-start: 1em;
+      color: var(--typeset-muted);
+    }
+
+    /* Inline code. */
+    &:where(:not(pre) > code) {
+      @apply rounded-[min(var(--radius-sm),6px)] bg-gray-100 text-copy-13-mono;
+      padding: 0.125rem 0.25rem;
+    }
+
+    /* Code blocks. */
+    &:where(pre) {
+      @apply rounded-lg bg-background-200 text-copy-13-mono text-gray-1000;
+      border: 1px solid var(--typeset-rule);
+      tab-size: 2;
+      direction: ltr;
+      padding: 1rem;
+      overflow-x: auto;
+      margin-block-start: calc(var(--typeset-flow) + 0.25rem);
+      margin-block-end: 0;
+    }
+    &:where(pre code) {
+      background-color: transparent;
+      font: inherit;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    /* Blockquote: a pull quote, as the article sets it. No bar; the quote
+       sits on Heading 24 with hanging curly quotes drawn here, so markdown
+       needs no extra markup, and a trailing <footer> carries the attribution
+       on Copy 14, with <cite> for the name. */
+    &:where(blockquote) {
+      @apply text-heading-24 text-gray-1000;
+      display: grid;
+      gap: 1rem;
+      margin-block-start: calc(var(--typeset-section) / 2);
+      margin-block-end: 0;
+      margin-inline: 0;
+    }
+    &:where(blockquote + *) {
+      margin-block-start: calc(var(--typeset-section) / 2);
+    }
+    &:where(blockquote > *) {
+      margin-block-start: 0;
+    }
+    &:where(blockquote > p) {
+      position: relative;
+    }
+    &:where(blockquote > p:first-of-type)::before {
+      content: "\201C";
+      position: absolute;
+      inset-inline-start: -0.75rem;
+    }
+    &:where(blockquote > p:last-of-type)::after {
+      content: "\201D";
+    }
+    &:where(blockquote > footer) {
+      @apply text-copy-14 text-gray-900;
+    }
+    &:where(blockquote cite) {
+      @apply text-gray-1000;
+      font-style: normal;
+    }
+
+    /* Dividers. */
+    &:where(hr) {
+      border: 0;
+      border-block-start: 1px solid var(--ds-gray-200);
+      margin-block-start: 5rem;
+      margin-block-end: 0;
+
+      @variant lg {
+        margin-block-start: 10rem;
+      }
+    }
+
+    /* GFM footnotes. */
+    &:where(.footnotes, [data-footnotes]) {
+      @apply text-copy-14;
+      margin-block-start: var(--typeset-section);
+      border-block-start: 1px solid var(--typeset-rule);
+      padding-block-start: var(--typeset-flow);
+      color: var(--typeset-muted);
+    }
+
+    /* Math. */
+    &:where(math[display="block"]) {
+      margin-block-start: var(--typeset-flow);
+      margin-block-end: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-block: 0.25em;
+    }
+
+    /* Media. */
+    &:where(img, video) {
+      @apply rounded-lg;
+      max-width: 100%;
+      height: auto;
+      margin-block-start: calc(var(--typeset-flow) + 0.25rem);
+      margin-block-end: 0;
+    }
+    &:where(p img) {
+      margin-block-start: 0;
+    }
+    &:where(figure) {
+      margin-block-start: 2.5rem;
+      margin-block-end: 0;
+      margin-inline: 0;
+    }
+    &:where(figure + *) {
+      margin-block-start: 2.5rem;
+    }
+    &:where(figcaption, caption) {
+      @apply text-copy-14;
+      color: var(--typeset-muted);
+      text-align: center;
+      margin-block-start: 1rem;
+    }
+    &:where(caption) {
+      caption-side: bottom;
+    }
+
+    /* Tables. Mirrors components/ui/table.tsx: Heading 14 header cells,
+       Label 14 body cells, middle alignment, row hover, tinted footer, no
+       trailing rule. Padding is roomier than the component (12px / 16px vs
+       8px) because prose tables read, they don't scan. Separators sit on cells, not
+       tr:last-child: append-safe. Bare tables stay real tables (keep their
+       semantics) and wrap to fit. */
+    &:where(table) {
+      @apply text-label-14;
+      max-width: 100%;
+      font-variant-numeric: tabular-nums;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-block-start: calc(var(--typeset-flow) + 0.25rem);
+      margin-block-end: 0;
+    }
+
+    /* Horizontal scroll for any wide block. Wrap it and the wrapper owns the
+       flow margin. Tables shrink to fit, so widen the table to make it scroll
+       instead of compress. */
+    &:where(.typeset-scroll) {
+      overflow-x: auto;
+      margin-block-start: calc(var(--typeset-flow) + 0.25rem);
+    }
+    &:where(.typeset-scroll > *) {
+      margin-block-start: 0;
+    }
+    &:where(.typeset-scroll table) {
+      width: max-content;
+      max-width: none;
+    }
+    &:where(thead th) {
+      @apply text-heading-14 text-gray-1000;
+      height: 2.75rem;
+      padding: 0 1rem;
+      text-align: start;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    &:where(:is(tbody, tfoot) :is(td, th)) {
+      padding: 0.75rem 1rem;
+      text-align: start;
+      vertical-align: middle;
+      border-block-start: 1px solid var(--typeset-rule);
+    }
+    &:where(tbody th, tfoot th) {
+      @apply text-gray-1000;
+    }
+    &:where(tbody tr) {
+      transition: background-color 150ms;
+    }
+    &:where(tbody tr:hover) {
+      @apply bg-gray-alpha-100;
+    }
+    &:where(tfoot) {
+      @apply bg-gray-100/50;
+    }
+    &:where(th[align="center"], td[align="center"]) {
+      text-align: center;
+    }
+    &:where(th[align="right"], td[align="right"]) {
+      text-align: end;
+    }
+
+    /* Blocks inside list items keep the list's tighter rhythm. */
+    &:where(li > blockquote, li > table, li > figure, li > pre) {
+      margin-block-start: 0.5rem;
+    }
+
+    @media print {
+      &:where(pre, table, blockquote, figure) {
+        break-inside: avoid;
+      }
+      &:where(h1, h2, h3, h4) {
+        break-after: avoid;
+      }
+    }
+
+    /* Forced colors strips the code background, so give it a border. */
+    @media (forced-colors: active) {
+      &:where(:not(pre) > code) {
+        border: 1px solid;
+      }
+    }
+  }
+
+  /* First child adds no space above. Last so it wins ties. List items are
+     left out: a block inside one usually follows inline text, which CSS
+     cannot see, so it keeps the item gap. Sections are added: a body often
+     nests one per heading, and its first child should open flush. */
+  .typeset
+    > :where(:first-child):not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ),
+  .typeset
+    > :where(:first-child)
+    > :where(:first-child):not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ),
+  .typeset
+    :where(
+      section > :first-child,
+      blockquote > :first-child,
+      td > :first-child,
+      th > :first-child,
+      dd > :first-child,
+      figure > :first-child,
+      figure > picture > img
+    ):not(
+      :where(
+        .not-typeset,
+        [data-not-typeset],
+        .not-typeset *,
+        [data-not-typeset] *
+      )
+    ) {
+    margin-block-start: 0;
+  }
 }
 
 @utility extend-touch-target {

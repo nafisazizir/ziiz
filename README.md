@@ -1,7 +1,7 @@
 # ziiz
 
 A design-system exploration. The token foundation (Geist ramp, named type
-roles, materials) is the product; the app is the playground that dogfoods it.
+roles, materials, prose) is the product; the app is the playground that dogfoods it.
 
 ```
 apps/www          Next.js playground — docs pages, component examples, previews

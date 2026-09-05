@@ -188,9 +188,10 @@ export default function Page() {
 
         <h2>Tables</h2>
         <p>
-          Tables are Copy 14 with tabular numerals. The separator sits on the
-          cell, so appending a row never needs a rule to change, and the first
-          column sits flush with the prose.
+          Tables match the table component: Heading 14 header cells, Label 14
+          body cells with tabular numerals, and a hover on each row. The
+          separator sits on the cell, so appending a row never needs a rule to
+          change.
         </p>
         <table>
           <thead>

@@ -517,19 +517,19 @@
 }
 
 @utility text-heading-64 {
-  @apply font-sans text-[64px] leading-[64px] font-[450] tracking-[-3.84px];
+  @apply font-sans text-[64px] leading-[64px] font-[450] tracking-[-2.56px];
 }
 
 @utility text-heading-56 {
-  @apply font-sans text-[56px] leading-[56px] font-[450] tracking-[-3.36px];
+  @apply font-sans text-[56px] leading-[56px] font-[450] tracking-[-2.24px];
 }
 
 @utility text-heading-48 {
-  @apply font-sans text-[48px] leading-[56px] font-[450] tracking-[-2.88px];
+  @apply font-sans text-[48px] leading-[56px] font-[450] tracking-[-1.92px];
 }
 
 @utility text-heading-40 {
-  @apply font-sans text-[40px] leading-[48px] font-[450] tracking-[-2.4px];
+  @apply font-sans text-[40px] leading-[48px] font-[450] tracking-[-1.6px];
 }
 
 @utility text-heading-32 {

@@ -1,0 +1,49 @@
+---
+title: Introducing ziiz
+description: A design layer other apps can consume, and the playground that dogfoods it.
+date: 2026-09-06
+---
+
+ziiz started as one Next.js app that looked good. It had a Geist-style color ramp, a set of named type roles, a handful of elevation materials, and 62 components migrated onto all three. The problem was that none of it could leave the repo. The tokens, the components and the site were the same code.
+
+This post is about what changed, and what ziiz is now.
+
+## Two things, at two speeds
+
+A design system has two kinds of material in it, and they change at different rates.
+
+The **token layer** is the ramp, the type roles, the materials and the prose rules. It wants versioned updates. When Color 9 shifts a step, every app on the system should pick that up by bumping a dependency, not by re-copying a file.
+
+The **components** are the opposite. An app wants to own its button. It edits the file, adds a variant, deletes what it does not need. A component that updates itself from upstream is a component nobody trusts.
+
+So ziiz ships them differently. The token layer is a package, `@ziiz/theme`, and it is one stylesheet:
+
+```css title="app/globals.css"
+@import "tailwindcss";
+@import "@ziiz/theme/theme.css";
+```
+
+The components are a [shadcn registry](/installation#components). You point `components.json` at it and add what you need by name. What you get is a file.
+
+```bash
+npx shadcn@latest add @ziiz/button
+```
+
+## What the theme is
+
+The stylesheet is import-free. It has no dependency on a docs framework, a bundler plugin or a component library, which is the property that lets ziiz choose its own tooling without pushing it downstream. It defines four things.
+
+| Layer     | What it is                                                             |
+| --------- | ---------------------------------------------------------------------- |
+| Ramp      | Ten steps of gray with an alpha twin, and seven accent hues.           |
+| Type      | 31 roles: Heading, Button, Label and Copy at fixed pixel sizes.        |
+| Materials | Eight compositions of ring, shadow and radius, from `base` to `modal`. |
+| Prose     | One `typeset` class that binds bare HTML to the roles above.           |
+
+Stock Tailwind colors are switched off. Only the ramp compiles, so a stray `bg-slate-100` produces no CSS at all instead of shipping a color the system does not have.
+
+## What the app is
+
+This site is the playground. Every component has a chrome-less preview route that the docs embed, the registry is built from the working tree on every dev start, and the pages you are reading are typeset by the same prose layer the package exports. When something looks wrong here, it is wrong in the layer, and the fix ships to every consumer.
+
+The first consumer outside this repo is next. That is the only honest test of the seam.

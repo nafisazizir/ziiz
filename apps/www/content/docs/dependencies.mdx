@@ -1,0 +1,22 @@
+---
+title: Dependencies
+description: "The components/ui import graph in topological order: which components to migrate first."
+---
+
+import {
+  DependencyGraph,
+  DependencyStatus,
+} from "@/components/dependency-graph"
+
+Every component in `components/ui`, its internal imports, and the topological order for the ramp-vocabulary migration: each tier depends only on the tiers above it, so working top to bottom means every component is validated against parts that are already done.
+
+Scanned from the working tree at render time. <DependencyStatus /> Within a tier, components with the most dependents come first: they unlock the most downstream work.
+
+<DependencyGraph />
+
+## How status is read
+
+- A component is `clean` when it carries no off-system classes of any tracked kind: shadcn slot aliases, raw type, bare shadows, and raw shape. The dot and the meter track all four. Clean is necessary, not sufficient: the on-touch pass also covers judgment calls (hover steps, material assignment) no scan can verify.
+- _Aliases_ are classes that resolve through the shadcn slot layer (`bg-muted`, `text-primary-foreground`, `border-input`, …). _Raw type_ counts Tailwind size, weight, tracking and leading utilities (`text-sm`, `font-medium`, `tracking-widest`, `leading-none`, literal `text-[0.8rem]`), which the migration replaces with the 31 named type roles. _Shadows_ counts bare and arbitrary `shadow-*` utilities: the ramp already remaps the named values, but elevation should land as a composed `material-*`. _Raw shape_ counts literal border and radius values (`rounded-[2px]`, `border-[1.5px]`) that bypass the radius scale — the generic `rounded-*` scale, structural border widths, and token-derived arbitraries like `rounded-[min(var(--radius-md),8px)]` are sanctioned and stay unflagged.
+- Edges are `@/components/ui/*` imports between files, so `buttonVariants`-style imports count the same as component imports; a re-style of button still reaches the dependent.
+- Call sites count files under `app/`, `components/`, `hooks/` and `lib/` that import the component: the surfaces (including `/preview`) where a migration can be visually validated.

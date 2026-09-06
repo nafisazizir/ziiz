@@ -1,0 +1,98 @@
+---
+title: Materials
+description: Elevation presets combining background, border, shadow, and radius.
+---
+
+import { MaterialList } from "@/components/material-scale"
+
+## Surface
+
+Four levels of elevation for elements that sit in the page. Radius steps up with elevation.
+
+<div data-not-typeset>
+  <MaterialList
+    items={[
+      {
+        className: "material-base",
+        name: "Base",
+        radius: "rounded-md",
+        usage:
+          "The resting surface: hairline border, no shadow. Inputs and flush containers.",
+      },
+      {
+        className: "material-small",
+        name: "Small",
+        radius: "rounded-md",
+        usage: "A subtle lift for small cards and wells at rest.",
+      },
+      {
+        className: "material-medium",
+        name: "Medium",
+        radius: "rounded-xl",
+        usage: "Raised surfaces: cards at rest or on hover.",
+      },
+      {
+        className: "material-large",
+        name: "Large",
+        radius: "rounded-xl",
+        usage: "The most elevated on-page surface.",
+      },
+    ]}
+  />
+</div>
+
+## Floating
+
+Four levels of elevation for elements that float above the page, ordered from closest to furthest off the surface.
+
+<div data-not-typeset>
+  <MaterialList
+    items={[
+      {
+        className: "material-tooltip",
+        name: "Tooltip",
+        radius: "rounded-md",
+        usage:
+          "The lightest floating material, and the only floating element that carries an arrow stem.",
+      },
+      {
+        className: "material-menu",
+        name: "Menu",
+        radius: "rounded-md",
+        usage: "Dropdown and context menus, selects, comboboxes.",
+      },
+      {
+        className: "material-modal",
+        name: "Modal",
+        radius: "rounded-xl",
+        usage: "Dialogs and command menus, floating above an overlay.",
+      },
+      {
+        className: "material-fullscreen",
+        name: "Fullscreen",
+        radius: "rounded-xl",
+        usage: "The highest elevation: sheets and fullscreen takeovers.",
+      },
+    ]}
+  />
+</div>
+
+## Best practices
+
+### When to use
+
+- Reach for a material instead of composing background, border, shadow, and radius by hand. The class encodes the elevation role, not just the look.
+- Pick the type from where the element sits in the layered hierarchy: `base` and `small` for resting surfaces, `medium` and `large` for raised content, `tooltip` and `menu` for popovers, `modal` and `fullscreen` for takeovers.
+- Never stack two materials on the same element. If a child needs more lift, it becomes its own material one tier up.
+
+### Behavior
+
+- Keep the elevation choice in step with the element's `z-index` band, so a `tooltip`-typed surface never renders visually beneath a `base` card.
+- Favor the lowest tier that still reads as separated from its background; over-elevating is the most common source of visual noise.
+- Don't override a material's shadow or radius inline. If a surface needs different chrome, it belongs to a different tier.
+
+### Accessibility
+
+- Materials are decorative chrome. Semantics live on the role-bearing element: `role="dialog"` on a modal, `role="tooltip"` on a tooltip, never on the class.
+- Elevation is never the only signal: pair floating surfaces with focus management, and keep the focus ring on interactive children inside.
+- Check both themes. Dark shadows use higher opacities than light, yet still barely register against a black page; in dark, separation comes from the hairline ring, so verify it reads wherever the material lands.

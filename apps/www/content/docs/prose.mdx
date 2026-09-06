@@ -1,0 +1,198 @@
+---
+title: Prose
+description: "The prose layer: one class that typesets long-form content onto the type roles."
+---
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
+
+## Usage
+
+Add `typeset` to a container. Every heading, paragraph, list, link, code span and table inside binds to a type role with a fixed rhythm, so a docs body, a blog article or rendered markdown is plain elements with no classes.
+
+```tsx
+<article className="typeset">
+  <h1>Title</h1>
+  <p>Body copy on Copy 16, headings on the article scale.</p>
+</article>
+```
+
+Every rule is scoped with `:where()`, so a utility on the element still wins, and a subtree marked `not-typeset` opts out entirely. Rhythm is set by two custom properties, `--typeset-flow` between blocks and `--typeset-section` above a section heading. Everything below this line is one typeset body, written as bare elements.
+
+---
+
+# Heading 1 binds to Heading 40
+
+The first heading level inside a body is the page-title role. This paragraph is Copy 16 on Color 9. Every block sits 24px below the one before it, headings included.
+
+A second paragraph keeps the flow gap. Inline semantics bind too: **strong is the Copy role's Strong modifier**, _emphasis stays italic_, `code` becomes a chip, <kbd>⌘</kbd> <kbd>K</kbd> is a key cap, <mark>mark highlights</mark>, and <abbr title="Cascading Style Sheets">abbreviations</abbr> carry a dotted underline. A [link](#lists) is underlined on the text color, never on the accent.
+
+## Heading 2 binds to Heading 32
+
+Section headings take the section gap above, 72px by default. The role is applied as is: no weight, size or leading is overridden, so a heading here is identical to the same role anywhere in the app. A `code` span inside a heading keeps its Copy 13 Mono role too.
+
+### Heading 3 binds to Heading 24
+
+Subsections take 64px above.
+
+#### Heading 4 binds to Heading 20
+
+Minor headings take 48px above.
+
+##### Heading 5 binds to Heading 16, Heading 6 to 14
+
+The smallest steps, 32px above, for run-in labels inside a subsection.
+
+## Lists [#lists]
+
+Unordered lists use a disc, then a circle when nested.
+
+- The marker sits on Color 6, a step lighter than the body.
+- Items are 8px apart with 8px of padding after the marker, and a nested list keeps that gap.
+  - Nested items use a circle.
+  - They indent by the same 20px as the parent.
+- A block inside an item takes the item gap, whether it follows text or not.
+
+  Like this paragraph.
+
+Ordered lists use decimals.
+
+1. Read the roadmap.
+2. Cut the seam.
+3. Ship the layer.
+
+Definition lists set the term on Color 10 and indent the detail.
+
+<dl>
+  <dt>Role</dt>
+  <dd>A named combination of size, leading, tracking and weight.</dd>
+  <dt>Ramp</dt>
+  <dd>The ten-step scale every color in the system is drawn from.</dd>
+</dl>
+
+## Quotes, rules and disclosures
+
+A blockquote is a pull quote: the text sits on Heading 24 with hanging quote marks drawn by the layer, and a trailing `footer` carries the attribution, with `cite` for the name. It takes half the section gap above and below.
+
+<blockquote>
+  <p>
+    {
+      "Minting short-lived tokens instead of keeping provider credentials in paused sandboxes has removed a whole class of security risk for us."
+    }
+  </p>
+  <footer>
+    {
+      <>
+        <cite>Fraser Brown</cite> BuildPass
+      </>
+    }
+  </footer>
+</blockquote>
+
+Disclosures take the Accordion component's shape on the body role, with no hairline between rows. Adjacent ones stack; each opens on its own, since markdown cannot group them.
+
+<details>
+  <summary>Is this a native details element?</summary>
+  <p>
+    {
+      "Yes. The summary is the trigger with the chevron at the end, and this content sits flush beneath it with 16px below, the same as the accordion panel."
+    }
+  </p>
+  <p>A second paragraph keeps the panel's 16px gap.</p>
+</details>
+
+<details>
+  <summary>What does it not do?</summary>
+  <p>
+    {
+      "It does not animate open and closed, and it does not close its siblings when opened. Both need the component."
+    }
+  </p>
+</details>
+
+<details>
+  <summary>Where does the look come from?</summary>
+  <p>
+    {
+      "The Accordion component is the source of truth; the prose layer mirrors it by hand."
+    }
+  </p>
+</details>
+
+---
+
+A horizontal rule is a 1px line on Color 2 with 80px above, 160px on wide screens, marking a break larger than any section.
+
+## Code
+
+Inline code is the Copy 13 Mono chip on Color 1. Code blocks are Copy 13 Mono on Background 2 with a hairline and 16px of padding. Syntax color is a pipeline concern and lands on the tokens inside; the surface is the same everywhere.
+
+```css
+@import "@ziiz/theme/theme.css";
+
+.article {
+  --typeset-flow: 1rem;
+  --typeset-section: 4rem;
+}
+```
+
+## Tables
+
+Tables match the table component: Heading 14 header cells, Label 14 body cells with tabular numerals, and a hover on each row. The separator sits on the cell, so appending a row never needs a rule to change.
+
+| Element       | Role       | Gap above |
+| ------------- | ---------- | --------- |
+| h1            | Heading 40 | 72px      |
+| h2            | Heading 32 | 72px      |
+| h3            | Heading 24 | 64px      |
+| h4            | Heading 20 | 48px      |
+| p, ul, ol, dl | Copy 16    | 24px      |
+| pre, table    | inherits   | 28px      |
+| blockquote    | Heading 24 | 36px      |
+| figure        | inherits   | 40px      |
+
+## Figures
+
+<figure>
+  <div className="flex h-40 items-center justify-center rounded-lg bg-gray-100 text-label-13 text-gray-900">
+    {"image or embed"}
+  </div>
+  <figcaption>
+    {
+      "A figure takes 40px above and below; its caption is Copy 14 on Color 9, centered, 16px below."
+    }
+  </figcaption>
+</figure>
+
+## Opting out
+
+A component with its own chrome sits inside a body by marking its root `not-typeset`. Nothing inside it inherits paragraph margins, link underlines or code chips. The alert below is stock; the button next to it is a plain component in a plain paragraph and needs no marker because no rule targets it.
+
+<Alert data-not-typeset className="mt-4">
+  <AlertTitle>Stock alert inside a typeset body</AlertTitle>
+  <AlertDescription>
+    Its <code>code</code> and <a href="#lists">link</a> render as the component
+    styles them, not as prose.
+  </AlertDescription>
+</Alert>
+
+<p>
+  <Button variant="secondary" size="sm">
+    {"A button in a paragraph"}
+  </Button>
+</p>
+
+## Density
+
+The two rhythm properties are the only knobs. The block below sets `--typeset-flow` to 12px and `--typeset-section` to 32px on a nested container, and everything inside tightens.
+
+<section className="mt-4 rounded-lg border p-4 [--typeset-flow:0.75rem] [--typeset-section:2rem]">
+  <h3>A denser body</h3>
+  <p>Paragraphs sit 12px apart instead of 24px.</p>
+  <p>Section headings pull in from 72px to 32px, subsections to 28px.</p>
+  <h3>Another section</h3>
+  <ul>
+    <li>Lists keep their own 8px item gap.</li>
+    <li>Only the two properties changed.</li>
+  </ul>
+</section>

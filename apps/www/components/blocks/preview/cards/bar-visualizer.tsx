@@ -118,6 +118,7 @@ function useMultibandVolume(
     if (!mediaStream) {
       const emptyBands = new Array(bands).fill(0)
       bandsRef.current = emptyBands
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFrequencyBands(emptyBands)
       return
     }
@@ -237,6 +238,7 @@ const useBarAnimator = (
 
   React.useEffect(() => {
     indexRef.current = 0
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentFrame(sequence[0] || [])
   }, [sequence])
 
@@ -340,6 +342,7 @@ const BarVisualizerComponent = React.forwardRef<
       if (state !== "speaking" && state !== "listening") {
         const bands = new Array(barCount).fill(0.2)
         fakeVolumeBandsRef.current = bands
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setFakeVolumeBands(bands)
         return
       }

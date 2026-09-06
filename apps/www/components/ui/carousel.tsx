@@ -96,6 +96,9 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return
+    // Embla is the external system here; reading its state once on mount is
+    // the subscribe-and-sync pattern the rule cannot see through.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     onSelect(api)
     api.on("reInit", onSelect)
     api.on("select", onSelect)

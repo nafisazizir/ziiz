@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import {
   DEFAULT_ITEM,
   getPlaygroundItem,
-  PLAYGROUND_ITEMS,
+  PALETTE_ITEMS,
   type PlaygroundItem,
 } from "@/lib/playground"
 import {
@@ -19,8 +19,8 @@ import {
   CommandList,
 } from "@/components/ui/command"
 
-const BLOCKS = PLAYGROUND_ITEMS.filter((item) => item.type === "block")
-const EXAMPLES = PLAYGROUND_ITEMS.filter((item) => item.type === "example")
+const BLOCKS = PALETTE_ITEMS.filter((item) => item.type === "block")
+const EXAMPLES = PALETTE_ITEMS.filter((item) => item.type === "example")
 
 // Same search keywords as /create's action menu, so e.g. "block" or
 // "component" narrows to the right group.

@@ -12,3 +12,8 @@ export const DEFAULT_ITEM = "preview"
 export function getPlaygroundItem(name: string | null | undefined) {
   return PREVIEW_ITEMS.find((item) => item.name === name) ?? null
 }
+
+/** Blocks and examples only; demos are inline docs material. */
+export const PALETTE_ITEMS = PREVIEW_ITEMS.filter(
+  (item) => item.type !== "demo"
+)

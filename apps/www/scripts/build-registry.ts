@@ -1,13 +1,15 @@
 // Emits the registry manifest from the filesystem, then hands it to
 // `shadcn build` to inline file contents into public/r/<name>.json.
 //
-// Only the base components are published:
+// What is published:
 //
-//   components/ui/<name>.tsx  -> registry:ui
-//   hooks/use-mobile.ts       -> registry:hook (sidebar imports it)
+//   components/ui/<name>.tsx    -> registry:ui
+//   components/docs/<name>.tsx  -> registry:component, installed to
+//                                  components/docs/ (explicit target)
+//   hooks/use-mobile.ts         -> registry:hook (sidebar imports it)
 //
-// Blocks, examples and the preview are app-internal and never enter the
-// registry; scripts/build-previews.ts owns them.
+// Blocks, examples, demos and the preview are app-internal and never enter
+// the registry; scripts/build-previews.ts owns them.
 //
 // Dependencies are read off each file's imports: `@/components/ui/x` becomes
 // a registryDependency on `x`, a bare specifier becomes an npm dependency.
@@ -22,11 +24,12 @@ const ROOT = process.cwd()
 const REGISTRY_JSON = path.join(ROOT, "registry.json")
 const REGISTRY_OUT = path.join(ROOT, "public/r")
 
-type ItemType = "registry:ui" | "registry:hook"
+type ItemType = "registry:ui" | "registry:component" | "registry:hook"
 
 type RegistryFile = {
   path: string
   type: ItemType
+  target?: string
 }
 
 type RegistryItem = {
@@ -93,7 +96,7 @@ function collectDependencies(
       if (IMPLICIT_ALIASES.has(specifier)) continue
 
       if (specifier.startsWith("@/")) {
-        const ui = specifier.match(/^@\/components\/ui\/([a-z0-9-]+)$/)
+        const ui = specifier.match(/^@\/components\/(?:ui|docs)\/([a-z0-9-]+)$/)
         if (ui) {
           if (ui[1] !== self) registryDependencies.add(ui[1])
           continue
@@ -119,13 +122,22 @@ function collectDependencies(
   }
 }
 
-function item(name: string, type: ItemType, files: string[]): RegistryItem {
+function item(
+  name: string,
+  type: ItemType,
+  files: string[],
+  target?: (file: string) => string
+): RegistryItem {
   return {
     name,
     type,
     title: titleFromName(name),
     ...collectDependencies(files, name),
-    files: files.map((file) => ({ path: rel(file), type })),
+    files: files.map((file) => ({
+      path: rel(file),
+      type,
+      ...(target ? { target: target(file) } : {}),
+    })),
   }
 }
 
@@ -140,13 +152,29 @@ function buildItems(): RegistryItem[] {
       item(f.replace(/\.tsx$/, ""), "registry:ui", [path.join(uiDir, f)])
     )
 
+  // Doc primitives keep their docs/ subfolder on install; without a target
+  // the CLI would drop them straight into components/.
+  const docsDir = path.join(ROOT, "components/docs")
+  const docs = fs
+    .readdirSync(docsDir)
+    .filter((f) => f.endsWith(".tsx"))
+    .sort()
+    .map((f) =>
+      item(
+        f.replace(/\.tsx$/, ""),
+        "registry:component",
+        [path.join(docsDir, f)],
+        (file) => `components/docs/${path.basename(file)}`
+      )
+    )
+
   const hooks = [
     item("use-mobile", "registry:hook", [
       path.join(ROOT, "hooks/use-mobile.ts"),
     ]),
   ]
 
-  return [...ui, ...hooks]
+  return [...ui, ...docs, ...hooks]
 }
 
 function writeManifest(items: RegistryItem[]) {
@@ -161,6 +189,9 @@ function writeManifest(items: RegistryItem[]) {
 
 function verifyCoverage(items: RegistryItem[]) {
   const names = new Set(items.map((i) => i.name))
+  if (names.size !== items.length) {
+    throw new Error("registry: duplicate item names across ui/docs/hooks")
+  }
   for (const i of items) {
     for (const dep of i.registryDependencies ?? []) {
       if (!names.has(dep)) {

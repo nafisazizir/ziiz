@@ -1,0 +1,50 @@
+---
+title: Prose in one stylesheet
+description: The typeset class, and why long-form content needs no components.
+date: 2026-09-05
+---
+
+Rendered markdown is the hardest surface a design system has to cover. The elements are decided by an author who is not thinking about the system, the nesting is arbitrary, and every docs framework wants to hand you a component map so it can inject its own typography.
+
+ziiz does it with one class.
+
+```tsx
+<article className="typeset">{children}</article>
+```
+
+Inside that container, every heading, paragraph, list, link, code span, table, blockquote, figure and definition list binds to a type role with a fixed rhythm. The elements carry no classes. The MDX component map carries behavior only: heading anchors, a copy button on code, a scroll wrapper on wide tables.
+
+## Zero specificity, on purpose
+
+Every rule is written as `.typeset :where(p)`. The `:where()` pseudo-class contributes nothing to specificity, so the whole layer sits at the weight of a single class. Any utility on an element wins.
+
+```tsx
+<article className="typeset">
+  <p>Copy 16 on Color 9, from the layer.</p>
+  <p className="text-copy-14 text-gray-1000">Overridden, per element.</p>
+</article>
+```
+
+A subtree that should not be typeset at all opts out with `not-typeset` or `data-not-typeset`. A component preview, a live demo, a callout: they mark themselves out and render as they would anywhere else.
+
+> The structure is shadcn's typeset, verbatim. The bindings are ours. Diffing the file against shadcn's shows exactly what differs, and nothing else.
+
+## Two knobs
+
+Rhythm is two custom properties. `--typeset-flow` is the gap between blocks, 24px. `--typeset-section` is the gap above a section heading, 72px. The smaller heading levels take fractions of the section gap, so moving one knob moves all of them together.
+
+| Element | Role       | Space above |
+| ------- | ---------- | ----------- |
+| `h1`    | Heading 40 | section     |
+| `h2`    | Heading 32 | section     |
+| `h3`    | Heading 24 | 8/9 section |
+| `h4`    | Heading 20 | 2/3 section |
+| `p`     | Copy 16    | flow        |
+
+Those numbers come from reading long articles rather than from a ratio. The section gap is wide enough that a heading reads as a break, not as a large paragraph.
+
+## Where it lives
+
+The prose layer is inside `theme.css`, in the package, and not inside the docs route. That was the decision that mattered. This blog renders through the same rules the docs do, and so does anything a consumer sets in `typeset`. Build it in the app and it moves to the package three weeks later, once the second surface shows up.
+
+The second surface showed up. You are reading it.

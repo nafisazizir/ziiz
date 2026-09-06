@@ -12,12 +12,17 @@ export function DocsSidebar() {
   return (
     <aside className="sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block">
       <nav className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10">
+        <SidebarGroup label="Getting started">
+          {siteConfig.startItems.map((item) => (
+            <SidebarItem key={item.href} item={item} pathname={pathname} />
+          ))}
+        </SidebarGroup>
         <SidebarGroup label="Foundation">
           {siteConfig.foundationItems.map((item) => (
             <SidebarItem key={item.href} item={item} pathname={pathname} />
           ))}
         </SidebarGroup>
-        <SidebarGroup label="Components">
+        <SidebarGroup label="Components" href="/components">
           {siteConfig.componentItems.map((item) => (
             <SidebarItem key={item.href} item={item} pathname={pathname} />
           ))}
@@ -35,7 +40,7 @@ function SidebarItem({
   pathname: string
 }) {
   const isActive =
-    item.href === "/" ? pathname === item.href : pathname.startsWith(item.href)
+    item.href === "/" ? pathname === item.href : pathname === item.href
 
   return (
     <li>
@@ -56,15 +61,23 @@ function SidebarItem({
 
 function SidebarGroup({
   label,
+  href,
   children,
 }: {
   label: string
+  href?: string
   children: React.ReactNode
 }) {
   return (
     <div className="flex flex-col gap-1 pb-6">
       <div className="flex h-8 items-center px-2.5 text-label-13 text-gray-900">
-        {label}
+        {href ? (
+          <Link href={href} className="hover:text-gray-1000">
+            {label}
+          </Link>
+        ) : (
+          label
+        )}
       </div>
       <ul className="flex flex-col gap-0.5">{children}</ul>
     </div>

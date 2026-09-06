@@ -4,10 +4,24 @@ import * as React from "react"
 import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-export function CodeBlock(props: React.ComponentPropsWithoutRef<"pre">) {
-  const preRef = React.useRef<HTMLPreElement>(null)
+// The chrome around a <pre>: an optional title bar and a copy button. The
+// pre itself is typeset by the prose layer; this only positions. Pass the
+// raw source as `value` when the rendered text is not what should be
+// copied (line numbers, diff markers).
+function CodeBlock({
+  title,
+  value,
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"figure"> & {
+  title?: string
+  value?: string
+}) {
+  const figureRef = React.useRef<HTMLElement>(null)
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
   const [copied, setCopied] = React.useState(false)
 
@@ -19,11 +33,11 @@ export function CodeBlock(props: React.ComponentPropsWithoutRef<"pre">) {
   )
 
   async function copy() {
-    const value = preRef.current?.textContent
-    if (!value) return
+    const text = value ?? figureRef.current?.querySelector("pre")?.textContent
+    if (!text) return
 
     try {
-      await navigator.clipboard.writeText(value)
+      await navigator.clipboard.writeText(text)
     } catch {
       return
     }
@@ -34,14 +48,17 @@ export function CodeBlock(props: React.ComponentPropsWithoutRef<"pre">) {
   }
 
   return (
-    <div className="typeset-code">
-      <pre
-        {...props}
-        ref={preRef}
-        role="region"
-        tabIndex={0}
-        aria-label={props["aria-label"] ?? "Scrollable code block"}
-      />
+    <figure
+      ref={figureRef}
+      data-slot="code-block"
+      data-titled={title ? "true" : undefined}
+      className={className}
+      {...props}
+    >
+      {title ? (
+        <figcaption data-slot="code-block-title">{title}</figcaption>
+      ) : null}
+      {children}
       <Button
         type="button"
         variant="ghost"
@@ -59,6 +76,8 @@ export function CodeBlock(props: React.ComponentPropsWithoutRef<"pre">) {
           {copied ? "Copied" : ""}
         </span>
       </Button>
-    </div>
+    </figure>
   )
 }
+
+export { CodeBlock }

@@ -1,0 +1,45 @@
+---
+title: Fixed pixels
+description: Why the 31 type roles are set in pixels, and what that buys.
+date: 2026-08-20
+---
+
+Every text in ziiz is one of 31 roles. `text-heading-32`, `text-copy-16`, `text-label-13-mono`. A role is a combination of size, line height, letter spacing and weight, and it is applied with one class. There is no `text-lg font-medium tracking-tight leading-snug` anywhere in the components.
+
+The roles are in pixels. Not rem, not an em scale off a base size. This post is the argument for that.
+
+## Roles, not scales
+
+A type scale gives you sizes and leaves the rest to you. Every call site then decides its own weight and leading, and two paragraphs on the same page drift apart because one author wrote `leading-6` and another wrote `leading-relaxed`.
+
+A role decides all four properties at once and names the combination after what it is for. Copy is for reading, Label is for scanning, Heading is for structure, Button is for a control. When a component needs text, the question is "which role" and not "which four utilities".
+
+```tsx
+<p className="text-copy-16">
+  Body copy. <strong>Strong</strong> is a modifier of the role, not a separate
+  size.
+</p>
+```
+
+The `<strong>` there gets the Copy role's Strong weight. No class needed. That is a role carrying its own modifier, and it is how the prose layer sets bold text in an article without a component map.
+
+## Why pixels
+
+Three reasons, in the order they mattered.
+
+1. **The roles are the system.** A role named `heading-32` should be 32 pixels tall. If it were `2rem` and a consumer set the root font size to 15px, the role would be 30 pixels and the name would be a lie.
+2. **Everything else is fixed too.** The ramp is fixed color values. The materials are fixed shadows and rings. A 1px hairline does not scale with the root font, and neither does a 44px table header. Type that scaled while nothing else did would drift against its own components.
+3. **Prose binds to the same roles.** The `typeset` class maps `h2` to Heading 32 and `p` to Copy 16, so an article and an app page share one vocabulary. Relative units would need a second scale for prose, and the two would disagree.
+
+Zoom still works. Browser zoom scales pixels. What the roles opt out of is the root-font-size knob, which in practice nobody sets on purpose and everybody inherits by accident.
+
+## The count
+
+| Family  | Roles                                                      |
+| ------- | ---------------------------------------------------------- |
+| Heading | 72, 64, 56, 48, 40, 32, 24, 20, 16, 14                     |
+| Button  | 16, 14, 12                                                 |
+| Label   | 20, 18, 16, 16 mono, 14, 14 mono, 13, 13 mono, 12, 12 mono |
+| Copy    | 24, 20, 18, 16, 14, 14 mono, 13, 13 mono                   |
+
+Thirty-one. Not a round number, and not a scale with a ratio. Each one exists because a component needed it, and a role that nothing uses gets deleted.

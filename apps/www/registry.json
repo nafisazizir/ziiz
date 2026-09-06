@@ -972,6 +972,120 @@
       ]
     },
     {
+      "name": "callout",
+      "type": "registry:component",
+      "title": "Callout",
+      "dependencies": [
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "alert"
+      ],
+      "files": [
+        {
+          "path": "components/docs/callout.tsx",
+          "type": "registry:component",
+          "target": "components/docs/callout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:component",
+      "title": "Code Block",
+      "dependencies": [
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/docs/code-block.tsx",
+          "type": "registry:component",
+          "target": "components/docs/code-block.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-collapsible",
+      "type": "registry:component",
+      "title": "Code Collapsible",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "components/docs/code-collapsible.tsx",
+          "type": "registry:component",
+          "target": "components/docs/code-collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-tabs",
+      "type": "registry:component",
+      "title": "Code Tabs",
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "components/docs/code-tabs.tsx",
+          "type": "registry:component",
+          "target": "components/docs/code-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "component-preview",
+      "type": "registry:component",
+      "title": "Component Preview",
+      "files": [
+        {
+          "path": "components/docs/component-preview.tsx",
+          "type": "registry:component",
+          "target": "components/docs/component-preview.tsx"
+        }
+      ]
+    },
+    {
+      "name": "component-source",
+      "type": "registry:component",
+      "title": "Component Source",
+      "dependencies": [
+        "@ziiz/theme",
+        "node:fs",
+        "node:path",
+        "shiki"
+      ],
+      "registryDependencies": [
+        "code-block",
+        "code-collapsible"
+      ],
+      "files": [
+        {
+          "path": "components/docs/component-source.tsx",
+          "type": "registry:component",
+          "target": "components/docs/component-source.tsx"
+        }
+      ]
+    },
+    {
+      "name": "steps",
+      "type": "registry:component",
+      "title": "Steps",
+      "files": [
+        {
+          "path": "components/docs/steps.tsx",
+          "type": "registry:component",
+          "target": "components/docs/steps.tsx"
+        }
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "title": "Use Mobile",

@@ -3,8 +3,9 @@ import { Geist_Mono } from "next/font/google"
 import localFont from "next/font/local"
 
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import { siteConfig } from "@/lib/config"
 import { cn } from "@/lib/utils"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = localFont({
   src: [
@@ -24,11 +25,12 @@ const fontMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "ziiz",
-    template: "%s — ziiz",
+    default: siteConfig.name,
+    template: `%s — ${siteConfig.name}`,
   },
-  description: "A design-system exploration.",
+  description: siteConfig.description,
 }
 
 export default function RootLayout({

@@ -3,11 +3,13 @@ import path from "node:path"
 
 import registry from "@/registry.json"
 
-export type RegistryItemType = "registry:ui" | "registry:hook"
+export type RegistryItemType =
+  "registry:ui" | "registry:component" | "registry:hook"
 
 export type RegistryFile = {
   path: string
   type: RegistryItemType
+  target?: string
 }
 
 export type RegistryItem = {
@@ -24,6 +26,13 @@ export type RegistryItemWithContent = Omit<RegistryItem, "files"> & {
 }
 
 export const registryItems = registry.items as RegistryItem[]
+
+/** Registry namespace and the URL a consumer's components.json points at. */
+export const registryNamespace = "@ziiz"
+
+export function getRegistryUrl(siteUrl: string) {
+  return `${siteUrl}/r/{name}.json`
+}
 
 export function getRegistryItem(name: string | null | undefined) {
   return registryItems.find((item) => item.name === name) ?? null

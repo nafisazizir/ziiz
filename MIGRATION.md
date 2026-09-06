@@ -8,16 +8,11 @@ questions and the per-component decision log.
 
 ## Open questions (resolve before the component that hits them)
 
-- /materials Surface-tier copy is stale after card settled flat (2026-08-16):
-  material-medium still says "Raised surfaces: cards at rest or on hover" and
-  material-small "small cards and wells at rest", but in-page surfaces are now
-  flat by decision and no ui component uses a Surface material. Reconcile the
-  docs page with the human. (The material-tooltip flag from tooltip's pass is
-  resolved: chart's pass re-homed material-tooltip onto the chart tooltip
-  bubble on 2026-08-16, though the "carries an arrow stem" copy is now stale —
-  the chart tooltip has no arrow.) (Sidebar's pass applied card's flat plain-border
-  precedent on 2026-08-22 and uses no Surface material either, so the stale
-  copy stands unreconciled.)
+- ~~/materials Surface-tier copy stale after card settled flat~~ **Resolved
+  2026-09-06 (phase 1–3 audit):** `content/docs/materials.mdx` now states the
+  Surface tier is for application content only (no `components/ui` file uses
+  one; components sit flat), and the tooltip row no longer claims an arrow
+  stem.
 - Stock Tailwind palette leak: the theme overrides only steps 100–1000 of
   the 8 hues, so the default palette's other colors (`sky-*`, `yellow-*`,
   `*-50`, `*-950`, …) still compile and get used by accident (badge-example's
@@ -34,6 +29,12 @@ questions and the per-component decision log.
   since table has no future pass to absorb it. Hover steps elsewhere
   (`bg-gray-alpha-100` on button-ghost, dropdown-item, table row hover,
   marker) are unaffected — the corrected rule keeps hover at Color 1.
+  **Resolved 2026-09-06 (phase 1–3 audit):** `table`'s
+  `data-[state=selected]:bg-gray-alpha-300` patched to `bg-gray-alpha-200`
+  out of band. The roadmap's "27 `bg-background` in 16 `ui` files" debt item
+  is a false positive — every hit is the ramp's `bg-background-100`/`-200`,
+  not the shadcn `bg-background` alias (the component-graph regex already
+  excludes them). Nothing to sweep before the registry publishes.
 - Call-site alias sweep (2026-08-22, opened as `components/ui` hit 62/62): the
   shadcn compat layer in `globals.css` now has zero consumers inside `ui`, but
   197 alias classes remain across 63 files outside it (`app`, `components`,

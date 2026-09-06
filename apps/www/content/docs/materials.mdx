@@ -7,7 +7,7 @@ import { MaterialList } from "@/components/material-scale"
 
 ## Surface
 
-Four levels of elevation for elements that sit in the page. Radius steps up with elevation.
+Four levels of elevation for elements that sit in the page. Radius steps up with elevation. In-page ui components are flat by decision — a hairline border, no shadow — so no component in `components/ui` uses a Surface material. These tiers are for application content that needs a lift: dashboard panels, marketing wells, feature cards.
 
 <div data-not-typeset>
   <MaterialList
@@ -23,13 +23,14 @@ Four levels of elevation for elements that sit in the page. Radius steps up with
         className: "material-small",
         name: "Small",
         radius: "rounded-md",
-        usage: "A subtle lift for small cards and wells at rest.",
+        usage: "A subtle lift for small panels and wells in application content.",
       },
       {
         className: "material-medium",
         name: "Medium",
         radius: "rounded-xl",
-        usage: "Raised surfaces: cards at rest or on hover.",
+        usage:
+          "Raised application panels. Component cards stay flat and do not use this.",
       },
       {
         className: "material-large",
@@ -53,7 +54,7 @@ Four levels of elevation for elements that float above the page, ordered from cl
         name: "Tooltip",
         radius: "rounded-md",
         usage:
-          "The lightest floating material, and the only floating element that carries an arrow stem.",
+          "The lightest floating material: tooltips and the chart tooltip bubble.",
       },
       {
         className: "material-menu",

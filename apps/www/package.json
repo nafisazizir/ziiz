@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm registry:build && next dev",
-    "build": "pnpm registry:build && next build",
+    "build": "pnpm --filter @ziiz/theme build && pnpm registry:build && next build",
     "start": "next start",
     "lint": "eslint",
     "registry:build": "node scripts/build-registry.ts",

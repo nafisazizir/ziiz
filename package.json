@@ -8,6 +8,7 @@
     "build": "pnpm -r build",
     "start": "pnpm --filter www start",
     "lint": "pnpm -r lint",
+    "docs:check": "pnpm --filter www registry:build && pnpm --filter www docs:check",
     "typecheck": "pnpm --filter @ziiz/theme build && pnpm -r typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,css,md,mdx,mjs,json,yaml,yml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,css,md,mdx,mjs,json,yaml,yml}\""

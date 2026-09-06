@@ -52,7 +52,7 @@ function CodeBlock({
       ref={figureRef}
       data-slot="code-block"
       data-titled={title ? "true" : undefined}
-      className={cn("typeset-code", className)}
+      className={className}
       {...props}
     >
       {title ? (

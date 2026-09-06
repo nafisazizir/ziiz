@@ -1065,6 +1065,34 @@
       caption-side: bottom;
     }
 
+    /* The docs' CodeBlock figure takes the pre's flow margin; its chrome is
+       defined below, outside the typeset, so it renders the same anywhere. */
+    &:where([data-slot="code-block"]) {
+      margin-block-start: calc(var(--typeset-flow) + 0.25rem);
+    }
+    &:where([data-slot="code-block"] + *) {
+      margin-block-start: var(--typeset-flow);
+    }
+
+    /* Heading anchors, as the docs' heading map renders them. */
+    &:where([data-heading-anchor]) {
+      margin-inline-start: 0.4em;
+      color: var(--ds-gray-700);
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 150ms;
+    }
+    &:where(:is(h1, h2, h3, h4, h5, h6):hover [data-heading-anchor]),
+    &:where([data-heading-anchor]:focus-visible) {
+      opacity: 1;
+    }
+
+    /* Keyboard focus on scroll regions. */
+    &:where(:is(.typeset-scroll, pre):focus-visible) {
+      outline: 2px solid var(--ds-gray-600);
+      outline-offset: 4px;
+    }
+
     /* Tables. Mirrors components/ui/table.tsx: Heading 14 header cells,
        Label 14 body cells, middle alignment, row hover, tinted footer, no
        trailing rule. Padding is roomier than the component (12px / 16px vs
@@ -1191,6 +1219,59 @@
       )
     ) {
     margin-block-start: 0;
+  }
+}
+
+/* Code block chrome: the figure the docs' CodeBlock renders around a pre,
+   with an optional title bar and a copy button. Independent of .typeset so a
+   block inside a preview or a not-typeset region looks the same as one in an
+   article. Matches the typeset's bare pre. */
+@layer components {
+  [data-slot="code-block"] {
+    position: relative;
+  }
+  [data-slot="code-block"] :where(pre) {
+    @apply rounded-lg bg-background-200 text-copy-13-mono text-gray-1000;
+    border: 1px solid var(--ds-gray-alpha-400);
+    tab-size: 2;
+    direction: ltr;
+    padding: 1rem 3rem 1rem 1rem;
+    overflow-x: auto;
+    margin: 0;
+  }
+  [data-slot="code-block"] :where(pre code) {
+    background-color: transparent;
+    font: inherit;
+    padding: 0;
+    border-radius: 0;
+  }
+  [data-slot="code-block"][data-titled] {
+    @apply rounded-lg bg-background-200;
+    border: 1px solid var(--ds-gray-alpha-400);
+    overflow: hidden;
+  }
+  [data-slot="code-block"][data-titled] :where(pre) {
+    border: 0;
+    border-radius: 0;
+  }
+  [data-slot="code-block"] > figcaption {
+    @apply text-label-13-mono;
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    margin: 0;
+    padding-inline: 1rem 3rem;
+    border-block-end: 1px solid var(--ds-gray-alpha-400);
+    color: var(--ds-gray-900);
+    text-align: start;
+  }
+  [data-slot="code-block"] [data-copy-button] {
+    position: absolute;
+    inset-block-start: 0.5rem;
+    inset-inline-end: 0.5rem;
+  }
+  [data-slot="code-block"][data-titled] [data-copy-button] {
+    inset-block-start: 0.25rem;
   }
 }
 

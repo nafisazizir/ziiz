@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 
-import { Index } from "@/__registry__"
+import { Index } from "@/__previews__"
 import { getPlaygroundItem, PLAYGROUND_ITEMS } from "@/lib/playground"
 import { Toaster } from "@/components/ui/sonner"
 import { Toaster as BaseToaster } from "@/components/ui/toast"

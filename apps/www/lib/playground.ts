@@ -3,9 +3,9 @@
 export {
   PREVIEW_ITEMS as PLAYGROUND_ITEMS,
   type PreviewItem as PlaygroundItem,
-} from "@/__registry__"
+} from "@/__previews__"
 
-import { PREVIEW_ITEMS } from "@/__registry__"
+import { PREVIEW_ITEMS } from "@/__previews__"
 
 export const DEFAULT_ITEM = "preview"
 

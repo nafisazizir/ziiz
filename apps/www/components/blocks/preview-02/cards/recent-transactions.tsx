@@ -157,7 +157,7 @@ export function RecentTransactions() {
               </TableCell>
               <TableCell className="text-gray-900">Oct 12</TableCell>
               <TableCell className="text-right">
-                <span className="text-sm font-semibold text-emerald-500 tabular-nums">
+                <span className="text-sm font-semibold text-green-700 tabular-nums">
                   +$4,200.00
                 </span>
               </TableCell>

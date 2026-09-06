@@ -9,6 +9,8 @@ import { MaterialList } from "@/components/material-scale"
 
 Four levels of elevation for elements that sit in the page. Radius steps up with elevation.
 
+In-page surfaces in the component library are flat by decision: cards, sidebars, inputs and wells draw a hairline `border-gray-alpha-400` on `bg-background-100` and carry no shadow, so no `ui` component uses a Surface material today. The tiers remain available for content that genuinely needs to lift off the page — marketing sections, dashboards, previews — and for consumers whose surfaces are not flat.
+
 <div data-not-typeset>
   <MaterialList
     items={[
@@ -17,19 +19,19 @@ Four levels of elevation for elements that sit in the page. Radius steps up with
         name: "Base",
         radius: "rounded-md",
         usage:
-          "The resting surface: hairline border, no shadow. Inputs and flush containers.",
+          "The resting surface: hairline border, no shadow. Equivalent to what card and input draw by hand.",
       },
       {
         className: "material-small",
         name: "Small",
         radius: "rounded-md",
-        usage: "A subtle lift for small cards and wells at rest.",
+        usage: "A subtle lift for small panels that must separate from a busy background.",
       },
       {
         className: "material-medium",
         name: "Medium",
         radius: "rounded-xl",
-        usage: "Raised surfaces: cards at rest or on hover.",
+        usage: "Raised in-page content: feature panels and hover-lifted tiles.",
       },
       {
         className: "material-large",
@@ -53,7 +55,7 @@ Four levels of elevation for elements that float above the page, ordered from cl
         name: "Tooltip",
         radius: "rounded-md",
         usage:
-          "The lightest floating material, and the only floating element that carries an arrow stem.",
+          "The lightest floating material: tooltips and chart tooltips, sized to a single label.",
       },
       {
         className: "material-menu",
@@ -65,13 +67,14 @@ Four levels of elevation for elements that float above the page, ordered from cl
         className: "material-modal",
         name: "Modal",
         radius: "rounded-xl",
-        usage: "Dialogs and command menus, floating above an overlay.",
+        usage:
+          "Dialogs, drawers, sheets and toasts: anything that takes focus from the page.",
       },
       {
         className: "material-fullscreen",
         name: "Fullscreen",
         radius: "rounded-xl",
-        usage: "The highest elevation: sheets and fullscreen takeovers.",
+        usage: "The highest elevation, reserved for fullscreen takeovers.",
       },
     ]}
   />
@@ -82,7 +85,7 @@ Four levels of elevation for elements that float above the page, ordered from cl
 ### When to use
 
 - Reach for a material instead of composing background, border, shadow, and radius by hand. The class encodes the elevation role, not just the look.
-- Pick the type from where the element sits in the layered hierarchy: `base` and `small` for resting surfaces, `medium` and `large` for raised content, `tooltip` and `menu` for popovers, `modal` and `fullscreen` for takeovers.
+- Pick the type from where the element sits in the layered hierarchy: `base` and `small` for resting surfaces, `medium` and `large` for raised content, `tooltip` and `menu` for popovers, `modal` and `fullscreen` for takeovers. In the component library, `menu` and `modal` do nearly all the work.
 - Never stack two materials on the same element. If a child needs more lift, it becomes its own material one tier up.
 
 ### Behavior

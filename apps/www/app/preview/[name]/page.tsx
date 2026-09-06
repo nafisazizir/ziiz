@@ -1,10 +1,7 @@
 import { notFound } from "next/navigation"
 
-import {
-  getPlaygroundItem,
-  PLAYGROUND_ITEMS,
-  PLAYGROUND_LOADERS,
-} from "@/lib/playground"
+import { Index } from "@/__registry__"
+import { getPlaygroundItem, PLAYGROUND_ITEMS } from "@/lib/playground"
 import { Toaster } from "@/components/ui/sonner"
 import { Toaster as BaseToaster } from "@/components/ui/toast"
 
@@ -42,7 +39,7 @@ export default async function PreviewPage({
 }) {
   const { name } = await params
   const item = getPlaygroundItem(name)
-  const loader = PLAYGROUND_LOADERS[name]
+  const loader = Index[name]
 
   if (!item || !loader) {
     return notFound()

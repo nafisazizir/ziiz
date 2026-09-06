@@ -230,7 +230,7 @@ function TableWithBadges() {
               <strong>Implement API</strong>
             </TableCell>
             <TableCell>
-              <span className="inline-flex items-center rounded-full bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-700 dark:text-yellow-400">
+              <span className="inline-flex items-center rounded-full bg-amber-500/10 px-2 py-1 text-xs font-medium text-amber-700 dark:text-amber-400">
                 In Progress
               </span>
             </TableCell>

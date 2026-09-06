@@ -4,11 +4,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "pnpm registry:build && next dev",
+    "build": "pnpm registry:build && next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "fumadocs-mdx && tsc --noEmit"
+    "registry:build": "node scripts/build-registry.ts",
+    "typecheck": "pnpm registry:build && fumadocs-mdx && tsc --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

@@ -34,6 +34,14 @@
   --shadow-xl: var(--ds-shadow-xl);
   --shadow-2xl: var(--ds-shadow-2xl);
 
+  /* The ramp is the whole palette. Stock Tailwind colors (sky-*, yellow-*,
+     *-50, *-950 outside gray, ...) are wiped so an off-ramp class fails to
+     compile instead of silently painting. white/black survive for overlays
+     and content that must be literal (QR codes, mix-blend). */
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #000;
+
   --color-background-100: var(--ds-background-100);
   --color-background-200: var(--ds-background-200);
 

@@ -1,4 +1,6 @@
-// Generated from the shadcn/ui v4 registry (base). Blocks first, like /create's action menu.
+import type * as React from "react"
+import { REGISTRY_INDEX } from "../registry/__index__"
+import type { RegistryIndexItem } from "../registry/schema"
 
 export type PlaygroundItem = {
   name: string
@@ -6,80 +8,13 @@ export type PlaygroundItem = {
   type: "block" | "example"
 }
 
-export const PLAYGROUND_ITEMS: PlaygroundItem[] = [
-  { name: "preview", title: "Preview", type: "block" },
-  { name: "preview-02", title: "Preview 02", type: "block" },
-  { name: "preview-03", title: "Preview 03", type: "block" },
-  { name: "accordion-example", title: "Accordion", type: "example" },
-  { name: "alert-example", title: "Alert", type: "example" },
-  { name: "alert-dialog-example", title: "Alert Dialog", type: "example" },
-  { name: "aspect-ratio-example", title: "Aspect Ratio", type: "example" },
-  { name: "attachment-example", title: "Attachment", type: "example" },
-  { name: "avatar-example", title: "Avatar", type: "example" },
-  { name: "badge-example", title: "Badge", type: "example" },
-  { name: "breadcrumb-example", title: "Breadcrumb", type: "example" },
-  { name: "bubble-example", title: "Bubble", type: "example" },
-  { name: "button-example", title: "Button", type: "example" },
-  { name: "button-group-example", title: "Button Group", type: "example" },
-  { name: "calendar-example", title: "Calendar", type: "example" },
-  { name: "card-example", title: "Card", type: "example" },
-  { name: "carousel-example", title: "Carousel", type: "example" },
-  { name: "chart-example", title: "Chart", type: "example" },
-  { name: "checkbox-example", title: "Checkbox", type: "example" },
-  { name: "collapsible-example", title: "Collapsible", type: "example" },
-  { name: "combobox-example", title: "Combobox", type: "example" },
-  { name: "command-example", title: "Command", type: "example" },
-  { name: "context-menu-example", title: "Context Menu", type: "example" },
-  { name: "dialog-example", title: "Dialog", type: "example" },
-  { name: "drawer-example", title: "Drawer", type: "example" },
-  { name: "dropdown-menu-example", title: "Dropdown Menu", type: "example" },
-  { name: "empty-example", title: "Empty", type: "example" },
-  { name: "field-example", title: "Field", type: "example" },
-  { name: "hover-card-example", title: "Hover Card", type: "example" },
-  { name: "input-example", title: "Input", type: "example" },
-  { name: "input-group-example", title: "Input Group", type: "example" },
-  { name: "input-otp-example", title: "Input OTP", type: "example" },
-  { name: "item-example", title: "Item", type: "example" },
-  { name: "kbd-example", title: "Kbd", type: "example" },
-  { name: "label-example", title: "Label", type: "example" },
-  { name: "menubar-example", title: "Menubar", type: "example" },
-  { name: "native-select-example", title: "Native Select", type: "example" },
-  {
-    name: "navigation-menu-example",
-    title: "Navigation Menu",
-    type: "example",
-  },
-  { name: "pagination-example", title: "Pagination", type: "example" },
-  { name: "popover-example", title: "Popover", type: "example" },
-  { name: "progress-example", title: "Progress", type: "example" },
-  { name: "questionnaire-example", title: "Questionnaire", type: "example" },
-  { name: "radio-group-example", title: "Radio Group", type: "example" },
-  { name: "resizable-example", title: "Resizable", type: "example" },
-  { name: "scroll-area-example", title: "Scroll Area", type: "example" },
-  { name: "select-example", title: "Select", type: "example" },
-  { name: "separator-example", title: "Separator", type: "example" },
-  { name: "sheet-example", title: "Sheet", type: "example" },
-  { name: "sidebar-example", title: "Sidebar", type: "example" },
-  {
-    name: "sidebar-floating-example",
-    title: "Sidebar (Floating)",
-    type: "example",
-  },
-  { name: "sidebar-icon-example", title: "Sidebar (Icon)", type: "example" },
-  { name: "sidebar-inset-example", title: "Sidebar (Inset)", type: "example" },
-  { name: "skeleton-example", title: "Skeleton", type: "example" },
-  { name: "slider-example", title: "Slider", type: "example" },
-  { name: "sonner-example", title: "Sonner", type: "example" },
-  { name: "spinner-example", title: "Spinner", type: "example" },
-  { name: "switch-example", title: "Switch", type: "example" },
-  { name: "table-example", title: "Table", type: "example" },
-  { name: "tabs-example", title: "Tabs", type: "example" },
-  { name: "textarea-example", title: "Textarea", type: "example" },
-  { name: "toast-example", title: "Toast", type: "example" },
-  { name: "toggle-example", title: "Toggle", type: "example" },
-  { name: "toggle-group-example", title: "Toggle Group", type: "example" },
-  { name: "tooltip-example", title: "Tooltip", type: "example" },
-]
+export const PLAYGROUND_ITEMS: PlaygroundItem[] = REGISTRY_INDEX.filter(
+  (item) => item.type === "registry:block" || item.type === "registry:example",
+).map((item) => ({
+  name: item.name,
+  title: item.title,
+  type: item.type === "registry:block" ? "block" : "example",
+}))
 
 export const DEFAULT_ITEM = "preview"
 
@@ -87,92 +22,19 @@ export function getPlaygroundItem(name: string | null | undefined) {
   return PLAYGROUND_ITEMS.find((item) => item.name === name) ?? null
 }
 
+type PlaygroundRegistryItem = RegistryIndexItem & {
+  component: NonNullable<RegistryIndexItem["component"]>
+}
+
+const PLAYGROUND_REGISTRY_ITEMS = REGISTRY_INDEX.filter(
+  (item): item is PlaygroundRegistryItem =>
+    (item.type === "registry:block" || item.type === "registry:example") &&
+    item.component !== undefined,
+)
+
 export const PLAYGROUND_LOADERS: Record<
   string,
   () => Promise<{ default: React.ComponentType }>
-> = {
-  preview: () => import("@/components/blocks/preview"),
-  "preview-02": () => import("@/components/blocks/preview-02"),
-  "preview-03": () => import("@/components/blocks/preview-03"),
-  "accordion-example": () => import("@/components/examples/accordion-example"),
-  "alert-example": () => import("@/components/examples/alert-example"),
-  "alert-dialog-example": () =>
-    import("@/components/examples/alert-dialog-example"),
-  "aspect-ratio-example": () =>
-    import("@/components/examples/aspect-ratio-example"),
-  "attachment-example": () =>
-    import("@/components/examples/attachment-example"),
-  "avatar-example": () => import("@/components/examples/avatar-example"),
-  "badge-example": () => import("@/components/examples/badge-example"),
-  "breadcrumb-example": () =>
-    import("@/components/examples/breadcrumb-example"),
-  "bubble-example": () => import("@/components/examples/bubble-example"),
-  "button-example": () => import("@/components/examples/button-example"),
-  "button-group-example": () =>
-    import("@/components/examples/button-group-example"),
-  "calendar-example": () => import("@/components/examples/calendar-example"),
-  "card-example": () => import("@/components/examples/card-example"),
-  "carousel-example": () => import("@/components/examples/carousel-example"),
-  "chart-example": () => import("@/components/examples/chart-example"),
-  "checkbox-example": () => import("@/components/examples/checkbox-example"),
-  "collapsible-example": () =>
-    import("@/components/examples/collapsible-example"),
-  "combobox-example": () => import("@/components/examples/combobox-example"),
-  "command-example": () => import("@/components/examples/command-example"),
-  "context-menu-example": () =>
-    import("@/components/examples/context-menu-example"),
-  "dialog-example": () => import("@/components/examples/dialog-example"),
-  "drawer-example": () => import("@/components/examples/drawer-example"),
-  "dropdown-menu-example": () =>
-    import("@/components/examples/dropdown-menu-example"),
-  "empty-example": () => import("@/components/examples/empty-example"),
-  "field-example": () => import("@/components/examples/field-example"),
-  "hover-card-example": () =>
-    import("@/components/examples/hover-card-example"),
-  "input-example": () => import("@/components/examples/input-example"),
-  "input-group-example": () =>
-    import("@/components/examples/input-group-example"),
-  "input-otp-example": () => import("@/components/examples/input-otp-example"),
-  "item-example": () => import("@/components/examples/item-example"),
-  "kbd-example": () => import("@/components/examples/kbd-example"),
-  "label-example": () => import("@/components/examples/label-example"),
-  "menubar-example": () => import("@/components/examples/menubar-example"),
-  "native-select-example": () =>
-    import("@/components/examples/native-select-example"),
-  "navigation-menu-example": () =>
-    import("@/components/examples/navigation-menu-example"),
-  "pagination-example": () =>
-    import("@/components/examples/pagination-example"),
-  "popover-example": () => import("@/components/examples/popover-example"),
-  "progress-example": () => import("@/components/examples/progress-example"),
-  "questionnaire-example": () =>
-    import("@/components/examples/questionnaire-example"),
-  "radio-group-example": () =>
-    import("@/components/examples/radio-group-example"),
-  "resizable-example": () => import("@/components/examples/resizable-example"),
-  "scroll-area-example": () =>
-    import("@/components/examples/scroll-area-example"),
-  "select-example": () => import("@/components/examples/select-example"),
-  "separator-example": () => import("@/components/examples/separator-example"),
-  "sheet-example": () => import("@/components/examples/sheet-example"),
-  "sidebar-example": () => import("@/components/examples/sidebar-example"),
-  "sidebar-floating-example": () =>
-    import("@/components/examples/sidebar-floating-example"),
-  "sidebar-icon-example": () =>
-    import("@/components/examples/sidebar-icon-example"),
-  "sidebar-inset-example": () =>
-    import("@/components/examples/sidebar-inset-example"),
-  "skeleton-example": () => import("@/components/examples/skeleton-example"),
-  "slider-example": () => import("@/components/examples/slider-example"),
-  "sonner-example": () => import("@/components/examples/sonner-example"),
-  "spinner-example": () => import("@/components/examples/spinner-example"),
-  "switch-example": () => import("@/components/examples/switch-example"),
-  "table-example": () => import("@/components/examples/table-example"),
-  "tabs-example": () => import("@/components/examples/tabs-example"),
-  "textarea-example": () => import("@/components/examples/textarea-example"),
-  "toast-example": () => import("@/components/examples/toast-example"),
-  "toggle-example": () => import("@/components/examples/toggle-example"),
-  "toggle-group-example": () =>
-    import("@/components/examples/toggle-group-example"),
-  "tooltip-example": () => import("@/components/examples/tooltip-example"),
-}
+> = Object.fromEntries(
+  PLAYGROUND_REGISTRY_ITEMS.map((item) => [item.name, item.component]),
+)

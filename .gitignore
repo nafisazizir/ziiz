@@ -15,6 +15,7 @@ coverage
 .next/
 out/
 .source/
+apps/www/public/r/
 
 # production
 build

@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "ziiz",
+  url: "https://ziiz.nafisazizir.com",
   description: "A design-system exploration.",
   navItems: [
     {

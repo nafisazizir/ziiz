@@ -62,6 +62,18 @@ export function MobileNav({ className }: { className?: string }) {
             </div>
             <div className="flex flex-col gap-4">
               <div className="text-sm font-medium text-muted-foreground">
+                Getting started
+              </div>
+              <div className="flex flex-col gap-3">
+                {siteConfig.startItems.map(({ name, href }) => (
+                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
+                    {name}
+                  </MobileLink>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="text-sm font-medium text-muted-foreground">
                 Foundation
               </div>
               <div className="flex flex-col gap-3">

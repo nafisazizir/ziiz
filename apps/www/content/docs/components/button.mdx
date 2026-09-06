@@ -1,0 +1,108 @@
+---
+title: Button
+description: Triggers an action. Six variants on the ramp, four sizes on the Button type roles.
+---
+
+<DemoPreview name="button-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList variant="line">
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @ziiz/button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the dependencies.</Step>
+
+```bash
+npm install @base-ui/react class-variance-authority
+```
+
+<Step>Copy the component into your project.</Step>
+
+<RegistrySource name="button" title="components/ui/button.tsx" />
+
+<Step>Make sure the design layer is imported.</Step>
+
+The component speaks ramp vocabulary (`bg-gray-1000`, `text-button-14`, `border-gray-alpha-400`). Those utilities come from `@ziiz/theme/theme.css`; see [Installation](/installation).
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+```
+
+```tsx
+<Button variant="outline">Button</Button>
+```
+
+## Variants
+
+The default is Color 10 on Background 1, the highest-contrast fill on the ramp. `secondary` and `ghost` step through Colors 1 and 2 on hover; `outline` draws the border on `gray-alpha-400` so it reads on any surface. `destructive` is the only variant off the gray ramp.
+
+<DemoPreview name="button-variants" />
+
+## Sizes
+
+Heights are 24, 32, 36 and 40. The two smallest sizes drop to Button 12 and clamp their radius so a small control does not turn into a pill.
+
+<DemoPreview name="button-sizes" />
+
+## Icon
+
+The `icon` sizes are square. Give the button an `aria-label`; the icon is decorative.
+
+<DemoPreview name="button-icon" />
+
+## With icon
+
+Mark the icon with `data-icon="inline-start"` or `data-icon="inline-end"`. The button tightens the padding on that side so the icon sits optically flush.
+
+<DemoPreview name="button-with-icon" />
+
+## Loading
+
+Disable the button and lead with a `Spinner`. The label stays so the width does not jump.
+
+<DemoPreview name="button-loading" />
+
+## As a link
+
+Pass `render` with the element to render into, and turn off `nativeButton` so the primitive stops adding button semantics to an anchor.
+
+<DemoPreview name="button-link" />
+
+## Group
+
+`ButtonGroup` joins adjacent buttons, collapsing the shared borders and radii.
+
+<DemoPreview name="button-group-demo" />
+
+## Focus
+
+Every button shares one focus signature: a 1px `gray-600` border with a 3px halo at 50%. It is the same ring every interactive component in the system draws, so keyboard users learn it once.
+
+<Callout variant="info" title="Cursor">
+  Tailwind v4 sets `cursor: default` on buttons. ziiz keeps that. If a project
+  wants the pointer, add it in a base layer rather than per button.
+</Callout>

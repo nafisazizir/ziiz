@@ -1,0 +1,56 @@
+---
+title: Installation
+description: Take the design layer as a package and the components from the registry.
+---
+
+ziiz ships in two pieces because they change at different rates. The **theme** is one stylesheet that defines the ramp, the type roles, the materials and the prose layer. It is versioned, and an app takes updates by bumping a dependency. The **components** are source files that an app owns and edits. They come from a registry and never update on their own.
+
+## Theme
+
+Install the package and import it in the Tailwind entry, after Tailwind itself.
+
+```bash
+npm install @ziiz/theme
+```
+
+```css title="app/globals.css"
+@import "tailwindcss";
+@import "@ziiz/theme/theme.css";
+```
+
+That import gives every Tailwind utility the ramp (`bg-gray-100`, `text-gray-1000`, `border-gray-alpha-400`), the 31 type roles (`text-heading-32`, `text-copy-16`, `text-label-13`), the eight materials (`material-menu`, `material-modal`) and the `typeset` class for prose. The stock Tailwind palette is disabled on purpose; only the ramp compiles.
+
+The theme expects two font variables, `--font-sans` and `--font-mono`, which the app defines however it loads fonts. ziiz uses Inter with `cv05` and `ss03` and Geist Mono.
+
+<Callout variant="info" title="Running stock shadcn/ui components?">
+  Add a second import, `@ziiz/theme/shadcn.css`. It maps shadcn's slot names
+  (`bg-background`, `text-muted-foreground`, `border-input`) onto the ramp so
+  components written against that vocabulary render on it unchanged. A project
+  whose components speak ramp vocabulary directly does not need it.
+</Callout>
+
+## Components
+
+Point `components.json` at the registry and add components by name. Every item lists its own dependencies, so `shadcn add` pulls in what a component imports.
+
+```json title="components.json"
+{
+  "registries": {
+    "@ziiz": "https://ziiz.vercel.app/r/{name}.json"
+  }
+}
+```
+
+```bash
+npx shadcn@latest add @ziiz/button
+```
+
+Each component page carries the same command and, under the Manual tab, the file to paste. The registry also publishes the documentation primitives used on this site (`callout`, `steps`, `code-block`, `code-tabs`, `component-preview`, `component-source`), which install into `components/docs/`.
+
+## Prose
+
+Long-form content needs no components. Add `typeset` to the container and every heading, paragraph, list, code span and table inside binds to a type role. See [Prose](/prose) for the full element set.
+
+```tsx
+<article className="typeset">{children}</article>
+```

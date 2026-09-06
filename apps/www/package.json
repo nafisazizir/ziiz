@@ -4,14 +4,13 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "pnpm registry:build && pnpm previews:build && next dev",
-    "build": "pnpm registry:build && pnpm previews:build && next build",
+    "dev": "pnpm registry:build && next dev",
+    "build": "pnpm registry:build && next build",
     "start": "next start",
     "lint": "eslint",
     "registry:build": "node scripts/build-registry.ts",
-    "previews:build": "node scripts/build-previews.ts",
     "docs:check": "node scripts/check-docs.ts",
-    "typecheck": "pnpm registry:build && pnpm previews:build && fumadocs-mdx && tsc --noEmit"
+    "typecheck": "pnpm registry:build && fumadocs-mdx && tsc --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

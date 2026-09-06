@@ -8,9 +8,6 @@
 //                                  components/docs/ (explicit target)
 //   hooks/use-mobile.ts         -> registry:hook (sidebar imports it)
 //
-// Blocks, examples, demos and the preview are app-internal and never enter
-// the registry; scripts/build-previews.ts owns them.
-//
 // Dependencies are read off each file's imports: `@/components/ui/x` becomes
 // a registryDependency on `x`, a bare specifier becomes an npm dependency.
 // `@/lib/utils`, react and next are the consumer's own and never listed.

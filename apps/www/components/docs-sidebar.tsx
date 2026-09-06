@@ -22,11 +22,6 @@ export function DocsSidebar() {
             <SidebarItem key={item.href} item={item} pathname={pathname} />
           ))}
         </SidebarGroup>
-        <SidebarGroup label="Components" href="/components">
-          {siteConfig.componentItems.map((item) => (
-            <SidebarItem key={item.href} item={item} pathname={pathname} />
-          ))}
-        </SidebarGroup>
       </nav>
     </aside>
   )
@@ -61,23 +56,15 @@ function SidebarItem({
 
 function SidebarGroup({
   label,
-  href,
   children,
 }: {
   label: string
-  href?: string
   children: React.ReactNode
 }) {
   return (
     <div className="flex flex-col gap-1 pb-6">
       <div className="flex h-8 items-center px-2.5 text-label-13 text-gray-900">
-        {href ? (
-          <Link href={href} className="hover:text-gray-1000">
-            {label}
-          </Link>
-        ) : (
-          label
-        )}
+        {label}
       </div>
       <ul className="flex flex-col gap-0.5">{children}</ul>
     </div>

@@ -4,7 +4,7 @@ A design-system exploration. The token foundation (Geist ramp, named type
 roles, materials, prose) is the product; the app is the playground that dogfoods it.
 
 ```
-apps/www          Next.js playground — docs, component pages, blog, previews, registry
+apps/www          Next.js app — foundation docs, blog, registry
 packages/theme    @ziiz/theme — theme.css (the design layer) + shadcn.css (slot bridge)
 ```
 
@@ -37,13 +37,7 @@ npx shadcn@latest add @ziiz/button
 components/ui        62 published components (registry:ui)
 components/docs      Doc primitives: Callout, Steps, CodeBlock, CodeTabs,
                      ComponentPreview, ComponentSource (registry:component)
-components/demos     Small inline demos a docs page embeds with <DemoPreview>
-components/examples  Full-page example galleries, one per component (/preview/<name>)
-content/docs         Foundation pages and authored component pages (MDX)
+content/docs         Foundation pages (MDX)
 content/blog         Dated posts; /blog, /blog/<slug>, /rss.xml
-scripts              build-registry, build-previews, check-docs
+scripts              build-registry, check-docs
 ```
-
-A component with no authored MDX still gets a page at `/components/<name>`:
-its example gallery, installation, and the import line. Add
-`content/docs/components/<name>.mdx` to take the route over.

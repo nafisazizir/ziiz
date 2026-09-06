@@ -84,18 +84,6 @@ export function MobileNav({ className }: { className?: string }) {
                 ))}
               </div>
             </div>
-            <div className="flex flex-col gap-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                Components
-              </div>
-              <div className="flex flex-col gap-3">
-                {siteConfig.componentItems.map(({ name, href }) => (
-                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
-                    {name}
-                  </MobileLink>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       )}

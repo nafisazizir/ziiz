@@ -7,7 +7,6 @@ import { CodeTabs } from "@/components/docs/code-tabs"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { ComponentSource } from "@/components/docs/component-source"
 import { Step, Steps } from "@/components/docs/steps"
-import { DemoPreview, ExampleFrame } from "@/components/mdx/component-preview"
 import { RegistrySource } from "@/components/mdx/component-source"
 import { Button } from "@/components/ui/button"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
@@ -90,9 +89,7 @@ const components = {
   ComponentSource,
   Steps,
   Step,
-  // App-side resolvers for the primitives above.
-  DemoPreview,
-  ExampleFrame,
+  // App-side resolver for ComponentSource.
   RegistrySource,
   // ui components MDX pages reach for directly.
   Button,

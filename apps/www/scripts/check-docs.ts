@@ -2,8 +2,7 @@
 // than halfway through prerendering.
 //
 //   1. Frontmatter: every MDX file has the fields its collection requires.
-//   2. Nav coverage: every docs page is reachable from the sidebar, either
-//      directly or as a component page.
+//   2. Nav coverage: every docs page is reachable from the sidebar.
 //   3. Internal links: every `/path` or `/path#anchor` in MDX resolves to a
 //      route the site serves.
 //
@@ -30,7 +29,7 @@ const COLLECTIONS: Collection[] = [
 ]
 
 // Routes that exist outside the content collections.
-const STATIC_ROUTES = ["/", "/blog", "/components", "/preview", "/rss.xml"]
+const STATIC_ROUTES = ["/", "/blog", "/rss.xml"]
 
 const problems: string[] = []
 
@@ -90,24 +89,13 @@ for (const collection of COLLECTIONS) {
   }
 }
 
-const registry = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "registry.json"), "utf8")
-) as { items: { name: string; type: string }[] }
-const componentRoutes = registry.items
-  .filter((item) => item.type === "registry:ui")
-  .map((item) => `/components/${item.name}`)
-for (const route of componentRoutes) routes.add(route)
-
 // 2 --------------------------------------------------------------------------
 
-// The sidebar is static config plus the registry, so read the hrefs out of
-// lib/config.ts rather than importing it (it pulls registry.json through
-// the app's alias, which node cannot resolve here).
+// The sidebar is static config, so read the hrefs out of lib/config.ts.
 const config = fs.readFileSync(path.join(ROOT, "lib/config.ts"), "utf8")
 const navRoutes = new Set(
   [...config.matchAll(/href:\s*"([^"]+)"/g)].map((m) => m[1])
 )
-for (const route of componentRoutes) navRoutes.add(route)
 
 for (const route of docsRoutes) {
   if (!navRoutes.has(route)) {
@@ -127,7 +115,6 @@ for (const collection of COLLECTIONS) {
       const href = match[1] ?? match[2]
       const [pathname] = href.split("#")
       const clean = pathname.replace(/\/+$/, "") || "/"
-      if (clean.startsWith("/preview/")) continue
       if (!routes.has(clean)) {
         problems.push(`${rel}: link to "${href}" has no route`)
       }
@@ -144,5 +131,5 @@ if (problems.length) {
 }
 
 console.log(
-  `docs: ${docsRoutes.length} docs pages, ${componentRoutes.length} component pages, ${routes.size} routes, links ok`
+  `docs: ${docsRoutes.length} docs pages, ${routes.size} routes, links ok`
 )

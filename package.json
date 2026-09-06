@@ -4,11 +4,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter www dev",
-    "build": "pnpm --filter www build",
+    "dev": "pnpm --filter @ziiz/theme build && pnpm --parallel --filter @ziiz/theme --filter www dev",
+    "build": "pnpm -r build",
     "start": "pnpm --filter www start",
     "lint": "pnpm -r lint",
-    "typecheck": "pnpm -r typecheck",
+    "typecheck": "pnpm --filter @ziiz/theme build && pnpm -r typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,css,md,mdx,mjs,json,yaml,yml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,css,md,mdx,mjs,json,yaml,yml}\""
   },

@@ -2,22 +2,38 @@
   "name": "@ziiz/theme",
   "version": "0.0.1",
   "private": true,
-  "description": "ziiz design layer: ramp tokens, type roles, materials, prose, and the shadcn slot bridge, as Tailwind v4 CSS.",
+  "description": "ziiz design layer: ramp tokens, type roles, materials, prose, Shiki, and the shadcn slot bridge.",
   "type": "module",
   "sideEffects": [
     "./theme.css",
     "./shadcn.css"
   ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepack": "pnpm build"
+  },
   "files": [
+    "dist",
     "theme.css",
     "shadcn.css"
   ],
   "exports": {
     "./theme.css": "./theme.css",
     "./shadcn.css": "./shadcn.css",
+    "./shiki": {
+      "types": "./dist/shiki.d.ts",
+      "import": "./dist/shiki.js",
+      "default": "./dist/shiki.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
     "tailwindcss": "^4"
+  },
+  "devDependencies": {
+    "tsup": "8.5.1",
+    "typescript": "5.9.3"
   }
 }

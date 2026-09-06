@@ -1,5 +1,3 @@
-import type { RehypeCodeOptions } from "fumadocs-core/mdx-plugins"
-
 export const ziizShikiTheme = {
   name: "ziiz",
   type: "dark" as const,
@@ -104,10 +102,10 @@ export const ziizShikiTheme = {
   ],
 }
 
-export const shikiConfig = {
+export const ziizShikiOptions = {
   themes: {
     light: ziizShikiTheme,
     dark: ziizShikiTheme,
   },
-  defaultColor: "light",
-} satisfies RehypeCodeOptions
+  defaultColor: "light" as const,
+}

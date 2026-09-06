@@ -1,7 +1,7 @@
+import { ziizShikiOptions } from "@ziiz/theme/shiki"
 import { defineConfig, defineDocs } from "fumadocs-mdx/config"
 
 import { contentFrontmatterSchema } from "./lib/content-schema"
-import { shikiConfig } from "./lib/shiki"
 
 export const docs = defineDocs({
   dir: "content/docs",
@@ -12,6 +12,6 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    rehypeCodeOptions: shikiConfig,
+    rehypeCodeOptions: ziizShikiOptions,
   },
 })

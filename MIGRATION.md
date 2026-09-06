@@ -8,30 +8,24 @@ questions and the per-component decision log.
 
 ## Open questions (resolve before the component that hits them)
 
-- /materials Surface-tier copy is stale after card settled flat (2026-08-16):
-  material-medium still says "Raised surfaces: cards at rest or on hover" and
-  material-small "small cards and wells at rest", but in-page surfaces are now
-  flat by decision and no ui component uses a Surface material. Reconcile the
-  docs page with the human. (The material-tooltip flag from tooltip's pass is
-  resolved: chart's pass re-homed material-tooltip onto the chart tooltip
-  bubble on 2026-08-16, though the "carries an arrow stem" copy is now stale —
-  the chart tooltip has no arrow.) (Sidebar's pass applied card's flat plain-border
-  precedent on 2026-08-22 and uses no Surface material either, so the stale
-  copy stands unreconciled.)
-- Stock Tailwind palette leak: the theme overrides only steps 100–1000 of
-  the 8 hues, so the default palette's other colors (`sky-*`, `yellow-*`,
-  `*-50`, `*-950`, …) still compile and get used by accident (badge-example's
-  custom-color demos did until 2026-08-16; `bg-yellow-500` status dot in
-  claimable-balance still does). Wipe the defaults with `--color-*: initial`
-  in `@theme` so off-ramp colors fail loudly, or leave them available?
+- **Resolved 2026-09-06** (phase 1–3 audit): /materials Surface-tier copy
+  rewritten — the page now states that in-page `ui` surfaces are flat by
+  decision and no component uses a Surface material; tier usage strings no
+  longer name card, and the tooltip tier no longer claims an arrow stem.
+- **Resolved 2026-09-06** (phase 1–3 audit): stock Tailwind palette wiped
+  with `--color-*: initial` at the top of theme.css's token block, keeping
+  only `white`/`black` (overlays, QR code, mix-blend) on top of the ramp.
+  The three remaining leaks were moved onto the ramp: `yellow-500`/`700`/`400`
+  → `amber` (table-example status chip, claimable-balance dot) and
+  `emerald-500` → `green-700` (recent-transactions). Built CSS diffed
+  before/after: exactly those classes changed, nothing else dropped.
 - Re-audit already-migrated components against the corrected Colors 1–3 rule
   (2026-08-20, see the `(system)` row in the log). **Half-resolved 2026-08-21
   during toggle-group's pass:** the human confirmed the shift _does_ govern a
   persistent on/selected state, so `toggle`'s `aria-pressed:bg-gray-alpha-300`
-  was patched out of band to `bg-gray-alpha-200` (logged below). Still open:
-  `table`'s `data-[state=selected]:bg-gray-alpha-300` — same mechanism, same
-  intended fix (`bg-gray-alpha-200`), still needs its own out-of-band patch
-  since table has no future pass to absorb it. Hover steps elsewhere
+  was patched out of band to `bg-gray-alpha-200` (logged below). **Closed
+  2026-09-06:** `table`'s `data-[state=selected]:bg-gray-alpha-300` patched
+  to `bg-gray-alpha-200` out of band (same mechanism). Hover steps elsewhere
   (`bg-gray-alpha-100` on button-ghost, dropdown-item, table row hover,
   marker) are unaffected — the corrected rule keeps hover at Color 1.
 - Call-site alias sweep (2026-08-22, opened as `components/ui` hit 62/62): the

@@ -1,19 +1,19 @@
 // Emits the registry manifest from the filesystem, then hands it to
 // `shadcn build` to inline file contents into public/r/<name>.json.
 //
-//   components/ui/<name>.tsx          -> registry:ui
-//   components/examples/<name>.tsx    -> registry:example
-//   components/blocks/<name>/**       -> registry:block
-//   hooks/use-mobile.ts               -> registry:hook
-//   components/icon-placeholder.tsx   -> registry:component (+ icons/hugeicons)
-//   components/example.tsx            -> registry:component
+// Only the base components are published:
+//
+//   components/ui/<name>.tsx  -> registry:ui
+//   hooks/use-mobile.ts       -> registry:hook (sidebar imports it)
+//
+// Blocks, examples and the preview never enter the registry. They are
+// app-internal and only reach __registry__/index.tsx, the generated
+// dynamic-import map the preview route and playground palette load from.
 //
 // Dependencies are read off each file's imports: `@/components/ui/x` becomes
 // a registryDependency on `x`, a bare specifier becomes an npm dependency.
 // `@/lib/utils`, react and next are the consumer's own and never listed.
-//
-// Also writes __registry__/index.tsx: the dynamic-import map the preview
-// route and the playground palette load blocks and examples through.
+// Any other `@/` alias inside a published file fails the build.
 
 import fs from "node:fs"
 import path from "node:path"
@@ -24,24 +24,24 @@ const REGISTRY_JSON = path.join(ROOT, "registry.json")
 const REGISTRY_INDEX = path.join(ROOT, "__registry__/index.tsx")
 const REGISTRY_OUT = path.join(ROOT, "public/r")
 
-type ItemType =
-  | "registry:ui"
-  | "registry:example"
-  | "registry:block"
-  | "registry:hook"
-  | "registry:component"
+type ItemType = "registry:ui" | "registry:hook"
+
+type PreviewEntry = {
+  name: string
+  title: string
+  type: "block" | "example"
+  entry: string
+}
 
 type RegistryFile = {
   path: string
   type: ItemType
-  target?: string
 }
 
 type RegistryItem = {
   name: string
   type: ItemType
   title: string
-  description?: string
   dependencies?: string[]
   registryDependencies?: string[]
   files: RegistryFile[]
@@ -51,6 +51,8 @@ type RegistryItem = {
 const TITLE_OVERRIDES: Record<string, string> = {
   "input-otp": "Input OTP",
   "input-otp-example": "Input OTP",
+  "preview-02": "Preview 02",
+  "preview-03": "Preview 03",
   "sidebar-floating-example": "Sidebar (Floating)",
   "sidebar-icon-example": "Sidebar (Icon)",
   "sidebar-inset-example": "Sidebar (Inset)",
@@ -63,8 +65,6 @@ const IMPLICIT_PACKAGES = new Set(["react", "react-dom", "next"])
 
 const ALIAS_TO_ITEM: Record<string, string> = {
   "@/hooks/use-mobile": "use-mobile",
-  "@/components/icon-placeholder": "icon-placeholder",
-  "@/components/example": "example",
 }
 
 const IMPORT_RE = /(?:from|import)\s*\(?\s*["']([^"']+)["']/g
@@ -83,16 +83,6 @@ function titleFromName(name: string): string {
 function packageName(specifier: string): string {
   const parts = specifier.split("/")
   return specifier.startsWith("@") ? parts.slice(0, 2).join("/") : parts[0]
-}
-
-function walk(dir: string): string[] {
-  const out: string[] = []
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name)
-    if (entry.isDirectory()) out.push(...walk(full))
-    else if (/\.(tsx?|css)$/.test(entry.name)) out.push(full)
-  }
-  return out.sort()
 }
 
 function rel(file: string): string {
@@ -124,19 +114,11 @@ function collectDependencies(
           if (ui[1] !== self) registryDependencies.add(ui[1])
           continue
         }
-        const block = specifier.match(/^@\/components\/blocks\/([a-z0-9-]+)\//)
-        if (block) {
-          if (block[1] !== self) registryDependencies.add(block[1])
-          continue
-        }
         const mapped = ALIAS_TO_ITEM[specifier]
         if (mapped) {
           if (mapped !== self) registryDependencies.add(mapped)
           continue
         }
-        // Files owned by another item's file list (icons/hugeicons) are
-        // reached through that item; anything else is a manifest gap.
-        if (specifier === "@/components/icons/hugeicons") continue
         throw new Error(`${rel(file)}: unmapped alias import "${specifier}"`)
       }
 
@@ -153,91 +135,72 @@ function collectDependencies(
   }
 }
 
-function item(
-  name: string,
-  type: ItemType,
-  files: string[],
-  options: { target?: (file: string) => string; description?: string } = {}
-): RegistryItem {
+function item(name: string, type: ItemType, files: string[]): RegistryItem {
   return {
     name,
     type,
     title: titleFromName(name),
-    description: options.description,
     ...collectDependencies(files, name),
-    files: files.map((file) => ({
-      path: rel(file),
-      type,
-      target: options.target?.(file),
-    })),
+    files: files.map((file) => ({ path: rel(file), type })),
   }
 }
 
 function buildItems(): RegistryItem[] {
   const uiDir = path.join(ROOT, "components/ui")
-  const examplesDir = path.join(ROOT, "components/examples")
-  const blocksDir = path.join(ROOT, "components/blocks")
 
   const ui = fs
     .readdirSync(uiDir)
     .filter((f) => f.endsWith(".tsx"))
+    .sort()
     .map((f) =>
       item(f.replace(/\.tsx$/, ""), "registry:ui", [path.join(uiDir, f)])
     )
 
-  const examples = fs
-    .readdirSync(examplesDir)
-    .filter((f) => f.endsWith(".tsx"))
-    .map((f) =>
-      item(f.replace(/\.tsx$/, ""), "registry:example", [
-        path.join(examplesDir, f),
-      ])
-    )
+  const hooks = [
+    item("use-mobile", "registry:hook", [
+      path.join(ROOT, "hooks/use-mobile.ts"),
+    ]),
+  ]
+
+  return [...ui, ...hooks]
+}
+
+// Blocks first, then examples — the order /create's action menu shows them.
+function buildPreviews(): PreviewEntry[] {
+  const blocksDir = path.join(ROOT, "components/blocks")
+  const examplesDir = path.join(ROOT, "components/examples")
 
   const blocks = fs
     .readdirSync(blocksDir, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) =>
-      item(
-        d.name,
-        "registry:block",
-        // Entry file first: the preview index and a source tab read files[0].
-        walk(path.join(blocksDir, d.name)).sort(
-          (a, b) =>
-            Number(path.basename(b) === "index.tsx") -
-            Number(path.basename(a) === "index.tsx")
-        ),
-        { target: rel }
-      )
+    .filter(
+      (d) =>
+        d.isDirectory() &&
+        fs.existsSync(path.join(blocksDir, d.name, "index.tsx"))
     )
+    .map((d) => d.name)
+    .sort()
+    .map<PreviewEntry>((name) => ({
+      name,
+      title: titleFromName(name),
+      type: "block",
+      entry: `@/components/blocks/${name}`,
+    }))
 
-  const hooks = [
-    item("use-mobile", "registry:hook", [path.join(ROOT, "hooks/use-mobile.ts")]),
-  ]
-
-  const components = [
-    item("example", "registry:component", [
-      path.join(ROOT, "components/example.tsx"),
-    ], {
-      description:
-        "Example and ExampleWrapper: the grid and titled cell every example renders inside.",
-    }),
-    item(
-      "icon-placeholder",
-      "registry:component",
-      [
-        path.join(ROOT, "components/icon-placeholder.tsx"),
-        path.join(ROOT, "components/icons/hugeicons.ts"),
-      ],
-      {
-        target: rel,
-        description:
-          "Named hugeicons lookup used by the examples and blocks. Ported examples pass a name per icon library; ziiz resolves hugeicons only.",
+  const examples = fs
+    .readdirSync(examplesDir)
+    .filter((f) => f.endsWith(".tsx"))
+    .sort()
+    .map<PreviewEntry>((f) => {
+      const name = f.replace(/\.tsx$/, "")
+      return {
+        name,
+        title: titleFromName(name),
+        type: "example",
+        entry: `@/components/examples/${name}`,
       }
-    ),
-  ]
+    })
 
-  return [...ui, ...hooks, ...components, ...blocks, ...examples]
+  return [...blocks, ...examples]
 }
 
 function writeManifest(items: RegistryItem[]) {
@@ -250,24 +213,36 @@ function writeManifest(items: RegistryItem[]) {
   fs.writeFileSync(REGISTRY_JSON, JSON.stringify(manifest, null, 2) + "\n")
 }
 
-function writeIndex(items: RegistryItem[]) {
-  const previewable = items.filter(
-    (i) => i.type === "registry:block" || i.type === "registry:example"
-  )
-  const entries = previewable
-    .map((i) => {
-      const entry = i.files[0].path.replace(/\.tsx$/, "").replace(/\/index$/, "")
-      return `  "${i.name}": () => import("@/${entry}"),`
-    })
+function writeIndex(previews: PreviewEntry[]) {
+  const loaders = previews
+    .map((p) => `  "${p.name}": () => import("${p.entry}"),`)
+    .join("\n")
+  const items = previews
+    .map(
+      (p) =>
+        `  { name: ${JSON.stringify(p.name)}, title: ${JSON.stringify(p.title)}, type: "${p.type}" },`
+    )
     .join("\n")
 
   const source = `// Generated by scripts/build-registry.ts. Do not edit.
+// App-internal: blocks and examples the playground and /preview/[name] load.
+// None of these are registry items.
+
+export type PreviewItem = {
+  name: string
+  title: string
+  type: "block" | "example"
+}
+
+export const PREVIEW_ITEMS: PreviewItem[] = [
+${items}
+]
 
 export const Index: Record<
   string,
   () => Promise<{ default: React.ComponentType }>
 > = {
-${entries}
+${loaders}
 }
 `
   fs.mkdirSync(path.dirname(REGISTRY_INDEX), { recursive: true })
@@ -288,7 +263,7 @@ function verifyCoverage(items: RegistryItem[]) {
 const items = buildItems()
 verifyCoverage(items)
 writeManifest(items)
-writeIndex(items)
+writeIndex(buildPreviews())
 
 fs.rmSync(REGISTRY_OUT, { recursive: true, force: true })
 execFileSync(

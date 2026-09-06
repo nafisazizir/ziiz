@@ -3,24 +3,17 @@ import path from "node:path"
 
 import registry from "@/registry.json"
 
-export type RegistryItemType =
-  | "registry:ui"
-  | "registry:example"
-  | "registry:block"
-  | "registry:hook"
-  | "registry:component"
+export type RegistryItemType = "registry:ui" | "registry:hook"
 
 export type RegistryFile = {
   path: string
   type: RegistryItemType
-  target?: string
 }
 
 export type RegistryItem = {
   name: string
   type: RegistryItemType
   title: string
-  description?: string
   dependencies?: string[]
   registryDependencies?: string[]
   files: RegistryFile[]

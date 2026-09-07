@@ -22,6 +22,5 @@ export const siteConfig = {
     { name: "Typography", href: "/typography" },
     { name: "Materials", href: "/materials" },
     { name: "Prose", href: "/prose" },
-    { name: "Dependencies", href: "/dependencies" },
   ],
 }

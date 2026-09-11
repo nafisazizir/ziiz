@@ -1,13 +1,12 @@
 import type { Metadata } from "next"
 
 import { PaletteRemap } from "@/components/palette-remap"
-import { RampGenerator } from "@/components/ramp-generator"
 import { SiteHeader } from "@/components/site-header"
 
 export const metadata: Metadata = {
   title: "Playground",
   description:
-    "Generate a full light and dark OKLCH ramp for a new color, following the gray spine, the sRGB gamut and the contrast targets the existing ramps hit.",
+    "Generate a full light and dark palette from a floor, a ceiling and seven brand anchors.",
 }
 
 export default function PlaygroundPage() {
@@ -19,25 +18,20 @@ export default function PlaygroundPage() {
           <p className="text-label-12 tracking-wider text-gray-900 uppercase">
             Foundations · Color
           </p>
-          <h1 className="text-heading-32 text-gray-1000">Ramp Spine</h1>
+          <h1 className="text-heading-32 text-gray-1000">Palette generator</h1>
           <p className="max-w-prose text-copy-16 text-gray-900">
-            Drop in a candidate color. It becomes step 700 — the theme-invariant
-            brand anchor — and the other nineteen tokens are derived from the
-            gray spine, the sRGB gamut, and the contrast targets the existing
-            ramps hit.
+            Pick a floor and a ceiling. Every other token is derived — tints
+            climb from the floor to each hue&rsquo;s solid, text climbs from the
+            hover step to the ceiling, and chroma rides the sRGB gamut edge. The
+            shipped palette sits on the left for comparison.
           </p>
         </header>
-        <RampGenerator />
-        <div className="mt-10">
-          <PaletteRemap />
-        </div>
+        <PaletteRemap />
         <footer className="mt-14 max-w-prose border-t pt-6 text-copy-13 text-gray-900">
-          Derived from the seven ramps in <code>packages/theme/theme.css</code>.
-          Steps 100–600 follow the gray spine plus the measured per-step offset;
-          700–800 are pinned to your anchor in both themes; 900–1000 are solved
-          for contrast, not lightness. Step 600 is the most hand-tuned step in
-          Geist — the generator blends toward it rather than reproducing any
-          single hue&rsquo;s value.
+          The seven brand anchors live in <code>ANCHORS</code> in{" "}
+          <code>lib/color-ramp.ts</code> — three numbers per hue, shared across
+          both themes. <code>lib/color-ramp.md</code> covers the formula, how to
+          choose an anchor, and what breaks if you move one.
         </footer>
       </main>
     </div>

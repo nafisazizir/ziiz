@@ -97,17 +97,6 @@ export function fitChroma(L: number, C: number, H: number) {
   return lo
 }
 
-/** The lightness at which a hue can carry the most chroma in sRGB. */
-export function gamutCusp(H: number) {
-  let best = { L: 0.5, C: 0 }
-  for (let i = 0; i <= 100; i++) {
-    const L = i / 100
-    const C = fitChroma(L, 0.45, H)
-    if (C > best.C) best = { L, C }
-  }
-  return best
-}
-
 export function oklchToHex(L: number, C: number, H: number) {
   const rgb = oklchToLinearRgb(L, fitChroma(L, C, H), H)
   return `#${rgb
@@ -153,11 +142,6 @@ export function contrastRatio(a: number, b: number) {
   return (hi + 0.05) / (lo + 0.05)
 }
 
-/** WCAG contrast of an OKLCH color against white or black. */
-export function contrastAgainst(L: number, C: number, H: number, theme: Theme) {
-  return contrastRatio(relativeLuminance(L, C, H), theme === "light" ? 1 : 0)
-}
-
 /** Lightness that lands a hue on a target luminance; luminance is monotonic in L. */
 function solveLightness(targetLum: number, C: number, H: number) {
   let lo = 0
@@ -168,209 +152,6 @@ function solveLightness(targetLum: number, C: number, H: number) {
     else hi = mid
   }
   return (lo + hi) / 2
-}
-
-/* ---------- the measured model ---------- */
-
-/** --ds-gray-* lightness, the skeleton every hue ramp tracks. */
-export const SPINE: Record<Theme, Record<Step, number>> = {
-  light: {
-    100: 96.1,
-    200: 94.0,
-    300: 92.5,
-    400: 93.7,
-    500: 83.6,
-    600: 73.2,
-    700: 65.0,
-    800: 59.0,
-    900: 42.0,
-    1000: 20.5,
-  },
-  dark: {
-    100: 21.8,
-    200: 23.9,
-    300: 28.1,
-    400: 30.1,
-    500: 39.0,
-    600: 62.3,
-    700: 65.0,
-    800: 59.0,
-    900: 70.6,
-    1000: 94.6,
-  },
-}
-
-/** Mean lightness offset from the spine, steps 100-500. */
-const OFFSET: Record<Theme, Record<number, number>> = {
-  light: { 100: 0.9, 200: 2.4, 300: 2.2, 400: -2.1, 500: 0.9 },
-  dark: { 100: 0.6, 200: 1.9, 300: 3.2, 400: 4.1, 500: 1.9 },
-}
-
-/** Chroma as a fraction of the anchor's chroma. */
-const CHROMA: Record<Theme, Record<Step, number>> = {
-  light: {
-    100: 0.124,
-    200: 0.142,
-    300: 0.209,
-    400: 0.324,
-    500: 0.564,
-    600: 0.813,
-    700: 1,
-    800: 0.94,
-    900: 0.86,
-    1000: 0.47,
-  },
-  dark: {
-    100: 0.314,
-    200: 0.386,
-    300: 0.483,
-    400: 0.541,
-    500: 0.667,
-    600: 0.937,
-    700: 0.94,
-    800: 0.93,
-    900: 0.961,
-    1000: 0.188,
-  },
-}
-
-/** Amber's measured hue drift, relative to step 700. */
-const HUE_ROTATION: Record<Step, number> = {
-  100: 9,
-  200: 14,
-  300: 14,
-  400: 12,
-  500: 3,
-  600: -3,
-  700: 0,
-  800: -12,
-  900: -22,
-  1000: -31,
-}
-
-const CONTRAST_TARGET: Record<Theme, { 900: number; 1000: number }> = {
-  light: { 900: 5.6, 1000: 14.8 },
-  dark: { 900: 8.4, 1000: 18.8 },
-}
-
-/** How far into the yellow-orange band a hue sits, 0 to 1. */
-export function warmth(H: number) {
-  const d = Math.abs(((((H - 88) % 360) + 540) % 360) - 180)
-  return Math.exp(-Math.pow(d / 38, 2))
-}
-
-const normalizeHue = (H: number) => ((H % 360) + 360) % 360
-
-export function buildRamp(anchor: Oklch): RampPair {
-  const H0 = anchor.H
-  const C7 = anchor.C
-  const L7 = anchor.L * 100
-  const w = warmth(H0)
-  const rotate = (step: Step) => H0 + HUE_ROTATION[step] * w
-
-  const themes = ["light", "dark"] as const
-  const result = {} as RampPair
-
-  for (const theme of themes) {
-    const spine = SPINE[theme]
-    const draft = {} as Record<Step, { L: number; C: number; H: number }>
-
-    // The anchor band: same L and H in both themes, chroma damped in dark.
-    draft[700] = { L: L7, C: C7 * CHROMA[theme][700], H: H0 }
-    draft[800] = { L: L7 - 6, C: C7 * CHROMA[theme][800], H: rotate(800) }
-
-    // Tints: the spine plus the measured offset.
-    for (const step of [100, 200, 300, 400, 500] as const) {
-      draft[step] = {
-        L: spine[step] + OFFSET[theme][step],
-        C: 0,
-        H: rotate(step),
-      }
-    }
-
-    // Step 600 is the most hand-tuned step in Geist; blend toward the spine.
-    draft[600] = {
-      L:
-        theme === "light"
-          ? Math.max(spine[600] + 2.5, L7 + 2)
-          : Math.max(draft[500].L + 4, 0.75 * L7 + 0.25 * spine[600]),
-      C: 0,
-      H: rotate(600),
-    }
-
-    // Keep the tints ordered relative to the anchor.
-    if (theme === "light") {
-      let floor = Math.max(draft[700].L, draft[600].L)
-      for (const step of [600, 500, 400, 300, 200, 100] as const) {
-        draft[step].L = Math.max(
-          draft[step].L,
-          floor + (step === 600 ? 0 : 1.2)
-        )
-        floor = draft[step].L
-      }
-    } else {
-      let ceiling = 0
-      for (const step of [100, 200, 300, 400, 500] as const) {
-        draft[step].L = Math.max(draft[step].L, ceiling + 1.2)
-        ceiling = draft[step].L
-      }
-      draft[600].L = Math.max(draft[600].L, draft[500].L + 4)
-    }
-
-    for (const step of [100, 200, 300, 400, 500, 600] as const) {
-      draft[step].C = C7 * CHROMA[theme][step]
-    }
-
-    // Text steps are solved for contrast, not lightness.
-    for (const step of [900, 1000] as const) {
-      const H = rotate(step)
-      const C = C7 * CHROMA[theme][step]
-      const target = CONTRAST_TARGET[theme][step]
-      const wantLum =
-        theme === "light" ? 1.05 / target - 0.05 : 0.05 * target - 0.05
-      const L = solveLightness(clamp01(wantLum), C, H) * 100
-      draft[step] = { L, C, H }
-    }
-
-    const ramp = {} as Ramp
-    for (const step of STEPS) {
-      const { L, C, H } = draft[step]
-      const hue = normalizeHue(H)
-      const chroma = fitChroma(L / 100, C, hue)
-      ramp[step] = {
-        step,
-        L,
-        C: chroma,
-        H: hue,
-        hex: oklchToHex(L / 100, chroma, hue),
-        contrast: contrastAgainst(L / 100, chroma, hue, theme),
-        deltaSpine: L - spine[step],
-      }
-    }
-    result[theme] = ramp
-  }
-
-  return result
-}
-
-/** Emit the token block a ramp would add to theme.css. */
-export function toCss(pair: RampPair, name: string) {
-  const token = name.replace(/[^a-z0-9-]/gi, "").toLowerCase() || "custom"
-  const line = (theme: Theme, step: Step) => {
-    const s = pair[theme][step]
-    return `  --ds-${token}-${step}: oklch(${s.L.toFixed(2)}% ${s.C.toFixed(
-      4
-    )} ${s.H.toFixed(2)});`
-  }
-  const block = (theme: Theme, selector: string) =>
-    `${selector} {\n${STEPS.map((step) => line(theme, step)).join("\n")}\n}`
-  return [
-    "/* light */",
-    block("light", ":root"),
-    "",
-    "/* dark — 700 and 800 carry the same L and H */",
-    block("dark", ".dark"),
-  ].join("\n")
 }
 
 /* ---------- the existing ramps, verbatim from theme.css ---------- */
@@ -632,76 +413,39 @@ export const GRAY_ALPHA: Record<Theme, Record<Step, number>> = {
   },
 }
 
-export interface NeutralStop {
-  step: number
-  L: number
-  hex: string
-  contrast: number
-  /** Alpha ramps only: opacity, and how far the flattened result sits from
-   *  the solid gray at the same step. */
-  alpha?: number
-  deltaGray?: number
-  /** Solid gray only: lightness change from the previous step. Gray's own
-   *  deviation from the spine is zero by construction — it is the spine — so
-   *  the informative delta is the size of each rung. */
-  deltaStep?: number
+/* ---------- the brand anchors ----------
+ * THIS IS THE TABLE YOU EDIT.
+ *
+ * Everything else in a ramp is derived. A hue needs exactly three numbers: its
+ * angle, the lightness of its solid fill (700) and of the hover state (800).
+ * Both lightnesses are shared between light and dark — that is a real property
+ * of the system, not a shortcut, so a button is literally the same colour in
+ * both themes.
+ *
+ * To add a hue, add a row. To restyle the whole palette, change these numbers.
+ * See color-ramp.md for how to choose them. */
+
+export interface Anchor {
+  /** OKLCH hue angle, 0-360. */
+  hue: number
+  /** Lightness of step 700, the solid fill. Sits at or near the hue's sRGB
+   *  gamut cusp for most hues — see the doc before moving it far. */
+  solid: number
+  /** Lightness of step 800, the hover state. Always below `solid`. */
+  hover: number
 }
 
-const grayHex = (srgb: number) => {
-  const n = Math.round(clamp01(srgb) * 255)
-  const h = n.toString(16).padStart(2, "0")
-  return `#${h}${h}${h}`.toUpperCase()
+export const ANCHORS: Record<string, Anchor> = {
+  blue: { hue: 258.23, solid: 57.61, hover: 51.51 },
+  red: { hue: 23.03, solid: 62.56, hover: 58.1 },
+  amber: { hue: 76.46, solid: 81.87, hover: 77.21 },
+  green: { hue: 147.27, solid: 64.58, hover: 57.81 },
+  teal: { hue: 181.95, solid: 64.92, hover: 57.53 },
+  purple: { hue: 306.12, solid: 55.5, hover: 48.58 },
+  pink: { hue: 1.01, solid: 63.52, hover: 59.51 },
 }
 
-const grayLightness = (srgb: number) => {
-  const lin = srgbToLinear(clamp01(srgb))
-  return linearRgbToOklab(lin, lin, lin).L * 100
-}
-
-/** Composite a gray-alpha step over background-100 and report the solid it
- *  resolves to — the number that says whether the alpha ramp tracks the
- *  solid one. CSS composites in gamma space, so the mix is done there. */
-export function flattenAlpha(alpha: number, theme: Theme): NeutralStop {
-  const srgb = theme === "light" ? 1 - alpha : alpha
-  const lum = srgbToLinear(clamp01(srgb))
-  return {
-    step: 0,
-    alpha,
-    L: grayLightness(srgb),
-    hex: grayHex(srgb),
-    contrast: contrastRatio(lum, theme === "light" ? 1 : 0),
-  }
-}
-
-/** The solid gray ramp as swatches. */
-export function grayRamp(theme: Theme): NeutralStop[] {
-  return GRAY_STEPS.map((step, i) => {
-    const L = GRAY[theme][step] / 100
-    const previous = i === 0 ? undefined : GRAY[theme][GRAY_STEPS[i - 1]]
-    return {
-      step,
-      L: GRAY[theme][step],
-      hex: oklchToHex(L, 0, 0),
-      contrast: contrastAgainst(L, 0, 0, theme),
-      deltaStep:
-        previous === undefined ? undefined : GRAY[theme][step] - previous,
-    }
-  })
-}
-
-/** The alpha ramp, flattened over background-100 and compared to solid gray. */
-export function grayAlphaRamp(theme: Theme): NeutralStop[] {
-  return STEPS.map((step) => {
-    const flat = flattenAlpha(GRAY_ALPHA[theme][step], theme)
-    return { ...flat, step, deltaGray: flat.L - GRAY[theme][step] }
-  })
-}
-
-/* ---------- endpoint remap ----------
- * Floor and ceiling become the two inputs; every other step keeps its
- * proportional position in CONTRAST space, not lightness space. One factor
- * does it:  k = (CR_ceiling_new - 1) / (CR_ceiling_now - 1).
- * At the current endpoints k === 1 and the palette is unchanged. */
+/* ---------- palette plumbing ---------- */
 
 export interface Swatch {
   step: number
@@ -709,7 +453,7 @@ export interface Swatch {
   /** The value as it would be written as a token. */
   css: string
   contrast: number
-  /** Alpha rows: the opacity that lands on the target contrast. */
+  /** Alpha rows: the opacity that lands on the target. */
   alpha?: number
 }
 
@@ -719,145 +463,148 @@ export interface PaletteRow {
   swatches: (Swatch | null)[]
 }
 
-const HUE_ORDER = ["blue", "red", "amber", "green", "teal", "purple", "pink"]
+export interface Palette {
+  rows: PaletteRow[]
+  /** Span factor: how much the contrast range compressed. 1 = unchanged. */
+  k: number
+}
+
+/** The endpoints the shipped ramp uses today. Floor is the page background,
+ *  ceiling is the strongest ink — so in light the floor is the LIGHTER of the
+ *  two and in dark the darker. Contrast against the floor rises from 100 to
+ *  1000 in both, which is the axis every model below actually works in. */
+export const CURRENT_ENDPOINTS: Record<
+  Theme,
+  { floor: number; ceiling: number }
+> = {
+  light: { floor: 100, ceiling: GRAY.light[1000] },
+  dark: { floor: 0, ceiling: GRAY.dark[1000] },
+}
+
+const isDarkTheme = (theme: Theme) => theme === "dark"
+const neutralHexOf = (L: number) => oklchToHex(L / 100, 0, 0)
+const srgbOf = (L: number) => linearToSrgb(clamp01(L / 100) ** 3)
+
+/** Luminance a colour needs to hit a contrast against the floor. Which side of
+ *  the ratio the colour sits on flips with the theme. */
+function targetLuminance(target: number, floorLum: number, theme: Theme) {
+  return isDarkTheme(theme)
+    ? target * (floorLum + 0.05) - 0.05
+    : (floorLum + 0.05) / target - 0.05
+}
 
 /** Solve lightness for a target contrast, holding chroma and hue. */
 function solveForContrast(
   target: number,
   C: number,
   H: number,
-  floorLum: number
+  floorLum: number,
+  theme: Theme
 ) {
-  const wantLum = target * (floorLum + 0.05) - 0.05
-  return solveLightness(clamp01(wantLum), C, H)
+  return solveLightness(clamp01(targetLuminance(target, floorLum, theme)), C, H)
 }
 
-/** Solve the opacity of white ink over the floor that lands on a contrast. */
-function solveAlpha(target: number, floorSrgb: number, floorLum: number) {
-  let lo = 0
-  let hi = 1
-  for (let i = 0; i < 30; i++) {
-    const mid = (lo + hi) / 2
-    const composite = floorSrgb + mid * (1 - floorSrgb)
-    const cr = contrastRatio(srgbToLinear(composite), floorLum)
-    if (cr < target) lo = mid
-    else hi = mid
-  }
-  return (lo + hi) / 2
+/** Ink the alpha ramp paints with: white on a dark floor, black on a light one. */
+const alphaInk = (theme: Theme) => (isDarkTheme(theme) ? 1 : 0)
+
+/** Opacity that lands the composite on a target sRGB value. CSS composites in
+ *  gamma space, so the mix is done there too. */
+function alphaFor(targetSrgb: number, floorSrgb: number, theme: Theme) {
+  const a = isDarkTheme(theme)
+    ? (targetSrgb - floorSrgb) / (1 - floorSrgb)
+    : floorSrgb === 0
+      ? 0
+      : 1 - targetSrgb / floorSrgb
+  return clamp01(a)
 }
 
-const neutralHex = (L: number) => oklchToHex(L / 100, 0, 0)
-const srgbOf = (L: number) => linearToSrgb(clamp01(L / 100) ** 3)
-
-/** Build the dark palette for a given floor and ceiling lightness (0-100).
- *  Pass the current endpoints (0, 94.6) to get today's palette back. */
-export function darkPalette(floorL: number, ceilingL: number) {
+/** The span factor.
+ *
+ *      k = (CR_ceiling_new - 1) / (CR_ceiling_now - 1)
+ *
+ *  Every step keeps its proportional position in CONTRAST space, and the range
+ *  itself compresses or expands by k. Identity (k = 1) at the shipped
+ *  endpoints, so nothing moves until an endpoint does. */
+function spanFactor(theme: Theme, floorL: number, ceilingL: number) {
+  const now = CURRENT_ENDPOINTS[theme]
+  const baseLum = relativeLuminance(now.floor / 100, 0, 0)
   const floorLum = relativeLuminance(floorL / 100, 0, 0)
-  const floorSrgb = srgbOf(floorL)
-  const baseFloorLum = relativeLuminance(0, 0, 0)
-
-  const crNow = (L: number, C = 0, H = 0) =>
-    contrastRatio(relativeLuminance(L / 100, C, H), baseFloorLum)
-
-  const spanNow = crNow(GRAY.dark[1000]) - 1
+  const spanNow =
+    contrastRatio(relativeLuminance(now.ceiling / 100, 0, 0), baseLum) - 1
   const spanNew =
     contrastRatio(relativeLuminance(ceilingL / 100, 0, 0), floorLum) - 1
-  const k = spanNew / spanNow
-  const remap = (cr: number) => 1 + (cr - 1) * k
+  return { k: spanNew / spanNow, baseLum, floorLum }
+}
 
-  const rows: PaletteRow[] = []
-
-  // Background: only 100 and 200 exist.
-  const bgSwatches: (Swatch | null)[] = STEPS.map((step) => {
-    if (step > 200) return null
-    const now = step === 100 ? 0 : 2.7
-    const target = remap(crNow(now))
-    const L =
-      step === 100 ? floorL : solveForContrast(target, 0, 0, floorLum) * 100
-    return {
-      step,
-      hex: neutralHex(L),
-      css: `oklch(${(L / 100).toFixed(3)} 0 0)`,
-      contrast: contrastRatio(relativeLuminance(L / 100, 0, 0), floorLum),
-    }
-  })
-  rows.push({
-    label: "Background",
-    token: "--ds-background-*",
-    swatches: bgSwatches,
+/** The palette as it ships today, for the reference half of a comparison.
+ *  Read straight from the token tables — nothing is derived. */
+export function currentPalette(theme: Theme): Palette {
+  const floorLum = relativeLuminance(CURRENT_ENDPOINTS[theme].floor / 100, 0, 0)
+  const floorSrgb = srgbOf(CURRENT_ENDPOINTS[theme].floor)
+  const bg200 = theme === "dark" ? 2.7 : 98.4
+  const neutral = (L: number, step: number): Swatch => ({
+    step,
+    hex: neutralHexOf(L),
+    css: `oklch(${(L / 100).toFixed(3)} 0 0)`,
+    contrast: contrastRatio(relativeLuminance(L / 100, 0, 0), floorLum),
   })
 
-  // Gray. The 950 step is omitted here so every row is ten columns wide.
-  rows.push({
-    label: "Gray",
-    token: "--ds-gray-*",
-    swatches: STEPS.map((step) => {
-      const target = remap(crNow(GRAY.dark[step as GrayStep]))
-      const L =
-        step === 1000
-          ? ceilingL
-          : solveForContrast(target, 0, 0, floorLum) * 100
-      return {
-        step,
-        hex: neutralHex(L),
-        css: `oklch(${(L / 100).toFixed(3)} 0 0)`,
-        contrast: contrastRatio(relativeLuminance(L / 100, 0, 0), floorLum),
-      }
-    }),
-  })
+  const rows: PaletteRow[] = [
+    {
+      label: "Background",
+      token: "--ds-background-*",
+      swatches: STEPS.map((step) =>
+        step > 200
+          ? null
+          : neutral(step === 100 ? CURRENT_ENDPOINTS[theme].floor : bg200, step)
+      ),
+    },
+    {
+      label: "Gray",
+      token: "--ds-gray-*",
+      swatches: STEPS.map((step) =>
+        neutral(GRAY[theme][step as GrayStep], step)
+      ),
+    },
+    {
+      label: "Gray Alpha",
+      token: "--ds-gray-alpha-*",
+      swatches: STEPS.map((step) => {
+        const alpha = GRAY_ALPHA[theme][step]
+        const srgb = isDarkTheme(theme)
+          ? floorSrgb + alpha * (1 - floorSrgb)
+          : floorSrgb * (1 - alpha)
+        const lin = srgbToLinear(clamp01(srgb))
+        return {
+          step,
+          alpha,
+          hex: neutralHexOf(linearRgbToOklab(lin, lin, lin).L * 100),
+          css: `oklch(${alphaInk(theme)} 0 0 / ${alpha.toFixed(3)})`,
+          contrast: contrastRatio(lin, floorLum),
+        }
+      }),
+    },
+  ]
 
-  // Gray alpha: re-solve the opacity so the flattened result hits the target.
-  rows.push({
-    label: "Gray Alpha",
-    token: "--ds-gray-alpha-*",
-    swatches: STEPS.map((step) => {
-      const flatNow = flattenAlpha(GRAY_ALPHA.dark[step], "dark")
-      const target = remap(flatNow.contrast)
-      const alpha = solveAlpha(target, floorSrgb, floorLum)
-      const composite = floorSrgb + alpha * (1 - floorSrgb)
-      return {
-        step,
-        alpha,
-        hex: neutralHex(
-          linearRgbToOklab(
-            srgbToLinear(composite),
-            srgbToLinear(composite),
-            srgbToLinear(composite)
-          ).L * 100
-        ),
-        css: `oklch(1 0 0 / ${alpha.toFixed(3)})`,
-        contrast: contrastRatio(srgbToLinear(composite), floorLum),
-      }
-    }),
-  })
-
-  // The hue ramps. 700 and 800 are theme-invariant anchors and never move.
-  for (const hue of HUE_ORDER) {
-    const ramp = REFERENCE_RAMPS[hue].dark
+  for (const hue of Object.keys(ANCHORS)) {
+    const ramp = REFERENCE_RAMPS[hue][theme]
     rows.push({
       label: hue[0].toUpperCase() + hue.slice(1),
       token: `--ds-${hue}-*`,
       swatches: STEPS.map((step, i) => {
-        const [L0, C0, H0] = ramp[i]
-        const pinned = step === 700 || step === 800
-        const L = pinned
-          ? L0
-          : solveForContrast(remap(crNow(L0, C0, H0)), C0, H0, floorLum) * 100
-        const C = fitChroma(L / 100, C0, H0)
+        const [L, C, H] = ramp[i]
         return {
           step,
-          hex: oklchToHex(L / 100, C, H0),
-          css: `oklch(${L.toFixed(2)}% ${C.toFixed(4)} ${H0.toFixed(2)})`,
-          contrast: contrastRatio(relativeLuminance(L / 100, C, H0), floorLum),
+          hex: oklchToHex(L / 100, C, H),
+          css: `oklch(${L.toFixed(2)}% ${C.toFixed(4)} ${H.toFixed(2)})`,
+          contrast: contrastRatio(relativeLuminance(L / 100, C, H), floorLum),
         }
       }),
     })
   }
-
-  return { rows, k, floorL, ceilingL }
+  return { rows, k: 1 }
 }
-
-/* ---------- uniform generation ----------
+/* ---------- the generator ----------
  * Uniform where uniformity is free, hue-native where it is not.
  *
  * Tints (100-500) and text (900-1000) share one lightness scale across every
@@ -865,100 +612,116 @@ export function darkPalette(floorL: number, ceilingL: number) {
  * seven 700s sit within two points of their hue's cusp — the lightness at
  * which that hue can carry the most chroma, and so looks most like itself.
  * Amber's cusp is at L 81 and blue's at L 60; forcing both to one value turns
- * amber to mud. So 700 keeps its anchor, 800 sits a fixed step below it (the
- * solid/hover pair), and 600 interpolates up from the tints. */
+ * amber to mud. So 700 and 800 keep their anchors, tints climb from the floor
+ * to the solid, and text climbs from the hover step to the ceiling. */
 
-/** Fraction of the gamut limit each step rides, measured from the dark ramps
- *  (which mostly sit at or past the edge) and tapered at the top step. */
-const UNIFORM_CHROMA: Record<Step, number> = {
-  100: 0.9,
-  200: 0.95,
-  300: 1,
-  400: 1,
-  500: 1,
-  600: 1,
-  700: 1,
-  800: 1,
-  900: 1,
-  1000: 0.3,
+/** Fraction of the gamut limit each step rides. Measured from the shipped
+ *  ramps, which sit at or just past the edge in both themes. Dark tapers at
+ *  1000 because there the top step is a near-white tint; in light it is the
+ *  darkest ink and wants full saturation. */
+const UNIFORM_CHROMA: Record<Theme, Record<Step, number>> = {
+  dark: {
+    100: 0.9,
+    200: 0.95,
+    300: 1,
+    400: 1,
+    500: 1,
+    600: 1,
+    700: 1,
+    800: 1,
+    900: 1,
+    1000: 0.3,
+  },
+  light: {
+    100: 1,
+    200: 1,
+    300: 1,
+    400: 1,
+    500: 1,
+    600: 1,
+    700: 1,
+    800: 1,
+    900: 1,
+    1000: 1,
+  },
 }
 
-/** Lightness drop from 700 to 800 for the neutral ramp, which has no brand
- *  anchor of its own to inherit the pair from. */
-const ANCHOR_DIP = 6
+/** Hue tints sit off gray at the same step — measured across all seven ramps,
+ *  which agree closely. Gray is the spine, not the tint ladder: putting
+ *  colored tints exactly on it costs lightness, and for a high-cusp hue like
+ *  green or teal lightness is chroma. Light dips at 400 because gray-400 is
+ *  itself anomalously light there. */
+const TINT_LIFT: Record<Theme, Partial<Record<Step, number>>> = {
+  dark: { 100: 0.6, 200: 1.9, 300: 3.2, 400: 4.2, 500: 1.9 },
+  light: { 100: 0.9, 200: 2.4, 300: 2.2, 400: -2.1, 500: 0.9 },
+}
 
-/** Minimum lift from 800 to 900. In all seven ramps the scale climbs again
- *  after the hover step; without this floor a high anchor like amber would
- *  invert, and a hue that drops back down after its solid reads as muddy.
- *  Kept small: on a warm hue the gamut narrows fast above the anchor, so a
- *  bigger lift trades saturation for lightness and washes the step out. */
+/** Warm hues rotate toward orange past the anchor. A darkened yellow reads as
+ *  olive at its own hue angle, and sRGB is wider toward orange there — so the
+ *  rotation buys saturation as well as identity. Light carries it further
+ *  because its ramp keeps darkening past 800. Scaled by how far into the
+ *  yellow-orange band the hue sits, so cool ramps hold still. */
+/** How far into the yellow-orange band a hue sits, 1 at pure yellow falling to
+ *  ~0 by 30 and 150 degrees. Gates the rotation above, so amber turns and blue
+ *  does not. */
+export function warmth(H: number) {
+  const d = Math.abs(((((H - 88) % 360) + 540) % 360) - 180)
+  return Math.exp(-Math.pow(d / 38, 2))
+}
+
+const WARM_ROTATION: Record<Theme, Partial<Record<Step, number>>> = {
+  dark: { 800: -12, 900: -12 },
+  light: { 800: -12, 900: -22, 1000: -31 },
+}
+
+/** Minimum separation from 800 to 900. In every ramp the scale keeps moving
+ *  away from the floor after the hover step; without this a high anchor like
+ *  amber would fold back and read as muddy. */
 const TEXT_LIFT = 1
 
-/** Warm hues rotate toward orange above the anchor. A darkened yellow reads
- *  as olive at its own hue angle, and sRGB is wider toward orange at that
- *  lightness — so the rotation buys saturation as well as identity. Scaled by
- *  how far into the yellow-orange band the hue sits, so cool ramps hold still:
- *  amber turns -10.9 degrees, blue and purple 0.0. */
-const WARM_ROTATION: Partial<Record<Step, number>> = { 800: -12, 900: -12 }
-
 /** Where 600 sits between the last tint and the anchor. 600 is a border step,
- *  so it belongs below the solid, which is where five of seven ramps put it. */
+ *  so it belongs short of the solid, which is where most ramps put it. */
 const BORDER_T = 0.6
 
-/** Hue tints sit above gray at the same step — measured across all seven dark
- *  ramps, which agree closely (+0.3 to +1.3 at 100, +2.0 to +5.8 at 400). Gray
- *  is the spine, not the tint ladder: putting colored tints exactly on it costs
- *  lightness, and for a high-cusp hue like green or teal lightness is chroma. */
-const TINT_LIFT: Partial<Record<Step, number>> = {
-  100: 0.6,
-  200: 1.9,
-  300: 3.2,
-  400: 4.2,
-  500: 1.9,
-}
-
-/** Largest chroma sRGB can show at this lightness and hue. */
+/** Largest chroma sRGB can show at this lightness and hue. The models below
+ *  express chroma as a fraction of this, never as an absolute, so every hue
+ *  sits equally far out toward its own gamut boundary. */
 export const chromaLimit = (L: number, H: number) => fitChroma(L, 0.45, H)
 
-/** One lightness scale for every hue: the gray spine remapped onto the new
- *  endpoints, then forced monotonic so the ramp never reverses. */
-export function uniformScale(floorL: number, ceilingL: number): number[] {
-  const floorLum = relativeLuminance(floorL / 100, 0, 0)
-  const baseLum = relativeLuminance(0, 0, 0)
-  const spanNow =
-    contrastRatio(relativeLuminance(GRAY.dark[1000] / 100, 0, 0), baseLum) - 1
-  const spanNew =
-    contrastRatio(relativeLuminance(ceilingL / 100, 0, 0), floorLum) - 1
-  const k = spanNew / spanNow
-
-  const raw = STEPS.map((step, i) => {
+/** One lightness scale for every hue: the gray spine moved onto the new
+ *  endpoints. Ordering, including the 700/800 reversal in dark, is inherited
+ *  from the spine rather than imposed. */
+export function uniformScale(
+  theme: Theme,
+  floorL: number,
+  ceilingL: number
+): number[] {
+  const { k, baseLum, floorLum } = spanFactor(theme, floorL, ceilingL)
+  return STEPS.map((step, i) => {
     if (i === STEPS.length - 1) return ceilingL
     const crNow = contrastRatio(
-      relativeLuminance(GRAY.dark[step as GrayStep] / 100, 0, 0),
+      relativeLuminance(GRAY[theme][step as GrayStep] / 100, 0, 0),
       baseLum
     )
-    const target = 1 + (crNow - 1) * k
-    return (
-      solveLightness(clamp01(target * (floorLum + 0.05) - 0.05), 0, 0) * 100
-    )
+    return solveForContrast(1 + (crNow - 1) * k, 0, 0, floorLum, theme) * 100
   })
-
-  // 800 is the darker half of the solid/hover pair, so its dip below 700 is
-  // kept deliberately; every other step stays ordered.
-  raw[7] = raw[6] - ANCHOR_DIP
-  return raw
 }
 
-/** The dark palette generated from the uniform model rather than remapped. */
-export function uniformDarkPalette(floorL: number, ceilingL: number) {
-  const scale = uniformScale(floorL, ceilingL)
-  const floorLum = relativeLuminance(floorL / 100, 0, 0)
-  const floorSrgb = linearToSrgb(clamp01(floorL / 100) ** 3)
+export function uniformPalette(
+  theme: Theme,
+  floorL: number,
+  ceilingL: number,
+  anchors: Record<string, Anchor> = ANCHORS
+): Palette {
+  const scale = uniformScale(theme, floorL, ceilingL)
+  const { k, floorLum } = spanFactor(theme, floorL, ceilingL)
+  const floorSrgb = srgbOf(floorL)
+  const dark = isDarkTheme(theme)
   const rows: PaletteRow[] = []
 
-  const neutral = (L: number): Swatch => ({
-    step: 0,
-    hex: oklchToHex(L / 100, 0, 0),
+  const neutral = (L: number, step: number): Swatch => ({
+    step,
+    hex: neutralHexOf(L),
     css: `oklch(${(L / 100).toFixed(3)} 0 0)`,
     contrast: contrastRatio(relativeLuminance(L / 100, 0, 0), floorLum),
   })
@@ -969,52 +732,52 @@ export function uniformDarkPalette(floorL: number, ceilingL: number) {
     swatches: STEPS.map((step, i) =>
       step > 200
         ? null
-        : { ...neutral(i === 0 ? floorL : (floorL + scale[0]) / 2), step }
+        : neutral(i === 0 ? floorL : (floorL + scale[0]) / 2, step)
     ),
   })
 
   rows.push({
     label: "Gray",
     token: "--ds-gray-*",
-    swatches: STEPS.map((step, i) => ({ ...neutral(scale[i]), step })),
+    swatches: STEPS.map((step, i) => neutral(scale[i], step)),
   })
 
-  // Alpha now tracks the solid ramp exactly: solve opacity for each target L.
+  // Alpha tracks the solid ramp exactly: solve opacity for each target.
   rows.push({
     label: "Gray Alpha",
     token: "--ds-gray-alpha-*",
     swatches: STEPS.map((step, i) => {
-      const targetSrgb = linearToSrgb(clamp01(scale[i] / 100) ** 3)
-      const alpha = clamp01((targetSrgb - floorSrgb) / (1 - floorSrgb))
+      const alpha = alphaFor(srgbOf(scale[i]), floorSrgb, theme)
       return {
-        ...neutral(scale[i]),
-        step,
+        ...neutral(scale[i], step),
         alpha,
-        css: `oklch(1 0 0 / ${alpha.toFixed(3)})`,
+        css: `oklch(${alphaInk(theme)} 0 0 / ${alpha.toFixed(3)})`,
       }
     }),
   })
 
-  for (const hue of HUE_ORDER) {
-    const [solidL, , H] = REFERENCE_RAMPS[hue].dark[6] // pinned 700, base hue
-    const [hoverL] = REFERENCE_RAMPS[hue].dark[7] // pinned 800
-    // Both anchors are given. Tints climb from the floor to the solid; text
-    // climbs from the hover step to the ceiling.
+  for (const [hue, anchor] of Object.entries(anchors)) {
+    const { hue: H, solid: solidL, hover: hoverL } = anchor
     const lightnessFor = (step: Step, i: number) => {
       if (step === 700) return solidL
       if (step === 800) return hoverL
       if (step === 600) return scale[4] + BORDER_T * (solidL - scale[4])
-      if (step === 900) return Math.max(scale[8], hoverL + TEXT_LIFT)
-      return scale[i] + (TINT_LIFT[step] ?? 0)
+      if (step === 900)
+        return dark
+          ? Math.max(scale[8], hoverL + TEXT_LIFT)
+          : Math.min(scale[8], hoverL - TEXT_LIFT)
+      return scale[i] + (TINT_LIFT[theme][step] ?? 0)
     }
-    const hueFor = (step: Step) => H + (WARM_ROTATION[step] ?? 0) * warmth(H)
+    const hueFor = (step: Step) =>
+      H + (WARM_ROTATION[theme][step] ?? 0) * warmth(H)
+
     rows.push({
       label: hue[0].toUpperCase() + hue.slice(1),
       token: `--ds-${hue}-*`,
       swatches: STEPS.map((step, i) => {
         const L = lightnessFor(step, i)
         const stepHue = hueFor(step)
-        const C = UNIFORM_CHROMA[step] * chromaLimit(L / 100, stepHue)
+        const C = UNIFORM_CHROMA[theme][step] * chromaLimit(L / 100, stepHue)
         return {
           step,
           hex: oklchToHex(L / 100, C, stepHue),
@@ -1028,5 +791,5 @@ export function uniformDarkPalette(floorL: number, ceilingL: number) {
     })
   }
 
-  return { rows, k: 1, floorL, ceilingL }
+  return { rows, k }
 }

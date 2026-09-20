@@ -1,0 +1,72 @@
+---
+title: Sonner
+description: An opinionated toast component, wired to the active theme.
+---
+
+<ComponentPreview name="sonner-demo" />
+
+ziiz carries two toasts. [Toast](/components/toast) is the Base UI one, driven by a
+toast manager you call imperatively. Sonner is the third-party alternative:
+it renders its own stack, follows the active theme through `next-themes`, and
+takes a shorter call.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @ziiz/sonner
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install sonner next-themes
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<RegistrySource name="sonner" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Mount the `Toaster` once, near the root of the app.
+
+```tsx
+import { Toaster } from "@/components/ui/sonner"
+```
+
+```tsx
+<Toaster />
+```
+
+Then call `toast` from anywhere.
+
+```tsx
+import { toast } from "sonner"
+
+toast("Event created", {
+  description: "Sunday, December 3 at 9:00 AM",
+})
+```

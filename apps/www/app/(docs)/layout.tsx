@@ -1,3 +1,5 @@
+import { Toaster as SonnerToaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/toast"
 import { DocsSidebar } from "@/components/docs-sidebar"
 import { SiteHeader } from "@/components/site-header"
 
@@ -18,6 +20,9 @@ export default function DocsLayout({
         </main>
         <div className="hidden w-60 shrink-0 lg:block" />
       </div>
+      {/* Both live here so a toast example fires from any component page. */}
+      <Toaster />
+      <SonnerToaster />
     </div>
   )
 }

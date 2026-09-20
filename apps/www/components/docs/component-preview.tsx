@@ -1,9 +1,11 @@
 import { cn } from "@/lib/utils"
+import { CodeCollapsible } from "@/components/docs/code-collapsible"
 
 // A live example above its source. Presentational: the page renders the
-// component into `children` and passes an already highlighted `source`
-// (a ComponentSource, collapsible or not), so this knows nothing about
-// where either came from.
+// component into `children` and passes an already highlighted `source`,
+// so this knows nothing about where either came from. The source starts
+// as a three-line teaser under a View Code control; pass a source that
+// is not collapsible, since the preview does the revealing.
 function ComponentPreview({
   source,
   align = "center",
@@ -41,9 +43,11 @@ function ComponentPreview({
       {!hideCode && source ? (
         <div
           data-slot="component-preview-source"
-          className="border-t border-gray-alpha-400 *:data-[slot=code-collapsible]:mt-0 [&_[data-slot=code-block]]:mt-0 [&_pre]:max-h-96 [&_pre]:rounded-none [&_pre]:border-0"
+          className="border-t border-gray-alpha-400"
         >
-          {source}
+          <CodeCollapsible expandLabel="View Code" collapseLabel="Hide Code">
+            {source}
+          </CodeCollapsible>
         </div>
       ) : null}
     </div>

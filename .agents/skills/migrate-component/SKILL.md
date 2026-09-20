@@ -72,8 +72,12 @@ focus-visible:ring-ring/50` cluster (`--ring` already resolves to
    `/preview` — and that's a stop-and-resolve, not a silent fix.
 5. **Hover steps the ramp, never opacity-mixes.** `hover:bg-x/80` and
    `color-mix()` hovers are replaced by the adjacent hand-tuned ramp step.
-6. **Input wash.** Inputs carry the `bg-gray-alpha-400/30` wash in **both**
-   themes (not dark-only as stock shadcn ships it).
+6. **Fields rest on the page surface.** Field-style controls (input,
+   textarea, select/native-select triggers, combobox chips, input-group,
+   input-otp slots, unchecked checkbox/radio/questionnaire indicators,
+   button-group text) carry `bg-background-100` in **both** themes — the
+   X-style flat field, no wash. (Reversed 2026-09-20: the earlier
+   `bg-gray-alpha-400/30` wash was replaced at the human's direction.)
 7. **Light and dark share the same token names.** Theming happens underneath
    the ramp; migration never adds `dark:` color overrides — if a component
    seems to need one, stop and resolve.

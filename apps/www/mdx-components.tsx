@@ -38,6 +38,17 @@ function createHeading(Tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   }
 }
 
+// A tab list written in a doc page is the line variant: it labels the block
+// under it (installation commands, a code sample), and a filled pill there
+// would read as a second surface stacked on the code. A page that wants the
+// pill passes variant="default".
+function DocsTabsList({
+  variant = "line",
+  ...props
+}: React.ComponentProps<typeof TabsList>) {
+  return <TabsList variant={variant} {...props} />
+}
+
 function Table(props: React.ComponentPropsWithoutRef<"table">) {
   return (
     <div
@@ -96,7 +107,7 @@ const components = {
   Kbd,
   KbdGroup,
   Tabs,
-  TabsList,
+  TabsList: DocsTabsList,
   TabsTrigger,
   TabsContent,
 } satisfies MDXComponents

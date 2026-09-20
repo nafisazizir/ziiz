@@ -22,6 +22,11 @@ export function DocsSidebar() {
             <SidebarItem key={item.href} item={item} pathname={pathname} />
           ))}
         </SidebarGroup>
+        <SidebarGroup label="Components">
+          {siteConfig.componentItems.map((item) => (
+            <SidebarItem key={item.href} item={item} pathname={pathname} />
+          ))}
+        </SidebarGroup>
       </nav>
     </aside>
   )

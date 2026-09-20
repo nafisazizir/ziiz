@@ -1,3 +1,5 @@
+import { componentItems } from "@/lib/component-nav"
+
 export const siteConfig = {
   name: "ziiz",
   description: "A design-system exploration.",
@@ -17,6 +19,8 @@ export const siteConfig = {
     },
   ],
   startItems: [{ name: "Installation", href: "/installation" }],
+  // Generated from content/docs/components by scripts/build-registry.ts.
+  componentItems,
   foundationItems: [
     { name: "Colors", href: "/colors" },
     { name: "Typography", href: "/typography" },

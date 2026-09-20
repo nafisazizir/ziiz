@@ -91,8 +91,11 @@ for (const collection of COLLECTIONS) {
 
 // 2 --------------------------------------------------------------------------
 
-// The sidebar is static config, so read the hrefs out of lib/config.ts.
-const config = fs.readFileSync(path.join(ROOT, "lib/config.ts"), "utf8")
+// The sidebar is static config, so read the hrefs out of it. The Components
+// group is generated into its own file by the registry build.
+const config = ["lib/config.ts", "lib/component-nav.ts"]
+  .map((f) => fs.readFileSync(path.join(ROOT, f), "utf8"))
+  .join("\n")
 const navRoutes = new Set(
   [...config.matchAll(/href:\s*"([^"]+)"/g)].map((m) => m[1])
 )
@@ -107,10 +110,16 @@ for (const route of docsRoutes) {
 
 const LINK_RE = /\]\((\/[^)\s]*)\)|href=["'](\/[^"']*)["']/g
 
+// An href inside a sample is illustrative — `/dashboard` in an Item example
+// is not a claim that this site serves /dashboard. Only prose links count.
+function stripCode(source: string) {
+  return source.replace(/```[\s\S]*?```/g, "").replace(/`[^`\n]*`/g, "")
+}
+
 for (const collection of COLLECTIONS) {
   for (const file of walk(path.join(ROOT, collection.dir))) {
     const rel = path.relative(ROOT, file)
-    const source = fs.readFileSync(file, "utf8")
+    const source = stripCode(fs.readFileSync(file, "utf8"))
     for (const match of source.matchAll(LINK_RE)) {
       const href = match[1] ?? match[2]
       const [pathname] = href.split("#")

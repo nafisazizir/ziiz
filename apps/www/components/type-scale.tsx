@@ -16,7 +16,7 @@ export function TypeVariantList({ items }: { items: TypeVariant[] }) {
       {items.map((item) => (
         <div key={item.className} className="border-b py-5 last:border-b-0">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <div className={cn("min-w-0", item.className)}>
+            <div className={cn("min-w-0 text-gray-1000", item.className)}>
               {item.name}
               {item.modifier ? (
                 <>

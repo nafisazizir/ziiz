@@ -25,7 +25,7 @@ function NativeSelect({
       <select
         data-slot="native-select"
         data-size={size}
-        className="h-9 w-full min-w-0 appearance-none rounded-md border border-gray-alpha-400 bg-gray-alpha-400/30 py-1 pr-8 pl-2.5 text-label-14 transition-[color,box-shadow] outline-none select-none selection:bg-gray-1000 selection:text-background-100 placeholder:text-gray-900 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 data-[size=sm]:h-8"
+        className="h-9 w-full min-w-0 appearance-none rounded-md border border-gray-alpha-400 bg-gray-alpha-400/30 py-1 pr-8 pl-2.5 text-label-14 transition-[color,border-color,box-shadow] outline-none select-none selection:bg-gray-1000 selection:text-background-100 placeholder:text-gray-900 hover:border-gray-alpha-500 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 data-[size=sm]:h-8"
         {...props}
       />
       <HugeiconsIcon

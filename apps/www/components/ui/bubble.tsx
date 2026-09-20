@@ -23,17 +23,17 @@ const bubbleVariants = cva(
         default:
           "*:data-[slot=bubble-content]:bg-gray-1000 *:data-[slot=bubble-content]:text-background-100 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-950",
         secondary:
-          "*:data-[slot=bubble-content]:bg-gray-100 *:data-[slot=bubble-content]:text-gray-1000 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-200",
+          "*:data-[slot=bubble-content]:bg-gray-100 *:data-[slot=bubble-content]:text-gray-1000 [&>[data-slot=bubble-content]:is(button,a):active]:bg-gray-300 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-200",
         muted:
-          "*:data-[slot=bubble-content]:bg-gray-100 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-200",
+          "*:data-[slot=bubble-content]:bg-gray-100 [&>[data-slot=bubble-content]:is(button,a):active]:bg-gray-300 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-200",
         tinted:
           "*:data-[slot=bubble-content]:bg-gray-200 *:data-[slot=bubble-content]:text-gray-1000 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-300",
         outline:
-          "*:data-[slot=bubble-content]:border-gray-alpha-400 *:data-[slot=bubble-content]:bg-background-100 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-100 [&>[data-slot=bubble-content]:is(button,a):hover]:text-gray-1000",
+          "*:data-[slot=bubble-content]:border-gray-alpha-400 *:data-[slot=bubble-content]:bg-background-100 [&>[data-slot=bubble-content]:is(button,a):active]:bg-gray-200 [&>[data-slot=bubble-content]:is(button,a):hover]:border-gray-alpha-500 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-100 [&>[data-slot=bubble-content]:is(button,a):hover]:text-gray-1000",
         ghost:
-          "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-alpha-100 [&>[data-slot=bubble-content]:is(button,a):hover]:text-gray-1000",
+          "border-none *:data-[slot=bubble-content]:rounded-none *:data-[slot=bubble-content]:bg-transparent *:data-[slot=bubble-content]:p-0 [&>[data-slot=bubble-content]:is(button,a):active]:bg-gray-alpha-200 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-gray-alpha-100 [&>[data-slot=bubble-content]:is(button,a):hover]:text-gray-1000",
         destructive:
-          "*:data-[slot=bubble-content]:bg-red-100 *:data-[slot=bubble-content]:text-red-800 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-red-200",
+          "*:data-[slot=bubble-content]:bg-red-100 *:data-[slot=bubble-content]:text-red-800 [&>[data-slot=bubble-content]:is(button,a):active]:bg-red-300 [&>[data-slot=bubble-content]:is(button,a):hover]:bg-red-200",
       },
     },
     defaultVariants: {

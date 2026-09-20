@@ -107,7 +107,7 @@ function QuestionnaireChoice({
     <QuestionnairePrimitive.Choice
       data-slot="questionnaire-choice"
       className={cn(
-        "group/questionnaire-choice relative flex min-h-11 cursor-pointer items-start gap-3 rounded-md border border-gray-alpha-400 bg-transparent px-4 py-3.5 text-start text-label-14 transition-colors outline-none select-none hover:bg-gray-alpha-100 has-[>input:focus-visible]:border-gray-600 has-[>input:focus-visible]:ring-3 has-[>input:focus-visible]:ring-gray-600/50 data-invalid:border-red-800 data-checked:border-gray-alpha-500 data-checked:bg-gray-alpha-200",
+        "group/questionnaire-choice relative flex min-h-11 cursor-pointer items-start gap-3 rounded-md border border-gray-alpha-400 bg-transparent px-4 py-3.5 text-start text-label-14 transition-colors outline-none select-none hover:border-gray-alpha-500 hover:bg-gray-alpha-100 active:bg-gray-alpha-200 has-[>input:focus-visible]:border-gray-600 has-[>input:focus-visible]:ring-3 has-[>input:focus-visible]:ring-gray-600/50 data-invalid:border-red-800 data-checked:border-gray-alpha-500 data-checked:bg-gray-alpha-200 data-checked:hover:bg-gray-alpha-300",
         "data-disabled:pointer-events-none data-disabled:cursor-not-allowed data-disabled:opacity-50",
         className
       )}
@@ -172,7 +172,7 @@ function QuestionnaireInput({
       <QuestionnairePrimitive.Input
         data-slot="questionnaire-input"
         className={cn(
-          "h-9 min-h-11 w-full min-w-0 rounded-md border border-gray-alpha-400 bg-gray-alpha-400/30 px-2.5 py-1 text-label-16 transition-[color,box-shadow,background-color] outline-none focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 sm:min-h-0 md:text-label-14",
+          "h-9 min-h-11 w-full min-w-0 rounded-md border border-gray-alpha-400 bg-gray-alpha-400/30 px-2.5 py-1 text-label-16 transition-[color,background-color,border-color,box-shadow] outline-none hover:border-gray-alpha-500 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 sm:min-h-0 md:text-label-14",
           "selection:bg-gray-1000 selection:text-background-100 placeholder:text-gray-900",
           className
         )}

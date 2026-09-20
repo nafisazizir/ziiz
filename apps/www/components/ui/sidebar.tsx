@@ -425,7 +425,7 @@ function SidebarGroupAction({
     props: mergeProps<"button">(
       {
         className: cn(
-          "absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-gray-1000 outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 md:after:hidden [&>svg]:size-4 [&>svg]:shrink-0",
+          "absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-gray-1000 outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 md:after:hidden [&>svg]:size-4 [&>svg]:shrink-0",
           className
         ),
       },
@@ -476,7 +476,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-label-14 outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 active:text-gray-1000 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-open:hover:bg-gray-alpha-100 data-open:hover:text-gray-1000 data-active:bg-gray-alpha-200 data-active:text-button-14 data-active:text-gray-1000 [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",
+  "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-label-14 outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 active:text-gray-1000 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-open:hover:bg-gray-alpha-100 data-open:hover:text-gray-1000 data-active:bg-gray-alpha-200 data-active:text-button-14 data-active:text-gray-1000 data-active:hover:bg-gray-alpha-300 [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",
   {
     variants: {
       variant: {
@@ -565,7 +565,7 @@ function SidebarMenuAction({
     props: mergeProps<"button">(
       {
         className: cn(
-          "absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-gray-1000 outline-hidden transition-transform group-data-[collapsible=icon]:hidden peer-hover/menu-button:text-gray-1000 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 after:absolute after:-inset-2 hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 md:after:hidden [&>svg]:size-4 [&>svg]:shrink-0",
+          "absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-gray-1000 outline-hidden transition-transform group-data-[collapsible=icon]:hidden peer-hover/menu-button:text-gray-1000 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 after:absolute after:-inset-2 hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 md:after:hidden [&>svg]:size-4 [&>svg]:shrink-0",
           showOnHover &&
             "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 peer-data-active/menu-button:text-gray-1000 aria-expanded:opacity-100 md:opacity-0",
           className
@@ -680,7 +680,7 @@ function SidebarMenuSubButton({
     props: mergeProps<"a">(
       {
         className: cn(
-          "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-gray-1000 outline-hidden group-data-[collapsible=icon]:hidden hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 active:text-gray-1000 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-label-14 data-[size=sm]:text-label-12 data-active:bg-gray-alpha-200 data-active:text-gray-1000 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-gray-1000",
+          "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-gray-1000 outline-hidden group-data-[collapsible=icon]:hidden hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 active:text-gray-1000 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-label-14 data-[size=sm]:text-label-12 data-active:bg-gray-alpha-200 data-active:text-gray-1000 data-active:hover:bg-gray-alpha-300 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-gray-1000",
           className
         ),
       },

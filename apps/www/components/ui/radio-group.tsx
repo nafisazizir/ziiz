@@ -20,7 +20,7 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
     <RadioPrimitive.Root
       data-slot="radio-group-item"
       className={cn(
-        "group/radio-group-item peer relative flex aspect-square size-4 shrink-0 rounded-full border border-gray-alpha-400 bg-gray-alpha-400/30 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 aria-invalid:aria-checked:border-gray-1000 aria-invalid:aria-checked:bg-gray-1000 data-checked:border-gray-1000 data-checked:bg-gray-1000 data-checked:text-background-100 data-disabled:cursor-not-allowed data-disabled:opacity-50",
+        "group/radio-group-item peer relative flex aspect-square size-4 shrink-0 rounded-full border border-gray-alpha-400 bg-gray-alpha-400/30 transition-[border-color,box-shadow] outline-none after:absolute after:-inset-x-3 after:-inset-y-2 hover:border-gray-alpha-500 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 aria-invalid:aria-checked:border-gray-1000 aria-invalid:aria-checked:bg-gray-1000 data-checked:border-gray-1000 data-checked:bg-gray-1000 data-checked:text-background-100 data-checked:hover:border-gray-950 data-checked:hover:bg-gray-950 data-disabled:cursor-not-allowed data-disabled:opacity-50",
         className
       )}
       {...props}

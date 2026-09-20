@@ -57,7 +57,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-button-14 transition-colors outline-none hover:bg-gray-alpha-100 focus:bg-gray-alpha-100 focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-gray-alpha-100 data-open:bg-gray-alpha-100"
+  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-button-14 transition-colors outline-none hover:bg-gray-alpha-100 focus:bg-gray-alpha-100 focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 active:bg-gray-alpha-200 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-gray-alpha-100 data-open:bg-gray-alpha-100"
 )
 
 function NavigationMenuTrigger({
@@ -135,7 +135,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex items-center gap-1.5 rounded-md p-2 text-label-14 transition-colors outline-none hover:bg-gray-alpha-100 focus:bg-gray-alpha-100 focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-sm data-[active=true]:bg-gray-alpha-100 [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-1.5 rounded-md p-2 text-label-14 transition-colors outline-none hover:bg-gray-alpha-100 focus:bg-gray-alpha-100 focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 active:bg-gray-alpha-200 in-data-[slot=navigation-menu-content]:rounded-sm data-[active=true]:bg-gray-alpha-200 data-[active=true]:hover:bg-gray-alpha-300 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

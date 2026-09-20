@@ -60,7 +60,7 @@ function MenubarTrigger({
     <DropdownMenuTrigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex items-center rounded-sm px-2 py-1 text-button-14 outline-hidden select-none hover:bg-gray-alpha-100 aria-expanded:bg-gray-alpha-100",
+        "flex items-center rounded-sm px-2 py-1 text-button-14 outline-hidden select-none hover:bg-gray-alpha-100 active:bg-gray-alpha-200 aria-expanded:bg-gray-alpha-100",
         className
       )}
       {...props}
@@ -118,7 +118,7 @@ function MenubarCheckboxItem({
       data-slot="menubar-checkbox-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 data-inset:pl-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 data-inset:pl-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
@@ -153,7 +153,7 @@ function MenubarRadioItem({
       data-slot="menubar-radio-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 data-inset:pl-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 data-inset:pl-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

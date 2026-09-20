@@ -8,14 +8,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gray-1000 text-background-100 hover:bg-gray-950",
+        default:
+          "bg-gray-1000 text-background-100 hover:bg-gray-950 active:bg-gray-900",
         outline:
-          "border-gray-alpha-400 bg-background-100 hover:bg-gray-100 hover:text-gray-1000 aria-expanded:bg-gray-100 aria-expanded:text-gray-1000",
+          "border-gray-alpha-400 bg-background-100 hover:border-gray-alpha-500 hover:bg-gray-100 hover:text-gray-1000 active:bg-gray-200 aria-expanded:bg-gray-100 aria-expanded:text-gray-1000",
         secondary:
-          "bg-gray-100 text-gray-1000 hover:bg-gray-200 aria-expanded:bg-gray-100 aria-expanded:text-gray-1000",
+          "bg-gray-100 text-gray-1000 hover:bg-gray-200 active:bg-gray-300 aria-expanded:bg-gray-200 aria-expanded:text-gray-1000",
         ghost:
-          "hover:bg-gray-alpha-100 hover:text-gray-1000 aria-expanded:bg-gray-alpha-100 aria-expanded:text-gray-1000",
-        destructive: "bg-red-800 text-white hover:bg-red-900",
+          "hover:bg-gray-alpha-100 hover:text-gray-1000 active:bg-gray-alpha-200 aria-expanded:bg-gray-alpha-100 aria-expanded:text-gray-1000",
+        destructive: "bg-red-700 text-white hover:bg-red-800 active:bg-red-900",
         link: "text-gray-1000 underline-offset-4 hover:underline",
       },
       size: {

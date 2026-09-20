@@ -45,6 +45,8 @@ Filled components, like secondary buttons and badges, step 1 → 2 → 3 as writ
 
 If a component's default background is Background 1 — the page surface showing through, like ghost buttons, menu items and tab chips — the ladder shifts down a rung: Color 1 is the hover background and Color 2 the active background. Components that rest transparent take that shift on the alpha scale, so the state reads over any surface.
 
+Two refinements hold on both ladders. A transient open state (`aria-expanded`, `data-open`) pins to the hover step — the highlight lives in the popup, so the trigger only ever looks hovered. And hovering an already-selected control deepens one step further (`gray-alpha-300` on the alpha ladder, `gray-950` on the inverted fills) so selection never swallows the hover response.
+
 <div data-not-typeset>
   <ColorUsageList
     items={[
@@ -59,7 +61,7 @@ If a component's default background is Background 1 — the page surface showing
 
 These three colors are designed for UI component borders.
 
-In practice, borders default to the alpha scale; alpha hairlines hold up over any surface.
+In practice, borders default to the alpha scale; alpha hairlines hold up over any surface. Bordered controls and text fields step the hairline to Color 5 on hover — for fields, that border step is the entire hover response. Color 6's "active border" role is filled by the focus signature: solid gray-600 replaces the hairline on focus rather than stepping the alpha scale.
 
 <div data-not-typeset>
   <ColorUsageList

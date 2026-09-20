@@ -1255,6 +1255,9 @@
   [data-slot="code-block"][data-titled] :where(pre) {
     border: 0;
     border-radius: 0;
+    /* The copy button sits in the title bar, so the code keeps the full
+       width instead of reserving a gutter for it. */
+    padding-inline-end: var(--code-block-pad);
   }
   [data-slot="code-block"] > figcaption {
     @apply text-label-13-mono;
@@ -1279,6 +1282,43 @@
     inset-block-start: calc(
       (var(--code-block-title-height) - var(--code-block-copy-size)) / 2
     );
+  }
+
+  /* Line numbers. Shiki wraps every row in a .line span, so the numbers are
+     a counter rather than markup: nothing to select, nothing to copy. The
+     gutter is sticky against the pre's scrollport, so it holds its place
+     while a long line scrolls under it. */
+  [data-slot="code-block"][data-line-numbers] {
+    --code-block-gutter: 3.5rem;
+  }
+  [data-slot="code-block"][data-line-numbers] :where(pre) {
+    /* The gutter and each row carry the inline padding instead. */
+    padding-inline: 0;
+  }
+  [data-slot="code-block"][data-line-numbers] :where(pre code) {
+    display: grid;
+    counter-reset: line;
+  }
+  [data-slot="code-block"][data-line-numbers] :where(pre code > .line) {
+    padding-inline-end: var(--code-block-copy-gutter);
+  }
+  [data-slot="code-block"][data-line-numbers][data-titled]
+    :where(pre code > .line) {
+    padding-inline-end: var(--code-block-pad);
+  }
+  [data-slot="code-block"][data-line-numbers] :where(pre code > .line)::before {
+    content: counter(line);
+    counter-increment: line;
+    position: sticky;
+    inset-inline-start: 0;
+    display: inline-block;
+    width: var(--code-block-gutter);
+    padding-inline-end: var(--code-block-pad);
+    background-color: var(--shiki-color-background, var(--ds-background-200));
+    color: var(--ds-gray-700);
+    text-align: end;
+    user-select: none;
+    -webkit-user-select: none;
   }
 }
 

@@ -12,12 +12,15 @@ const COLLAPSE_AFTER_LINES = 12
 // Highlights a source file and sets it as a code block. Server-only: reads
 // `src` relative to the project root, or takes the source as `code`.
 // Long files collapse behind an Expand control unless `collapsible` is off.
+// A whole file is numbered; pass `lineNumbers={false}` for an excerpt that
+// reads as a snippet rather than as a file.
 async function ComponentSource({
   code,
   src,
   title,
   language,
   collapsible = true,
+  lineNumbers = true,
   maxLines,
   className,
 }: {
@@ -26,6 +29,7 @@ async function ComponentSource({
   title?: string
   language?: string
   collapsible?: boolean
+  lineNumbers?: boolean
   maxLines?: number
   className?: string
 }) {
@@ -62,7 +66,12 @@ async function ComponentSource({
   // A block that fits the collapsed height anyway gets no control.
   if (!collapsible || source.split("\n").length <= COLLAPSE_AFTER_LINES) {
     return (
-      <CodeBlock title={title} value={source} className={className}>
+      <CodeBlock
+        title={title}
+        value={source}
+        lineNumbers={lineNumbers}
+        className={className}
+      >
         {body}
       </CodeBlock>
     )
@@ -70,7 +79,7 @@ async function ComponentSource({
 
   return (
     <CodeCollapsible className={cn("mt-(--typeset-flow,1.5rem)", className)}>
-      <CodeBlock title={title} value={source}>
+      <CodeBlock title={title} value={source} lineNumbers={lineNumbers}>
         {body}
       </CodeBlock>
     </CodeCollapsible>

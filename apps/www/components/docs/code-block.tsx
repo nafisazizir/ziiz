@@ -14,12 +14,14 @@ import { Button } from "@/components/ui/button"
 function CodeBlock({
   title,
   value,
+  lineNumbers = false,
   className,
   children,
   ...props
 }: React.ComponentProps<"figure"> & {
   title?: string
   value?: string
+  lineNumbers?: boolean
 }) {
   const figureRef = React.useRef<HTMLElement>(null)
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -52,6 +54,7 @@ function CodeBlock({
       ref={figureRef}
       data-slot="code-block"
       data-titled={title ? "true" : undefined}
+      data-line-numbers={lineNumbers ? "true" : undefined}
       className={className}
       {...props}
     >

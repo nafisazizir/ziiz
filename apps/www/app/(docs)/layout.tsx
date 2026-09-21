@@ -13,12 +13,7 @@ export default function DocsLayout({
       <SiteHeader />
       <div className="flex w-full items-start px-6">
         <DocsSidebar />
-        <main className="min-w-0 flex-1">
-          <article className="typeset mx-auto w-full max-w-2xl px-1 py-10 lg:px-8">
-            {children}
-          </article>
-        </main>
-        <div className="hidden w-60 shrink-0 lg:block" />
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
       {/* Both live here so a toast example fires from any component page. */}
       <Toaster />

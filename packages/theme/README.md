@@ -25,8 +25,8 @@ npm install @ziiz/theme
 ## Fonts
 
 The stylesheet expects `--font-sans` and `--font-mono` on the root. Load them
-however the app loads fonts. ziiz uses Inter with `cv05` and `ss03` for sans
-and Geist Mono for mono.
+however the app loads fonts. ziiz uses Inter with `ss03` for sans and Geist
+Mono for mono.
 
 ## Components
 

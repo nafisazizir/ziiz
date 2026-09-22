@@ -485,9 +485,7 @@
   html {
     @apply font-sans;
     font-optical-sizing: auto;
-    font-feature-settings:
-      "cv05" 1 /* tailed l — disambiguates l/I/1 */,
-      "ss03" 1 /* round quotes & commas */;
+    font-feature-settings: "ss03" 1 /* round quotes & commas */;
   }
 }
 

@@ -1,9 +1,13 @@
 import { Toaster as SonnerToaster } from "@/components/ui/sonner"
 import { Toaster } from "@/components/ui/toast"
-import { DocsSidebar } from "@/components/docs-sidebar"
+import { SiteSidebar } from "@/components/site-sidebar"
 import { SiteHeader } from "@/components/site-header"
 
-export default function DocsLayout({
+// The shell every page shares: the sidebar is the site's navigation, so it
+// frames the blog and the playground as much as the docs. The right rail is
+// not here — only a docs page has a table of contents, and DocsPage renders
+// its own.
+export default function ShellLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -12,7 +16,7 @@ export default function DocsLayout({
     <div className="min-h-svh bg-background">
       <SiteHeader />
       <div className="flex w-full items-start px-6">
-        <DocsSidebar />
+        <SiteSidebar />
         <main className="min-w-0 flex-1">{children}</main>
       </div>
       {/* Both live here so a toast example fires from any component page. */}

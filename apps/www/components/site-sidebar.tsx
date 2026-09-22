@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { siteConfig } from "@/lib/config"
 import { Button } from "@/components/ui/button"
 
-export function DocsSidebar() {
+export function SiteSidebar() {
   const pathname = usePathname()
 
   return (

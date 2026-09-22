@@ -1,18 +1,13 @@
-import { siteConfig } from "@/lib/config"
-import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
-import { ModeSwitcher } from "@/components/mode-switcher"
 
+// Only below lg. On a wide viewport the sidebar carries the whole navigation,
+// so there is no bar to render.
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-background">
+    <header className="sticky top-0 z-50 w-full bg-background lg:hidden">
       <div className="mx-auto w-full px-6">
         <div className="flex h-(--header-height) items-center">
-          <MobileNav className="flex lg:hidden" />
-          <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
-          <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-            <ModeSwitcher />
-          </div>
+          <MobileNav className="ml-auto" />
         </div>
       </div>
     </header>

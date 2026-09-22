@@ -49,7 +49,8 @@ export default function RootLayout({
         inter.variable
       )}
     >
-      <body className="[--header-height:--spacing(14)] lg:[--header-height:--spacing(16)]">
+      {/* The bar is mobile-only, so the rails sit flush at lg. */}
+      <body className="[--header-height:--spacing(14)] lg:[--header-height:0px]">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

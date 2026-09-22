@@ -368,7 +368,7 @@ export const GRAY: Record<Theme, Record<GrayStep, number>> = {
     800: 59.0,
     900: 42.0,
     950: 30.0,
-    1000: 20.5,
+    1000: 0,
   },
   dark: {
     100: 21.8,
@@ -381,7 +381,7 @@ export const GRAY: Record<Theme, Record<GrayStep, number>> = {
     800: 59.0,
     900: 70.6,
     950: 85.0,
-    1000: 94.6,
+    1000: 100,
   },
 }
 
@@ -397,7 +397,7 @@ export const GRAY_ALPHA: Record<Theme, Record<Step, number>> = {
     700: 0.44,
     800: 0.51,
     900: 0.7,
-    1000: 0.91,
+    1000: 1,
   },
   dark: {
     100: 0.07,
@@ -409,7 +409,7 @@ export const GRAY_ALPHA: Record<Theme, Record<Step, number>> = {
     700: 0.54,
     800: 0.47,
     900: 0.61,
-    1000: 0.92,
+    1000: 1,
   },
 }
 

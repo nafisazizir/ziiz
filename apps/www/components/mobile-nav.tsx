@@ -42,48 +42,24 @@ export function MobileNav({ className }: { className?: string }) {
         </span>
       </Button>
       {open && (
-        <div className="fixed inset-x-0 top-(--header-height) bottom-0 z-50 scrollbar-none overflow-y-auto bg-background/90 backdrop-blur lg:hidden">
+        <div className="fixed inset-x-0 top-(--header-height) bottom-0 z-50 scrollbar-none overflow-y-auto bg-background/90 backdrop-blur">
+          {/* The same groups the sidebar renders, in the same order — below lg
+              this is the only navigation, so it carries every page. */}
           <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
-            <div className="flex flex-col gap-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                Menu
+            {siteConfig.navGroups.map((group) => (
+              <div key={group.label} className="flex flex-col gap-4">
+                <div className="text-sm font-medium text-muted-foreground">
+                  {group.label}
+                </div>
+                <div className="flex flex-col gap-3">
+                  {group.items.map(({ name, href }) => (
+                    <MobileLink key={href} href={href} onOpenChange={setOpen}>
+                      {name}
+                    </MobileLink>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col gap-3">
-                {siteConfig.navItems.map((item, index) => (
-                  <MobileLink
-                    key={index}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.label}
-                  </MobileLink>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                Getting started
-              </div>
-              <div className="flex flex-col gap-3">
-                {siteConfig.startItems.map(({ name, href }) => (
-                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
-                    {name}
-                  </MobileLink>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="text-sm font-medium text-muted-foreground">
-                Foundation
-              </div>
-              <div className="flex flex-col gap-3">
-                {siteConfig.foundationItems.map(({ name, href }) => (
-                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
-                    {name}
-                  </MobileLink>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       )}

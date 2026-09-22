@@ -8,23 +8,30 @@ export const siteConfig = {
   url: process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:3000",
-  navItems: [
+  // The site's navigation, in order. The sidebar and the mobile menu are two
+  // renderings of this one list, so neither can drift from the other.
+  navGroups: [
     {
-      href: "/",
-      label: "Docs",
+      label: "Getting started",
+      items: [{ name: "Installation", href: "/installation" }],
     },
     {
-      href: "/blog",
-      label: "Blog",
+      label: "Foundation",
+      items: [
+        { name: "Colors", href: "/colors" },
+        { name: "Typography", href: "/typography" },
+        { name: "Materials", href: "/materials" },
+        { name: "Prose", href: "/prose" },
+      ],
     },
-  ],
-  startItems: [{ name: "Installation", href: "/installation" }],
-  // Generated from content/docs/components by scripts/build-registry.ts.
-  componentItems,
-  foundationItems: [
-    { name: "Colors", href: "/colors" },
-    { name: "Typography", href: "/typography" },
-    { name: "Materials", href: "/materials" },
-    { name: "Prose", href: "/prose" },
+    {
+      label: "Playground",
+      items: [{ name: "Palette generator", href: "/playground" }],
+    },
+    // Generated from content/docs/components by scripts/build-registry.ts.
+    { label: "Components", items: componentItems },
+    { label: "Blog", items: [{ name: "All posts", href: "/blog" }] },
   ],
 }
+
+export type NavItem = { name: string; href: string }

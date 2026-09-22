@@ -576,15 +576,15 @@
 /* Typography Button */
 
 @utility text-button-16 {
-  @apply font-sans text-[16px] leading-[20px] font-medium;
+  @apply font-sans text-[16px] leading-[20px] font-[450];
 }
 
 @utility text-button-14 {
-  @apply font-sans text-[14px] leading-[20px] font-medium;
+  @apply font-sans text-[14px] leading-[20px] font-[450];
 }
 
 @utility text-button-12 {
-  @apply font-sans text-[12px] leading-[16px] font-medium;
+  @apply font-sans text-[12px] leading-[16px] font-[450];
 }
 
 /* Typography Label */

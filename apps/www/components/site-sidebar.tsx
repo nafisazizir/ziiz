@@ -40,7 +40,7 @@ function SidebarItem({ item, pathname }: { item: NavItem; pathname: string }) {
         render={
           <Link href={item.href} aria-current={isActive ? "page" : undefined} />
         }
-        className="aria-[current=page]:bg-gray-100 aria-[current=page]:text-gray-1000"
+        className="w-full justify-start text-gray-900 hover:bg-transparent active:scale-100 active:bg-transparent aria-[current=page]:text-gray-1000"
       >
         {item.name}
       </Button>
@@ -56,8 +56,8 @@ function SidebarGroup({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-col gap-1 pb-6">
-      <div className="flex h-8 items-center px-2.5 text-label-13 text-gray-900">
+    <div className="flex flex-col gap-1 pb-8">
+      <div className="flex h-8 items-center px-2.5 text-heading-14 text-gray-1000">
         {label}
       </div>
       <ul className="flex flex-col gap-0.5">{children}</ul>

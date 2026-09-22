@@ -63,7 +63,7 @@ export function DocsTocRail() {
           aria-label="On this page"
           className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10"
         >
-          <div className="flex h-8 items-center text-label-13 text-gray-900">
+          <div className="flex h-8 items-center text-heading-14 text-gray-1000">
             On this page
           </div>
           <TocList items={items} className="mt-1" />

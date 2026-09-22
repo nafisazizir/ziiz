@@ -1043,6 +1043,9 @@
       "name": "component-preview",
       "type": "registry:component",
       "title": "Component Preview",
+      "registryDependencies": [
+        "code-collapsible"
+      ],
       "files": [
         {
           "path": "components/docs/component-preview.tsx",

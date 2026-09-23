@@ -47,7 +47,7 @@ function ItemGroupExample() {
             <ItemDescription>{person.email}</ItemDescription>
           </ItemContent>
           <ItemActions>
-            <Button variant="ghost" size="icon" className="rounded-full">
+            <Button variant="ghost" size="icon" shape="rounded">
               <PlusIcon />
             </Button>
           </ItemActions>

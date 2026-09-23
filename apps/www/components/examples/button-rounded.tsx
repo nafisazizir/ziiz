@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button"
 export default function ButtonRounded() {
   return (
     <div className="flex gap-2">
-      <Button className="rounded-full">Get Started</Button>
-      <Button variant="outline" size="icon" className="rounded-full">
+      <Button shape="rounded">Get Started</Button>
+      <Button variant="outline" size="icon" shape="rounded">
         <ArrowUpIcon />
       </Button>
     </div>

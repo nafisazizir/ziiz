@@ -26,7 +26,10 @@ export const siteConfig = {
     },
     {
       label: "Playground",
-      items: [{ name: "Palette generator", href: "/playground" }],
+      items: [
+        { name: "Palette generator", href: "/playground" },
+        { name: "Button shape", href: "/playground/button-shape" },
+      ],
     },
     // Generated from content/docs/components by scripts/build-registry.ts.
     { label: "Components", items: componentItems },

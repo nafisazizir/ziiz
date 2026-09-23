@@ -124,6 +124,8 @@ Use `align="block-end"` to position the addon below the input.
 
 ## Button
 
+`InputGroupButton` takes `shape="rounded"` for a pill, or a circle at `icon-xs` and `icon-sm`. The group keeps its own radius; set `className="[--radius:9999px]"` on `InputGroup` for a pill field.
+
 <ComponentPreview name="input-group-button" />
 
 ## Kbd
@@ -200,11 +202,12 @@ The `InputGroupAddon` component can have multiple `InputGroupButton` components 
 
 Displays buttons within input groups.
 
-| Prop        | Type                                                                          | Default   |
-| ----------- | ----------------------------------------------------------------------------- | --------- |
-| `size`      | `"xs" \| "icon-xs" \| "sm" \| "icon-sm"`                                      | `"xs"`    |
-| `variant`   | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"` |
-| `className` | `string`                                                                      |           |
+| Prop        | Type                                                                          | Default     |
+| ----------- | ----------------------------------------------------------------------------- | ----------- |
+| `size`      | `"xs" \| "icon-xs" \| "sm" \| "icon-sm"`                                      | `"xs"`      |
+| `variant`   | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"`   |
+| `shape`     | `"default" \| "rounded"`                                                      | `"default"` |
+| `className` | `string`                                                                      |             |
 
 ```tsx
 <InputGroupButton>Button</InputGroupButton>

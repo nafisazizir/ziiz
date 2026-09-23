@@ -22,7 +22,7 @@ function DropdownMenuAvatar() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button variant="ghost" size="icon" className="rounded-full" />}
+        render={<Button variant="ghost" size="icon" shape="rounded" />}
       >
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />

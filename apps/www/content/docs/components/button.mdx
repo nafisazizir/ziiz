@@ -113,7 +113,9 @@ Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attri
 
 ## Rounded
 
-Use the `rounded-full` class to make the button rounded.
+Use `shape="rounded"` to make the button a pill, or a circle with an icon size. A pill's round ends eat into the label's room, so rounded text sizes pad wider than square ones: 12, 14, 16 and 18px at `xs`, `sm`, `default` and `lg`.
+
+Components built on `Button` pass `shape` through: `InputGroupButton`, `AlertDialogAction`, `AlertDialogCancel`, `PaginationLink`, the `Questionnaire` navigation buttons, `MessageScrollerButton`, `AttachmentAction` and `SidebarTrigger`. `CarouselPrevious` and `CarouselNext` are rounded by default. Inside a [Button Group](/components/button-group#rounded), rounded buttons keep the group's two ends round.
 
 <ComponentPreview name="button-rounded" />
 
@@ -147,3 +149,4 @@ The `Button` component is a wrapper around the `button` element that adds a vari
 | --------- | ------------------------------------------------------------------------------------ | ----------- |
 | `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
 | `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `shape`   | `"default" \| "rounded"`                                                             | `"default"` |

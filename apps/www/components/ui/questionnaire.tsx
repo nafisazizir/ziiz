@@ -216,16 +216,18 @@ function QuestionnairePrevious({
   className,
   size = "default",
   variant = "outline",
+  shape = "default",
   ...props
 }: React.ComponentProps<typeof QuestionnairePrimitive.Previous> &
-  Pick<React.ComponentProps<typeof Button>, "size" | "variant">) {
+  Pick<React.ComponentProps<typeof Button>, "size" | "variant" | "shape">) {
   return (
     <QuestionnairePrimitive.Previous
       data-slot="questionnaire-previous"
       data-size={size}
       data-variant={variant}
+      data-shape={shape}
       className={cn(
-        buttonVariants({ size, variant }),
+        buttonVariants({ size, variant, shape }),
         "col-start-1 row-start-1 min-h-11 justify-self-start sm:min-h-0",
         className
       )}
@@ -241,16 +243,18 @@ function QuestionnaireSkip({
   className,
   size = "default",
   variant = "outline",
+  shape = "default",
   ...props
 }: React.ComponentProps<typeof QuestionnairePrimitive.Skip> &
-  Pick<React.ComponentProps<typeof Button>, "size" | "variant">) {
+  Pick<React.ComponentProps<typeof Button>, "size" | "variant" | "shape">) {
   return (
     <QuestionnairePrimitive.Skip
       data-slot="questionnaire-skip"
       data-size={size}
       data-variant={variant}
+      data-shape={shape}
       className={cn(
-        buttonVariants({ size, variant }),
+        buttonVariants({ size, variant, shape }),
         "col-start-2 row-start-1 min-h-11 justify-self-end sm:min-h-0",
         className
       )}
@@ -266,16 +270,18 @@ function QuestionnaireNext({
   className,
   size = "default",
   variant = "default",
+  shape = "default",
   ...props
 }: React.ComponentProps<typeof QuestionnairePrimitive.Next> &
-  Pick<React.ComponentProps<typeof Button>, "size" | "variant">) {
+  Pick<React.ComponentProps<typeof Button>, "size" | "variant" | "shape">) {
   return (
     <QuestionnairePrimitive.Next
       data-slot="questionnaire-next"
       data-size={size}
       data-variant={variant}
+      data-shape={shape}
       className={cn(
-        buttonVariants({ size, variant }),
+        buttonVariants({ size, variant, shape }),
         "col-start-3 row-start-1 min-h-11 justify-self-end sm:min-h-0",
         className
       )}
@@ -291,16 +297,18 @@ function QuestionnaireSubmit({
   className,
   size = "default",
   variant = "default",
+  shape = "default",
   ...props
 }: React.ComponentProps<typeof QuestionnairePrimitive.Submit> &
-  Pick<React.ComponentProps<typeof Button>, "size" | "variant">) {
+  Pick<React.ComponentProps<typeof Button>, "size" | "variant" | "shape">) {
   return (
     <QuestionnairePrimitive.Submit
       data-slot="questionnaire-submit"
       data-size={size}
       data-variant={variant}
+      data-shape={shape}
       className={cn(
-        buttonVariants({ size, variant }),
+        buttonVariants({ size, variant, shape }),
         "col-start-3 row-start-1 min-h-11 justify-self-end sm:min-h-0",
         className
       )}

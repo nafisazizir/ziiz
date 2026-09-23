@@ -122,6 +122,14 @@ Create a split button group by adding two buttons separated by a `ButtonGroupSep
 
 <ComponentPreview name="button-group-split" />
 
+## Rounded
+
+Give the buttons `shape="rounded"`. The group squares the seams between them and leaves the two ends round, so the group reads as one pill.
+
+The ends take their shape from whatever sits there. `Input`, `ButtonGroupText` and `InputGroup` have no `shape`, so a group that ends in one keeps a square end. Set `className="[--radius:9999px]"` on the group to round those too.
+
+<ComponentPreview name="button-group-rounded" />
+
 ## Input
 
 Wrap an `Input` component with buttons.

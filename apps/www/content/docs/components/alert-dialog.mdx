@@ -138,4 +138,14 @@ Use the `size` prop on the `AlertDialogContent` component to control the size of
 | ------ | ------------------- | ----------- |
 | `size` | `"default" \| "sm"` | `"default"` |
 
+### AlertDialogAction and AlertDialogCancel
+
+Both render a [`Button`](/components/button). `AlertDialogAction` accepts all of its props; `AlertDialogCancel` accepts its `variant`, `size` and `shape`.
+
+| Prop      | Type                     | Default                                    |
+| --------- | ------------------------ | ------------------------------------------ |
+| `variant` | `Button["variant"]`      | `"default"` (Action), `"outline"` (Cancel) |
+| `size`    | `Button["size"]`         | `"default"`                                |
+| `shape`   | `"default" \| "rounded"` | `"default"`                                |
+
 For more information about the other components and their props, see the [Base UI documentation](https://base-ui.com/react/components/alert-dialog#api-reference).

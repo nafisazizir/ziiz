@@ -179,6 +179,7 @@ function CarouselPrevious({
   className,
   variant = "outline",
   size = "icon-sm",
+  shape = "rounded",
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
@@ -188,8 +189,9 @@ function CarouselPrevious({
       data-slot="carousel-previous"
       variant={variant}
       size={size}
+      shape={shape}
       className={cn(
-        "absolute touch-manipulation rounded-full",
+        "absolute touch-manipulation",
         orientation === "horizontal"
           ? "inset-y-0 -left-12 my-auto"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -209,6 +211,7 @@ function CarouselNext({
   className,
   variant = "outline",
   size = "icon-sm",
+  shape = "rounded",
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
@@ -218,8 +221,9 @@ function CarouselNext({
       data-slot="carousel-next"
       variant={variant}
       size={size}
+      shape={shape}
       className={cn(
-        "absolute touch-manipulation rounded-full",
+        "absolute touch-manipulation",
         orientation === "horizontal"
           ? "inset-y-0 -right-12 my-auto"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

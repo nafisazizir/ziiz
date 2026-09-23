@@ -65,6 +65,9 @@ function InputGroupAddon({
   )
 }
 
+// These classes land after Button's own, so shape has to be restated here
+// for the sizes that carry their own radius and padding (xs, icon-xs); sm and
+// icon-sm fall through to Button's rounded compounds.
 const inputGroupButtonVariants = cva("flex items-center gap-2 text-button-14", {
   variants: {
     size: {
@@ -74,9 +77,27 @@ const inputGroupButtonVariants = cva("flex items-center gap-2 text-button-14", {
         "size-6 rounded-[min(var(--radius-md),8px)] p-0 has-[>svg]:p-0",
       "icon-sm": "size-8 p-0 has-[>svg]:p-0",
     },
+    shape: {
+      default: "",
+      rounded: "",
+    },
   },
+  compoundVariants: [
+    {
+      shape: "rounded",
+      size: "xs",
+      className:
+        "rounded-full px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+    },
+    {
+      shape: "rounded",
+      size: "icon-xs",
+      className: "rounded-full",
+    },
+  ],
   defaultVariants: {
     size: "xs",
+    shape: "default",
   },
 })
 
@@ -85,6 +106,7 @@ function InputGroupButton({
   type = "button",
   variant = "ghost",
   size = "xs",
+  shape = "default",
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "size" | "type"> &
   VariantProps<typeof inputGroupButtonVariants> & {
@@ -95,7 +117,8 @@ function InputGroupButton({
       type={type}
       data-size={size}
       variant={variant}
-      className={cn(inputGroupButtonVariants({ size }), className)}
+      shape={shape}
+      className={cn(inputGroupButtonVariants({ size, shape }), className)}
       {...props}
     />
   )

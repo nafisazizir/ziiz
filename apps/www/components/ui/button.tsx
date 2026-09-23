@@ -32,10 +32,46 @@ const buttonVariants = cva(
           "size-8 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-md",
         "icon-lg": "size-10",
       },
+      // Declared after size so rounded-full outranks the xs/sm radius caps and
+      // the in-group rounded-md; ButtonGroup squares the inner corners.
+      shape: {
+        default: "",
+        rounded: "rounded-full in-data-[slot=button-group]:rounded-full",
+      },
     },
+    // A pill's round ends eat into the label's breathing room, so rounded text
+    // sizes pad wider: 12/14/16/18px at 24/32/36/40px tall, x.ai's pill scale.
+    // The icon side keeps the usual half-step less, as in the square sizes.
+    compoundVariants: [
+      {
+        shape: "rounded",
+        size: "xs",
+        className:
+          "px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
+      },
+      {
+        shape: "rounded",
+        size: "sm",
+        className:
+          "px-3.5 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
+      },
+      {
+        shape: "rounded",
+        size: "default",
+        className:
+          "px-4 has-data-[icon=inline-end]:pr-3.5 has-data-[icon=inline-start]:pl-3.5",
+      },
+      {
+        shape: "rounded",
+        size: "lg",
+        className:
+          "px-4.5 has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
+      shape: "default",
     },
   }
 )
@@ -44,12 +80,13 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  shape = "default",
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, shape, className }))}
       {...props}
     />
   )

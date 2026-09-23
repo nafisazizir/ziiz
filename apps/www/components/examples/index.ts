@@ -78,6 +78,7 @@ export const examples: Record<string, React.ComponentType> = {
     () => import("./button-group-orientation")
   ),
   "button-group-popover": React.lazy(() => import("./button-group-popover")),
+  "button-group-rounded": React.lazy(() => import("./button-group-rounded")),
   "button-group-select": React.lazy(() => import("./button-group-select")),
   "button-group-separator": React.lazy(
     () => import("./button-group-separator")

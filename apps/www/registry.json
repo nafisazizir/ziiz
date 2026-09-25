@@ -599,6 +599,22 @@
       ]
     },
     {
+      "name": "nav",
+      "type": "registry:ui",
+      "title": "Nav",
+      "dependencies": [
+        "@base-ui/react",
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
+      ],
+      "files": [
+        {
+          "path": "components/ui/nav.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "navigation-menu",
       "type": "registry:ui",
       "title": "Navigation Menu",

@@ -38,6 +38,7 @@ export const componentItems = [
   { name: "Message", href: "/components/message" },
   { name: "Message Scroller", href: "/components/message-scroller" },
   { name: "Native Select", href: "/components/native-select" },
+  { name: "Nav", href: "/components/nav" },
   { name: "Navigation Menu", href: "/components/navigation-menu" },
   { name: "Pagination", href: "/components/pagination" },
   { name: "Popover", href: "/components/popover" },

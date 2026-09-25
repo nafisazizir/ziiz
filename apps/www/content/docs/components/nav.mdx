@@ -1,0 +1,181 @@
+---
+title: Nav
+description: A site's navigation — grouped links with text-only states, for docs and marketing rails.
+---
+
+<ComponentPreview name="nav-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @ziiz/nav
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react @hugeicons/react @hugeicons/core-free-icons
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<RegistrySource name="nav" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Nav,
+  NavGroup,
+  NavGroupLabel,
+  NavItem,
+  NavLink,
+  NavList,
+} from "@/components/ui/nav"
+```
+
+```tsx showLineNumbers
+<Nav aria-label="Docs">
+  <NavGroup>
+    <NavGroupLabel>Components</NavGroupLabel>
+    <NavList>
+      <NavItem>
+        <NavLink href="/components/button" active>
+          Button
+        </NavLink>
+      </NavItem>
+    </NavList>
+  </NavGroup>
+</Nav>
+```
+
+## Composition
+
+Use the following composition to build a `Nav`:
+
+```text
+Nav
+├── NavHeader
+├── NavContent
+│   └── NavGroup
+│       ├── NavGroupLabel
+│       └── NavList
+│           ├── NavItem
+│           │   └── NavLink
+│           └── NavCollapsible
+│               ├── NavCollapsibleTrigger
+│               └── NavCollapsibleContent
+│                   └── NavSub
+│                       └── NavSubItem
+│                           └── NavLink
+└── NavFooter
+```
+
+`NavHeader`, `NavContent` and `NavFooter` are for a rail with something pinned above or below its links. A plain list of groups needs none of them.
+
+## Nav vs Sidebar
+
+`Nav` is a website's navigation: a list of pages whose states are text only — secondary at rest, primary on hover and when current, never a fill. Use it for docs, marketing and help-center rails.
+
+`Sidebar` is an application shell: it collapses to icons, becomes a sheet on mobile, remembers its open state and carries menu actions. Use it when the rail is part of the app, not a table of contents.
+
+## Collapsible
+
+Wrap a section in `NavCollapsible` to open its pages in place. A hairline runs down the left of the nested list.
+
+<ComponentPreview name="nav-collapsible" />
+
+## Header and Footer
+
+Pin content above and below the links. `NavContent` takes the remaining height and scrolls on its own.
+
+<ComponentPreview name="nav-rail" />
+
+## Size
+
+`size="lg"` is the same list one type role louder — the full-screen menu that carries every page on mobile.
+
+<ComponentPreview name="nav-size" />
+
+## Links
+
+`NavLink` renders an `<a>`. Pass a router link through `render`, and mark the current page with `active`.
+
+```tsx showLineNumbers
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
+export function DocsNavLink({ href, children }) {
+  const pathname = usePathname()
+
+  return (
+    <NavLink active={pathname === href} render={<Link href={href} />}>
+      {children}
+    </NavLink>
+  )
+}
+```
+
+## Accessibility
+
+- Give each `Nav` an `aria-label` when a page has more than one navigation landmark.
+- `active` sets `aria-current="page"`, so the current page is announced, not only shown in a darker color.
+- `NavCollapsibleTrigger` is a real `<button>` with `aria-expanded`; Enter and Space toggle it.
+
+## API Reference
+
+### Nav
+
+The root `<nav>` element.
+
+| Prop   | Type                | Default     | Description                                |
+| ------ | ------------------- | ----------- | ------------------------------------------ |
+| `size` | `"default" \| "lg"` | `"default"` | `lg` sets every part one type role louder. |
+
+### NavGroupLabel
+
+A group heading. Renders a `<div>`; pass `render` to use a heading element.
+
+| Prop     | Type                 | Default | Description                    |
+| -------- | -------------------- | ------- | ------------------------------ |
+| `render` | `React.ReactElement` |         | Replaces the rendered element. |
+
+### NavLink
+
+A navigation row. Renders an `<a>`.
+
+| Prop     | Type                 | Default | Description                                        |
+| -------- | -------------------- | ------- | -------------------------------------------------- |
+| `active` | `boolean`            | `false` | Marks the current page and sets `aria-current`.    |
+| `render` | `React.ReactElement` |         | Replaces the rendered element, e.g. a router link. |
+
+### NavCollapsible
+
+A section that opens in place. Renders an `<li>`, so it sits directly in a `NavList`. Accepts the [Base UI Collapsible](https://base-ui.com/react/components/collapsible#api-reference) root props, including `open`, `defaultOpen` and `onOpenChange`.
+
+### NavCollapsibleTrigger and NavCollapsibleContent
+
+The section's row and its panel. They accept the Base UI Collapsible trigger and panel props. The panel animates its height and respects reduced motion.

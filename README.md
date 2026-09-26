@@ -2,6 +2,7 @@
 
 A design-system exploration. The token foundation (Geist ramp, named type
 roles, materials, prose) is the product; the app is the playground that dogfoods it.
+Live docs: https://ziiz.vercel.app
 
 ```
 apps/www          Next.js app: foundation docs, blog, registry
@@ -25,10 +26,30 @@ A consuming app takes the design layer with one import in its Tailwind entry:
 @import "@ziiz/theme/shadcn.css"; /* only if it runs stock shadcn components */
 ```
 
-Components come from the registry the app serves at `/r/<name>.json`:
+Components come from the registry, served straight from this repo:
+
+```json
+{
+  "registries": {
+    "@ziiz": "https://raw.githubusercontent.com/nafisazizir/ziiz/main/apps/www/public/r/{name}.json"
+  }
+}
+```
 
 ```bash
 npx shadcn@latest add @ziiz/button
+```
+
+## Registry
+
+`apps/www/public/r/` is the built registry and is committed on purpose:
+raw.githubusercontent.com serves it, so there is no deploy between a merge
+and an install. Regenerate it after touching `components/ui`,
+`components/docs`, `hooks` or `content/docs/components`, and commit the
+result; CI fails when it is stale.
+
+```bash
+pnpm --filter www registry:build
 ```
 
 ## Layout of apps/www

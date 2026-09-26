@@ -28,3 +28,28 @@ export function formatDate(date: string) {
     timeZone: "UTC",
   })
 }
+
+/** The list page's filters: "All", then every category a post uses. */
+export function getBlogCategories() {
+  const used = new Set(getBlogPosts().map((post) => post.data.category))
+  return ["All", ...[...used].sort()]
+}
+
+/** What the list needs from a post: the frontmatter, not the compiled body. */
+export type BlogCard = {
+  url: string
+  title: string
+  description: string
+  date: string
+  category: string
+}
+
+export function toBlogCard(post: BlogPost): BlogCard {
+  return {
+    url: post.url,
+    title: post.data.title,
+    description: post.data.description,
+    date: post.data.date,
+    category: post.data.category,
+  }
+}

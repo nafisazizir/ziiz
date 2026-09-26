@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 
-import { formatDate, getBlogPost, getBlogPosts } from "@/lib/blog"
+import { getBlogPost, getBlogPosts } from "@/lib/blog"
+import { BlogPostHeader } from "@/components/blog/blog-post-header"
 import { getMDXComponents } from "@/mdx-components"
 
 export const dynamicParams = false
@@ -34,6 +34,8 @@ export async function generateMetadata({
   }
 }
 
+// The header keeps the list's geometry; the body is one typeset run in the
+// 720px prose column, the same as a docs article.
 export default async function Page({
   params,
 }: {
@@ -46,24 +48,11 @@ export default async function Page({
   const Content = post.data.body
 
   return (
-    <article className="typeset">
-      <header data-not-typeset className="flex flex-col gap-4">
-        <Link
-          href="/blog"
-          className="text-label-13 text-gray-900 hover:text-gray-1000"
-        >
-          ← Blog
-        </Link>
-        <h1 className="text-heading-40 text-gray-1000">{post.data.title}</h1>
-        <p className="text-copy-18 text-gray-900">{post.data.description}</p>
-        <p className="text-label-13 text-gray-900">
-          <span>{post.data.author}</span>
-          <span aria-hidden> · </span>
-          <time dateTime={post.data.date}>{formatDate(post.data.date)}</time>
-        </p>
-      </header>
-      <hr className="mt-10! lg:mt-10!" />
-      <Content components={getMDXComponents()} />
+    <article className="flex w-full flex-col">
+      <BlogPostHeader post={post} />
+      <div className="typeset mx-auto w-full max-w-180 pt-12 pb-30">
+        <Content components={getMDXComponents()} />
+      </div>
     </article>
   )
 }

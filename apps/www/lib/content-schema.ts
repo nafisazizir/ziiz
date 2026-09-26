@@ -10,4 +10,6 @@ export const blogFrontmatterSchema = pageSchema.extend({
   description: z.string(),
   date: z.iso.date(),
   author: z.string().default("Nafis Azizi Riza"),
+  // The filter the list page sorts a post under.
+  category: z.string().default("Notes"),
 })

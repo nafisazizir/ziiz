@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 
-import { formatDate, getBlogPosts } from "@/lib/blog"
+import { getBlogCategories, getBlogPosts, toBlogCard } from "@/lib/blog"
+import { BlogHero } from "@/components/blog/blog-hero"
+import { BlogList } from "@/components/blog/blog-list"
+import { Separator } from "@/components/ui/separator"
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -9,44 +11,35 @@ export const metadata: Metadata = {
   alternates: { types: { "application/rss+xml": "/rss.xml" } },
 }
 
+// The section hero, a rule, then the filtered list.
 export default function Page() {
-  const posts = getBlogPosts()
-
   return (
     <>
-      <header className="flex flex-col gap-2">
-        <h1 className="text-heading-40 text-gray-1000">Blog</h1>
-        <p className="text-copy-16 text-gray-900">
-          Notes from building ziiz. Also as{" "}
-          <a href="/rss.xml" className="underline underline-offset-3">
-            RSS
-          </a>
-          .
-        </p>
-      </header>
-      <ul className="mt-12 flex flex-col divide-y divide-gray-alpha-400">
-        {posts.map((post) => (
-          <li key={post.url}>
-            <Link
-              href={post.url}
-              className="group -mx-3 flex flex-col gap-1.5 rounded-lg px-3 py-6 transition-colors hover:bg-gray-alpha-100"
-            >
-              <time
-                dateTime={post.data.date}
-                className="text-label-13 text-gray-900"
-              >
-                {formatDate(post.data.date)}
-              </time>
-              <span className="text-heading-20 text-gray-1000">
-                {post.data.title}
-              </span>
-              <span className="text-copy-14 text-gray-900">
-                {post.data.description}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <BlogHero
+        title={
+          <>
+            {`Notes and decisions `}
+            <br className="max-md:hidden" />
+            {`from building ziiz`}
+          </>
+        }
+        description={
+          <>
+            {`Why the colors, type roles, prose layer and components are the way they are, written down as each one lands. Also as `}
+            <a href="/rss.xml" className="underline underline-offset-3">
+              RSS
+            </a>
+            {`.`}
+          </>
+        }
+      />
+      <Separator className="mt-10 lg:mt-0" />
+      <div className="py-10 lg:py-20">
+        <BlogList
+          posts={getBlogPosts().map(toBlogCard)}
+          categories={getBlogCategories()}
+        />
+      </div>
     </>
   )
 }

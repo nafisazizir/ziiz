@@ -1,0 +1,45 @@
+name: Release @ziiz/theme
+
+on:
+  push:
+    tags: ["theme-v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      # A tag publishes exactly the version the manifest declares.
+      - name: Check tag against package version
+        if: github.event_name == 'push'
+        run: |
+          tag="${GITHUB_REF_NAME#theme-v}"
+          version="$(node -p "require('./packages/theme/package.json').version")"
+          if [ "$tag" != "$version" ]; then
+            echo "tag theme-v$tag does not match packages/theme version $version"
+            exit 1
+          fi
+
+      - run: pnpm --filter @ziiz/theme build
+
+      - name: Publish
+        run: pnpm --filter @ziiz/theme publish --access public --no-git-checks --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

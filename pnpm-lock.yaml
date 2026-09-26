@@ -133,6 +133,9 @@ importers:
         specifier: ^4
         version: 4.3.3
     devDependencies:
+      shiki:
+        specifier: 4.4.3
+        version: 4.4.3
       tsup:
         specifier: 8.5.1
         version: 8.5.1(jiti@2.7.0)(postcss@8.5.26)(typescript@5.9.3)(yaml@2.9.0)

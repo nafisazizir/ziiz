@@ -7,8 +7,8 @@ description: Migrate a components/ui file from stock shadcn (Vega) to the ziiz f
 
 How a `components/ui` file goes from stock shadcn (Vega) to the ziiz system.
 Mutable state (open questions and the per-component decision log) lives in
-`MIGRATION.md` at the repo root; read it before starting and append to it when
-a pass resolves something.
+`apps/www/MIGRATION.md`; read it before starting and append to it when a
+pass resolves something.
 
 ## Ground rules
 

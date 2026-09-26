@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising/get-started-with-twitter-ads.
+// Ported from business.x.com: advertising/get-started-with-twitter-ads.
 export function PerspectiveFrame({
   variant = "wide",
   ...props

@@ -157,20 +157,20 @@ container.
 </MessageScrollerProvider>
 ```
 
-- **`MessageScrollerProvider`** — the headless root. Owns scroll state and the
+- **`MessageScrollerProvider`**: the headless root. Owns scroll state and the
   behavior props for opening position, auto-scroll, anchoring, scroll commands,
   and visibility tracking.
-- **`MessageScroller`** — the styled frame. Lays out the viewport, content, and
+- **`MessageScroller`**: the styled frame. Lays out the viewport, content, and
   controls inside the provider.
-- **`MessageScrollerViewport`** — the scrollable element. Receives native scroll
+- **`MessageScrollerViewport`**: the scrollable element. Receives native scroll
   events and preserves the visible row when older messages are prepended.
-- **`MessageScrollerContent`** — the transcript container. Holds the rows and
+- **`MessageScrollerContent`**: the transcript container. Holds the rows and
   provides the live-region defaults for new messages.
-- **`MessageScrollerItem`** — the transcript row boundary. Wrap every direct
+- **`MessageScrollerItem`**: the transcript row boundary. Wrap every direct
   child of the content so the scroller can measure, anchor, preserve position,
   track visibility, and jump to it. An item can be a message, marker, typing
   indicator, separator, join/leave event, or "load earlier" row.
-- **`MessageScrollerButton`** — the scroll control. Scrolls to the start or end of the transcript and is inert until there is content in its direction.
+- **`MessageScrollerButton`**: the scroll control. Scrolls to the start or end of the transcript and is inert until there is content in its direction.
 
 ## Core Concepts
 

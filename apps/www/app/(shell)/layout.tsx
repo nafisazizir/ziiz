@@ -6,7 +6,7 @@ import { EdgeFade } from "@/components/edge-fade"
 
 // The shell every page shares: the sidebar is the site's navigation, so it
 // frames the blog and the playground as much as the docs. The right rail is
-// not here — only a docs page has a table of contents, and DocsPage renders
+// not here: only a docs page has a table of contents, and DocsPage renders
 // its own.
 //
 // --content-top is where the sidebar's first row starts. The toc, a docs

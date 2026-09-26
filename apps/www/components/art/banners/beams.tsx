@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/amplify-sponsorships.
+// Ported from business.x.com: products/amplify-sponsorships.
 export function Beams({
   variant = "wide",
   ...props

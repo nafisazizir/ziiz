@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/x-spaces · Stay in control.
+// Ported from business.x.com: products/x-spaces · Stay in control.
 export function ArcNodes(props: ArtProps) {
   return (
     <svg

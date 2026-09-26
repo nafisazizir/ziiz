@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 
 // How deep the edge reaches. The strip takes this height and the negative
-// margin below gives it straight back, so the two have to stay in step —
+// margin below gives it straight back, so the two have to stay in step.
 // Tailwind only sees class names written out in full, so they are literals.
 const DEPTH = "h-12"
 const PULL_BACK = { top: "-mb-12", bottom: "-mt-12" }

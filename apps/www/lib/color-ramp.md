@@ -11,10 +11,10 @@ Implementation: `lib/color-ramp.ts`. Live tool: `/playground`.
 
 A ramp is ten steps from a **floor** to a **ceiling**.
 
-- **Floor** — `background-100`, the page. Dark's floor is its darkest colour;
+- **Floor**: `background-100`, the page. Dark's floor is its darkest colour;
   light's floor is its lightest. Either way it is where the eye rests.
-- **Ceiling** — `gray-1000`, the strongest ink.
-- **Anchors** — steps **700** (solid fill) and **800** (hover). These are the
+- **Ceiling**: `gray-1000`, the strongest ink.
+- **Anchors**: steps **700** (solid fill) and **800** (hover). These are the
   brand colours. Everything else is derived.
 
 The axis the system actually works in is **contrast against the floor**, not
@@ -100,9 +100,9 @@ violet: { hue: 293.0, solid: 54.1, hover: 48.1 },
 
 Three numbers, shared by both themes. Then:
 
-**Pick `hue`** — convert your brand hex to OKLCH and take the angle.
+**Pick `hue`**: convert your brand hex to OKLCH and take the angle.
 
-**Pick `solid`** — start at the hue's **sRGB gamut cusp**, the lightness at
+**Pick `solid`**: start at the hue's **sRGB gamut cusp**, the lightness at
 which it carries the most chroma. Five of the seven shipped anchors sit within
 two points of their cusp. The cusp is where a hue looks most like itself, which
 is why this is the default rather than a fixed value.
@@ -118,15 +118,15 @@ is why this is the default rather than a fixed value.
 | teal      | 89.5     | **64.9**    |
 
 Green and teal are the deliberate exceptions, pulled 22–25 points _below_ their
-cusps — a cusp-lightness green is a lime, too bright to carry a brand. If your
+cusps; a cusp-lightness green is a lime, too bright to carry a brand. If your
 hue sits between roughly 100° and 180°, expect to override the cusp downward.
 
-**Pick `hover`** — 4 to 7 points below `solid`. The shipped ramps average 6.
+**Pick `hover`**: 4 to 7 points below `solid`. The shipped ramps average 6.
 
 **Then check the generated ramp for:**
 
 - White text on 700. If it fails 4.5:1, that hue needs dark text as its
-  on-colour — this is normal for warm hues and is what amber does.
+  on-colour; this is normal for warm hues and is what amber does.
 - Step 900. It must sit further from the floor than 800.
 - Whether 1000 still reads as your hue, or has gone neutral.
 
@@ -155,7 +155,7 @@ and keeps `blue-100` at `#EBF3FF`.
 
 ### Limits
 
-- A dark floor above **~22% L** collides with the tints — though under the
+- A dark floor above **~22% L** collides with the tints, though under the
   contrast-space rule steps are defined as ratios _above_ the floor, so they
   cannot invert. They just stop being distinguishable.
 - Raising the dark floor costs contrast everywhere: `CR_new ≈ CR_old × 0.91`
@@ -171,7 +171,7 @@ Things that were not obvious, in rough order of how much trouble they caused.
 
 ### 700 and 800 are identical in light and dark
 
-Not approximately — exactly, in lightness and hue angle. Only chroma is nudged.
+Not approximately: exactly, in lightness and hue angle. Only chroma is nudged.
 
 ```
 blue    700  57.61 / 57.61      amber   700  81.87 / 81.87
@@ -193,13 +193,13 @@ agree closely:
 | light | +0.9 | +2.4 | +2.2 | −2.1 | +0.9 |
 
 Putting colored tints exactly on the gray value costs lightness, and for a
-high-cusp hue **lightness is chroma** — green and teal lost 10–15% of their
+high-cusp hue **lightness is chroma**: green and teal lost 10–15% of their
 saturation before this was restored. Light dips negative at 400 because
 `gray-400` is itself anomalously lighter than `gray-300`.
 
 ### 900 always climbs past 800
 
-True in all seven ramps. A hue whose anchor is high — amber at 77 — will fold
+True in all seven ramps. A hue whose anchor is high (amber at 77) will fold
 back below its own hover step if 900 is pinned to a shared scale, and a ramp
 that reverses there reads as muddy rather than merely dark.
 
@@ -214,7 +214,7 @@ amber-800 at H 76.5   Cmax 0.162   #EEA400
 amber-800 at H 64.5   Cmax 0.173   #FE9A00
 ```
 
-It is lightness-dependent, so it is not a fixed offset — at the 700 anchor the
+It is lightness-dependent, so it is not a fixed offset: at the 700 anchor the
 same rotation _loses_ chroma (0.132) and washes the colour out. Rotation
 applies at 800 and below-the-anchor steps only.
 
@@ -224,12 +224,12 @@ applies at 800 and below-the-anchor steps only.
 ### The shipped ramps are authored outside sRGB
 
 Most steps declare more chroma than sRGB can show and get clipped at paint
-time — teal by 33%, purple under by 20–30%. Riding the computed gamut edge is
+time: teal by 33%, purple under by 20–30%. Riding the computed gamut edge is
 both more uniform and closer to what actually reached the screen.
 
 ### Gray alpha does not track solid gray
 
-At the same step number the two diverge — `gray-alpha-600` flattens to L 81.3
+At the same step number the two diverge: `gray-alpha-600` flattens to L 81.3
 against `gray-600` at 73.2, eight points apart. Swapping one for the other is
 not a neutral change despite the matching names. The generator solves opacity
 to land on the scale, so in generated palettes they match exactly.
@@ -238,7 +238,7 @@ to land on the scale, so in generated palettes they match exactly.
 
 - **`gray-400` is lighter than `gray-300`** in light. A quirk, but load-bearing
   for anything using 300/400 as a pair.
-- **800 dips below 700** in dark. Not jitter — it is the solid/hover pair, and
+- **800 dips below 700** in dark. Not jitter; it is the solid/hover pair, and
   smoothing it destroys the relationship.
 
 The contrast-space remap preserves both automatically, since it preserves
@@ -247,8 +247,8 @@ ordering. Do not "fix" them.
 ### Every element on a painted surface needs that surface's colours
 
 A hairline hardcoded to `rgb(255 255 255 / 0.07)` is invisible on a light
-floor. Anything drawn over an explicitly-painted surface — hairlines, labels,
-overlaid text — has to derive from that surface, not from the page theme.
+floor. Anything drawn over an explicitly-painted surface (hairlines, labels,
+overlaid text) has to derive from that surface, not from the page theme.
 
 ---
 

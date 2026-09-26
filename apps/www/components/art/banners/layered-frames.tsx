@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising/creative-best-practices.
+// Ported from business.x.com: advertising/creative-best-practices.
 export function LayeredFrames({
   variant = "wide",
   ...props

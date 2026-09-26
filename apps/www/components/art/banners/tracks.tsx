@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — resources/x-marketing-calendar.
+// Ported from business.x.com: resources/x-marketing-calendar.
 export function Tracks({
   variant = "wide",
   ...props

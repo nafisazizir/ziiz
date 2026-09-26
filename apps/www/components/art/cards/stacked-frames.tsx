@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising/creative-best-practices.
+// Ported from business.x.com: advertising/creative-best-practices.
 export function StackedFrames(props: ArtProps) {
   return (
     <svg

@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising (ad credit).
+// Ported from business.x.com: advertising (ad credit).
 export function CreditEllipse(props: ArtProps) {
   return (
     <svg

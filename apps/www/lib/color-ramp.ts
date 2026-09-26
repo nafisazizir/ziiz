@@ -418,7 +418,7 @@ export const GRAY_ALPHA: Record<Theme, Record<Step, number>> = {
  *
  * Everything else in a ramp is derived. A hue needs exactly three numbers: its
  * angle, the lightness of its solid fill (700) and of the hover state (800).
- * Both lightnesses are shared between light and dark — that is a real property
+ * Both lightnesses are shared between light and dark; that is a real property
  * of the system, not a shortcut, so a button is literally the same colour in
  * both themes.
  *
@@ -429,7 +429,7 @@ export interface Anchor {
   /** OKLCH hue angle, 0-360. */
   hue: number
   /** Lightness of step 700, the solid fill. Sits at or near the hue's sRGB
-   *  gamut cusp for most hues — see the doc before moving it far. */
+   *  gamut cusp for most hues; see the doc before moving it far. */
   solid: number
   /** Lightness of step 800, the hover state. Always below `solid`. */
   hover: number
@@ -470,7 +470,7 @@ export interface Palette {
 }
 
 /** The endpoints the shipped ramp uses today. Floor is the page background,
- *  ceiling is the strongest ink — so in light the floor is the LIGHTER of the
+ *  ceiling is the strongest ink, so in light the floor is the LIGHTER of the
  *  two and in dark the darker. Contrast against the floor rises from 100 to
  *  1000 in both, which is the axis every model below actually works in. */
 export const CURRENT_ENDPOINTS: Record<
@@ -537,7 +537,7 @@ function spanFactor(theme: Theme, floorL: number, ceilingL: number) {
 }
 
 /** The palette as it ships today, for the reference half of a comparison.
- *  Read straight from the token tables — nothing is derived. */
+ *  Read straight from the token tables; nothing is derived. */
 export function currentPalette(theme: Theme): Palette {
   const floorLum = relativeLuminance(CURRENT_ENDPOINTS[theme].floor / 100, 0, 0)
   const floorSrgb = srgbOf(CURRENT_ENDPOINTS[theme].floor)
@@ -609,7 +609,7 @@ export function currentPalette(theme: Theme): Palette {
  *
  * Tints (100-500) and text (900-1000) share one lightness scale across every
  * hue. The anchor band does not: measured against the sRGB gamut, five of the
- * seven 700s sit within two points of their hue's cusp — the lightness at
+ * seven 700s sit within two points of their hue's cusp: the lightness at
  * which that hue can carry the most chroma, and so looks most like itself.
  * Amber's cusp is at L 81 and blue's at L 60; forcing both to one value turns
  * amber to mud. So 700 and 800 keep their anchors, tints climb from the floor
@@ -646,7 +646,7 @@ const UNIFORM_CHROMA: Record<Theme, Record<Step, number>> = {
   },
 }
 
-/** Hue tints sit off gray at the same step — measured across all seven ramps,
+/** Hue tints sit off gray at the same step, measured across all seven ramps,
  *  which agree closely. Gray is the spine, not the tint ladder: putting
  *  colored tints exactly on it costs lightness, and for a high-cusp hue like
  *  green or teal lightness is chroma. Light dips at 400 because gray-400 is
@@ -657,7 +657,7 @@ const TINT_LIFT: Record<Theme, Partial<Record<Step, number>>> = {
 }
 
 /** Warm hues rotate toward orange past the anchor. A darkened yellow reads as
- *  olive at its own hue angle, and sRGB is wider toward orange there — so the
+ *  olive at its own hue angle, and sRGB is wider toward orange there, so the
  *  rotation buys saturation as well as identity. Light carries it further
  *  because its ramp keeps darkening past 800. Scaled by how far into the
  *  yellow-orange band the hue sits, so cool ramps hold still. */

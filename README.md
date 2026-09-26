@@ -4,8 +4,8 @@ A design-system exploration. The token foundation (Geist ramp, named type
 roles, materials, prose) is the product; the app is the playground that dogfoods it.
 
 ```
-apps/www          Next.js app — foundation docs, blog, registry
-packages/theme    @ziiz/theme — theme.css (the design layer) + shadcn.css (slot bridge)
+apps/www          Next.js app: foundation docs, blog, registry
+packages/theme    @ziiz/theme: theme.css (the design layer) + shadcn.css (slot bridge)
 ```
 
 ```bash

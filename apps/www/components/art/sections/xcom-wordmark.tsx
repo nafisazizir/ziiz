@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — footer, every page.
+// Ported from business.x.com: footer, every page.
 export function XcomWordmark(props: ArtProps) {
   const id = React.useId()
   return (

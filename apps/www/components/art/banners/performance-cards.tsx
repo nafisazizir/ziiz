@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising.
+// Ported from business.x.com: advertising.
 export function PerformanceCards({
   variant = "wide",
   ...props

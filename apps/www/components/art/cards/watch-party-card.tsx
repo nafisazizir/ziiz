@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/x-spaces · Create and share clips.
+// Ported from business.x.com: products/x-spaces · Create and share clips.
 export function WatchPartyCard(props: ArtProps) {
   return (
     <svg

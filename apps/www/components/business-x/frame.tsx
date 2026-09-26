@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils"
 //
 // --rail-content-top is where the rail's first link starts: 24px of padding,
 // the 32px site switcher, 24px of gap. Anything in the article that should
-// line up with the rail's rows — the blog filter, the post breadcrumb —
+// line up with the rail's rows (the blog filter, the post breadcrumb)
 // hangs off it.
 export function BusinessFrame({
   className,

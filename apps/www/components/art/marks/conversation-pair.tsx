@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics/intro-x-for-business · Start a conversation; takeovers.
+// Ported from business.x.com: basics/intro-x-for-business · Start a conversation; takeovers.
 export function ConversationPair(props: ArtProps) {
   return (
     <svg

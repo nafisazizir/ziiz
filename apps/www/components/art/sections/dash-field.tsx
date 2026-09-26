@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising, get-started, vertical-video-ads (tab carousel backdrop).
+// Ported from business.x.com: advertising, get-started, vertical-video-ads (tab carousel backdrop).
 export function DashField(props: ArtProps) {
   const id = React.useId()
   return (

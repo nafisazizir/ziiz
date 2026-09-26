@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics/intro-x-for-business · Experiment with tone; advertising.
+// Ported from business.x.com: basics/intro-x-for-business · Experiment with tone; advertising.
 export function ToneRows(props: ArtProps) {
   return (
     <svg

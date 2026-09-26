@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics/intro-x-for-business · Stay in the know.
+// Ported from business.x.com: basics/intro-x-for-business · Stay in the know.
 export function OrbitMark(props: ArtProps) {
   const id = React.useId()
   return (

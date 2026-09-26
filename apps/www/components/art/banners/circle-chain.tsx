@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics/get-your-business-started-with-x.
+// Ported from business.x.com: basics/get-your-business-started-with-x.
 export function CircleChain({
   variant = "wide",
   ...props

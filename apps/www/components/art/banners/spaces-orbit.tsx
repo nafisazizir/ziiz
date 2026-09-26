@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/x-spaces.
+// Ported from business.x.com: products/x-spaces.
 export function SpacesOrbit({
   variant = "wide",
   ...props

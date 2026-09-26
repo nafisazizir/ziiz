@@ -35,7 +35,7 @@ import { cn } from "@/lib/utils"
 
 // "Why brands choose X Ads": three numbered features, each with a small
 // product mock in a grey panel. The mocks are ziiz cards, badges and inputs
-// as shipped — that is the point of the exercise.
+// as shipped, and that is the point of the exercise.
 //
 // x.com's geometry at 1024px and up: an eight-column grid, a feature is a
 // 9:8 panel at two columns beside two columns of text, and the third runs

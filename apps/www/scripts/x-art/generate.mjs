@@ -162,7 +162,7 @@ for (const m of manifest) {
   const body = single
     ? `export function ${m.name}(props: ArtProps) {\n${fns[0].usesId ? "  const id = React.useId()\n" : ""}  return ${fns[0].jsx}\n}`
     : `export function ${m.name}({ variant = ${JSON.stringify(fns[0].variant)}, ...props }: ArtProps & { variant?: ${vtype} }) {\n${anyId ? "  const id = React.useId()\n" : ""}${fns.map((f, i) => `  ${i ? "" : ""}if (variant === ${JSON.stringify(f.variant)}) return ${f.jsx}\n`).join("")}  return null\n}`;
-  const src = `${anyId ? 'import * as React from "react"\n\n' : ""}import type { ArtProps } from "../props"\n\n// ${m.note || `Ported from business.x.com — ${m.source}.`}\n${body}\n`;
+  const src = `${anyId ? 'import * as React from "react"\n\n' : ""}import type { ArtProps } from "../props"\n\n// ${m.note || `Ported from business.x.com: ${m.source}.`}\n${body}\n`;
   fs.mkdirSync(`${OUT}/${m.file}`.replace(/\/[^/]+$/, ""), { recursive: true });
   fs.writeFileSync(`${OUT}/${m.file}.tsx`, src);
   index.push({ ...m, variants: m.variants.map((v, i) => ({ variant: v.variant, viewBox: v.key.endsWith(".svg") ? "0 0 398 245" : catalogue[v.key].viewBox })) });

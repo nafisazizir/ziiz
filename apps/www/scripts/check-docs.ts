@@ -110,7 +110,7 @@ for (const route of docsRoutes) {
 
 const LINK_RE = /\]\((\/[^)\s]*)\)|href=["'](\/[^"']*)["']/g
 
-// An href inside a sample is illustrative — `/dashboard` in an Item example
+// An href inside a sample is illustrative: `/dashboard` in an Item example
 // is not a claim that this site serves /dashboard. Only prose links count.
 function stripCode(source: string) {
   return source.replace(/```[\s\S]*?```/g, "").replace(/`[^`\n]*`/g, "")

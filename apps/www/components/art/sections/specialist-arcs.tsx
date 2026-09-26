@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — home, advertising (contact form).
+// Ported from business.x.com: home, advertising (contact form).
 export function SpecialistArcs({
   variant = "wide",
   ...props

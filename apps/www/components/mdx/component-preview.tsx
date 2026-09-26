@@ -5,7 +5,7 @@ import { ComponentSource } from "@/components/docs/component-source"
 
 // The app side of ComponentPreview: an example name resolves to the live
 // component and to its own source file. There is one component set and one
-// icon set here, so the name is the whole address — no style or base to
+// icon set here, so the name is the whole address: no style or base to
 // disambiguate, and nothing is rendered through an iframe.
 export function ComponentPreview({
   name,

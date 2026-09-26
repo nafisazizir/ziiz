@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/x-spaces · Replay recorded Spaces.
+// Ported from business.x.com: products/x-spaces · Replay recorded Spaces.
 export function TimerBars(props: ArtProps) {
   return (
     <svg

@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/spotlight-takeovers.
+// Ported from business.x.com: products/spotlight-takeovers.
 export function Spotlight({
   variant = "wide",
   ...props

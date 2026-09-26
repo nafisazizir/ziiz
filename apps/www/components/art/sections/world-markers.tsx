@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — success-stories.
+// Ported from business.x.com: success-stories.
 export function WorldMarkers({
   variant = "wide",
   ...props

@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics.
+// Ported from business.x.com: basics.
 export function RingStack({
   variant = "wide",
   ...props

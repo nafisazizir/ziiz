@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/x-spaces · Edit and customize recordings.
+// Ported from business.x.com: products/x-spaces · Edit and customize recordings.
 export function RecordingPanels(props: ArtProps) {
   return (
     <svg

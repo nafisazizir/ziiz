@@ -1,6 +1,6 @@
 /* ziiz design layer: ramp tokens, Tailwind theme mapping, base styles,
-   materials, type roles and the prose layer. Import-free on purpose — only
-   Tailwind directives and plain CSS — so a consuming app can pull in the whole
+   materials, type roles and the prose layer. Import-free on purpose (only
+   Tailwind directives and plain CSS), so a consuming app can pull in the whole
    design system with a single `@import "@ziiz/theme/theme.css"` without
    re-bundling Tailwind, animation presets or the shadcn slot bridge (that
    lives in ./shadcn.css). */
@@ -1220,8 +1220,8 @@
    block inside a preview or a not-typeset region looks the same as one in an
    article. Matches the typeset's bare pre. */
 @layer components {
-  /* The block's metrics. On :root so the chrome around a block — a preview's
-     reveal, say — can line up with the rows inside it. */
+  /* The block's metrics. On :root so the chrome around a block (a preview's
+     reveal, say) can line up with the rows inside it. */
   :root {
     --code-block-pad: 1rem;
     --code-block-line: 18px;
@@ -1328,8 +1328,8 @@
     -webkit-user-select: none;
   }
 
-  /* A code block set into another surface — the source under a component
-     preview — is flush: the panel already draws the frame and clips the
+  /* A code block set into another surface (the source under a component
+     preview) is flush: the panel already draws the frame and clips the
      corners, so the figure drops its own, and a long source scrolls in
      place instead of stretching the panel. */
   [data-slot="component-preview-source"] [data-slot="code-block"],

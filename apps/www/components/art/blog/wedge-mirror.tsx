@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — blog card pattern 04.
+// Ported from business.x.com: blog card pattern 04.
 export function BlogWedgeMirror(props: ArtProps) {
   const id = React.useId()
   return (

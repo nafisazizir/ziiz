@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — closing CTA on 19 pages.
+// Ported from business.x.com: closing CTA on 19 pages.
 export function CrossingRods({
   variant = "wide",
   ...props

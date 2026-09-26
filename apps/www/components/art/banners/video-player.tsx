@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/vertical-video-ads.
+// Ported from business.x.com: products/vertical-video-ads.
 export function VideoPlayer({
   variant = "wide",
   ...props

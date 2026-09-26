@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/x-spaces · Connect in real time.
+// Ported from business.x.com: products/x-spaces · Connect in real time.
 export function DiamondCompass(props: ArtProps) {
   return (
     <svg

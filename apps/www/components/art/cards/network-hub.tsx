@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/x-spaces · Expand your reach.
+// Ported from business.x.com: products/x-spaces · Expand your reach.
 export function NetworkHub(props: ArtProps) {
   return (
     <svg

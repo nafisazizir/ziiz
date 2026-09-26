@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics/intro-x-for-business · Free business promotion.
+// Ported from business.x.com: basics/intro-x-for-business · Free business promotion.
 export function Starburst(props: ArtProps) {
   return (
     <svg

@@ -38,8 +38,8 @@ export const siteConfig = {
   ],
 }
 
-// A nested page keeps its parent's entry marked — a blog post lights up "All
-// posts" — so both navigations always show where you are.
+// A nested page keeps its parent's entry marked (a blog post lights up "All
+// posts"), so both navigations always show where you are.
 export function isActiveHref(pathname: string, href: string) {
   return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`))
 }

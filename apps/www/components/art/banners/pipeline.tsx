@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/shopping.
+// Ported from business.x.com: products/shopping.
 export function Pipeline({
   variant = "wide",
   ...props

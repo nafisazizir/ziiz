@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics/intro-x-for-business.
+// Ported from business.x.com: basics/intro-x-for-business.
 export function FieldLines({
   variant = "wide",
   ...props

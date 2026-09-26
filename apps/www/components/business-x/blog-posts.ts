@@ -57,7 +57,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "These brands led the pack in real-time engagement across key categories. Your strategies drove authentic, high-impact moments – well done!",
+          "These brands led the pack in real-time engagement across key categories. Your strategies drove authentic, high-impact moments. Well done!",
         ],
       },
       {
@@ -71,7 +71,7 @@ export const posts: Post[] = [
             handle: "@budweiserusa",
           },
           {
-            title: "Most Disruptive – Outside TV",
+            title: "Most Disruptive: Outside TV",
             desc: "Owning the conversation without a TV ad.",
             name: "Kraft Mac & Cheese",
             handle: "@kraftmacncheese",
@@ -99,7 +99,7 @@ export const posts: Post[] = [
       {
         type: "heading",
         level: 2,
-        text: "Super Bowl LX on >x< — by the numbers",
+        text: "Super Bowl LX on >x<: by the numbers",
       },
       {
         type: "p",
@@ -148,7 +148,7 @@ export const posts: Post[] = [
           {
             type: "p",
             runs: [
-              "Leading up to kickoff, we hosted valued advertising partners at the exclusive >x< Football City Diner – an immersive, high-energy event celebrating football, connections, and real-time conversation on >x<. >x<'s live, unfiltered conversations turned every play, ad, and halftime performance into shareable content, extending reach far beyond the broadcast.",
+              "Leading up to kickoff, we hosted valued advertising partners at the exclusive >x< Football City Diner, an immersive, high-energy event celebrating football, connections, and real-time conversation on >x<. >x<'s live, unfiltered conversations turned every play, ad, and halftime performance into shareable content, extending reach far beyond the broadcast.",
             ],
           },
           {
@@ -217,12 +217,12 @@ export const posts: Post[] = [
       {
         type: "heading",
         level: 2,
-        text: "Looking ahead — FIFA World Cup 2026",
+        text: "Looking ahead: FIFA World Cup 2026",
       },
       {
         type: "p",
         runs: [
-          "With Super Bowl LX in the books, the next massive global moment is just months away: the FIFA World Cup 2026 (June 11 – July 19), co-hosted across the US, Canada, and Mexico – the largest edition ever with 48 teams and 104 matches.",
+          "With Super Bowl LX in the books, the next massive global moment is just months away: the FIFA World Cup 2026 (June 11 – July 19), co-hosted across the US, Canada, and Mexico. It will be the largest edition ever with 48 teams and 104 matches.",
         ],
       },
       {
@@ -267,7 +267,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "The Video Tab offers a full-screen, seamless video experience designed to bring users closer to what they care about most—whether it’s viral trends, top creators, premium content or live events. It can be accessed by tapping the play button icon in the navigation bar at the bottom of the >x< app. From there, you can explore a personalized feed of recommended videos reflecting the real-time nature of >x< across sports, entertainment, news and more.",
+          "The Video Tab offers a full-screen, seamless video experience designed to bring users closer to what they care about most, whether it’s viral trends, top creators, premium content or live events. It can be accessed by tapping the play button icon in the navigation bar at the bottom of the >x< app. From there, you can explore a personalized feed of recommended videos reflecting the real-time nature of >x< across sports, entertainment, news and more.",
         ],
       },
       {
@@ -400,7 +400,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "And fortunately for you, what happens in Vegas doesn't stay there—it lives on >x< 👇",
+          "And fortunately for you, what happens in Vegas doesn't stay there; it lives on >x< 👇",
         ],
       },
       {
@@ -559,7 +559,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          ">x<’s audience is especially engaged during Q5, making it a standout opportunity for brands. While many people are winding down after the holidays, >x< users are taking action—whether it’s shopping for post-holiday deals, setting ambitious goals, or continuing their vibrant conversations. This dynamic, ready-to-buy audience offers brands the chance to connect with highly motivated individuals, making Q5 on >x< a strategic moment to maximize reach and impact.",
+          ">x<’s audience is especially engaged during Q5, making it a standout opportunity for brands. While many people are winding down after the holidays, >x< users are taking action, whether it’s shopping for post-holiday deals, setting ambitious goals, or continuing their vibrant conversations. This dynamic, ready-to-buy audience offers brands the chance to connect with highly motivated individuals, making Q5 on >x< a strategic moment to maximize reach and impact.",
         ],
       },
       {
@@ -713,7 +713,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "As Q5 conversations heat up, don’t miss out on the opportunities this Q5 on >x< offers— start your campaign today.",
+          "As Q5 conversations heat up, don’t miss out on the opportunities this Q5 on >x< offers. Start your campaign today.",
         ],
       },
     ],
@@ -887,7 +887,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Picture this: a year where every scroll, like, and share felt like part of a larger narrative—a story of innovation, connection, and unmissable moments. >x< has not just evolved: it has transformed into a powerhouse of engagement and meaningful conversations. As a result, the advertisers that returned in 2024 are showing signs that they are here for the long haul!",
+          "Picture this: a year where every scroll, like, and share felt like part of a larger narrative: a story of innovation, connection, and unmissable moments. >x< has not just evolved: it has transformed into a powerhouse of engagement and meaningful conversations. As a result, the advertisers that returned in 2024 are showing signs that they are here for the long haul!",
         ],
       },
       {
@@ -1021,7 +1021,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "2024 wasn’t just about innovation—it was about delivering measurable value. Advertisers recognized the unique opportunities >x< offers, over a quarter of a million advertisers launched 1.7M campaigns globally.",
+          "2024 wasn’t just about innovation; it was about delivering measurable value. Advertisers recognized the unique opportunities >x< offers, over a quarter of a million advertisers launched 1.7M campaigns globally.",
         ],
       },
       {
@@ -1065,7 +1065,7 @@ export const posts: Post[] = [
       {
         type: "heading",
         level: 2,
-        text: "Conversations that dominated 2024 — on >x< and beyond",
+        text: "Conversations that dominated 2024, on >x< and beyond",
       },
       {
         type: "p",
@@ -1093,7 +1093,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "2024 was remarkable and as we step into the new year, the horizon looks even brighter! Our dedication to pushing boundaries, fostering engagement, and supporting both users and brands is stronger than ever. >x< offers unmatched opportunities to connect, grow, and lead. The next chapter is yours to write—make 2025 your standout year on >x<.",
+          "2024 was remarkable and as we step into the new year, the horizon looks even brighter! Our dedication to pushing boundaries, fostering engagement, and supporting both users and brands is stronger than ever. >x< offers unmatched opportunities to connect, grow, and lead. The next chapter is yours to write. Make 2025 your standout year on >x<.",
         ],
       },
       {
@@ -1228,7 +1228,7 @@ export const posts: Post[] = [
     slug: "x-paris-olympics-2024-advertising-opportunities",
     category: "Trends & insights",
     topic: "Live sports",
-    title: ">x< is primed for #Paris2024 — it’s time to go for gold 🥇",
+    title: ">x< is primed for #Paris2024: it’s time to go for gold 🥇",
     description:
       "The 2024 Paris Olympics start on July 26th and promise to be monumental, and >x< will be indispensable for advertisers who want to capture the real-time moments that matter.",
     blocks: [
@@ -1273,7 +1273,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "There are over half-a-million of the most influential people in the world on >x<, and they love sports. In fact, 6 in 10 sports fans use >x<, which is 20% more sports fans than other platforms. And what’s more, the event transcends the sports audience because it’s one of the biggest cultural moments that unites people from all over the world. In less than 30 days, it will unfold in real time on >x< for everyone to see — and for every brand to be part of. Anticipation is growing, and so is the volume of conversation.",
+          "There are over half-a-million of the most influential people in the world on >x<, and they love sports. In fact, 6 in 10 sports fans use >x<, which is 20% more sports fans than other platforms. And what’s more, the event transcends the sports audience because it’s one of the biggest cultural moments that unites people from all over the world. In less than 30 days, it will unfold in real time on >x< for everyone to see, and for every brand to be part of. Anticipation is growing, and so is the volume of conversation.",
         ],
       },
       {
@@ -1311,7 +1311,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "And as our users increasingly lean into video, we’re proud to be introducing new video products that are further transforming the content viewing from an isolated behavior into a dynamic experience where conversation and viewing happen together — and we're leveraging AI to serve content to consumers safely and effectively.",
+          "And as our users increasingly lean into video, we’re proud to be introducing new video products that are further transforming the content viewing from an isolated behavior into a dynamic experience where conversation and viewing happen together. And we're leveraging AI to serve content to consumers safely and effectively.",
         ],
       },
       {
@@ -1376,7 +1376,7 @@ export const posts: Post[] = [
             {
               b: ["TV 🩷>x<:"],
             },
-            " It’s no secret that >x< is the second screen — and the first scroll during big moments. By campaigning on >x<, you get incremental reach beyond TV, especially among the younger, hard-to-reach audiences.",
+            " It’s no secret that >x< is the second screen, and the first scroll, during big moments. By campaigning on >x<, you get incremental reach beyond TV, especially among the younger, hard-to-reach audiences.",
           ],
           [
             {
@@ -1388,7 +1388,7 @@ export const posts: Post[] = [
             {
               b: ["Get your customers to act 🛒: "],
             },
-            "Take this opportunity to reach our unique, captivated audience to drive results for your brand — no matter your campaign goals. For example, people on >x< are more likely to buy products from brands they’ve seen advertised compared to people not on >x<.",
+            "Take this opportunity to reach our unique, captivated audience to drive results for your brand, no matter your campaign goals. For example, people on >x< are more likely to buy products from brands they’ve seen advertised compared to people not on >x<.",
           ],
         ],
       },
@@ -1444,7 +1444,7 @@ export const posts: Post[] = [
     topic: "Live sports",
     title: "Connect with BIG3 basketball live on >x<",
     description:
-      "The BIG3 is bringing 3-on-3 basketball to >x< — with live games streamed every weekend during the summer. Learn how to connect with us to advertise during this special event.",
+      "The BIG3 is bringing 3-on-3 basketball to >x<, with live games streamed every weekend during the summer. Learn how to connect with us to advertise during this special event.",
     blocks: [
       {
         type: "p",
@@ -1455,12 +1455,12 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Founded by musician and actor Ice Cube in 2017, the BIG3 is taking 3-on-3, half-court basketball format — the ",
+          "Founded by musician and actor Ice Cube in 2017, the BIG3 is taking 3-on-3, half-court basketball format (the ",
           {
             a: "https://olympics.com/en/paris-2024/sports/3x3-basketball",
             r: ["most popular urban sport"],
           },
-          " in the world — to the virtual stadium on >x<.",
+          " in the world) to the virtual stadium on >x<.",
         ],
       },
       {
@@ -1502,13 +1502,13 @@ export const posts: Post[] = [
         type: "image",
         w: 1600,
         h: 900,
-        alt: '"Household names on and off the court — PLAYERS": headshots and credits for Joe Johnson, Michael Beasley, Jodie Meeks, Jason Richardson, Nick Young, Leandro Barbosa.',
+        alt: '"Household names on and off the court: PLAYERS": headshots and credits for Joe Johnson, Michael Beasley, Jodie Meeks, Jason Richardson, Nick Young, Leandro Barbosa.',
       },
       {
         type: "image",
         w: 1600,
         h: 900,
-        alt: '"Household names on and off the court — COACHES": headshots and credits for Lisa Leslie, Michael Cooper, George Gervin, Gary Payton, Julius Erving, Stephen Jackson, Nancy Lieberman, Charles Oakley.',
+        alt: '"Household names on and off the court: COACHES": headshots and credits for Lisa Leslie, Michael Cooper, George Gervin, Gary Payton, Julius Erving, Stephen Jackson, Nancy Lieberman, Charles Oakley.',
       },
       {
         type: "heading",
@@ -1536,7 +1536,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "When big moments happen around the world, people come to >x< to talk about it. The BIG3 will be streaming games live on our platform, a virtual stadium where people can watch the game and discuss highlights in real-time — providing advertisers with a one-of-a-kind opportunity to align with a complete live sports package.",
+          "When big moments happen around the world, people come to >x< to talk about it. The BIG3 will be streaming games live on our platform, a virtual stadium where people can watch the game and discuss highlights in real-time, providing advertisers with a one-of-a-kind opportunity to align with a complete live sports package.",
         ],
       },
       {
@@ -1593,7 +1593,7 @@ export const posts: Post[] = [
           {
             b: ["Super Bowl LVIII was one of the biggest ever on >x<"],
           },
-          " – completely smashing key metrics from last year, with impressions, user posts and video views rising ",
+          ", completely smashing key metrics from last year, with impressions, user posts and video views rising ",
           {
             b: ["31%"],
           },
@@ -1701,7 +1701,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "From fans to brands — The Big Game saw a wide variety of advertisers step up for the game around the game: share of mind.",
+          "From fans to brands, The Big Game saw a wide variety of advertisers step up for the game around the game: share of mind.",
         ],
       },
       {
@@ -2085,17 +2085,17 @@ export const posts: Post[] = [
     topic: "Product updates",
     title: ">x< enables advertisers to use any creative ad format",
     description:
-      "Reuse Existing Social Media Creatives Directly on >x< – No Reformatting Required",
+      "Reuse Existing Social Media Creatives Directly on >x<: No Reformatting Required",
     blocks: [
       {
         type: "heading",
         level: 2,
-        text: "Reuse existing social media creatives directly on >x< – no reformatting required",
+        text: "Reuse existing social media creatives directly on >x<: no reformatting required",
       },
       {
         type: "p",
         runs: [
-          ">x< has launched expanded aspect ratio support for video and image ads, enabling advertisers to seamlessly reuse their best-performing creatives from other social media platforms on >x<—without reformatting, cropping, or rebuilding assets.",
+          ">x< has launched expanded aspect ratio support for video and image ads, enabling advertisers to seamlessly reuse their best-performing creatives from other social media platforms on >x<, without reformatting, cropping, or rebuilding assets.",
         ],
       },
       {
@@ -2115,7 +2115,7 @@ export const posts: Post[] = [
       {
         type: "list",
         ordered: false,
-        items: [["4:5 – 1440 × 1800 pixels"], ["2:3 – 1080 × 1620 pixels"]],
+        items: [["4:5 (1440 × 1800 pixels)"], ["2:3 (1080 × 1620 pixels)"]],
       },
       {
         type: "p",
@@ -2127,16 +2127,16 @@ export const posts: Post[] = [
         type: "list",
         ordered: false,
         items: [
-          ["1:1 – 1080 × 1080 pixels"],
-          ["16:9 – 1920 × 1080 pixels"],
-          ["9:16 – 1080 × 1920 pixels"],
-          ["1.91:1 – 2064 × 1080 pixels"],
+          ["1:1 (1080 × 1080 pixels)"],
+          ["16:9 (1920 × 1080 pixels)"],
+          ["9:16 (1080 × 1920 pixels)"],
+          ["1.91:1 (2064 × 1080 pixels)"],
         ],
       },
       {
         type: "p",
         runs: [
-          "“We're committed to empowering advertisers to hit their performance goals with greater ease and impact,” said Monique Pintarelli, Head of Global Advertising, xAI. \"With full aspect ratio support, brands can now repurpose creatives directly on >x<—eliminating reformatting, duplication, or compromise—while unlocking faster testing, brand consistency, and incremental reach among our highly engaged, real-time audience for superior results.”",
+          "“We're committed to empowering advertisers to hit their performance goals with greater ease and impact,” said Monique Pintarelli, Head of Global Advertising, xAI. \"With full aspect ratio support, brands can now repurpose creatives directly on >x< (eliminating reformatting, duplication, or compromise) while unlocking faster testing, brand consistency, and incremental reach among our highly engaged, real-time audience for superior results.”",
         ],
       },
       {
@@ -2185,7 +2185,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "While there are countless stories of businesses who have built brands, attracted new customers, and generated sales on >x< – we want to do MORE for small and medium sized businesses. With >x<, we’re now positioned to become a single interface for SMBs. With >x<’s engaged user base, all businesses can harness the strength of the platform in the following ways:",
+          "While there are countless stories of businesses who have built brands, attracted new customers, and generated sales on >x<, we want to do MORE for small and medium sized businesses. With >x<, we’re now positioned to become a single interface for SMBs. With >x<’s engaged user base, all businesses can harness the strength of the platform in the following ways:",
         ],
       },
       {
@@ -2305,7 +2305,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Every business, especially small businesses, needs more resources to better connect to customers to grow – and that’s why >x< is doubling up its efforts to build more capabilities. We’ll keep the community updated on our progress, including new products and services, as we continue to build in real time.",
+          "Every business, especially small businesses, needs more resources to better connect to customers to grow, and that’s why >x< is doubling up its efforts to build more capabilities. We’ll keep the community updated on our progress, including new products and services, as we continue to build in real time.",
         ],
       },
       {
@@ -2356,7 +2356,7 @@ export const posts: Post[] = [
               "AppsFlyer and >x< Ads have launched an Advanced SRN (Self-Reporting Network) integration for iOS",
             ],
           },
-          ", making AppsFlyer the first MMP to bring this capability to market with >x<. This integration joins our growing suite of enhanced, privacy-preserving measurement solutions with leading networks—including TikTok, Snap, and Meta—giving advertisers a strategic edge with full iOS campaign coverage. It delivers a complete, privacy-safe view of performance, enabling clearer insight and more confident, data-driven decisions.",
+          ", making AppsFlyer the first MMP to bring this capability to market with >x<. This integration joins our growing suite of enhanced, privacy-preserving measurement solutions with leading networks (including TikTok, Snap, and Meta), giving advertisers a strategic edge with full iOS campaign coverage. It delivers a complete, privacy-safe view of performance, enabling clearer insight and more confident, data-driven decisions.",
         ],
       },
       {
@@ -2367,7 +2367,7 @@ export const posts: Post[] = [
               "“Our continued partnership with AppsFlyer is focused on innovation and results. With the new Advanced SRN integration, advertisers can measure the full value of their iOS campaigns on >x<.”",
             ],
           },
-          " — Monique Pintarelli, Head of the Americas, >x<",
+          " (Monique Pintarelli, Head of the Americas, >x<)",
         ],
       },
       {
@@ -2420,7 +2420,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Advanced SRN is one component of a broader strategy for complete and consistent iOS measurement, and it plays a foundational role in making that strategy possible. By unlocking richer, privacy-safe signals from >x< Ads, Advanced SRN feeds high-quality data into AppsFlyer’s attribution engine, which in turn powers Single Source of Truth (SSOT)—AppsFlyer’s unified measurement solution.",
+          "Advanced SRN is one component of a broader strategy for complete and consistent iOS measurement, and it plays a foundational role in making that strategy possible. By unlocking richer, privacy-safe signals from >x< Ads, Advanced SRN feeds high-quality data into AppsFlyer’s attribution engine, which in turn powers Single Source of Truth (SSOT), AppsFlyer’s unified measurement solution.",
         ],
       },
       {
@@ -2438,7 +2438,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "In this framework, Advanced SRN acts as the signal enabler and SSOT as the decision engine. Working in tandem, Advanced SRN and SSOT give advertisers both control and clarity across the entire iOS measurement stack—an interconnected approach that improves visibility and drives real results. According to AppsFlyer data, advertisers using SSOT have seen effective cost per install (eCPI) drop by an average of 27%, thanks to better, more accurate optimization signals.",
+          "In this framework, Advanced SRN acts as the signal enabler and SSOT as the decision engine. Working in tandem, Advanced SRN and SSOT give advertisers both control and clarity across the entire iOS measurement stack: an interconnected approach that improves visibility and drives real results. According to AppsFlyer data, advertisers using SSOT have seen effective cost per install (eCPI) drop by an average of 27%, thanks to better, more accurate optimization signals.",
         ],
       },
       {
@@ -2459,7 +2459,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Now, with the launch of Advanced SRN—and soon, the integration of >x< Ads with AppsFlyer’s Creative Optimization solution—the foundation evolves into a ",
+          "Now, with the launch of Advanced SRN (and soon, the integration of >x< Ads with AppsFlyer’s Creative Optimization solution), the foundation evolves into a ",
           {
             b: ["complete, insight-driven offering"],
           },
@@ -2519,7 +2519,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "The AppsFlyer->x< Ads integration isn’t just about more coverage—it’s designed to drive results:",
+          "The AppsFlyer->x< Ads integration isn’t just about more coverage; it’s designed to drive results:",
         ],
       },
       {
@@ -2542,14 +2542,14 @@ export const posts: Post[] = [
             {
               b: ["More visibility, no extra complexity"],
             },
-            ": The Advanced SRN does not change >x<’s reporting policy—installs will continue to be reported in aggregate, with no distinction between deterministic and modeled conversions.",
+            ": The Advanced SRN does not change >x<’s reporting policy. Installs will continue to be reported in aggregate, with no distinction between deterministic and modeled conversions.",
           ],
         ],
       },
       {
         type: "p",
         runs: [
-          "With the addition of the Advanced SRN and Creative Optimization just around the corner, the AppsFlyer and >x< Ads integration is more comprehensive than ever, built to help you optimize and scale on >x<. You don’t have to choose between privacy and performance, or between granularity and compliance — you can see clearly and make decisions with confidence.",
+          "With the addition of the Advanced SRN and Creative Optimization just around the corner, the AppsFlyer and >x< Ads integration is more comprehensive than ever, built to help you optimize and scale on >x<. You don’t have to choose between privacy and performance, or between granularity and compliance. You can see clearly and make decisions with confidence.",
         ],
       },
     ],
@@ -2902,7 +2902,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Instead of tuning out on passive platforms, >x< users are actively tuning in to seek and share valuable information. Not only is >x< a critical platform to connect with consumers making intentional purchasing decisions, it’s a real-time marketplace buzzing with eager holiday shoppers. 2024's condensed holiday season has already begun and >x<’s proven dominance is clear: engagement during the prime time of the 2023 holiday season grew by 1.6x from November to December – and “last minute shopping” conversations surged 49% year over year.",
+          "Instead of tuning out on passive platforms, >x< users are actively tuning in to seek and share valuable information. Not only is >x< a critical platform to connect with consumers making intentional purchasing decisions, it’s a real-time marketplace buzzing with eager holiday shoppers. 2024's condensed holiday season has already begun and >x<’s proven dominance is clear: engagement during the prime time of the 2023 holiday season grew by 1.6x from November to December, and “last minute shopping” conversations surged 49% year over year.",
         ],
       },
       {
@@ -3003,7 +3003,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "As you’re finalizing strategies for the year ahead, it’s important to consider the biggest cultural moments as a chance to be part of the conversation – and >x< can help.",
+          "As you’re finalizing strategies for the year ahead, it’s important to consider the biggest cultural moments as a chance to be part of the conversation, and >x< can help.",
         ],
       },
       {
@@ -3157,7 +3157,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          ">x< helps businesses of all sizes connect with communities and conversations that help them grow. More than eight in 10 active advertisers are small and medium businesses—and today we’re enabling more of them to experience the power of >x< Ads.",
+          ">x< helps businesses of all sizes connect with communities and conversations that help them grow. More than eight in 10 active advertisers are small and medium businesses, and today we’re enabling more of them to experience the power of >x< Ads.",
         ],
       },
       {
@@ -3187,7 +3187,7 @@ export const posts: Post[] = [
               a: "https://business.twitter.com/en/success-stories/wco-brand-successes.html",
               r: ["website conversions"],
             },
-            "—enabling them to grow in a more predictable way.",
+            ", enabling them to grow in a more predictable way.",
           ],
           [
             "We’ve launched more impactful and personalized ad formats like ",
@@ -3195,7 +3195,7 @@ export const posts: Post[] = [
               a: "https://business.twitter.com/en/blog/launching-performance-products.html",
               r: ["Dynamic Product Ads"],
             },
-            " (DPA) to help businesses serve the right message at the right time. DPA units display multiple items, which can be customized by the advertiser depending on the intended audience—perfect for SMBs with lean budgets.",
+            " (DPA) to help businesses serve the right message at the right time. DPA units display multiple items, which can be customized by the advertiser depending on the intended audience, perfect for SMBs with lean budgets.",
           ],
           [
             "We’ve made getting started as an >x< advertiser easier than ever before. Advertisers can enjoy easy access to ",
@@ -3210,7 +3210,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "With these improvements, >x< is becoming a critical partner for more small businesses who want to reach valuable audiences when they’re engaging with their passions—whether that’s cooking, sports, music, technology, arts and more.",
+          "With these improvements, >x< is becoming a critical partner for more small businesses who want to reach valuable audiences when they’re engaging with their passions, whether that’s cooking, sports, music, technology, arts and more.",
         ],
       },
       {
@@ -3358,7 +3358,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Vertical video gives our community another way to connect to their passions – led by sports, music, entertainment, events and news as the most watched content categories4. This presents an opportunity for >x< advertisers to reach their audiences around a wider variety of contextually rich content.",
+          "Vertical video gives our community another way to connect to their passions, led by sports, music, entertainment, events and news as the most watched content categories4. This presents an opportunity for >x< advertisers to reach their audiences around a wider variety of contextually rich content.",
         ],
       },
       {
@@ -3406,7 +3406,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "This format also unlocks greater reach on >x< – about a 10% incremental exposure vs running ads on the Home Timeline alone5 – making it an easy and cost effective opportunity for advertisers already running vertical video in other channels.",
+          "This format also unlocks greater reach on >x< (about a 10% incremental exposure vs running ads on the Home Timeline alone5), making it an easy and cost effective opportunity for advertisers already running vertical video in other channels.",
         ],
       },
       {
@@ -3703,13 +3703,13 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "Q5 on >x< is about more than just media efficiency. As many people take time off during the holidays to recalibrate, they spend more quality time on >x<—connecting with loved ones, reflecting on the past year and discovering the latest in the world. Conversation during this period remains as vibrant as ever, driven by major events like live sports, gaming and film releases, and New Year’s—and this Q5 promises to be the biggest yet.",
+          "Q5 on >x< is about more than just media efficiency. As many people take time off during the holidays to recalibrate, they spend more quality time on >x<, connecting with loved ones, reflecting on the past year and discovering the latest in the world. Conversation during this period remains as vibrant as ever, driven by major events like live sports, gaming and film releases, and New Year’s, and this Q5 promises to be the biggest yet.",
         ],
       },
       {
         type: "p",
         runs: [
-          "In just the past month, we’ve seen conversations on >x< dominate the public discourse. The world turned to >x< to follow the OpenAI saga in real-time, generating over 1.3 billion impressions on the platform2 —more than twice what we saw with this year’s Grammys. Meanwhile, the NBA in-season tournament has taken over the timeline with video views up +105% year over year3.",
+          "In just the past month, we’ve seen conversations on >x< dominate the public discourse. The world turned to >x< to follow the OpenAI saga in real-time, generating over 1.3 billion impressions on the platform2, more than twice what we saw with this year’s Grammys. Meanwhile, the NBA in-season tournament has taken over the timeline with video views up +105% year over year3.",
         ],
       },
       {
@@ -4070,7 +4070,7 @@ export const posts: Post[] = [
       {
         type: "p",
         runs: [
-          "When it comes to back-to-school shopping, >x< influences every stage of the consumer journey—from the initial discovery to the final purchase decision.",
+          "When it comes to back-to-school shopping, >x< influences every stage of the consumer journey, from the initial discovery to the final purchase decision.",
         ],
       },
       {
@@ -4137,7 +4137,7 @@ export const posts: Post[] = [
             a: "https://business.x.com/en/success-stories.html",
             r: ["success"],
           },
-          ", proving that >x< is vital for elevating your campaigns and connecting a leaned in, hungry audience. By shaping conversations and influencing purchase decisions, >x< is a cornerstone of any marketing strategy this season. Don't miss out on the #BackToSchool season—",
+          ", proving that >x< is vital for elevating your campaigns and connecting a leaned in, hungry audience. By shaping conversations and influencing purchase decisions, >x< is a cornerstone of any marketing strategy this season. Don't miss out on the #BackToSchool season: ",
           {
             a: "https://business.x.com/en/form/contact-us.html",
             r: ["reach out to us today"],

@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — blog card pattern 08.
+// Ported from business.x.com: blog card pattern 08.
 export function BlogSpread(props: ArtProps) {
   const id = React.useId()
   return (

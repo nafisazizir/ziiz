@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — products/timeline-takeovers.
+// Ported from business.x.com: products/timeline-takeovers.
 export function TimelineFrame({
   variant = "wide",
   ...props

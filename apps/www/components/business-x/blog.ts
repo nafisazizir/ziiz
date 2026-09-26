@@ -1,7 +1,7 @@
 import { posts } from "@/components/business-x/blog-posts"
 
 // The shape business.x.com's blog reduces to: a header plus one run of
-// blocks, set by ziiz's own article prose. Media is dimensions only — the
+// blocks, set by ziiz's own article prose. Media is dimensions only; the
 // clone draws grey panels at the right ratio.
 export type Run = string | { b: Run[] } | { i: Run[] } | { a: string; r: Run[] }
 

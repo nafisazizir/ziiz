@@ -33,7 +33,7 @@ import { cn } from "@/lib/utils"
 // A post on business.x.com. The header is a row from 1024px: breadcrumb and
 // title on the left, the card art (400x244, the list's 8:5) on the right,
 // the row at least as tall as the art, then 120px and a rule. Below that
-// the header stacks — art under the title at 2:1 — and the rule sits 24px
+// the header stacks (art under the title at 2:1) and the rule sits 24px
 // under it.
 //
 // The body is the site's 720px column but ziiz's article: one typeset run,

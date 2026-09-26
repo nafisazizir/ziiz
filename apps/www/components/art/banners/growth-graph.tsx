@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — home, advertising/measurement.
+// Ported from business.x.com: home, advertising/measurement.
 export function GrowthGraph({
   variant = "wide",
   ...props

@@ -20,9 +20,9 @@ const pageSize = 6
 // two columns, stuck level with the rail's first row, with the site's square
 // marker sliding to the current filter, cards across the other
 // six in two columns with a 16px gutter and 40px between rows. Below that the
-// filters become x.com's tab strip — ui/tabs' line variant on a hairline
+// filters become x.com's tab strip (ui/tabs' line variant on a hairline
 // track, scrolling sideways, stuck under the mobile bar, the first tab's
-// underline starting where the track does — and the cards stack, going to two columns from
+// underline starting where the track does) and the cards stack, going to two columns from
 // 640px. One Tabs holds both, so the rail-side Nav and the strip drive the
 // same value and the cards are the strip's panel.
 //

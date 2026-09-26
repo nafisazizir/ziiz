@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising, spotlight-takeovers.
+// Ported from business.x.com: advertising, spotlight-takeovers.
 export function FunnelGrid(props: ArtProps) {
   return (
     <svg

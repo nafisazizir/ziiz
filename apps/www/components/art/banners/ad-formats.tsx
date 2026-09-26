@@ -2,7 +2,7 @@ import * as React from "react"
 
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — advertising/formats, products.
+// Ported from business.x.com: advertising/formats, products.
 export function AdFormats({
   variant = "wide",
   ...props

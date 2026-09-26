@@ -50,7 +50,7 @@ export function MobileNav({ className }: { className?: string }) {
       </Button>
       {open && (
         <div className="fixed inset-x-0 top-(--header-height) bottom-0 z-50 scrollbar-none overflow-y-auto bg-background-100">
-          {/* The same groups the sidebar renders, in the same order — below lg
+          {/* The same groups the sidebar renders, in the same order. Below lg
               this is the only navigation, so it carries every page. */}
           <Nav size="lg" className="overflow-auto px-6 py-6">
             {siteConfig.navGroups.map((group) => (

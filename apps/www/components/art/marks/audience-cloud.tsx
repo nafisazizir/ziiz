@@ -1,6 +1,6 @@
 import type { ArtProps } from "../props"
 
-// Ported from business.x.com — basics/intro-x-for-business · Reach new audiences; spotlight-takeovers.
+// Ported from business.x.com: basics/intro-x-for-business · Reach new audiences; spotlight-takeovers.
 export function AudienceCloud(props: ArtProps) {
   return (
     <svg

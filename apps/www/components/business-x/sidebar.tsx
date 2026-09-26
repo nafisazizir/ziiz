@@ -41,7 +41,7 @@ import { Separator } from "@/components/ui/separator"
 import { XLogo } from "@/components/business-x/x-logo"
 
 // The rail on business.x.com, verbatim: three sections expand, the rest are
-// plain links. Every href is a stub — this is a look-and-feel clone.
+// plain links. Every href is a stub; this is a look-and-feel clone.
 const sites = [
   { name: "Business", domain: "business.x.com", icon: XLogo },
   { name: "Money", domain: "money.x.com", icon: MoneyIcon },
@@ -106,7 +106,7 @@ export function BusinessRail() {
 }
 
 // Below md the rail is gone; a bar opens the same links full screen, one type
-// role louder — the docs site's own mobile pattern.
+// role louder, the docs site's own mobile pattern.
 export function BusinessMobileNav() {
   const [open, setOpen] = React.useState(false)
 

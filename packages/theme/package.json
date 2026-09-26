@@ -1,6 +1,6 @@
 {
   "name": "@ziiz/theme",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ziiz design layer: ramp tokens, type roles, materials, prose, Shiki, and the shadcn slot bridge.",
   "license": "MIT",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git+https://github.com/nafisazizir/ziiz.git",
     "directory": "packages/theme"
   },
-  "homepage": "https://github.com/nafisazizir/ziiz/tree/main/packages/theme",
+  "homepage": "https://ziiz.vercel.app",
   "publishConfig": {
     "access": "public"
   },
@@ -27,9 +27,15 @@
     "dist",
     "theme.css",
     "shadcn.css",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "exports": {
+    ".": {
+      "style": "./theme.css",
+      "default": "./theme.css"
+    },
     "./theme.css": "./theme.css",
     "./shadcn.css": "./shadcn.css",
     "./shiki": {
@@ -40,9 +46,16 @@
     "./package.json": "./package.json"
   },
   "peerDependencies": {
+    "shiki": ">=3",
     "tailwindcss": "^4"
   },
+  "peerDependenciesMeta": {
+    "shiki": {
+      "optional": true
+    }
+  },
   "devDependencies": {
+    "shiki": "4.4.3",
     "tsup": "8.5.1",
     "typescript": "5.9.3"
   }

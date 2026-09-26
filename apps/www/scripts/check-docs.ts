@@ -29,7 +29,7 @@ const COLLECTIONS: Collection[] = [
 ]
 
 // Routes that exist outside the content collections.
-const STATIC_ROUTES = ["/", "/blog", "/rss.xml"]
+const STATIC_ROUTES = ["/", "/blog", "/rss.xml", "/llms.txt", "/llms-full.txt"]
 
 const problems: string[] = []
 

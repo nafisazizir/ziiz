@@ -135,3 +135,21 @@ Long-form content needs no components. Add `typeset` to the container and every 
 ```tsx
 <article className="typeset">{children}</article>
 ```
+
+## Agents
+
+The system is written down for coding agents as well as people. Three pieces:
+
+```bash
+npx shadcn@latest add @ziiz/skill
+```
+
+The `skill` item installs the ziiz skill into `.agents/skills/ziiz/`: the vocabulary, the rules a component must follow, and the greps that check them. Claude Code, Codex and Cursor read that folder.
+
+```bash
+npx shadcn@latest mcp init --client claude
+```
+
+The shadcn MCP reads the `@ziiz` entry from `components.json`, so an agent can search, view and add registry items as tools. `--client` also takes `cursor`, `vscode` and `codex`.
+
+Every page on this site is also markdown. [/llms.txt](/llms.txt) lists them with descriptions, [/llms-full.txt](/llms-full.txt) is the guide, the foundation and every component page in one file, and any page is at `/llms.mdx/` followed by its path, such as `/llms.mdx/components/button`.

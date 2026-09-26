@@ -35,7 +35,9 @@ npx shadcn@latest add @ziiz/button
 ```
 
 The full setup, fonts and dark mode included, is at
-https://ziiz.vercel.app/installation.
+https://ziiz.vercel.app/installation. For coding agents,
+`npx shadcn@latest add @ziiz/skill` installs the ziiz skill, and every page
+is markdown at https://ziiz.vercel.app/llms.txt.
 
 ## Registry
 

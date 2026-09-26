@@ -10,6 +10,8 @@
 //   lib/utils.ts                -> registry:lib (`cn` from @ziiz/theme/cn)
 //   theme                       -> registry:theme, no files: installs the
 //                                  packages and CSS imports an app needs
+//   ../../.agents/skills/ziiz/  -> registry:file, the consumer skill,
+//                                  installed to the same path in the app
 //
 // Dependencies are read off each file's imports: `@/components/ui/x` becomes
 // a registryDependency on `x`, `@/lib/utils` one on `utils`, a bare
@@ -40,6 +42,7 @@ type ItemType =
   | "registry:hook"
   | "registry:lib"
   | "registry:theme"
+  | "registry:file"
 
 type RegistryFile = {
   path: string
@@ -82,6 +85,8 @@ const DESCRIPTIONS: Record<string, string> = {
     "The cn helper from @ziiz/theme/cn, whose tailwind-merge knows the type roles and materials.",
   theme:
     "The ziiz design layer: installs @ziiz/theme with the stylesheets and cn a ziiz app needs.",
+  skill:
+    "The ziiz agent skill: vocabulary, rules and checks for building UI on the system, installed to .agents/skills/ziiz.",
 }
 
 // Owned by the consumer: react/next come with the framework. Listing them
@@ -270,7 +275,24 @@ function buildItems(): RegistryItem[] {
     ].join("\n"),
   }
 
-  return [...ui, ...docs, ...hooks, ...lib, theme]
+  // The consumer skill. It lives at the repo root so this repo's own agents
+  // load it, and installs to the same path in a consuming app. Not built
+  // through item(): its markdown quotes import lines that are not imports.
+  const skillDir = path.join(ROOT, "../../.agents/skills/ziiz")
+  const skill: RegistryItem = {
+    name: "skill",
+    type: "registry:file",
+    title: "Skill",
+    description: describe("skill", "registry:file"),
+    files: ["SKILL.md", "reference.md"].map((f) => ({
+      path: rel(path.join(skillDir, f)),
+      type: "registry:file" as const,
+      target: `.agents/skills/ziiz/${f}`,
+    })),
+    docs: "Installed to .agents/skills/ziiz/. Claude Code, Codex and Cursor read that folder; for another client, point it there or symlink it.",
+  }
+
+  return [...ui, ...docs, ...hooks, ...lib, theme, skill]
 }
 
 function writeManifest(items: RegistryItem[]) {

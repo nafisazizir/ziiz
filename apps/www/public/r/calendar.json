@@ -2,13 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar",
   "title": "Calendar",
+  "description": "A calendar component that allows users to select a date or a range of dates.",
   "dependencies": [
     "@hugeicons/core-free-icons",
     "@hugeicons/react",
     "react-day-picker"
   ],
   "registryDependencies": [
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

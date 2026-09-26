@@ -2,10 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "accordion",
   "title": "Accordion",
+  "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
   "dependencies": [
     "@base-ui/react",
     "@hugeicons/core-free-icons",
     "@hugeicons/react"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

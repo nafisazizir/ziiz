@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "popover",
   "title": "Popover",
+  "description": "Displays rich content in a portal, triggered by a button.",
   "dependencies": [
     "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

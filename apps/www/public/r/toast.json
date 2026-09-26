@@ -2,13 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toast",
   "title": "Toast",
+  "description": "A succinct message that is displayed temporarily.",
   "dependencies": [
     "@base-ui/react",
     "@hugeicons/core-free-icons",
     "@hugeicons/react"
   ],
   "registryDependencies": [
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

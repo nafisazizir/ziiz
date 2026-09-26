@@ -2,9 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "marker",
   "title": "Marker",
+  "description": "Displays an inline status, system note, bordered row, or labeled separator in a conversation.",
   "dependencies": [
     "@base-ui/react",
     "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

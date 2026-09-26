@@ -2,10 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-otp",
   "title": "Input OTP",
+  "description": "Accessible one-time password component with copy-paste functionality.",
   "dependencies": [
     "@hugeicons/core-free-icons",
     "@hugeicons/react",
     "input-otp"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

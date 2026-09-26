@@ -2,8 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-tabs",
   "title": "Code Tabs",
+  "description": "Tabs that switch between code samples, such as install commands.",
   "registryDependencies": [
-    "tabs"
+    "tabs",
+    "utils"
   ],
   "files": [
     {

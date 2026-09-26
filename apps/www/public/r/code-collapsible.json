@@ -2,8 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-collapsible",
   "title": "Code Collapsible",
+  "description": "A code block that opens from a short preview to its full height.",
   "registryDependencies": [
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

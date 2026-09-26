@@ -47,7 +47,7 @@ export function DocsTocRail() {
       {items.length > 0 ? (
         <nav
           aria-label="On this page"
-          className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10"
+          className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 pt-(--content-top) pb-10"
         >
           <div className="flex h-8 items-center text-heading-14 text-gray-1000">
             On this page

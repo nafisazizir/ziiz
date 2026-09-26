@@ -14,7 +14,7 @@ export function BlogHero({
   children?: React.ReactNode
 }) {
   return (
-    <section className="flex flex-col pt-4 pb-4 lg:pt-20 lg:pb-16">
+    <section className="flex flex-col pt-4 pb-4 lg:pt-(--content-top) lg:pb-16">
       <div className="grid grid-cols-8 gap-4">
         <h1 className="col-span-8 text-heading-48 text-balance text-gray-1000 md:col-span-6">
           {title}

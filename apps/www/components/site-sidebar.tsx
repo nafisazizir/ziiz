@@ -18,7 +18,7 @@ export function SiteSidebar() {
 
   return (
     <aside className="sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block">
-      <Nav className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10">
+      <Nav className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 pt-(--content-top) pb-10">
         {siteConfig.navGroups.map((group) => (
           <NavGroup key={group.label}>
             <NavGroupLabel>{group.label}</NavGroupLabel>

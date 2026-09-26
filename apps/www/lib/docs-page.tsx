@@ -28,7 +28,7 @@ export function DocsPage({ slug }: { slug: string[] }) {
   return (
     <DocsTocProvider toc={page.data.toc}>
       <div className="flex w-full items-start">
-        <article className="typeset mx-auto w-full max-w-196 px-1 py-10 lg:px-8">
+        <article className="typeset mx-auto w-full max-w-196 px-1 py-10 lg:px-8 lg:pt-(--content-top)">
           <h1>{page.data.title}</h1>
           <p>{page.data.description}</p>
           <Content components={getMDXComponents()} />

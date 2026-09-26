@@ -62,3 +62,12 @@ content/docs         Foundation pages (MDX)
 content/blog         Dated posts; /blog, /blog/<slug>, /rss.xml
 scripts              build-registry, check-docs
 ```
+
+## Releasing @ziiz/theme
+
+1. Bump `version` in `packages/theme/package.json` and add the entry to
+   `packages/theme/CHANGELOG.md`.
+2. Commit, then tag and push: `git tag theme-v<version> && git push origin theme-v<version>`.
+3. `.github/workflows/release.yml` builds and publishes to npm with provenance.
+   It needs an `NPM_TOKEN` repository secret (a granular automation token
+   for the `@ziiz` scope).

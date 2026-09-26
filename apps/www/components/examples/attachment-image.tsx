@@ -40,6 +40,7 @@ function AttachmentImage() {
         {images.map((image) => (
           <Attachment key={image.name} orientation="vertical">
             <AttachmentMedia variant="image">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={image.src} alt={image.alt} />
             </AttachmentMedia>
             <AttachmentContent>

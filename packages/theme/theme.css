@@ -7,12 +7,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Font contract: the app provides --font-sans / --font-mono (next/font or
-   @font-face); the type roles below only ever reference these. */
+/* Font contract: the app sets --font-sans and --font-mono on html or :root
+   (next/font's variable class, or a plain declaration next to @font-face).
+   The type roles below only ever reference these two. Neither is redeclared
+   here, so an app that sets nothing falls back to Tailwind's default stacks
+   instead of a self-referencing variable and the browser's serif. */
 @theme inline {
   --font-heading: var(--font-sans);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
 
   /* Multiplicative radius scale off --radius; materials pin onto it. */
   --radius-sm: calc(var(--radius) * 0.6);

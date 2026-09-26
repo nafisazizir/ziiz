@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup"
 
 export default defineConfig({
-  entry: ["src/shiki.ts"],
+  entry: ["src/cn.ts", "src/shiki.ts"],
   format: ["esm"],
   dts: true,
   clean: true,

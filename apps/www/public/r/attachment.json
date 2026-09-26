@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "attachment",
   "title": "Attachment",
+  "description": "Displays a file or image attachment with media, metadata, upload state, and actions.",
   "dependencies": [
     "@base-ui/react",
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

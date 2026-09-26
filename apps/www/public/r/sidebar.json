@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar",
   "title": "Sidebar",
+  "description": "A composable, themeable and customizable sidebar component.",
   "dependencies": [
     "@base-ui/react",
     "@hugeicons/core-free-icons",
@@ -15,7 +16,8 @@
     "sheet",
     "skeleton",
     "tooltip",
-    "use-mobile"
+    "use-mobile",
+    "utils"
   ],
   "files": [
     {

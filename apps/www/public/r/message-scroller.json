@@ -2,13 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "message-scroller",
   "title": "Message Scroller",
+  "description": "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
   "dependencies": [
     "@hugeicons/core-free-icons",
     "@hugeicons/react",
     "@shadcn/react"
   ],
   "registryDependencies": [
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

@@ -2,9 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bubble",
   "title": "Bubble",
+  "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
   "dependencies": [
     "@base-ui/react",
     "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

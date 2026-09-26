@@ -2,10 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dropdown-menu",
   "title": "Dropdown Menu",
+  "description": "Displays a menu to the user, such as a set of actions or functions, triggered by a button.",
   "dependencies": [
     "@base-ui/react",
     "@hugeicons/core-free-icons",
     "@hugeicons/react"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

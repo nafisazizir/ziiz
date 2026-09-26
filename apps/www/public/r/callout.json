@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "callout",
   "title": "Callout",
+  "description": "A titled aside for notes and warnings inside prose.",
   "dependencies": [
     "@hugeicons/core-free-icons",
     "@hugeicons/react"
   ],
   "registryDependencies": [
-    "alert"
+    "alert",
+    "utils"
   ],
   "files": [
     {

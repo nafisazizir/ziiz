@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "steps",
   "title": "Steps",
+  "description": "Numbered steps for an installation or setup sequence.",
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/docs/steps.tsx",

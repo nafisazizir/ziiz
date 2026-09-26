@@ -26,15 +26,37 @@ async function Docs({ params }: { params: Promise<{ slug: string[] }> }) {
   notFound()
 }
 
-// The article column keeps its measure so the shell already reads as a docs
-// page while the slug-resolved content streams in.
+// Mirrors DocsPage's geometry: real typeset elements so the roles set the
+// line boxes and the flow margins come for free — a bar at ~cap height where
+// each run of text will land.
 function DocsFallback() {
   return (
     <div className="flex w-full items-start">
-      <article className="mx-auto w-full max-w-196 px-1 py-10 lg:px-8 lg:pt-(--content-top)">
-        <Skeleton className="h-9 w-2/3" />
-        <Skeleton className="mt-4 h-5 w-full" />
-        <Skeleton className="mt-2 h-5 w-4/5" />
+      <article className="typeset mx-auto w-full max-w-196 px-1 py-10 lg:px-8 lg:pt-(--content-top)">
+        <h1>
+          <Skeleton className="h-[0.8em] w-3/5" />
+        </h1>
+        <p>
+          <Skeleton className="h-[1em] w-full" />
+        </p>
+        <p>
+          <Skeleton className="h-[1em] w-5/6" />
+        </p>
+        <h2>
+          <Skeleton className="h-[0.8em] w-2/5" />
+        </h2>
+        <p>
+          <Skeleton className="h-[1em] w-full" />
+        </p>
+        <p>
+          <Skeleton className="h-[1em] w-full" />
+        </p>
+        <p>
+          <Skeleton className="h-[1em] w-4/6" />
+        </p>
+        <div className="mt-(--typeset-flow)">
+          <Skeleton className="aspect-[16/7] w-full" />
+        </div>
       </article>
     </div>
   )

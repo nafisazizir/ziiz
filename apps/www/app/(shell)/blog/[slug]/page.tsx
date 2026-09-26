@@ -65,12 +65,43 @@ async function Post({ params }: { params: Promise<{ slug: string }> }) {
   )
 }
 
+// Same skeleton as BlogPostHeader + the prose column: icon-sm ghost, a
+// breadcrumb bar, heading-48 title lines, the label-13 byline and the
+// 400x244 art — so the streamed post lands without a reflow.
 function PostFallback() {
   return (
-    <article className="mx-auto flex w-full max-w-180 flex-col pt-12 pb-30">
-      <Skeleton className="h-9 w-2/3" />
-      <Skeleton className="mt-4 h-5 w-full" />
-      <Skeleton className="mt-2 h-5 w-4/5" />
+    <article className="flex w-full flex-col">
+      <header className="flex flex-col border-b border-gray-alpha-400 pb-6 lg:flex-row lg:items-start lg:justify-between lg:gap-4 lg:pb-30">
+        <div className="flex min-w-0 flex-col lg:min-h-61 lg:max-w-180 lg:flex-1">
+          <div className="flex shrink-0 items-center gap-4 pt-3 lg:pt-10">
+            <Skeleton className="-ml-3 size-8 shrink-0 rounded-full" />
+            <div className="text-label-14">
+              <Skeleton className="h-[0.8em] w-28" />
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col justify-end gap-4 pt-6 lg:pt-8">
+            <div className="text-heading-48">
+              <Skeleton className="h-[0.75em] w-4/5" />
+              <Skeleton className="mt-[calc(1lh-0.75em)] h-[0.75em] w-2/5" />
+            </div>
+            <div className="text-label-13">
+              <Skeleton className="h-[0.85em] w-44" />
+            </div>
+          </div>
+        </div>
+        <Skeleton className="mt-6 aspect-2/1 w-full shrink-0 lg:mt-0 lg:aspect-auto lg:h-61 lg:w-100" />
+      </header>
+      <div className="typeset mx-auto w-full max-w-180 pt-12 pb-30">
+        <p>
+          <Skeleton className="h-[1em] w-full" />
+        </p>
+        <p>
+          <Skeleton className="h-[1em] w-full" />
+        </p>
+        <p>
+          <Skeleton className="h-[1em] w-4/6" />
+        </p>
+      </div>
     </article>
   )
 }

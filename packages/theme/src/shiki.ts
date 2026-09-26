@@ -1,3 +1,5 @@
+import type { ThemeRegistrationRaw } from "shiki"
+
 export const ziizShikiTheme = {
   name: "ziiz",
   type: "dark" as const,
@@ -5,7 +7,7 @@ export const ziizShikiTheme = {
     "editor.foreground": "var(--shiki-color-text, inherit)",
     "editor.background": "var(--shiki-color-background, transparent)",
   },
-  tokenColors: [
+  settings: [
     {
       scope: ["comment", "punctuation.definition.comment", "string.comment"],
       settings: { foreground: "var(--shiki-token-comment)" },
@@ -100,7 +102,7 @@ export const ziizShikiTheme = {
       settings: { foreground: "var(--shiki-token-parameter)" },
     },
   ],
-}
+} satisfies ThemeRegistrationRaw
 
 export const ziizShikiOptions = {
   themes: {

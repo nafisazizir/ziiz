@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+
 import { MobileNav } from "@/components/mobile-nav"
 
 // Only below lg. On a wide viewport the sidebar carries the whole navigation,
@@ -7,7 +9,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full bg-background lg:hidden">
       <div className="mx-auto w-full px-6">
         <div className="flex h-(--header-height) items-center">
-          <MobileNav className="ml-auto" />
+          <Suspense fallback={<div className="ml-auto size-8" />}>
+            <MobileNav className="ml-auto" />
+          </Suspense>
         </div>
       </div>
     </header>

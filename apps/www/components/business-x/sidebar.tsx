@@ -94,7 +94,9 @@ export function BusinessRail() {
         <SiteSwitcher />
       </NavHeader>
       <NavContent>
-        <RailLinks />
+        <React.Suspense fallback={null}>
+          <RailLinks />
+        </React.Suspense>
       </NavContent>
       <NavFooter>
         <Button shape="rounded" variant="outline" size="sm" className="w-fit">

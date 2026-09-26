@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+
 import { Toaster as SonnerToaster } from "@/components/ui/sonner"
 import { Toaster } from "@/components/ui/toast"
 import { SiteSidebar } from "@/components/site-sidebar"
@@ -22,7 +24,14 @@ export default function ShellLayout({
       <SiteHeader />
       <EdgeFade side="top" />
       <div className="flex w-full items-start px-6">
-        <SiteSidebar />
+        {/* The sidebar reads the pathname for its active state, so it
+            suspends while the shell prerenders below a dynamic segment. The
+            fallback keeps the column's width so the shell's geometry holds. */}
+        <Suspense
+          fallback={<div className="hidden h-svh w-60 shrink-0 lg:block" />}
+        >
+          <SiteSidebar />
+        </Suspense>
         <main className="min-w-0 flex-1">{children}</main>
       </div>
       <EdgeFade side="bottom" />

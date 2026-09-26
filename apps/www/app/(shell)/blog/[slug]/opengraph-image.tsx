@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache"
 import { ImageResponse } from "next/og"
 
 import { formatDate, getBlogPost, getBlogPosts } from "@/lib/blog"
@@ -13,8 +14,10 @@ export function generateStaticParams() {
 
 // Inter as static TTF from Google Fonts; satori cannot read the app's woff2.
 // A network failure at build time falls back to the renderer's default face
-// rather than failing the page.
+// rather than failing the page. Cached so the whole image can prerender.
 async function loadInter(weight: 400 | 600, text: string) {
+  "use cache"
+  cacheLife("days")
   try {
     const css = await fetch(
       `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&text=${encodeURIComponent(text)}`,

@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "resizable",
   "title": "Resizable",
+  "description": "Accessible resizable panel groups and layouts with keyboard support.",
   "dependencies": [
     "react-resizable-panels"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

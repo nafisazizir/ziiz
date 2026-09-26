@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pagination",
   "title": "Pagination",
+  "description": "Pagination with page navigation, next and previous links.",
   "dependencies": [
     "@hugeicons/core-free-icons",
     "@hugeicons/react"
   ],
   "registryDependencies": [
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-area",
   "title": "Scroll Area",
+  "description": "Augments native scroll functionality for custom, cross-browser styling.",
   "dependencies": [
     "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

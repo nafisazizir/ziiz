@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart",
   "title": "Chart",
+  "description": "Beautiful charts. Built using Recharts. Copy and paste into your apps.",
   "dependencies": [
     "recharts"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

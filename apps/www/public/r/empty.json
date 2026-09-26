@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "empty",
   "title": "Empty",
+  "description": "Use the Empty component to display an empty state.",
   "dependencies": [
     "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

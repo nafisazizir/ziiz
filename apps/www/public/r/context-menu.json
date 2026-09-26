@@ -2,10 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "context-menu",
   "title": "Context Menu",
+  "description": "Displays a menu of actions triggered by a right click.",
   "dependencies": [
     "@base-ui/react",
     "@hugeicons/core-free-icons",
     "@hugeicons/react"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

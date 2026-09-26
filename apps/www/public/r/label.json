@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "label",
   "title": "Label",
+  "description": "Renders an accessible label associated with controls.",
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/label.tsx",

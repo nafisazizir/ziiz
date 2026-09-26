@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
   "title": "Input",
+  "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
   "dependencies": [
     "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

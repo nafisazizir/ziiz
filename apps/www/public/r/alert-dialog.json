@@ -2,11 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert-dialog",
   "title": "Alert Dialog",
+  "description": "A modal dialog that interrupts the user with important content and expects a response.",
   "dependencies": [
     "@base-ui/react"
   ],
   "registryDependencies": [
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

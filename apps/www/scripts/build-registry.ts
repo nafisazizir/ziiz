@@ -7,11 +7,19 @@
 //   components/docs/<name>.tsx  -> registry:component, installed to
 //                                  components/docs/ (explicit target)
 //   hooks/use-mobile.ts         -> registry:hook (sidebar imports it)
+//   lib/utils.ts                -> registry:lib (`cn` from @ziiz/theme/cn)
+//   theme                       -> registry:theme, no files: installs the
+//                                  packages and CSS imports an app needs
 //
 // Dependencies are read off each file's imports: `@/components/ui/x` becomes
-// a registryDependency on `x`, a bare specifier becomes an npm dependency.
-// `@/lib/utils`, react and next are the consumer's own and never listed.
-// Any other `@/` alias inside a published file fails the build.
+// a registryDependency on `x`, `@/lib/utils` one on `utils`, a bare
+// specifier becomes an npm dependency. react and next are the consumer's
+// own and never listed. Any other `@/` alias inside a published file fails
+// the build.
+//
+// Every item carries a description: a ui item takes the `description`
+// frontmatter of its page under content/docs/components, the rest are
+// listed in DESCRIPTIONS below. A ui item without a page fails the build.
 //
 // Two more files are generated here, neither of them published:
 //
@@ -26,7 +34,12 @@ const ROOT = process.cwd()
 const REGISTRY_JSON = path.join(ROOT, "registry.json")
 const REGISTRY_OUT = path.join(ROOT, "public/r")
 
-type ItemType = "registry:ui" | "registry:component" | "registry:hook"
+type ItemType =
+  | "registry:ui"
+  | "registry:component"
+  | "registry:hook"
+  | "registry:lib"
+  | "registry:theme"
 
 type RegistryFile = {
   path: string
@@ -38,9 +51,12 @@ type RegistryItem = {
   name: string
   type: ItemType
   title: string
+  description: string
   dependencies?: string[]
   registryDependencies?: string[]
   files: RegistryFile[]
+  css?: Record<string, Record<string, never>>
+  docs?: string
 }
 
 // Items whose derived title reads wrong. Everything else is title-cased.
@@ -48,13 +64,36 @@ const TITLE_OVERRIDES: Record<string, string> = {
   "input-otp": "Input OTP",
 }
 
-// Owned by the consumer: `shadcn init` writes utils, and react/next come with
-// the framework. Listing them would make every item claim them.
-const IMPLICIT_ALIASES = new Set(["@/lib/utils"])
+// Descriptions for the items that have no page under content/docs/components.
+const DESCRIPTIONS: Record<string, string> = {
+  callout: "A titled aside for notes and warnings inside prose.",
+  "code-block": "The chrome around a pre with a title bar and a copy button.",
+  "code-collapsible":
+    "A code block that opens from a short preview to its full height.",
+  "code-tabs":
+    "Tabs that switch between code samples, such as install commands.",
+  "component-preview":
+    "Renders a component example above its collapsible source.",
+  "component-source":
+    "Reads a registry item's source at build time and shows it highlighted.",
+  steps: "Numbered steps for an installation or setup sequence.",
+  "use-mobile": "A hook that reports whether the viewport is below 768px.",
+  utils:
+    "The cn helper from @ziiz/theme/cn, whose tailwind-merge knows the type roles and materials.",
+  theme:
+    "The ziiz design layer: installs @ziiz/theme with the stylesheets and cn a ziiz app needs.",
+}
+
+// Owned by the consumer: react/next come with the framework. Listing them
+// would make every item claim them.
 const IMPLICIT_PACKAGES = new Set(["react", "react-dom", "next"])
 
+// `@/lib/utils` maps to the published utils item on purpose: the stock cn a
+// `shadcn init` writes does not know the type roles, so components pull in
+// the one that does.
 const ALIAS_TO_ITEM: Record<string, string> = {
   "@/hooks/use-mobile": "use-mobile",
+  "@/lib/utils": "utils",
 }
 
 const IMPORT_RE = /(?:from|import)\s*\(?\s*["']([^"']+)["']/g
@@ -95,7 +134,6 @@ function collectDependencies(
   for (const file of files) {
     for (const specifier of readImports(file)) {
       if (specifier.startsWith(".")) continue
-      if (IMPLICIT_ALIASES.has(specifier)) continue
 
       if (specifier.startsWith("@/")) {
         const ui = specifier.match(/^@\/components\/(?:ui|docs)\/([a-z0-9-]+)$/)
@@ -124,6 +162,35 @@ function collectDependencies(
   }
 }
 
+const CONTENT_COMPONENTS = path.join(ROOT, "content/docs/components")
+
+function frontmatter(source: string, key: string): string | undefined {
+  return source.match(new RegExp(`^${key}:\\s*(.+)$`, "m"))?.[1].trim()
+}
+
+// A ui item's description is its page's; the page is the one place the
+// component is described, so the registry never says something else.
+function describe(name: string, type: ItemType): string {
+  if (type === "registry:ui") {
+    const page = path.join(CONTENT_COMPONENTS, `${name}.mdx`)
+    if (!fs.existsSync(page)) {
+      throw new Error(
+        `${name}: no page at ${rel(page)} to take a description from`
+      )
+    }
+    const description = frontmatter(
+      fs.readFileSync(page, "utf8"),
+      "description"
+    )
+    if (!description) throw new Error(`${rel(page)}: missing description`)
+    return description
+  }
+  const description = DESCRIPTIONS[name]
+  if (!description)
+    throw new Error(`${name}: add a description to DESCRIPTIONS`)
+  return description
+}
+
 function item(
   name: string,
   type: ItemType,
@@ -134,6 +201,7 @@ function item(
     name,
     type,
     title: titleFromName(name),
+    description: describe(name, type),
     ...collectDependencies(files, name),
     files: files.map((file) => ({
       path: rel(file),
@@ -176,7 +244,33 @@ function buildItems(): RegistryItem[] {
     ]),
   ]
 
-  return [...ui, ...docs, ...hooks]
+  const lib = [item("utils", "registry:lib", [path.join(ROOT, "lib/utils.ts")])]
+
+  // The setup item. No files: it installs the packages and injects the CSS
+  // imports an app needs before any component renders, in the order the
+  // app's own globals.css uses. shadcn.css is left to the app: ziiz
+  // components speak ramp vocabulary and do not need the slot bridge.
+  const theme: RegistryItem = {
+    name: "theme",
+    type: "registry:theme",
+    title: "Theme",
+    description: describe("theme", "registry:theme"),
+    dependencies: ["@ziiz/theme", "shadcn", "tw-animate-css"],
+    registryDependencies: ["utils"],
+    files: [],
+    css: {
+      '@import "tw-animate-css"': {},
+      '@import "shadcn/tailwind.css"': {},
+      '@import "@ziiz/theme/theme.css"': {},
+    },
+    docs: [
+      "Set --font-sans and --font-mono on html or :root (next/font's variable option does this); without them the Tailwind default stacks apply.",
+      'Dark mode is the .dark class on html: next-themes with attribute="class".',
+      'Add @import "@ziiz/theme/shadcn.css" only if the app also runs stock shadcn/ui components.',
+    ].join("\n"),
+  }
+
+  return [...ui, ...docs, ...hooks, ...lib, theme]
 }
 
 function writeManifest(items: RegistryItem[]) {
@@ -205,7 +299,6 @@ function verifyCoverage(items: RegistryItem[]) {
 
 const EXAMPLES_DIR = path.join(ROOT, "components/examples")
 const EXAMPLES_INDEX = path.join(EXAMPLES_DIR, "index.ts")
-const CONTENT_COMPONENTS = path.join(ROOT, "content/docs/components")
 const COMPONENT_NAV = path.join(ROOT, "lib/component-nav.ts")
 
 const GENERATED = "// Generated by scripts/build-registry.ts. Do not edit.\n"

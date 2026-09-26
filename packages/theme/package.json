@@ -38,12 +38,21 @@
     },
     "./theme.css": "./theme.css",
     "./shadcn.css": "./shadcn.css",
+    "./cn": {
+      "types": "./dist/cn.d.ts",
+      "import": "./dist/cn.js",
+      "default": "./dist/cn.js"
+    },
     "./shiki": {
       "types": "./dist/shiki.d.ts",
       "import": "./dist/shiki.js",
       "default": "./dist/shiki.js"
     },
     "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.6.0"
   },
   "peerDependencies": {
     "shiki": ">=3",

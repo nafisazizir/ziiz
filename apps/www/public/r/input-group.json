@@ -2,13 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-group",
   "title": "Input Group",
+  "description": "Add addons, buttons, and helper content to inputs.",
   "dependencies": [
     "class-variance-authority"
   ],
   "registryDependencies": [
     "button",
     "input",
-    "textarea"
+    "textarea",
+    "utils"
   ],
   "files": [
     {

@@ -110,7 +110,7 @@ function NavItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const navRowClassName =
-  "inline-flex h-8 w-full shrink-0 items-center justify-start gap-1 rounded-[min(var(--radius-md),10px)] border border-transparent bg-clip-padding px-2.5 text-left text-button-14 whitespace-nowrap text-gray-900 transition-[color,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] outline-none select-none hover:text-gray-1000 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 in-data-[slot=nav-sub]:h-7 group-data-[size=lg]/nav:h-auto group-data-[size=lg]/nav:gap-1.5 group-data-[size=lg]/nav:rounded-md group-data-[size=lg]/nav:p-0 group-data-[size=lg]/nav:text-heading-24 group-data-[size=lg]/nav:in-data-[slot=nav-sub]:text-heading-20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+  "inline-flex min-h-8 w-full shrink-0 items-center justify-start gap-1 rounded-[min(var(--radius-md),10px)] border border-transparent bg-clip-padding px-2.5 py-1.5 text-left text-button-14 text-gray-900 transition-[color,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] outline-none select-none hover:text-gray-1000 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 in-data-[slot=nav-sub]:min-h-7 in-data-[slot=nav-sub]:py-1 group-data-[size=lg]/nav:min-h-0 group-data-[size=lg]/nav:gap-1.5 group-data-[size=lg]/nav:rounded-md group-data-[size=lg]/nav:p-0 group-data-[size=lg]/nav:text-heading-24 group-data-[size=lg]/nav:in-data-[slot=nav-sub]:text-heading-20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 
 function NavLink({
   className,

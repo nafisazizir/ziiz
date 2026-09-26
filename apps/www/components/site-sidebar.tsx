@@ -3,64 +3,40 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { siteConfig, type NavItem } from "@/lib/config"
-import { Button } from "@/components/ui/button"
+import { siteConfig, isActiveHref } from "@/lib/config"
+import {
+  Nav,
+  NavGroup,
+  NavGroupLabel,
+  NavItem,
+  NavLink,
+  NavList,
+} from "@/components/ui/nav"
 
 export function SiteSidebar() {
   const pathname = usePathname()
 
   return (
     <aside className="sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block">
-      <nav className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10">
+      <Nav className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 py-10">
         {siteConfig.navGroups.map((group) => (
-          <SidebarGroup key={group.label} label={group.label}>
-            {group.items.map((item) => (
-              <SidebarItem key={item.href} item={item} pathname={pathname} />
-            ))}
-          </SidebarGroup>
+          <NavGroup key={group.label}>
+            <NavGroupLabel>{group.label}</NavGroupLabel>
+            <NavList>
+              {group.items.map((item) => (
+                <NavItem key={item.href}>
+                  <NavLink
+                    active={isActiveHref(pathname, item.href)}
+                    render={<Link href={item.href} />}
+                  >
+                    {item.name}
+                  </NavLink>
+                </NavItem>
+              ))}
+            </NavList>
+          </NavGroup>
         ))}
-      </nav>
+      </Nav>
     </aside>
-  )
-}
-
-function SidebarItem({ item, pathname }: { item: NavItem; pathname: string }) {
-  // A blog post keeps its group's entry marked, so the rail always shows
-  // where you are.
-  const isActive =
-    pathname === item.href ||
-    (item.href !== "/" && pathname.startsWith(`${item.href}/`))
-
-  return (
-    <li>
-      <Button
-        variant="ghost"
-        size="sm"
-        nativeButton={false}
-        render={
-          <Link href={item.href} aria-current={isActive ? "page" : undefined} />
-        }
-        className="w-full justify-start text-gray-900 hover:bg-transparent active:scale-100 active:bg-transparent aria-[current=page]:text-gray-1000"
-      >
-        {item.name}
-      </Button>
-    </li>
-  )
-}
-
-function SidebarGroup({
-  label,
-  children,
-}: {
-  label: string
-  children: React.ReactNode
-}) {
-  return (
-    <div className="flex flex-col gap-1 pb-8">
-      <div className="flex h-8 items-center px-2.5 text-heading-14 text-gray-1000">
-        {label}
-      </div>
-      <ul className="flex flex-col gap-0.5">{children}</ul>
-    </div>
   )
 }

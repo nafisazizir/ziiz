@@ -28,7 +28,7 @@ export const siteConfig = {
       label: "Playground",
       items: [
         { name: "Palette generator", href: "/playground" },
-        { name: "Button shape", href: "/playground/button-shape" },
+        { name: "X Business clone", href: "/business-x" },
       ],
     },
     // Generated from content/docs/components by scripts/build-registry.ts.
@@ -37,4 +37,8 @@ export const siteConfig = {
   ],
 }
 
-export type NavItem = { name: string; href: string }
+// A nested page keeps its parent's entry marked — a blog post lights up "All
+// posts" — so both navigations always show where you are.
+export function isActiveHref(pathname: string, href: string) {
+  return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`))
+}

@@ -4,9 +4,17 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { siteConfig, type NavItem } from "@/lib/config"
+import { siteConfig, isActiveHref } from "@/lib/config"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import {
+  Nav,
+  NavGroup,
+  NavGroupLabel,
+  NavItem,
+  NavLink,
+  NavList,
+} from "@/components/ui/nav"
 
 export function MobileNav({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false)
@@ -44,65 +52,32 @@ export function MobileNav({ className }: { className?: string }) {
         <div className="fixed inset-x-0 top-(--header-height) bottom-0 z-50 scrollbar-none overflow-y-auto bg-background-100">
           {/* The same groups the sidebar renders, in the same order — below lg
               this is the only navigation, so it carries every page. */}
-          <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
+          <Nav size="lg" className="overflow-auto px-6 py-6">
             {siteConfig.navGroups.map((group) => (
-              <div key={group.label} className="flex flex-col gap-4">
-                {/* The rail's ranking, at mobile sizes: the heading holds the
-                    top of the ramp, its items sit a step below. */}
-                <div className="text-heading-16 text-gray-1000">
-                  {group.label}
-                </div>
-                <ul className="flex flex-col gap-3">
+              <NavGroup key={group.label}>
+                <NavGroupLabel>{group.label}</NavGroupLabel>
+                <NavList>
                   {group.items.map((item) => (
-                    <MobileItem
-                      key={item.href}
-                      item={item}
-                      pathname={pathname}
-                      onOpenChange={setOpen}
-                    />
+                    <NavItem key={item.href}>
+                      <NavLink
+                        active={isActiveHref(pathname, item.href)}
+                        render={
+                          <Link
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                          />
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    </NavItem>
                   ))}
-                </ul>
-              </div>
+                </NavList>
+              </NavGroup>
             ))}
-          </div>
+          </Nav>
         </div>
       )}
     </>
-  )
-}
-
-function MobileItem({
-  item,
-  pathname,
-  onOpenChange,
-}: {
-  item: NavItem
-  pathname: string
-  onOpenChange: (open: boolean) => void
-}) {
-  // Same rule as the sidebar: a blog post keeps its group's entry marked.
-  const isActive =
-    pathname === item.href ||
-    (item.href !== "/" && pathname.startsWith(`${item.href}/`))
-
-  return (
-    <li>
-      {/* The sidebar item, one type role louder — the ghost button carries the
-          focus ring and the hover ramp so both rails share one signature. */}
-      <Button
-        variant="ghost"
-        nativeButton={false}
-        render={
-          <Link
-            href={item.href}
-            aria-current={isActive ? "page" : undefined}
-            onClick={() => onOpenChange(false)}
-          />
-        }
-        className="h-auto w-full justify-start p-0 text-heading-24 text-gray-900 hover:bg-transparent active:scale-100 active:bg-transparent aria-[current=page]:text-gray-1000"
-      >
-        {item.name}
-      </Button>
-    </li>
   )
 }

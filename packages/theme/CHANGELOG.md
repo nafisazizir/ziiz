@@ -1,5 +1,12 @@
 # @ziiz/theme
 
+## 0.1.1
+
+- `cn` now runs on the `cn` package (`createCn`/`createTwMerge` from
+  `cn/config`) instead of `clsx` + `tailwind-merge`. Same exported API and
+  the same type-role and material groups; `clsx` and `tailwind-merge` are
+  no longer dependencies.
+
 ## 0.1.0
 
 First release.

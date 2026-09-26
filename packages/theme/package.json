@@ -1,6 +1,6 @@
 {
   "name": "@ziiz/theme",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "ziiz design layer: ramp tokens, type roles, materials, prose, Shiki, and the shadcn slot bridge.",
   "license": "MIT",
   "repository": {
@@ -51,8 +51,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^3.6.0"
+    "cn": "0.4.0"
   },
   "peerDependencies": {
     "shiki": ">=3",

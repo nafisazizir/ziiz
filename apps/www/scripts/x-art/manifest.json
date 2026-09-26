@@ -1,0 +1,714 @@
+[
+  {
+    "name": "GrowthGraph",
+    "file": "banners/growth-graph",
+    "source": "home, advertising/measurement",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "507c7ce8"
+      },
+      {
+        "variant": "narrow",
+        "key": "3097ca47"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "PerformanceCards",
+    "file": "banners/performance-cards",
+    "source": "advertising",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "2a9b05e6"
+      },
+      {
+        "variant": "narrow",
+        "key": "fd251151"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "AdFormats",
+    "file": "banners/ad-formats",
+    "source": "advertising/formats, products",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "46602d85"
+      },
+      {
+        "variant": "narrow",
+        "key": "963ff220"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "PerspectiveFrame",
+    "file": "banners/perspective-frame",
+    "source": "advertising/get-started-with-twitter-ads",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "fe604c03"
+      },
+      {
+        "variant": "narrow",
+        "key": "2ac3b254"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "RingStack",
+    "file": "banners/ring-stack",
+    "source": "basics",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "b6557ce9"
+      },
+      {
+        "variant": "narrow",
+        "key": "ec98bcec"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "LayeredFrames",
+    "file": "banners/layered-frames",
+    "source": "advertising/creative-best-practices",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "9b36e90a"
+      },
+      {
+        "variant": "narrow",
+        "key": "e4277a93"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "CircleChain",
+    "file": "banners/circle-chain",
+    "source": "basics/get-your-business-started-with-x",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "0d51231e"
+      },
+      {
+        "variant": "narrow",
+        "key": "7c1052e7"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "FieldLines",
+    "file": "banners/field-lines",
+    "source": "basics/intro-x-for-business",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "56799e4b"
+      },
+      {
+        "variant": "narrow",
+        "key": "ce9335b8"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "Orbits",
+    "file": "banners/orbits",
+    "source": "blog",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "c94f74b2"
+      },
+      {
+        "variant": "narrow",
+        "key": "76e0c85c"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "Beams",
+    "file": "banners/beams",
+    "source": "products/amplify-sponsorships",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "e9e04954"
+      },
+      {
+        "variant": "narrow",
+        "key": "ed5c1d21"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "Pipeline",
+    "file": "banners/pipeline",
+    "source": "products/shopping",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "103ce955"
+      },
+      {
+        "variant": "narrow",
+        "key": "035fea45"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "Spotlight",
+    "file": "banners/spotlight",
+    "source": "products/spotlight-takeovers",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "87085a8f"
+      },
+      {
+        "variant": "narrow",
+        "key": "2ad3263b"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "TimelineFrame",
+    "file": "banners/timeline-frame",
+    "source": "products/timeline-takeovers",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "86cdab57"
+      },
+      {
+        "variant": "narrow",
+        "key": "09a8c791"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "VideoPlayer",
+    "file": "banners/video-player",
+    "source": "products/vertical-video-ads",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "52b0ca23"
+      },
+      {
+        "variant": "narrow",
+        "key": "1b74849e"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "SpacesOrbit",
+    "file": "banners/spaces-orbit",
+    "source": "products/x-spaces",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "282f30d6"
+      },
+      {
+        "variant": "narrow",
+        "key": "6f74711d"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "Tracks",
+    "file": "banners/tracks",
+    "source": "resources/x-marketing-calendar",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "70bc3176"
+      },
+      {
+        "variant": "narrow",
+        "key": "c0da9c6b"
+      }
+    ],
+    "category": "banners"
+  },
+  {
+    "name": "SpecialistArcs",
+    "file": "sections/specialist-arcs",
+    "source": "home, advertising (contact form)",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "b2797d36"
+      },
+      {
+        "variant": "narrow",
+        "key": "70c5ad7e"
+      }
+    ],
+    "category": "sections"
+  },
+  {
+    "name": "CrossingRods",
+    "file": "sections/crossing-rods",
+    "source": "closing CTA on 19 pages",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "6c8a1ec7"
+      },
+      {
+        "variant": "narrow",
+        "key": "d1e4fae8"
+      }
+    ],
+    "category": "sections"
+  },
+  {
+    "name": "DashField",
+    "file": "sections/dash-field",
+    "source": "advertising, get-started, vertical-video-ads (tab carousel backdrop)",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "eed4725f"
+      }
+    ],
+    "category": "sections"
+  },
+  {
+    "name": "WorldMarkers",
+    "file": "sections/world-markers",
+    "source": "success-stories",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "9f0ed4ea"
+      },
+      {
+        "variant": "narrow",
+        "key": "81cbb9bc"
+      }
+    ],
+    "category": "sections"
+  },
+  {
+    "name": "CreditEllipse",
+    "file": "sections/credit-ellipse",
+    "source": "advertising (ad credit)",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "17d57146"
+      }
+    ],
+    "category": "sections"
+  },
+  {
+    "name": "XcomWordmark",
+    "file": "sections/xcom-wordmark",
+    "source": "footer, every page",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "c87431b3"
+      }
+    ],
+    "category": "sections"
+  },
+  {
+    "name": "Starburst",
+    "file": "marks/starburst",
+    "source": "basics/intro-x-for-business \u00b7 Free business promotion",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "67e7356c"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "AudienceCloud",
+    "file": "marks/audience-cloud",
+    "source": "basics/intro-x-for-business \u00b7 Reach new audiences; spotlight-takeovers",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "2ef2e0f0"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "ConversationPair",
+    "file": "marks/conversation-pair",
+    "source": "basics/intro-x-for-business \u00b7 Start a conversation; takeovers",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "cf0bbf32"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "OrbitMark",
+    "file": "marks/orbit-mark",
+    "source": "basics/intro-x-for-business \u00b7 Stay in the know",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "d4d0452a"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "ToneRows",
+    "file": "marks/tone-rows",
+    "source": "basics/intro-x-for-business \u00b7 Experiment with tone; advertising",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "1cda1deb"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "RaySquare",
+    "file": "marks/ray-square",
+    "source": "advertising",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "b3274e3d"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "RadarRing",
+    "file": "marks/radar-ring",
+    "source": "advertising, spotlight-takeovers",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "51a71d13"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "FunnelGrid",
+    "file": "marks/funnel-grid",
+    "source": "advertising, spotlight-takeovers",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "3f977d10"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "PetalDiamond",
+    "file": "marks/petal-diamond",
+    "source": "advertising, spotlight-takeovers",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "84fda81a"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "FanIn",
+    "file": "marks/fan-in",
+    "source": "advertising, spotlight-takeovers",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "2b7cb6d0"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "XAppTile",
+    "file": "marks/x-app-tile",
+    "source": "basics (sign-in mock)",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "83411be4"
+      }
+    ],
+    "category": "marks"
+  },
+  {
+    "name": "NetworkHub",
+    "file": "cards/network-hub",
+    "source": "products/x-spaces \u00b7 Expand your reach",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "cf0dce72"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "DiamondCompass",
+    "file": "cards/diamond-compass",
+    "source": "products/x-spaces \u00b7 Connect in real time",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "e8740df2"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "ArcNodes",
+    "file": "cards/arc-nodes",
+    "source": "products/x-spaces \u00b7 Stay in control",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "bdb6c672"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "TimerBars",
+    "file": "cards/timer-bars",
+    "source": "products/x-spaces \u00b7 Replay recorded Spaces",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "c3d83c94"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "WatchPartyCard",
+    "file": "cards/watch-party-card",
+    "source": "products/x-spaces \u00b7 Create and share clips",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "77955324"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "RecordingPanels",
+    "file": "cards/recording-panels",
+    "source": "products/x-spaces \u00b7 Edit and customize recordings",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "5d339bcb"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "MediaFrames",
+    "file": "cards/media-frames",
+    "source": "advertising/creative-best-practices",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "de4aec09"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "StackedFrames",
+    "file": "cards/stacked-frames",
+    "source": "advertising/creative-best-practices",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "9aa44add"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "ShapeTrio",
+    "file": "cards/shape-trio",
+    "source": "advertising/creative-best-practices",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "e8fc59af"
+      }
+    ],
+    "category": "cards"
+  },
+  {
+    "name": "BlogSteps",
+    "file": "blog/steps",
+    "category": "blog",
+    "source": "blog card pattern 01",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "appsflyer-asrn.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogWedge",
+    "file": "blog/wedge",
+    "category": "blog",
+    "source": "blog card pattern 02",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "celebrating-small-business-saturday.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogNotch",
+    "file": "blog/notch",
+    "category": "blog",
+    "source": "blog card pattern 03",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "reach-a-ready-to-buy-audience-this-back-to-school-season-on-x.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogWedgeMirror",
+    "file": "blog/wedge-mirror",
+    "category": "blog",
+    "source": "blog card pattern 04",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "connect-with-big3-basketball-live-on-x.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogCornerNotch",
+    "file": "blog/corner-notch",
+    "category": "blog",
+    "source": "blog card pattern 05",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "creator-updates-and-article-contest-replacement.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogBowl",
+    "file": "blog/bowl",
+    "category": "blog",
+    "source": "blog card pattern 06",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "introducing-x-ads-academy.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogLens",
+    "file": "blog/lens",
+    "category": "blog",
+    "source": "blog card pattern 07",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "q5-xs-best-kept-secret.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogSpread",
+    "file": "blog/spread",
+    "category": "blog",
+    "source": "blog card pattern 08",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "amplify-pre-roll-how-to-guide.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogQuadrant",
+    "file": "blog/quadrant",
+    "category": "blog",
+    "source": "blog card pattern 09",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "buckle-up-advertisers-2024-on-x-was-good-for-business.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogSlots",
+    "file": "blog/slots",
+    "category": "blog",
+    "source": "blog card pattern 10",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "q5-unlocking-the-hidden-potential-of-your-marketing-calendar.light.svg"
+      }
+    ]
+  },
+  {
+    "name": "BlogColumns",
+    "file": "blog/columns",
+    "category": "blog",
+    "source": "blog card pattern 11",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "create-and-launch-sales-campaigns-in-minutes.light.svg"
+      }
+    ]
+  }
+]

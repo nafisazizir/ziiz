@@ -1,0 +1,282 @@
+import type { ArtProps } from "../props"
+
+// Ported from business.x.com — advertising, spotlight-takeovers.
+export function FunnelGrid(props: ArtProps) {
+  return (
+    <svg
+      viewBox="-6 -6 84 84"
+      fill="none"
+      shapeRendering="geometricPrecision"
+      aria-hidden="true"
+      {...props}
+    >
+      <g>
+        <g data-group="connectors">
+          <line
+            data-part="connector"
+            data-from="tl"
+            data-to="tc"
+            x1="2"
+            y1="2"
+            x2="36"
+            y2="2"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="tc"
+            data-to="tr"
+            x1="36"
+            y1="2"
+            x2="70"
+            y2="2"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="ml"
+            data-to="mc"
+            x1="18"
+            y1="18"
+            x2="36"
+            y2="18"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="mc"
+            data-to="mr"
+            x1="36"
+            y1="18"
+            x2="54"
+            y2="18"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="tc"
+            data-to="mc"
+            x1="36"
+            y1="2"
+            x2="36"
+            y2="18"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="mc"
+            data-to="b"
+            x1="36"
+            y1="18"
+            x2="36"
+            y2="37"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="tl"
+            data-to="ml"
+            x1="2"
+            y1="2"
+            x2="18"
+            y2="18"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="tr"
+            data-to="mr"
+            x1="70"
+            y1="2"
+            x2="54"
+            y2="18"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="ml"
+            data-to="b"
+            x1="18"
+            y1="18"
+            x2="36"
+            y2="37"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+          <line
+            data-part="connector"
+            data-from="mr"
+            data-to="b"
+            x1="54"
+            y1="18"
+            x2="36"
+            y2="37"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            strokeDasharray="3.2 3.2"
+          />
+        </g>
+        <g data-group="lattice">
+          <rect
+            data-part="node"
+            data-pos="tl"
+            x="0"
+            y="0"
+            width="4"
+            height="4"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+          <rect
+            data-part="node"
+            data-pos="tc"
+            x="34"
+            y="0"
+            width="4"
+            height="4"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+          <rect
+            data-part="node"
+            data-pos="tr"
+            x="68"
+            y="0"
+            width="4"
+            height="4"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+          <rect
+            data-part="node"
+            data-pos="ml"
+            x="16"
+            y="16"
+            width="4"
+            height="4"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+          <rect
+            data-part="node"
+            data-pos="mc"
+            x="34"
+            y="16"
+            width="4"
+            height="4"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+          <rect
+            data-part="node"
+            data-pos="mr"
+            x="52"
+            y="16"
+            width="4"
+            height="4"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+          <rect
+            data-part="node"
+            data-pos="b"
+            x="34"
+            y="35"
+            width="4"
+            height="4"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+        </g>
+        <g data-group="box">
+          <line
+            data-part="funnel-arm"
+            data-pos="left"
+            x1="18"
+            y1="46"
+            x2="27"
+            y2="54"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <line
+            data-part="funnel-arm"
+            data-pos="right"
+            x1="54"
+            y1="46"
+            x2="45"
+            y2="54"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <rect
+            data-part="box-outline"
+            x="27"
+            y="54"
+            width="18"
+            height="18"
+            fill="var(--ds-background-100)"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <rect
+            data-part="box-figure"
+            x="34"
+            y="61"
+            width="4"
+            height="4"
+            fill="currentColor"
+            style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
+            rx="0"
+            ry="0"
+          />
+        </g>
+      </g>
+    </svg>
+  )
+}

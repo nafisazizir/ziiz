@@ -29,6 +29,7 @@ export const siteConfig = {
       items: [
         { name: "Palette generator", href: "/playground" },
         { name: "X Business clone", href: "/business-x" },
+        { name: "X art", href: "/playground/x-art" },
       ],
     },
     // Generated from content/docs/components by scripts/build-registry.ts.

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Book02Icon, Dollar01Icon } from "@hugeicons/core-free-icons"
@@ -143,9 +144,23 @@ export function BusinessMobileNav() {
   )
 }
 
+// Where the clone's plain links go. Anything not listed is a stub.
+const routes: Record<string, string> = {
+  Introduction: "/business-x",
+  Blog: "/business-x/blog",
+}
+
 // One section open at a time: opening another closes the one before.
 function RailLinks({ onNavigate }: { onNavigate?: () => void }) {
   const [openSection, setOpenSection] = React.useState<string | null>(null)
+  const pathname = usePathname()
+  const isActive = (title: string) => {
+    const route = routes[title]
+    if (!route) return false
+    return route === "/business-x"
+      ? pathname === route
+      : pathname === route || pathname.startsWith(`${route}/`)
+  }
 
   return (
     <NavList>
@@ -172,12 +187,9 @@ function RailLinks({ onNavigate }: { onNavigate?: () => void }) {
         ) : (
           <NavItem key={item.title}>
             <NavLink
-              active={item.title === "Introduction"}
+              active={isActive(item.title)}
               render={
-                <Link
-                  href={item.title === "Introduction" ? "/business-x" : "#"}
-                  onClick={onNavigate}
-                />
+                <Link href={routes[item.title] ?? "#"} onClick={onNavigate} />
               }
             >
               {item.title}

@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "kbd",
   "title": "Kbd",
+  "description": "Used to display textual user input from keyboard.",
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/kbd.tsx",

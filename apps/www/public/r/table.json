@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "table",
   "title": "Table",
+  "description": "A responsive table component.",
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/table.tsx",

@@ -2,6 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "skeleton",
   "title": "Skeleton",
+  "description": "Use to show a placeholder while content is loading.",
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/skeleton.tsx",

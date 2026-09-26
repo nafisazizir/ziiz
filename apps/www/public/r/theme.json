@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme",
+  "title": "Theme",
+  "description": "The ziiz design layer: installs @ziiz/theme with the stylesheets and cn a ziiz app needs.",
+  "dependencies": [
+    "@ziiz/theme",
+    "shadcn",
+    "tw-animate-css"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [],
+  "css": {
+    "@import \"tw-animate-css\"": {},
+    "@import \"shadcn/tailwind.css\"": {},
+    "@import \"@ziiz/theme/theme.css\"": {}
+  },
+  "docs": "Set --font-sans and --font-mono on html or :root (next/font's variable option does this); without them the Tailwind default stacks apply.\nDark mode is the .dark class on html: next-themes with attribute=\"class\".\nAdd @import \"@ziiz/theme/shadcn.css\" only if the app also runs stock shadcn/ui components.",
+  "type": "registry:theme"
+}

@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "radio-group",
   "title": "Radio Group",
+  "description": "A set of checkable buttons (known as radio buttons) where no more than one of the buttons can be checked at a time.",
   "dependencies": [
     "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

@@ -2,8 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "component-preview",
   "title": "Component Preview",
+  "description": "Renders a component example above its collapsible source.",
   "registryDependencies": [
-    "code-collapsible"
+    "code-collapsible",
+    "utils"
   ],
   "files": [
     {

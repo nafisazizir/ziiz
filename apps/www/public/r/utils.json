@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "utils",
+  "title": "Utils",
+  "description": "The cn helper from @ziiz/theme/cn, whose tailwind-merge knows the type roles and materials.",
+  "dependencies": [
+    "@ziiz/theme"
+  ],
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "content": "export { cn } from \"@ziiz/theme/cn\"\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

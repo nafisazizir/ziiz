@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "component-source",
   "title": "Component Source",
+  "description": "Reads a registry item's source at build time and shows it highlighted.",
   "dependencies": [
     "@ziiz/theme",
     "node:fs",
@@ -10,7 +11,8 @@
   ],
   "registryDependencies": [
     "code-block",
-    "code-collapsible"
+    "code-collapsible",
+    "utils"
   ],
   "files": [
     {

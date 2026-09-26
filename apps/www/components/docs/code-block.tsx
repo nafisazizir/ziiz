@@ -4,7 +4,6 @@ import * as React from "react"
 import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
 // The chrome around a <pre>: an optional title bar and a copy button. The

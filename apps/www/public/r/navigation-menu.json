@@ -2,11 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "navigation-menu",
   "title": "Navigation Menu",
+  "description": "A collection of links for navigating websites.",
   "dependencies": [
     "@base-ui/react",
     "@hugeicons/core-free-icons",
     "@hugeicons/react",
     "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
   ],
   "files": [
     {

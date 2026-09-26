@@ -2,12 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "item",
   "title": "Item",
+  "description": "A versatile component for displaying content with media, title, description, and actions.",
   "dependencies": [
     "@base-ui/react",
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "separator"
+    "separator",
+    "utils"
   ],
   "files": [
     {

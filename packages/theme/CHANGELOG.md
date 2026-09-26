@@ -16,3 +16,11 @@ First release.
   theme.
 - `.` resolves to `theme.css`, so `@import "@ziiz/theme"` is the same as
   `@import "@ziiz/theme/theme.css"`.
+- `cn`: `cn`, `twMerge`, `typeRoles` and `materials`. A tailwind-merge that
+  treats the 31 type roles as one font-size group and the eight materials as
+  one group, so a later `text-copy-16` replaces an earlier `text-label-14`
+  the way `text-lg` replaces `text-sm`. The stock `cn` keeps both.
+- Fonts: `theme.css` no longer redeclares `--font-sans` and `--font-mono` in
+  terms of themselves. An app that sets neither gets Tailwind's default
+  stacks instead of the browser's serif; an app that sets them on `html` or
+  `:root` still wins.

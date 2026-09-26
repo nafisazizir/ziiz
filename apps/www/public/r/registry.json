@@ -7,10 +7,14 @@
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
+      "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -23,11 +27,13 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user with important content and expects a response.",
       "dependencies": [
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -40,8 +46,12 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
+      "description": "Displays a callout for user attention.",
       "dependencies": [
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -54,6 +64,10 @@
       "name": "aspect-ratio",
       "type": "registry:ui",
       "title": "Aspect Ratio",
+      "description": "Displays content within a desired ratio.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/aspect-ratio.tsx",
@@ -65,12 +79,14 @@
       "name": "attachment",
       "type": "registry:ui",
       "title": "Attachment",
+      "description": "Displays a file or image attachment with media, metadata, upload state, and actions.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -83,8 +99,12 @@
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
+      "description": "An image element with a fallback for representing the user.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -97,9 +117,13 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
+      "description": "Displays a badge or a component that looks like a badge.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -112,10 +136,14 @@
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",
+      "description": "Displays the path to the current resource using a hierarchy of links.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -128,9 +156,13 @@
       "name": "bubble",
       "type": "registry:ui",
       "title": "Bubble",
+      "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -143,12 +175,14 @@
       "name": "button-group",
       "type": "registry:ui",
       "title": "Button Group",
+      "description": "A container that groups related buttons together with consistent styling.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "separator"
+        "separator",
+        "utils"
       ],
       "files": [
         {
@@ -161,9 +195,13 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
+      "description": "Displays a button or a component that looks like a button.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -176,13 +214,15 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
+      "description": "A calendar component that allows users to select a date or a range of dates.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
         "react-day-picker"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -195,6 +235,10 @@
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
+      "description": "Displays a card with header, content, and footer.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/card.tsx",
@@ -206,13 +250,15 @@
       "name": "carousel",
       "type": "registry:ui",
       "title": "Carousel",
+      "description": "A carousel with motion and swipe built using Embla.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
         "embla-carousel-react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -225,8 +271,12 @@
       "name": "chart",
       "type": "registry:ui",
       "title": "Chart",
+      "description": "Beautiful charts. Built using Recharts. Copy and paste into your apps.",
       "dependencies": [
         "recharts"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -239,10 +289,14 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -255,6 +309,7 @@
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
+      "description": "An interactive component which expands/collapses a panel.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -269,6 +324,7 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
+      "description": "Autocomplete input with a list of suggestions.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
@@ -276,7 +332,8 @@
       ],
       "registryDependencies": [
         "button",
-        "input-group"
+        "input-group",
+        "utils"
       ],
       "files": [
         {
@@ -289,6 +346,7 @@
       "name": "command",
       "type": "registry:ui",
       "title": "Command",
+      "description": "Command menu for search and quick actions.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
@@ -296,7 +354,8 @@
       ],
       "registryDependencies": [
         "dialog",
-        "input-group"
+        "input-group",
+        "utils"
       ],
       "files": [
         {
@@ -309,10 +368,14 @@
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
+      "description": "Displays a menu of actions triggered by a right click.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -325,13 +388,15 @@
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
+      "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -344,6 +409,7 @@
       "name": "direction",
       "type": "registry:ui",
       "title": "Direction",
+      "description": "A provider component that sets the text direction for your application.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -358,8 +424,12 @@
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
+      "description": "A drawer component for React.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -372,10 +442,14 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "title": "Dropdown Menu",
+      "description": "Displays a menu to the user, such as a set of actions or functions, triggered by a button.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -388,8 +462,12 @@
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
+      "description": "Use the Empty component to display an empty state.",
       "dependencies": [
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -402,12 +480,14 @@
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
+      "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
       "dependencies": [
         "class-variance-authority"
       ],
       "registryDependencies": [
         "label",
-        "separator"
+        "separator",
+        "utils"
       ],
       "files": [
         {
@@ -420,8 +500,12 @@
       "name": "hover-card",
       "type": "registry:ui",
       "title": "Hover Card",
+      "description": "For sighted users to preview content available behind a link.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -434,13 +518,15 @@
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",
+      "description": "Add addons, buttons, and helper content to inputs.",
       "dependencies": [
         "class-variance-authority"
       ],
       "registryDependencies": [
         "button",
         "input",
-        "textarea"
+        "textarea",
+        "utils"
       ],
       "files": [
         {
@@ -453,10 +539,14 @@
       "name": "input-otp",
       "type": "registry:ui",
       "title": "Input OTP",
+      "description": "Accessible one-time password component with copy-paste functionality.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
         "input-otp"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -469,8 +559,12 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
+      "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -483,12 +577,14 @@
       "name": "item",
       "type": "registry:ui",
       "title": "Item",
+      "description": "A versatile component for displaying content with media, title, description, and actions.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "separator"
+        "separator",
+        "utils"
       ],
       "files": [
         {
@@ -501,6 +597,10 @@
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",
+      "description": "Used to display textual user input from keyboard.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/kbd.tsx",
@@ -512,6 +612,10 @@
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
+      "description": "Renders an accessible label associated with controls.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/label.tsx",
@@ -523,9 +627,13 @@
       "name": "marker",
       "type": "registry:ui",
       "title": "Marker",
+      "description": "Displays an inline status, system note, bordered row, or labeled separator in a conversation.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -538,13 +646,15 @@
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
+      "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "dropdown-menu"
+        "dropdown-menu",
+        "utils"
       ],
       "files": [
         {
@@ -557,13 +667,15 @@
       "name": "message-scroller",
       "type": "registry:ui",
       "title": "Message Scroller",
+      "description": "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
         "@shadcn/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -576,6 +688,10 @@
       "name": "message",
       "type": "registry:ui",
       "title": "Message",
+      "description": "Displays a message in a conversation, with optional avatar, header, footer, and alignment.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/message.tsx",
@@ -587,9 +703,13 @@
       "name": "native-select",
       "type": "registry:ui",
       "title": "Native Select",
+      "description": "A styled native HTML select element with consistent design system integration.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -602,10 +722,14 @@
       "name": "nav",
       "type": "registry:ui",
       "title": "Nav",
+      "description": "Site navigation with grouped links and text-only states, for docs and marketing rails.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -618,11 +742,15 @@
       "name": "navigation-menu",
       "type": "registry:ui",
       "title": "Navigation Menu",
+      "description": "A collection of links for navigating websites.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -635,12 +763,14 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
+      "description": "Pagination with page navigation, next and previous links.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -653,8 +783,12 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -667,8 +801,12 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -681,13 +819,15 @@
       "name": "questionnaire",
       "type": "registry:ui",
       "title": "Questionnaire",
+      "description": "A multi-step questionnaire with single-choice, multiple-choice, freeform, and skippable questions.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
         "@shadcn/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -700,8 +840,12 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
+      "description": "A set of checkable buttons (known as radio buttons) where no more than one of the buttons can be checked at a time.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -714,8 +858,12 @@
       "name": "resizable",
       "type": "registry:ui",
       "title": "Resizable",
+      "description": "Accessible resizable panel groups and layouts with keyboard support.",
       "dependencies": [
         "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -728,8 +876,12 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
+      "description": "Augments native scroll functionality for custom, cross-browser styling.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -742,10 +894,14 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
+      "description": "Displays a list of options for the user to pick from, triggered by a button.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -758,8 +914,12 @@
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
+      "description": "Visually or semantically separates content.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -772,13 +932,15 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
+      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -791,6 +953,7 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
+      "description": "A composable, themeable and customizable sidebar component.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
@@ -804,7 +967,8 @@
         "sheet",
         "skeleton",
         "tooltip",
-        "use-mobile"
+        "use-mobile",
+        "utils"
       ],
       "files": [
         {
@@ -817,6 +981,10 @@
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
+      "description": "Use to show a placeholder while content is loading.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/skeleton.tsx",
@@ -828,8 +996,12 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
+      "description": "An input where the user selects a value from within a given range.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -842,6 +1014,7 @@
       "name": "sonner",
       "type": "registry:ui",
       "title": "Sonner",
+      "description": "An opinionated toast component, wired to the active theme.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react",
@@ -859,9 +1032,13 @@
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
+      "description": "An indicator that can be used to show a loading state.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -874,8 +1051,12 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
+      "description": "A control that allows the user to toggle between checked and not checked.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -888,6 +1069,10 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table",
+      "description": "A responsive table component.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/table.tsx",
@@ -899,9 +1084,13 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
+      "description": "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -914,6 +1103,10 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
+      "description": "Displays a form textarea or a component that looks like a textarea.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/ui/textarea.tsx",
@@ -925,13 +1118,15 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
+      "description": "A succinct message that is displayed temporarily.",
       "dependencies": [
         "@base-ui/react",
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -944,12 +1139,14 @@
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "toggle"
+        "toggle",
+        "utils"
       ],
       "files": [
         {
@@ -962,9 +1159,13 @@
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
+      "description": "A two-state button that can be either on or off.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -977,8 +1178,12 @@
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
       "dependencies": [
         "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
       ],
       "files": [
         {
@@ -991,12 +1196,14 @@
       "name": "callout",
       "type": "registry:component",
       "title": "Callout",
+      "description": "A titled aside for notes and warnings inside prose.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "alert"
+        "alert",
+        "utils"
       ],
       "files": [
         {
@@ -1010,6 +1217,7 @@
       "name": "code-block",
       "type": "registry:component",
       "title": "Code Block",
+      "description": "The chrome around a pre with a title bar and a copy button.",
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
@@ -1029,8 +1237,10 @@
       "name": "code-collapsible",
       "type": "registry:component",
       "title": "Code Collapsible",
+      "description": "A code block that opens from a short preview to its full height.",
       "registryDependencies": [
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -1044,8 +1254,10 @@
       "name": "code-tabs",
       "type": "registry:component",
       "title": "Code Tabs",
+      "description": "Tabs that switch between code samples, such as install commands.",
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "utils"
       ],
       "files": [
         {
@@ -1059,8 +1271,10 @@
       "name": "component-preview",
       "type": "registry:component",
       "title": "Component Preview",
+      "description": "Renders a component example above its collapsible source.",
       "registryDependencies": [
-        "code-collapsible"
+        "code-collapsible",
+        "utils"
       ],
       "files": [
         {
@@ -1074,6 +1288,7 @@
       "name": "component-source",
       "type": "registry:component",
       "title": "Component Source",
+      "description": "Reads a registry item's source at build time and shows it highlighted.",
       "dependencies": [
         "@ziiz/theme",
         "node:fs",
@@ -1082,7 +1297,8 @@
       ],
       "registryDependencies": [
         "code-block",
-        "code-collapsible"
+        "code-collapsible",
+        "utils"
       ],
       "files": [
         {
@@ -1096,6 +1312,10 @@
       "name": "steps",
       "type": "registry:component",
       "title": "Steps",
+      "description": "Numbered steps for an installation or setup sequence.",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "components/docs/steps.tsx",
@@ -1108,12 +1328,49 @@
       "name": "use-mobile",
       "type": "registry:hook",
       "title": "Use Mobile",
+      "description": "A hook that reports whether the viewport is below 768px.",
       "files": [
         {
           "path": "hooks/use-mobile.ts",
           "type": "registry:hook"
         }
       ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "The cn helper from @ziiz/theme/cn, whose tailwind-merge knows the type roles and materials.",
+      "dependencies": [
+        "@ziiz/theme"
+      ],
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Theme",
+      "description": "The ziiz design layer: installs @ziiz/theme with the stylesheets and cn a ziiz app needs.",
+      "dependencies": [
+        "@ziiz/theme",
+        "shadcn",
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@import \"shadcn/tailwind.css\"": {},
+        "@import \"@ziiz/theme/theme.css\"": {}
+      },
+      "docs": "Set --font-sans and --font-mono on html or :root (next/font's variable option does this); without them the Tailwind default stacks apply.\nDark mode is the .dark class on html: next-themes with attribute=\"class\".\nAdd @import \"@ziiz/theme/shadcn.css\" only if the app also runs stock shadcn/ui components."
     }
   ]
 }

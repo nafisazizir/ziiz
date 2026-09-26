@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "component-preview",
+  "title": "Component Preview",
+  "registryDependencies": [
+    "code-collapsible"
+  ],
+  "files": [
+    {
+      "path": "components/docs/component-preview.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { CodeCollapsible } from \"@/components/docs/code-collapsible\"\n\n// A live example above its source. Presentational: the page renders the\n// component into `children` and passes an already highlighted `source`,\n// so this knows nothing about where either came from. The source starts\n// as a three-line teaser under a View Code control; pass a source that\n// is not collapsible, since the preview does the revealing.\nfunction ComponentPreview({\n  source,\n  align = \"center\",\n  hideCode = false,\n  className,\n  previewClassName,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  source?: React.ReactNode\n  align?: \"center\" | \"start\" | \"end\"\n  hideCode?: boolean\n  previewClassName?: string\n}) {\n  return (\n    <div\n      data-slot=\"component-preview\"\n      data-not-typeset\n      className={cn(\n        \"mt-(--typeset-flow,1.5rem) overflow-hidden rounded-lg border border-gray-alpha-400 bg-background-100\",\n        className\n      )}\n      {...props}\n    >\n      <div\n        data-slot=\"component-preview-content\"\n        data-align={align}\n        className={cn(\n          \"flex min-h-72 w-full justify-center p-10 text-gray-1000 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start\",\n          previewClassName\n        )}\n      >\n        {children}\n      </div>\n      {!hideCode && source ? (\n        <div\n          data-slot=\"component-preview-source\"\n          className=\"border-t border-gray-alpha-400\"\n        >\n          <CodeCollapsible expandLabel=\"View Code\" collapseLabel=\"Hide Code\">\n            {source}\n          </CodeCollapsible>\n        </div>\n      ) : null}\n    </div>\n  )\n}\n\nexport { ComponentPreview }\n",
+      "type": "registry:component",
+      "target": "components/docs/component-preview.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

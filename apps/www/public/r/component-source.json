@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "component-source",
+  "title": "Component Source",
+  "dependencies": [
+    "@ziiz/theme",
+    "node:fs",
+    "node:path",
+    "shiki"
+  ],
+  "registryDependencies": [
+    "code-block",
+    "code-collapsible"
+  ],
+  "files": [
+    {
+      "path": "components/docs/component-source.tsx",
+      "content": "import fs from \"node:fs/promises\"\nimport path from \"node:path\"\nimport { ziizShikiOptions } from \"@ziiz/theme/shiki\"\nimport { codeToHtml } from \"shiki\"\n\nimport { cn } from \"@/lib/utils\"\nimport { CodeBlock } from \"@/components/docs/code-block\"\nimport { CodeCollapsible } from \"@/components/docs/code-collapsible\"\n\nconst COLLAPSE_AFTER_LINES = 12\n\n// Highlights a source file and sets it as a code block. Server-only: reads\n// `src` relative to the project root, or takes the source as `code`.\n// Long files collapse behind an Expand control unless `collapsible` is off.\n// A whole file is numbered; pass `lineNumbers={false}` for an excerpt that\n// reads as a snippet rather than as a file.\nasync function ComponentSource({\n  code,\n  src,\n  title,\n  language,\n  collapsible = true,\n  lineNumbers = true,\n  maxLines,\n  className,\n}: {\n  code?: string\n  src?: string\n  title?: string\n  language?: string\n  collapsible?: boolean\n  lineNumbers?: boolean\n  maxLines?: number\n  className?: string\n}) {\n  let source = code\n\n  if (!source && src) {\n    source = await fs.readFile(path.join(process.cwd(), src), \"utf8\")\n  }\n\n  if (!source) return null\n\n  source = source.trimEnd()\n\n  if (maxLines) {\n    source = source.split(\"\\n\").slice(0, maxLines).join(\"\\n\")\n  }\n\n  const lang =\n    language ?? (title ?? src)?.split(\".\").pop()?.toLowerCase() ?? \"tsx\"\n\n  const html = await codeToHtml(source, {\n    ...ziizShikiOptions,\n    lang,\n  })\n\n  const body = (\n    <div\n      data-slot=\"component-source\"\n      data-language={lang}\n      dangerouslySetInnerHTML={{ __html: html }}\n    />\n  )\n\n  // A block that fits the collapsed height anyway gets no control.\n  if (!collapsible || source.split(\"\\n\").length <= COLLAPSE_AFTER_LINES) {\n    return (\n      <CodeBlock\n        title={title}\n        value={source}\n        lineNumbers={lineNumbers}\n        className={className}\n      >\n        {body}\n      </CodeBlock>\n    )\n  }\n\n  return (\n    <CodeCollapsible className={cn(\"mt-(--typeset-flow,1.5rem)\", className)}>\n      <CodeBlock title={title} value={source} lineNumbers={lineNumbers}>\n        {body}\n      </CodeBlock>\n    </CodeCollapsible>\n  )\n}\n\nexport { ComponentSource }\n",
+      "type": "registry:component",
+      "target": "components/docs/component-source.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

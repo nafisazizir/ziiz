@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-collapsible",
+  "title": "Code Collapsible",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/docs/code-collapsible.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\n// Clamps a long code block to a few lines behind a reveal control. The\n// content is always rendered so the block still copies and prints in full.\n// How much shows through is --code-collapsed-height, so a caller (the\n// source under a component preview) can set a teaser of its own.\nfunction CodeCollapsible({\n  className,\n  expandLabel = \"Expand\",\n  collapseLabel = \"Collapse\",\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  expandLabel?: string\n  collapseLabel?: string\n}) {\n  const [open, setOpen] = React.useState(false)\n  const id = React.useId()\n\n  return (\n    <div\n      data-slot=\"code-collapsible\"\n      data-state={open ? \"open\" : \"closed\"}\n      className={cn(\"group/code-collapsible relative\", className)}\n      {...props}\n    >\n      <div\n        id={id}\n        data-slot=\"code-collapsible-content\"\n        className=\"relative overflow-hidden group-data-[state=closed]/code-collapsible:max-h-[var(--code-collapsed-height,18rem)] *:data-[slot=code-block]:mt-0\"\n      >\n        {children}\n      </div>\n      <div\n        aria-hidden\n        data-slot=\"code-collapsible-scrim\"\n        className=\"pointer-events-none absolute inset-x-px bottom-px h-28 rounded-b-lg bg-linear-to-t from-background-200 to-transparent group-data-[state=open]/code-collapsible:hidden\"\n      />\n      {/* The control rides over the scrim in a row of its own: the button is\n          inline-flex, so an auto margin on it would not centre anything.\n          Where it sits in that row is --code-reveal-align, so a short teaser\n          can put it in the middle of the fade instead of at its foot. */}\n      <div\n        data-slot=\"code-collapsible-footer\"\n        className=\"absolute inset-0 z-10 flex [align-items:var(--code-reveal-align,flex-end)] justify-center [padding-block-end:var(--code-reveal-pad,1rem)] group-data-[state=open]/code-collapsible:static group-data-[state=open]/code-collapsible:mt-3 group-data-[state=open]/code-collapsible:p-0\"\n      >\n        <Button\n          type=\"button\"\n          variant=\"outline\"\n          size=\"sm\"\n          data-slot=\"code-collapsible-trigger\"\n          aria-expanded={open}\n          aria-controls={id}\n          onClick={() => setOpen((o) => !o)}\n        >\n          {open ? collapseLabel : expandLabel}\n        </Button>\n      </div>\n    </div>\n  )\n}\n\nexport { CodeCollapsible }\n",
+      "type": "registry:component",
+      "target": "components/docs/code-collapsible.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

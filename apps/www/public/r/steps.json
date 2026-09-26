@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "steps",
+  "title": "Steps",
+  "files": [
+    {
+      "path": "components/docs/steps.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\n// A numbered procedure. Each Step is a heading that carries the counter in\n// its margin; everything between two Steps belongs to the first. The\n// heading takes Heading 16 and its own rhythm so the typeset's section gaps\n// stay out of a procedure.\nfunction Steps({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"steps\"\n      className={cn(\n        \"relative mt-(--typeset-flow,1.5rem) mb-12 ml-3 border-l border-gray-alpha-400 pl-8 [counter-reset:step]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction Step({ className, ...props }: React.ComponentProps<\"h3\">) {\n  return (\n    <h3\n      data-slot=\"step\"\n      className={cn(\n        \"mt-10 text-heading-16 text-gray-1000 [counter-increment:step] not-first:mt-10 first:mt-0\",\n        \"before:absolute before:-left-4 before:inline-flex before:size-8 before:-translate-y-1 before:items-center before:justify-center before:rounded-full before:border before:border-gray-alpha-400 before:bg-background-100 before:text-label-13 before:text-gray-900 before:content-[counter(step)]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Steps, Step }\n",
+      "type": "registry:component",
+      "target": "components/docs/steps.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

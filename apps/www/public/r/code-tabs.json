@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-tabs",
+  "title": "Code Tabs",
+  "registryDependencies": [
+    "tabs"
+  ],
+  "files": [
+    {
+      "path": "components/docs/code-tabs.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Tabs } from \"@/components/ui/tabs\"\n\nconst CHANGE_EVENT = \"ziiz:code-tabs\"\n\nfunction subscribe(callback: () => void) {\n  window.addEventListener(\"storage\", callback)\n  window.addEventListener(CHANGE_EVENT, callback)\n  return () => {\n    window.removeEventListener(\"storage\", callback)\n    window.removeEventListener(CHANGE_EVENT, callback)\n  }\n}\n\nfunction read(storageKey: string) {\n  try {\n    return window.localStorage.getItem(storageKey)\n  } catch {\n    return null\n  }\n}\n\nfunction write(storageKey: string, value: string) {\n  try {\n    window.localStorage.setItem(storageKey, value)\n  } catch {\n    // Storage is unavailable; the selection still applies until reload.\n  }\n  window.dispatchEvent(new Event(CHANGE_EVENT))\n}\n\n// Tabs whose selection is remembered across pages and shared between every\n// CodeTabs on the page, so a reader who picks \"Manual\" once sees the manual\n// steps everywhere. Storage is per key; the default key covers the\n// installation tabs.\nfunction CodeTabs({\n  storageKey = \"ziiz:code-tabs\",\n  defaultValue = \"cli\",\n  className,\n  ...props\n}: React.ComponentProps<typeof Tabs> & {\n  storageKey?: string\n  defaultValue?: string\n}) {\n  const stored = React.useSyncExternalStore(\n    subscribe,\n    () => read(storageKey),\n    () => null\n  )\n\n  return (\n    <Tabs\n      data-slot=\"code-tabs\"\n      value={stored ?? defaultValue}\n      onValueChange={(next) => write(storageKey, String(next))}\n      className={cn(\n        \"mt-(--typeset-flow,1.5rem) gap-0 *:data-[slot=tabs-list]:mb-2\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { CodeTabs }\n",
+      "type": "registry:component",
+      "target": "components/docs/code-tabs.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

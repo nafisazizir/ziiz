@@ -31,6 +31,12 @@ jobs:
       - name: Docs (frontmatter, nav coverage, internal links)
         run: pnpm docs:check
 
+      # docs:check rebuilt the registry; the committed output must match.
+      - name: Generated files are current
+        run: |
+          git diff --exit-code -- apps/www/public/r apps/www/registry.json apps/www/components/examples/index.ts apps/www/lib/component-nav.ts \
+            || { echo "::error::Generated registry files are stale. Run 'pnpm --filter www registry:build' and commit the result."; exit 1; }
+
       - name: Typecheck
         run: pnpm typecheck
 

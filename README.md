@@ -18,15 +18,8 @@ pnpm docs:check   # frontmatter, sidebar coverage, internal links
 pnpm format
 ```
 
-A consuming app takes the design layer with one import in its Tailwind entry:
-
-```css
-@import "tailwindcss";
-@import "@ziiz/theme/theme.css";
-@import "@ziiz/theme/shadcn.css"; /* only if it runs stock shadcn components */
-```
-
-Components come from the registry, served straight from this repo:
+A consuming app points `components.json` at the registry, served straight
+from this repo, then takes the design layer and the components from it:
 
 ```json
 {
@@ -37,8 +30,12 @@ Components come from the registry, served straight from this repo:
 ```
 
 ```bash
+npx shadcn@latest add @ziiz/theme --overwrite   # @ziiz/theme, the stylesheets, cn
 npx shadcn@latest add @ziiz/button
 ```
+
+The full setup, fonts and dark mode included, is at
+https://ziiz.vercel.app/installation.
 
 ## Registry
 

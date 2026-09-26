@@ -5,33 +5,23 @@ description: Take the design layer as a package and the components from the regi
 
 ziiz ships in two pieces because they change at different rates. The **theme** is one stylesheet that defines the ramp, the type roles, the materials and the prose layer. It is versioned, and an app takes updates by bumping a dependency. The **components** are source files that an app owns and edits. They come from a registry and never update on their own.
 
-## Theme
+## Quick start
 
-Install the package and import it in the Tailwind entry, after Tailwind itself.
+<Steps>
+
+<Step>Start from a shadcn project.</Step>
+
+Skip this if `components.json` already exists. The Vega preset is the one ziiz components are built on.
 
 ```bash
-npm install @ziiz/theme
+npx shadcn@latest init --preset vega
 ```
 
-```css title="app/globals.css"
-@import "tailwindcss";
-@import "@ziiz/theme/theme.css";
-```
+`init` writes a stock theme block into `app/globals.css`. Delete everything below the imports except `@custom-variant dark`: the next step supplies the theme, and the stock block's own font and color variables would sit on top of it.
 
-That import gives every Tailwind utility the ramp (`bg-gray-100`, `text-gray-1000`, `border-gray-alpha-400`), the 31 type roles (`text-heading-32`, `text-copy-16`, `text-label-13`), the eight materials (`material-menu`, `material-modal`) and the `typeset` class for prose. The stock Tailwind palette is disabled on purpose; only the ramp compiles.
+<Step>Point `components.json` at the registry.</Step>
 
-The theme expects two font variables, `--font-sans` and `--font-mono`, which the app defines however it loads fonts. ziiz uses Inter with `ss03` and Geist Mono.
-
-<Callout variant="info" title="Running stock shadcn/ui components?">
-  Add a second import, `@ziiz/theme/shadcn.css`. It maps shadcn's slot names
-  (`bg-background`, `text-muted-foreground`, `border-input`) onto the ramp so
-  components written against that vocabulary render on it unchanged. A project
-  whose components speak ramp vocabulary directly does not need it.
-</Callout>
-
-## Components
-
-Point `components.json` at the registry and add components by name. Every item lists its own dependencies, so `shadcn add` pulls in what a component imports.
+The registry is served straight from the repository, so there is no deploy between a merge and an install.
 
 ```json title="components.json"
 {
@@ -41,11 +31,102 @@ Point `components.json` at the registry and add components by name. Every item l
 }
 ```
 
+<Step>Add the theme.</Step>
+
+```bash
+npx shadcn@latest add @ziiz/theme --overwrite
+```
+
+One item does the setup. It installs `@ziiz/theme`, `tw-animate-css` and `shadcn`, adds their three imports to the Tailwind entry in the right order, and replaces `lib/utils.ts` with a `cn` that understands the type roles. `--overwrite` is what lets it replace that file; without the flag the CLI stops to ask.
+
+<Step>Set the fonts.</Step>
+
+The theme reads `--font-sans` and `--font-mono` from `html` or `:root`. With next/font that is the `variable` option; ziiz uses Inter with `ss03` and Geist Mono. An app that sets neither gets Tailwind's default stacks, not a broken page.
+
+```tsx title="app/layout.tsx"
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
+
+<html className={`${inter.variable} ${mono.variable}`}>
+```
+
+<Step>Set up dark mode.</Step>
+
+Dark mode is the `.dark` class on `html`. With next-themes, that is `attribute="class"` on the provider; without it, toggle the class yourself.
+
+```tsx title="app/layout.tsx"
+<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+```
+
+<Step>Add components.</Step>
+
+Every item lists what it imports, so one command pulls in a component, the components it composes and the packages they need.
+
 ```bash
 npx shadcn@latest add @ziiz/button
 ```
 
-The registry also publishes the documentation primitives used on this site (`callout`, `steps`, `code-block`, `code-tabs`, `component-preview`, `component-source`), which install into `components/docs/`.
+</Steps>
+
+After that, every Tailwind utility speaks the ramp (`bg-gray-100`, `text-gray-1000`, `border-gray-alpha-400`), the 31 type roles are single classes (`text-heading-32`, `text-copy-16`, `text-label-13`), the eight materials are too (`material-menu`, `material-modal`), and `typeset` sets prose. The stock Tailwind palette is disabled on purpose; only the ramp compiles.
+
+<Callout variant="info" title="Why lib/utils.ts is replaced">
+  Type roles are single utilities, so the stock `cn` does not know that
+  `text-label-14` and `text-copy-16` conflict. It keeps both, and stylesheet
+  order decides which one paints, so a `className` override on a component works
+  or fails by accident. `@ziiz/theme/cn` extends tailwind-merge with the roles
+  as one font-size group and the materials as another. The `utils` item is a
+  one-line re-export of it, and every component depends on it.
+</Callout>
+
+## Manual setup
+
+The theme item is a shortcut for four edits. Doing them by hand gives the same result.
+
+<Steps>
+
+<Step>Install the packages.</Step>
+
+```bash
+npm install @ziiz/theme tw-animate-css shadcn
+```
+
+`tw-animate-css` provides the enter and exit animations (`animate-in`, `fade-in-0`) that overlays use; `shadcn/tailwind.css` provides the `data-open:` and `data-closed:` variants and the accordion keyframes. Both are required, not optional.
+
+<Step>Import the stylesheets, in this order.</Step>
+
+```css title="app/globals.css"
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@ziiz/theme/theme.css";
+```
+
+<Step>Re-export `cn`.</Step>
+
+```ts title="lib/utils.ts"
+export { cn } from "@ziiz/theme/cn"
+```
+
+<Step>Fonts and dark mode, as above.</Step>
+
+</Steps>
+
+<Callout variant="info" title="Running stock shadcn/ui components too?">
+  Add a fifth import, `@ziiz/theme/shadcn.css`. It maps shadcn's slot names
+  (`bg-background`, `text-muted-foreground`, `border-input`) onto the ramp so
+  components written against that vocabulary render on it unchanged. ziiz
+  components speak the ramp directly and do not need it.
+</Callout>
+
+## Components
+
+The registry publishes every component on this site plus the documentation primitives it is written with (`callout`, `steps`, `code-block`, `code-tabs`, `component-preview`, `component-source`), which install into `components/docs/`. Search it from the CLI:
+
+```bash
+npx shadcn@latest search @ziiz
+npx shadcn@latest view @ziiz/button
+```
 
 ## Prose
 

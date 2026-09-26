@@ -120,6 +120,12 @@ Pin content above and below the links. `NavContent` takes the remaining height a
 
 <ComponentPreview name="nav-size" />
 
+## Marker
+
+`marker` on a `NavList` puts a small square before the current link. There is one square for the list: when another link becomes current, it slides there. Use it where the current row changes in place, such as a filter list.
+
+<ComponentPreview name="nav-marker" />
+
 ## Links
 
 `NavLink` renders an `<a>`. Pass a router link through `render`, and mark the current page with `active`.
@@ -142,7 +148,7 @@ export function DocsNavLink({ href, children }) {
 ## Accessibility
 
 - Give each `Nav` an `aria-label` when a page has more than one navigation landmark.
-- `active` sets `aria-current="page"`, so the current page is announced, not only shown in a darker color.
+- `active` sets `aria-current="page"`, so the current page is announced, not only shown in a darker color. The marker follows `aria-current` and is hidden from assistive technology.
 - `NavCollapsibleTrigger` is a real `<button>` with `aria-expanded`; Enter and Space toggle it.
 
 ## API Reference
@@ -154,6 +160,14 @@ The root `<nav>` element.
 | Prop   | Type                | Default     | Description                                |
 | ------ | ------------------- | ----------- | ------------------------------------------ |
 | `size` | `"default" \| "lg"` | `"default"` | `lg` sets every part one type role louder. |
+
+### NavList
+
+The list of rows. Renders a `<ul>`.
+
+| Prop     | Type      | Default | Description                                                    |
+| -------- | --------- | ------- | -------------------------------------------------------------- |
+| `marker` | `boolean` | `false` | Marks the current link with a square that slides between rows. |
 
 ### NavGroupLabel
 

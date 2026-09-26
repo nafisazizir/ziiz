@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { Collapsible as CollapsiblePrimitive } from "@base-ui/react/collapsible"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
@@ -92,21 +93,73 @@ function NavGroupLabel({
   })
 }
 
-function NavList({ className, ...props }: React.ComponentProps<"ul">) {
+const NavListContext = React.createContext(false)
+
+function NavList({
+  className,
+  marker = false,
+  ...props
+}: React.ComponentProps<"ul"> & { marker?: boolean }) {
   return (
-    <ul
-      data-slot="nav-list"
-      className={cn(
-        "flex flex-col gap-0.5 group-data-[size=lg]/nav:gap-3",
-        className
-      )}
-      {...props}
-    />
+    <NavListContext.Provider value={marker}>
+      <ul
+        data-slot="nav-list"
+        data-marker={marker || undefined}
+        className={cn(
+          "flex flex-col gap-0.5 group-data-[size=lg]/nav:gap-3",
+          className
+        )}
+        {...props}
+      />
+    </NavListContext.Provider>
   )
 }
 
 function NavItem({ className, ...props }: React.ComponentProps<"li">) {
   return <li data-slot="nav-item" className={className} {...props} />
+}
+
+const lastMark = new WeakMap<Element, { x: number; y: number }>()
+
+function NavMark({ active }: { active: boolean }) {
+  const ref = React.useRef<HTMLSpanElement>(null)
+
+  React.useLayoutEffect(() => {
+    const mark = ref.current
+    const list = mark?.closest("[data-marker]")
+    if (!active || !mark || !list) return
+
+    const position = () => {
+      const a = mark.getBoundingClientRect()
+      const b = list.getBoundingClientRect()
+      return a.width ? { x: a.left - b.left, y: a.top - b.top } : undefined
+    }
+
+    const to = position()
+    const from = lastMark.get(list)
+    if (to && from && (from.x !== to.x || from.y !== to.y)) {
+      mark.style.transition = "none"
+      mark.style.translate = `${from.x - to.x}px ${from.y - to.y}px`
+      void mark.offsetWidth
+      mark.style.transition = ""
+      mark.style.translate = ""
+    }
+    if (to) lastMark.set(list, to)
+
+    return () => {
+      const at = position()
+      if (at) lastMark.set(list, at)
+    }
+  }, [active])
+
+  return (
+    <span
+      ref={ref}
+      data-slot="nav-mark"
+      aria-hidden="true"
+      className="me-1 mt-[calc((1lh-0.25rem)/2)] size-1 shrink-0 self-start transition-[translate] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-data-[size=lg]/nav:me-0.5 in-aria-[current=page]:bg-current motion-reduce:transition-none"
+    />
+  )
 }
 
 const navRowClassName =
@@ -116,8 +169,10 @@ function NavLink({
   className,
   render,
   active = false,
+  children,
   ...props
 }: useRender.ComponentProps<"a"> & { active?: boolean }) {
+  const marked = React.useContext(NavListContext)
   return useRender({
     defaultTagName: "a",
     props: mergeProps<"a">(
@@ -127,6 +182,14 @@ function NavLink({
           navRowClassName,
           "aria-[current=page]:text-gray-1000",
           className
+        ),
+        children: marked ? (
+          <>
+            <NavMark active={active} />
+            {children}
+          </>
+        ) : (
+          children
         ),
       },
       props

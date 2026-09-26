@@ -317,6 +317,7 @@ export const examples: Record<string, React.ComponentType> = {
   "native-select-invalid": React.lazy(() => import("./native-select-invalid")),
   "nav-collapsible": React.lazy(() => import("./nav-collapsible")),
   "nav-demo": React.lazy(() => import("./nav-demo")),
+  "nav-marker": React.lazy(() => import("./nav-marker")),
   "nav-rail": React.lazy(() => import("./nav-rail")),
   "nav-size": React.lazy(() => import("./nav-size")),
   "navigation-menu-demo": React.lazy(() => import("./navigation-menu-demo")),

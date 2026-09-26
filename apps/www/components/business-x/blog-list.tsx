@@ -17,7 +17,8 @@ const pageSize = 6
 
 // "The latest from X": a category filter beside a grid of cards. x.com's
 // geometry at 1024px and up is the article's eight-column grid: filters in
-// two columns, stuck level with the rail's first row, cards across the other
+// two columns, stuck level with the rail's first row, with the site's square
+// marker sliding to the current filter, cards across the other
 // six in two columns with a 16px gutter and 40px between rows. Below that the
 // filters become x.com's tab strip — ui/tabs' line variant on a hairline
 // track, scrolling sideways, stuck under the mobile bar, the first tab's
@@ -78,7 +79,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
           aria-label="Categories"
           className="col-span-2 self-start max-lg:hidden lg:sticky lg:top-(--rail-content-top)"
         >
-          <NavList className="-mx-2.5">
+          <NavList marker className="-mx-2.5">
             {categories.map((item) => (
               <NavItem key={item}>
                 <NavLink

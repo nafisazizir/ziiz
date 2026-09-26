@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "utils",
   "title": "Utils",
-  "description": "The cn helper from @ziiz/theme/cn, whose tailwind-merge knows the type roles and materials.",
+  "description": "The cn helper from @ziiz/theme/cn, built on the cn package with the type roles and materials registered.",
   "dependencies": [
     "@ziiz/theme"
   ],

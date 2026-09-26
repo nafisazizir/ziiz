@@ -132,7 +132,7 @@ to roles with a fixed rhythm. Mark a subtree `not-typeset` to opt out.
 8. No press animation on buttons. Transitions are `transition-colors`, not
    `transition-all`.
 9. `cn` comes from `@/lib/utils`, which re-exports `@ziiz/theme/cn`. Its
-   tailwind-merge knows the roles and materials, so `cn("text-label-14", className)`
+   merge knows the roles and materials, so `cn("text-label-14", className)`
    resolves an override correctly. A stock `cn` does not.
 10. Compose with the registry's components before writing new markup. When
     a new component is needed, build it from the same vocabulary and the

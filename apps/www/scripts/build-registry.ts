@@ -82,7 +82,7 @@ const DESCRIPTIONS: Record<string, string> = {
   steps: "Numbered steps for an installation or setup sequence.",
   "use-mobile": "A hook that reports whether the viewport is below 768px.",
   utils:
-    "The cn helper from @ziiz/theme/cn, whose tailwind-merge knows the type roles and materials.",
+    "The cn helper from @ziiz/theme/cn, built on the cn package with the type roles and materials registered.",
   theme:
     "The ziiz design layer: installs @ziiz/theme with the stylesheets and cn a ziiz app needs.",
   skill:

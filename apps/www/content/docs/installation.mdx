@@ -74,9 +74,9 @@ After that, every Tailwind utility speaks the ramp (`bg-gray-100`, `text-gray-10
   Type roles are single utilities, so the stock `cn` does not know that
   `text-label-14` and `text-copy-16` conflict. It keeps both, and stylesheet
   order decides which one paints, so a `className` override on a component works
-  or fails by accident. `@ziiz/theme/cn` extends tailwind-merge with the roles
-  as one font-size group and the materials as another. The `utils` item is a
-  one-line re-export of it, and every component depends on it.
+  or fails by accident. `@ziiz/theme/cn` builds on the `cn` package with the
+  roles as one font-size group and the materials as another. The `utils` item is
+  a one-line re-export of it, and every component depends on it.
 </Callout>
 
 ## Manual setup

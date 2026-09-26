@@ -1,8 +1,7 @@
-import { clsx, type ClassValue } from "clsx"
-import { extendTailwindMerge } from "tailwind-merge"
+import { createCn, createTwMerge } from "cn/config"
 
 // The 31 type roles theme.css defines as `text-<role>` utilities. Listed here
-// so tailwind-merge treats them as one font-size group: the last role in a
+// so the merge treats them as one font-size group: the last role in a
 // class list wins, the same way `text-sm` and `text-lg` resolve.
 export const typeRoles = [
   "heading-72",
@@ -53,15 +52,15 @@ export const materials = [
 export type TypeRole = (typeof typeRoles)[number]
 export type Material = (typeof materials)[number]
 
-export const twMerge = extendTailwindMerge<"material">({
+const config = {
   extend: {
     classGroups: {
       "font-size": [{ text: [...typeRoles] }],
       material: [{ material: [...materials] }],
     },
   },
-})
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
 }
+
+export const twMerge = createTwMerge(config)
+
+export const cn = createCn(config)

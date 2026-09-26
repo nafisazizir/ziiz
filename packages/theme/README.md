@@ -35,10 +35,10 @@ Tailwind's default stacks.
 ## cn
 
 Type roles are single utilities (`text-label-14`, `text-copy-16`), so the
-stock `cn` from `shadcn init` does not know they conflict: it keeps both, and
-stylesheet order decides which one paints. This `cn` extends tailwind-merge
-with the 31 roles as one font-size group and the eight `material-*` utilities
-as another, so the last one in the class list wins. Re-export it from the
+stock `cn` does not know they conflict: it keeps both, and stylesheet order
+decides which one paints. This `cn` is built on the `cn` package with the
+31 roles as one font-size group and the eight `material-*` utilities as
+another, so the last one in the class list wins. Re-export it from the
 app's `lib/utils.ts`; the registry's `utils` item does exactly that.
 
 ```ts

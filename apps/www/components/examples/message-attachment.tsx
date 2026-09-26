@@ -21,6 +21,7 @@ function MessageAttachmentDemo() {
         <MessageContent>
           <Attachment orientation="vertical">
             <AttachmentMedia variant="image">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&auto=format&fit=crop&q=80"
                 alt="Workspace"

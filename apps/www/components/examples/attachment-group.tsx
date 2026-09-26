@@ -46,6 +46,7 @@ function AttachmentGroupDemo() {
             <Attachment key={item.name} className="w-64">
               {item.src ? (
                 <AttachmentMedia variant="image">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.src} alt={item.name} />
                 </AttachmentMedia>
               ) : Icon ? (

@@ -323,7 +323,7 @@ for (const m of manifest) {
   fs.writeFileSync(`${OUT}/${m.file}.tsx`, src)
   index.push({
     ...m,
-    variants: m.variants.map((v, i) => ({
+    variants: m.variants.map((v) => ({
       variant: v.variant,
       viewBox: v.key.endsWith(".svg")
         ? "0 0 398 245"
@@ -337,14 +337,6 @@ const label = (n) =>
     .replace(/^Blog/, "")
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/^(.)(.*)$/, (m, a, b) => a + b.toLowerCase())
-const cats = {
-  banners: "Banners",
-  sections: "Sections",
-  marks: "Marks",
-  cards: "Cards",
-  mocks: "Mocks",
-  blog: "Blog cards",
-}
 const ts = `${index.map((m) => `import { ${m.name} } from "./${m.file}"`).join("\n")}
 
 export type ArtCategory = keyof typeof categories

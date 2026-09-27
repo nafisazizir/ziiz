@@ -48,36 +48,42 @@ export function MobileNav({ className }: { className?: string }) {
           <span className="sr-only">Toggle Menu</span>
         </div>
       </Button>
-      {open && (
-        <div className="fixed inset-x-0 top-(--header-height) bottom-0 z-50 scrollbar-none overflow-y-auto bg-background-100">
-          {/* The same groups the sidebar renders, in the same order. Below lg
+      <div
+        aria-hidden={!open}
+        inert={!open}
+        className={cn(
+          "fixed inset-x-0 top-(--header-height) bottom-0 z-50 scrollbar-none overflow-y-auto bg-background-100",
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+      >
+        {/* The same groups the sidebar renders, in the same order. Below lg
               this is the only navigation, so it carries every page. */}
-          <Nav size="lg" className="overflow-auto px-6 py-6">
-            {siteConfig.navGroups.map((group) => (
-              <NavGroup key={group.label}>
-                <NavGroupLabel>{group.label}</NavGroupLabel>
-                <NavList>
-                  {group.items.map((item) => (
-                    <NavItem key={item.href}>
-                      <NavLink
-                        active={isActiveHref(pathname, item.href)}
-                        render={
-                          <Link
-                            href={item.href}
-                            onClick={() => setOpen(false)}
-                          />
-                        }
-                      >
-                        {item.name}
-                      </NavLink>
-                    </NavItem>
-                  ))}
-                </NavList>
-              </NavGroup>
-            ))}
-          </Nav>
-        </div>
-      )}
+        <Nav size="lg" className="overflow-auto px-6 py-6">
+          {siteConfig.navGroups.map((group) => (
+            <NavGroup key={group.label}>
+              <NavGroupLabel>{group.label}</NavGroupLabel>
+              <NavList>
+                {group.items.map((item) => (
+                  <NavItem key={item.href}>
+                    <NavLink
+                      active={isActiveHref(pathname, item.href)}
+                      render={
+                        <Link
+                          href={item.href}
+                          prefetch={true}
+                          onClick={() => setOpen(false)}
+                        />
+                      }
+                    >
+                      {item.name}
+                    </NavLink>
+                  </NavItem>
+                ))}
+              </NavList>
+            </NavGroup>
+          ))}
+        </Nav>
+      </div>
     </>
   )
 }

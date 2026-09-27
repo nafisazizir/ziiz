@@ -1,11 +1,14 @@
 import { Skeleton } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
 
 function SkeletonText() {
   return (
-    <div className="flex w-full max-w-xs flex-col gap-2">
-      <Skeleton className="h-4 w-full" />
-      <Skeleton className="h-4 w-full" />
-      <Skeleton className="h-4 w-3/4" />
+    <div className="w-full max-w-xs text-copy-14">
+      {["w-full", "w-full", "w-3/4"].map((width, index) => (
+        <div key={index} className="flex h-[1lh] items-center">
+          <Skeleton className={cn("h-[0.75em]", width)} />
+        </div>
+      ))}
     </div>
   )
 }

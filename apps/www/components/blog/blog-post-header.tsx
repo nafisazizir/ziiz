@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { formatDate, type BlogPost } from "@/lib/blog"
 import { ArrowLeftIcon } from "@/components/icons"
+import { TextSkeleton } from "@/components/text-skeleton"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,6 +12,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 
 // A post's opening: a row from lg with the breadcrumb, title and byline on
 // the left and the card art (400x244, the list's 8:5) on the right, the row
@@ -19,9 +21,9 @@ import { Button } from "@/components/ui/button"
 // the arrow's ink, not its hit area, lines up with the title.
 export function BlogPostHeader({ post }: { post: BlogPost }) {
   return (
-    <header className="flex flex-col border-b border-gray-alpha-400 pb-6 lg:flex-row lg:items-start lg:justify-between lg:gap-4 lg:pb-30">
-      <div className="flex min-w-0 flex-col lg:min-h-61 lg:max-w-180 lg:flex-1">
-        <div className="flex min-w-0 shrink-0 items-center gap-4 pt-3 lg:pt-10">
+    <Frame
+      crumb={
+        <>
           <Button
             variant="ghost"
             shape="rounded"
@@ -48,16 +50,71 @@ export function BlogPostHeader({ post }: { post: BlogPost }) {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+        </>
+      }
+      title={
+        <h1 className="text-heading-48 text-balance text-gray-1000">
+          {post.data.title}
+        </h1>
+      }
+      byline={
+        <p className="text-label-13 text-gray-900">
+          <span>{post.data.author}</span>
+          <span aria-hidden>{` · `}</span>
+          <time dateTime={post.data.date}>{formatDate(post.data.date)}</time>
+        </p>
+      }
+    />
+  )
+}
+
+// The same frame while the post streams: the back button's disc, the
+// breadcrumb, a one-line title and the byline, each a line box of its own
+// role, two title lines on a phone, so the header lands on it without moving.
+export function BlogPostHeaderSkeleton() {
+  return (
+    <Frame
+      crumb={
+        <>
+          <Skeleton className="-ml-3 size-8 shrink-0 rounded-full" />
+          <div className="w-36 text-label-14">
+            <TextSkeleton lines={["w-full"]} />
+          </div>
+        </>
+      }
+      title={
+        <div className="text-heading-48">
+          <TextSkeleton lines={["w-2/3"]} className="max-md:hidden" />
+          <TextSkeleton lines={["w-full", "w-1/3"]} className="md:hidden" />
+        </div>
+      }
+      byline={
+        <div className="text-label-13">
+          <TextSkeleton lines={["w-48"]} />
+        </div>
+      }
+    />
+  )
+}
+
+function Frame({
+  crumb,
+  title,
+  byline,
+}: {
+  crumb: React.ReactNode
+  title: React.ReactNode
+  byline: React.ReactNode
+}) {
+  return (
+    <header className="flex flex-col border-b border-gray-alpha-400 pb-6 lg:flex-row lg:items-start lg:justify-between lg:gap-4 lg:pb-30">
+      <div className="flex min-w-0 flex-col lg:min-h-61 lg:max-w-180 lg:flex-1">
+        <div className="flex min-w-0 shrink-0 items-center gap-4 pt-3 lg:pt-10">
+          {crumb}
         </div>
         <div className="flex flex-1 flex-col justify-end gap-4 pt-6 lg:pt-8">
-          <h1 className="text-heading-48 text-balance text-gray-1000">
-            {post.data.title}
-          </h1>
-          <p className="text-label-13 text-gray-900">
-            <span>{post.data.author}</span>
-            <span aria-hidden>{` · `}</span>
-            <time dateTime={post.data.date}>{formatDate(post.data.date)}</time>
-          </p>
+          {title}
+          {byline}
         </div>
       </div>
       <div

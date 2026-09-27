@@ -2,11 +2,15 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 function SkeletonDemo() {
   return (
-    <div className="flex items-center gap-4">
-      <Skeleton className="h-12 w-12 rounded-full" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[250px]" />
-        <Skeleton className="h-4 w-[200px]" />
+    <div className="flex items-center gap-3">
+      <Skeleton className="size-8 shrink-0 rounded-full" />
+      <div className="flex flex-col">
+        <div className="flex h-[1lh] items-center text-label-14">
+          <Skeleton className="h-[0.75em] w-32" />
+        </div>
+        <div className="flex h-[1lh] items-center text-label-13">
+          <Skeleton className="h-[0.75em] w-20" />
+        </div>
       </div>
     </div>
   )

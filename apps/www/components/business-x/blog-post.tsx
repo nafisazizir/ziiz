@@ -9,6 +9,7 @@ import {
   StatValue,
 } from "@/components/business-x/stat"
 import { ArrowLeftIcon } from "@/components/icons"
+import { TextSkeleton, TypesetSkeleton } from "@/components/text-skeleton"
 import {
   Accordion,
   AccordionContent,
@@ -43,7 +44,91 @@ import { cn } from "@/lib/utils"
 // margin by hand, the way Callout does.
 export function BlogPost({ post }: { post: Post }) {
   return (
-    <article className="flex w-full flex-col">
+    <Frame
+      crumb={
+        <>
+          <Button
+            variant="ghost"
+            shape="rounded"
+            size="icon-sm"
+            aria-label="Back to Blog"
+            nativeButton={false}
+            className="-ml-3 text-gray-900"
+            render={<Link href="/business-x/blog" />}
+          >
+            <ArrowLeftIcon />
+          </Button>
+          <Breadcrumb className="min-w-0">
+            <BreadcrumbList className="flex-nowrap">
+              <BreadcrumbItem className="shrink-0">
+                <BreadcrumbLink render={<Link href="/business-x/blog" />}>
+                  Blog
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>/</BreadcrumbSeparator>
+              <BreadcrumbItem className="min-w-0">
+                <BreadcrumbPage className="truncate">
+                  {post.topic}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </>
+      }
+      heading={
+        <h1 className="text-heading-48 whitespace-pre-line text-gray-1000">
+          <XText>{post.title}</XText>
+        </h1>
+      }
+    >
+      {post.blocks.map((block, index) => (
+        <BlockView key={index} block={block} />
+      ))}
+    </Frame>
+  )
+}
+
+// The same frame while the post streams: the back button's disc, the
+// breadcrumb, two title lines and an article's opening, each a line box of
+// its own role, so the post lands on it without moving.
+export function BlogPostSkeleton() {
+  return (
+    <Frame
+      aria-hidden
+      crumb={
+        <>
+          <Skeleton className="-ml-3 size-8 shrink-0 rounded-full" />
+          <div className="w-48 text-label-14">
+            <TextSkeleton lines={["w-full"]} />
+          </div>
+        </>
+      }
+      heading={
+        <div className="w-full text-heading-48">
+          <TextSkeleton lines={["w-full", "w-1/2"]} className="max-md:hidden" />
+          <TextSkeleton
+            lines={["w-full", "w-full", "w-full", "w-2/3"]}
+            className="md:hidden"
+          />
+        </div>
+      }
+    >
+      <TypesetSkeleton />
+    </Frame>
+  )
+}
+
+function Frame({
+  crumb,
+  heading,
+  children,
+  ...props
+}: React.ComponentProps<"article"> & {
+  crumb: React.ReactNode
+  heading: React.ReactNode
+}) {
+  return (
+    <article className="flex w-full flex-col" {...props}>
       <header className="flex flex-col border-b border-gray-alpha-400 pb-6 lg:flex-row lg:items-start lg:justify-between lg:gap-4 lg:pb-30">
         <div className="flex min-w-0 flex-col lg:min-h-61 lg:max-w-180 lg:flex-1">
           {/* Optically aligned: the row centres on the rail's first link
@@ -52,38 +137,9 @@ export function BlogPost({ post }: { post: Post }) {
               the gutter so the arrow's ink, not its hit area, lines up with
               the title. */}
           <div className="flex min-w-0 shrink-0 items-center gap-4 pt-3 lg:pt-[calc(var(--rail-content-top)+1px)]">
-            <Button
-              variant="ghost"
-              shape="rounded"
-              size="icon-sm"
-              aria-label="Back to Blog"
-              nativeButton={false}
-              className="-ml-3 text-gray-900"
-              render={<Link href="/business-x/blog" />}
-            >
-              <ArrowLeftIcon />
-            </Button>
-            <Breadcrumb className="min-w-0">
-              <BreadcrumbList className="flex-nowrap">
-                <BreadcrumbItem className="shrink-0">
-                  <BreadcrumbLink render={<Link href="/business-x/blog" />}>
-                    Blog
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator>/</BreadcrumbSeparator>
-                <BreadcrumbItem className="min-w-0">
-                  <BreadcrumbPage className="truncate">
-                    {post.topic}
-                  </BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+            {crumb}
           </div>
-          <div className="flex flex-1 items-end pt-6 lg:pt-8">
-            <h1 className="text-heading-48 whitespace-pre-line text-gray-1000">
-              <XText>{post.title}</XText>
-            </h1>
-          </div>
+          <div className="flex flex-1 items-end pt-6 lg:pt-8">{heading}</div>
         </div>
         <div
           aria-hidden
@@ -91,9 +147,7 @@ export function BlogPost({ post }: { post: Post }) {
         />
       </header>
       <div className="typeset mx-auto w-full max-w-180 pt-12 pb-30">
-        {post.blocks.map((block, index) => (
-          <BlockView key={index} block={block} />
-        ))}
+        {children}
       </div>
     </article>
   )

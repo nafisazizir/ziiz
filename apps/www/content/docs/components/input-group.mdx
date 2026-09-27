@@ -156,9 +156,12 @@ Here's an example of a custom resizable textarea from a third-party library.
 
 The main component that wraps inputs and addons.
 
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+| Prop        | Type                        | Default     |
+| ----------- | --------------------------- | ----------- |
+| `size`      | `"sm" \| "default" \| "lg"` | `"default"` |
+| `className` | `string`                    |             |
+
+The group's input, textarea and addons take the size together.
 
 ```tsx
 <InputGroup>

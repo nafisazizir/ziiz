@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { SpecialistArcs } from "@/components/art/sections/specialist-arcs"
 import { FormDropdown } from "@/components/business-x/form-dropdown"
 
 // "Connect with an X Ads specialist": the lead form. Field, Input, Textarea
@@ -12,7 +13,7 @@ import { FormDropdown } from "@/components/business-x/form-dropdown"
 // to the fields' height; the legal copy and Submit sit in a second row under
 // the fields. Below that the panel is a square above a single-column form,
 // with the copy at the top of the square instead of the bottom. The panel
-// carries an illustration on x.com and is left empty here like the hero.
+// carries the specialist-arcs drawing, sliced to fill it behind the copy.
 const paymentMethods = [
   { label: "Credit Card", value: "card" },
   { label: "Insertion Order", value: "insertion-order" },
@@ -49,8 +50,18 @@ export function Contact() {
   return (
     <section>
       <form className="grid grid-cols-8 gap-x-4 gap-y-8 lg:gap-y-4">
-        <div className="col-span-8 flex aspect-square flex-col bg-gray-100 p-6 lg:col-span-4 lg:aspect-auto lg:justify-end">
-          <div className="flex w-full max-w-100 flex-col gap-3">
+        <div className="relative col-span-8 flex aspect-square flex-col overflow-hidden bg-gray-100 p-6 text-gray-1000 lg:col-span-4 lg:aspect-auto lg:justify-end">
+          <SpecialistArcs
+            variant="wide"
+            preserveAspectRatio="xMidYMid slice"
+            className="pointer-events-none absolute inset-0 hidden size-full lg:block"
+          />
+          <SpecialistArcs
+            variant="narrow"
+            preserveAspectRatio="xMidYMid slice"
+            className="pointer-events-none absolute inset-0 size-full lg:hidden"
+          />
+          <div className="relative flex w-full max-w-100 flex-col gap-3">
             <h2 className="text-heading-32 text-balance text-gray-1000">
               Connect with an X Ads specialist
             </h2>

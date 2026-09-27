@@ -20,13 +20,22 @@ export function FormDropdown({
   id,
   placeholder,
   options,
+  value: controlled,
+  onValueChange,
 }: {
   id: string
   placeholder: string
   options: { label: string; value: string }[]
+  value?: string | null
+  onValueChange?: (value: string) => void
 }) {
   const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState<string | null>(null)
+  const [own, setOwn] = React.useState<string | null>(null)
+  const value = controlled === undefined ? own : controlled
+  const setValue = (next: string) => {
+    setOwn(next)
+    onValueChange?.(next)
+  }
   const selected = options.find((option) => option.value === value)
 
   return (

@@ -31,50 +31,38 @@ import {
   InputGroupText,
 } from "@/components/ui/input-group"
 import { Skeleton } from "@/components/ui/skeleton"
-import { cn } from "@/lib/utils"
+import {
+  FeatureAction,
+  NumberedFeatures,
+  type Feature,
+} from "@/components/business-x/numbered-features"
 
 // "Why brands choose X Ads": three numbered features, each with a small
 // product mock in a grey panel. The mocks are ziiz cards, badges and inputs
-// as shipped, and that is the point of the exercise.
-//
-// x.com's geometry at 1024px and up: an eight-column grid, a feature is a
-// 9:8 panel at two columns beside two columns of text, and the third runs
-// 7:3 across four. The "Explore Ads" button is collapsed until the feature
-// is hovered, and the other features dim to half while one is.
-//
-// Below 1024px the features stack. From 640px each is a two-column row with
-// the text leading on 01 and 03 and the panel leading on 02; under 640px the
-// panel sits above the text. The panel is 3:2 until 960px, then 11:6 up to
-// the grid.
-//
-// x.com draws its mocks in container-query units: at every viewport the
-// card is exactly as wide as the panel's content area is tall (197px in a
-// 311x197 area at 375px, 116px in 136x116 at 1024px, 190px in 220x190 at
-// 1512px). The ziiz mocks are real components at a fixed natural width
-// (`scene`), so each is zoomed from that width to the panel's content
-// height. Every panel is landscape, so the zoomed card always fits.
-const features = [
+// as shipped, and that is the point of the exercise. The list itself is the
+// NumberedFeatures block every section landing uses.
+const features: Feature[] = [
   {
-    number: "01",
     title: "Extend your influence",
     copy: "Reach your audience anywhere from your local community to worldwide, with precise geographic targeting.",
     mock: <LocationsMock />,
     scene: 224,
+    action: <FeatureAction>Explore Ads</FeatureAction>,
   },
   {
-    number: "02",
     title: "Smart spend, better returns",
     copy: "Set your budget, and ensure you get maximum conversions at the lowest cost, making every dollar count.",
     mock: <BudgetMock />,
     scene: 224,
+    action: <FeatureAction>Explore Ads</FeatureAction>,
   },
   {
-    number: "03",
     title: "AI-powered advertising",
     copy: "Let our AI do the hard work. It targets the users most likely to love your ads, saving you time and boosting your results.",
     mock: <AdMock />,
     scene: 256,
     wide: true,
+    action: <FeatureAction>Explore Ads</FeatureAction>,
   },
 ]
 
@@ -88,67 +76,7 @@ export function Features() {
           to grow their brand and drive results
         </span>
       </h2>
-      <ol className="group/list grid grid-cols-8 gap-x-4 gap-y-12">
-        {features.map((feature, index) => (
-          <li
-            key={feature.number}
-            className={cn(
-              "group/feature col-span-8 grid grid-cols-1 gap-4 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-has-[li:hover]/list:not-hover:opacity-50 sm:grid-cols-2",
-              feature.wide ? "lg:grid-cols-8" : "lg:col-span-4"
-            )}
-          >
-            <div
-              className={cn(
-                "flex aspect-3/2 items-center justify-center overflow-hidden bg-gray-100 p-4 sm:aspect-9/6 min-[60rem]:aspect-11/6 lg:p-6",
-                feature.wide ? "lg:col-span-4 lg:aspect-7/3" : "lg:aspect-9/8",
-                index % 2 === 0 && "sm:order-2 lg:order-none"
-              )}
-            >
-              <div className="[container-type:size] flex size-full items-center justify-center">
-                <div
-                  className="flex shrink-0 items-center justify-center"
-                  style={{
-                    width: feature.scene,
-                    zoom: `calc(100cqh / ${feature.scene}px)`,
-                  }}
-                >
-                  {feature.mock}
-                </div>
-              </div>
-            </div>
-            <div
-              className={cn(
-                "flex flex-col justify-start gap-3 text-balance sm:justify-between sm:gap-0",
-                feature.wide && "lg:col-span-2",
-                index % 2 === 0 && "sm:order-1 lg:order-none"
-              )}
-            >
-              <span className="text-label-13 text-gray-700">
-                {feature.number}
-              </span>
-              <div className="flex flex-col">
-                <div className="flex flex-col gap-1">
-                  <h3 className="text-heading-14 text-gray-1000">
-                    {feature.title}
-                  </h3>
-                  <p className="text-copy-13 text-gray-900">{feature.copy}</p>
-                </div>
-                {/* Collapsed row that opens on hover, like x.com; the
-                    negative margin keeps the focus ring out of the clip. */}
-                <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 md:grid-rows-[0fr] md:group-hover/feature:grid-rows-[1fr]">
-                  <div className="-mx-2 flex flex-col justify-end overflow-hidden px-2">
-                    <div className="pt-4 pb-2 transition-opacity duration-300 md:opacity-0 md:group-hover/feature:opacity-100">
-                      <Button shape="rounded" variant="secondary" size="sm">
-                        Explore Ads
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <NumberedFeatures items={features} />
     </section>
   )
 }

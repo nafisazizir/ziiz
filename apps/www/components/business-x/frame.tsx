@@ -1,3 +1,5 @@
+import { FloatingBar } from "@/components/business-x/floating-bar"
+import { Footer } from "@/components/business-x/footer"
 import {
   BusinessMobileNav,
   BusinessRail,
@@ -10,6 +12,8 @@ import { cn } from "@/lib/utils"
 // the 1120px column with 56px gutters measured earlier; below 1360px the
 // article is simply the remaining width. The post page widens the cap to
 // 1168px and the gutter to 20/24px so the same 1120px column survives.
+// The footer spans the whole of main under the article, and the pill bar
+// floats over the bottom of every page.
 //
 // --rail-content-top is where the rail's first link starts: 24px of padding,
 // the 32px site switcher, 24px of gap. Anything in the article that should
@@ -37,13 +41,15 @@ export function BusinessFrame({
         <BusinessMobileNav />
         <div
           className={cn(
-            "mx-auto flex w-full max-w-288 flex-col px-4",
+            "mx-auto flex w-full max-w-288 flex-1 flex-col px-4",
             className
           )}
         >
           {children}
         </div>
+        <Footer />
       </main>
+      <FloatingBar />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { getExample, getExampleSource } from "@/lib/examples"
 import { Callout } from "@/components/docs/callout"
 import { ComponentPreview as Preview } from "@/components/docs/component-preview"
-import { ComponentSource } from "@/components/docs/component-source"
+import { CachedComponentSource } from "@/components/mdx/component-source"
 
 // The app side of ComponentPreview: an example name resolves to the live
 // component and to its own source file. There is one component set and one
@@ -27,7 +27,10 @@ export function ComponentPreview({
   return (
     <Preview
       source={
-        <ComponentSource src={getExampleSource(name)} collapsible={false} />
+        <CachedComponentSource
+          src={getExampleSource(name)}
+          collapsible={false}
+        />
       }
       {...props}
     >

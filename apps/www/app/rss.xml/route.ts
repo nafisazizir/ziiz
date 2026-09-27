@@ -1,9 +1,8 @@
+import { cacheLife } from "next/cache"
 import { NextResponse } from "next/server"
 
 import { getBlogPosts } from "@/lib/blog"
 import { siteConfig } from "@/lib/config"
-
-export const dynamic = "force-static"
 
 function escape(value: string) {
   return value
@@ -13,7 +12,10 @@ function escape(value: string) {
     .replaceAll('"', "&quot;")
 }
 
-export function GET() {
+async function getRssFeed() {
+  "use cache"
+  cacheLife("max")
+
   const items = getBlogPosts()
     .map((post) => {
       const link = `${siteConfig.url}${post.url}`
@@ -29,7 +31,7 @@ export function GET() {
     })
     .join("\n")
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${escape(siteConfig.name)} Blog</title>
@@ -41,8 +43,10 @@ ${items}
   </channel>
 </rss>
 `
+}
 
-  return new NextResponse(xml, {
+export async function GET() {
+  return new NextResponse(await getRssFeed(), {
     headers: { "Content-Type": "application/rss+xml; charset=utf-8" },
   })
 }

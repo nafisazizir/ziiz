@@ -4,10 +4,12 @@ import type { MDXComponents } from "mdx/types"
 import { Callout } from "@/components/docs/callout"
 import { CodeBlock } from "@/components/docs/code-block"
 import { CodeTabs } from "@/components/docs/code-tabs"
-import { ComponentSource } from "@/components/docs/component-source"
 import { Step, Steps } from "@/components/docs/steps"
 import { ComponentPreview } from "@/components/mdx/component-preview"
-import { RegistrySource } from "@/components/mdx/component-source"
+import {
+  CachedComponentSource,
+  RegistrySource,
+} from "@/components/mdx/component-source"
 import { Button } from "@/components/ui/button"
 import { Kbd, KbdGroup } from "@/components/ui/kbd"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -97,7 +99,7 @@ const components = {
   CodeBlock,
   CodeTabs,
   ComponentPreview,
-  ComponentSource,
+  ComponentSource: CachedComponentSource,
   Steps,
   Step,
   // App-side resolvers: a registry item name for source, an example name

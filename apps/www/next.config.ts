@@ -4,6 +4,8 @@ import { createMDX } from "fumadocs-mdx/next"
 const withMDX = createMDX()
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+  partialPrefetching: true,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "github.com" },

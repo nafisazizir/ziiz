@@ -255,13 +255,13 @@ const sizes = [
   { size: "xs", inset: 11, icon: 9 },
   { size: "sm", inset: 13, icon: 11 },
   { size: "default", inset: 13, icon: 11 },
-  { size: "lg", inset: 13, icon: 11 },
+  { size: "lg", inset: 15, icon: 13 },
 ] as const
 
 const groups: Group[] = [
   {
     title: "Sizes",
-    lede: "Square and pill share one padding per size; the icon side sits a half step in.",
+    lede: "Square and pill share one padding per size, 10, 12, 12 and 14; the icon side sits a half step in.",
     specs: sizes.flatMap(({ size, inset, icon }) => [
       {
         label: `${size} · square`,

@@ -87,8 +87,8 @@ focus-visible:ring-ring/50` cluster (`--ring` already resolves to
    controls to `transition-colors` (or drop it if nothing transitions).
    Functional motion is unaffected: switch thumb travel, accordion collapse,
    overlay enter/exit stay as shipped.
-9. **One text inset: 12px.** Every control from 32px up sits its text 12px
-   in (`px-3`), 10px at 24px (`px-2.5`): buttons square or pill (no padding
+9. **One text inset: 12px.** Every control at 32 and 36px sits its text
+   12px in (`px-3`), 10px at 24px (`px-2.5`), 14px at 40px (`px-3.5`): buttons square or pill (no padding
    compounds; `shape="rounded"` changes only the radius), toggles, fields
    (input, textarea, select and native-select triggers, input-group,
    button-group text, combobox chips). Icon sides sit a half step in

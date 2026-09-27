@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { AudioLinesIcon, PlusIcon } from "@/components/icons"
+import { IconPlus, IconWaveSine } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -24,7 +24,7 @@ export default function ButtonGroupInputGroup() {
     <ButtonGroup className="[--radius:9999rem]">
       <ButtonGroup>
         <Button variant="outline" size="icon">
-          <PlusIcon />
+          <IconPlus />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
@@ -48,7 +48,7 @@ export default function ButtonGroupInputGroup() {
                   />
                 }
               >
-                <AudioLinesIcon />
+                <IconWaveSine />
               </TooltipTrigger>
               <TooltipContent>Voice Mode</TooltipContent>
             </Tooltip>

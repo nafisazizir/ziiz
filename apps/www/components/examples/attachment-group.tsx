@@ -1,10 +1,10 @@
 import {
-  FileCodeIcon,
-  FileTextIcon,
-  TableIcon,
-  XIcon,
-  type IconComponent,
-} from "@/components/icons"
+  IconFileCode,
+  IconFileText,
+  IconTable,
+  IconX,
+  type Icon,
+} from "@tabler/icons-react"
 
 import {
   Attachment,
@@ -20,19 +20,19 @@ import {
 type Item = {
   name: string
   meta: string
-  icon?: IconComponent
+  icon?: Icon
   src?: string
 }
 
 const items: Item[] = [
-  { name: "briefing-notes.pdf", meta: "PDF · 1.4 MB", icon: FileTextIcon },
+  { name: "briefing-notes.pdf", meta: "PDF · 1.4 MB", icon: IconFileText },
   {
     name: "workspace.png",
     meta: "PNG · 820 KB",
     src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&auto=format&fit=crop&q=80",
   },
-  { name: "customers.csv", meta: "CSV · 18 KB", icon: TableIcon },
-  { name: "renderer.tsx", meta: "TSX · 12 KB", icon: FileCodeIcon },
+  { name: "customers.csv", meta: "CSV · 18 KB", icon: IconTable },
+  { name: "renderer.tsx", meta: "TSX · 12 KB", icon: IconFileCode },
 ]
 
 function AttachmentGroupDemo() {
@@ -60,7 +60,7 @@ function AttachmentGroupDemo() {
               </AttachmentContent>
               <AttachmentActions>
                 <AttachmentAction aria-label={`Remove ${item.name}`}>
-                  <XIcon />
+                  <IconX />
                 </AttachmentAction>
               </AttachmentActions>
             </Attachment>

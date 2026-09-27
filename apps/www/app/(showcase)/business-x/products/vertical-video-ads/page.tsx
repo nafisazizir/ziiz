@@ -28,11 +28,11 @@ import {
 import { StepsTabs } from "@/components/business-x/steps-tabs"
 import { Button } from "@/components/ui/button"
 import {
-  ClosedCaptionIcon,
-  Clock01Icon,
-  SmartPhone01Icon,
-  VolumeHighIcon,
-} from "@hugeicons/core-free-icons"
+  IconBadgeCc,
+  IconClock,
+  IconDeviceMobile,
+  IconVolume,
+} from "@tabler/icons-react"
 
 export const metadata: Metadata = {
   title: "Vertical Video Ads | X Business",
@@ -257,7 +257,7 @@ const steps = [
 const practices = [
   {
     title: "Aspect ratios",
-    icon: SmartPhone01Icon,
+    icon: IconDeviceMobile,
     copy: (
       <>
         <p>
@@ -274,7 +274,7 @@ const practices = [
   },
   {
     title: "Sound",
-    icon: VolumeHighIcon,
+    icon: IconVolume,
     copy: (
       <p>
         Design with sound in mind. Vertical Video Ads are sound-on by default,
@@ -284,7 +284,7 @@ const practices = [
   },
   {
     title: "Captions",
-    icon: ClosedCaptionIcon,
+    icon: IconBadgeCc,
     copy: (
       <p>
         Don’t forget captions! If the video asset includes spoken word audio or
@@ -296,7 +296,7 @@ const practices = [
   },
   {
     title: "Pacing",
-    icon: Clock01Icon,
+    icon: IconClock,
     copy: (
       <p>
         Keep it brief. The first three seconds are critical, and are likely to

@@ -1,14 +1,13 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  AppleIcon,
-  Call02Icon,
-  GoogleIcon,
-  Image01Icon,
-  Location01Icon,
-  Mail01Icon,
-  ChartBarLineIcon,
-  SmileIcon,
-} from "@hugeicons/core-free-icons"
+  IconBrandApple,
+  IconBrandGoogle,
+  IconChartHistogram,
+  IconMail,
+  IconMapPin,
+  IconMoodSmile,
+  IconPhone,
+  IconPhoto,
+} from "@tabler/icons-react"
 
 import { Phone } from "@/components/business-x/mocks/phone"
 import { Post } from "@/components/business-x/mocks/post"
@@ -25,21 +24,19 @@ export function SignInPhone() {
       <Phone className="h-auto min-h-full rounded-b-none border-b-0">
         <div className="flex flex-col items-center gap-3 px-6 pt-4">
           <div className="flex w-full justify-center gap-4">
-            {[GoogleIcon, AppleIcon, Mail01Icon].map((icon, index) => (
-              <span
-                key={index}
-                className="flex size-9 items-center justify-center rounded-full bg-gray-100"
-              >
-                <HugeiconsIcon icon={icon} strokeWidth={2} className="size-4" />
-              </span>
-            ))}
+            {[IconBrandGoogle, IconBrandApple, IconMail].map(
+              (ItemIcon, index) => (
+                <span
+                  key={index}
+                  className="flex size-9 items-center justify-center rounded-full bg-gray-100"
+                >
+                  <ItemIcon className="size-4" />
+                </span>
+              )
+            )}
           </div>
           <Button shape="rounded" variant="outline" className="w-full">
-            <HugeiconsIcon
-              icon={Call02Icon}
-              strokeWidth={2}
-              data-icon="inline-start"
-            />
+            <IconPhone data-icon="inline-start" />
             Continue with phone
           </Button>
           <p className="text-center text-label-12 text-balance text-gray-700">
@@ -87,14 +84,9 @@ export function ComposerMock() {
         <p className="min-h-12 text-copy-14 text-gray-900">What’s happening?</p>
       </CardHeader>
       <CardContent className="flex items-center gap-3 text-gray-900">
-        {[Image01Icon, ChartBarLineIcon, SmileIcon, Location01Icon].map(
-          (icon, index) => (
-            <HugeiconsIcon
-              key={index}
-              icon={icon}
-              strokeWidth={1.5}
-              className="size-4"
-            />
+        {[IconPhoto, IconChartHistogram, IconMoodSmile, IconMapPin].map(
+          (ItemIcon, index) => (
+            <ItemIcon key={index} stroke={1.5} className="size-4" />
           )
         )}
         <Button shape="rounded" size="xs" className="ml-auto">

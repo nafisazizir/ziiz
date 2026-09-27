@@ -1,11 +1,11 @@
-import { ArrowUpRightIcon } from "@/components/icons"
+import { IconArrowUpRight } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 
 function BadgeAsLink() {
   return (
     <Badge render={<a href="#link" />}>
-      Open Link <ArrowUpRightIcon data-icon="inline-end" />
+      Open Link <IconArrowUpRight data-icon="inline-end" />
     </Badge>
   )
 }

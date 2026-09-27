@@ -1,4 +1,4 @@
-import { SearchIcon } from "@/components/icons"
+import { IconSearch } from "@tabler/icons-react"
 
 import {
   InputGroup,
@@ -13,7 +13,7 @@ export default function KbdInputGroup() {
       <InputGroup>
         <InputGroupInput placeholder="Search..." />
         <InputGroupAddon>
-          <SearchIcon />
+          <IconSearch />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <Kbd>⌘</Kbd>

@@ -1,4 +1,4 @@
-import { BluetoothIcon } from "@/components/icons"
+import { IconBluetooth } from "@tabler/icons-react"
 
 import {
   AlertDialog,
@@ -24,7 +24,7 @@ function AlertDialogSmallWithMedia() {
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia>
-            <BluetoothIcon />
+            <IconBluetooth />
           </AlertDialogMedia>
           <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
           <AlertDialogDescription>

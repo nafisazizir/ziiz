@@ -1,5 +1,4 @@
-import { HugeiconsIcon } from "@hugeicons/react"
-import type { IconSvgElement } from "@hugeicons/react"
+import { type Icon } from "@tabler/icons-react"
 
 import type { ArtProps } from "@/components/art/props"
 import { XText } from "@/components/business-x/runs"
@@ -155,7 +154,7 @@ export function WhyRows({
 
 export type LeadRow = {
   title: string
-  icon?: IconSvgElement
+  icon?: Icon
   mark?: (props: ArtProps) => React.ReactNode
   copy: React.ReactNode
   footnote?: React.ReactNode
@@ -184,9 +183,8 @@ export function LeadRows({
             )}
           >
             {item.icon ? (
-              <HugeiconsIcon
-                icon={item.icon}
-                strokeWidth={1.5}
+              <item.icon
+                stroke={1.5}
                 className="size-4 shrink-0 text-gray-1000"
               />
             ) : item.mark ? (

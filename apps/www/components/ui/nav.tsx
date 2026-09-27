@@ -4,10 +4,8 @@ import * as React from "react"
 import { Collapsible as CollapsiblePrimitive } from "@base-ui/react/collapsible"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
-
 import { cn } from "@/lib/utils"
+import { IconChevronRight } from "@tabler/icons-react"
 
 function Nav({
   className,
@@ -224,11 +222,7 @@ function NavCollapsibleTrigger({
       {...props}
     >
       {children}
-      <HugeiconsIcon
-        icon={ArrowRight01Icon}
-        strokeWidth={2}
-        className="ml-auto size-4 text-gray-900 transition-transform duration-200 group-data-panel-open/nav-trigger:rotate-90 group-data-[size=lg]/nav:size-5"
-      />
+      <IconChevronRight className="ml-auto size-4 text-gray-900 transition-transform duration-200 group-data-panel-open/nav-trigger:rotate-90 group-data-[size=lg]/nav:size-5" />
     </CollapsiblePrimitive.Trigger>
   )
 }

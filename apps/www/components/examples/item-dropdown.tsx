@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDownIcon } from "@/components/icons"
+import { IconChevronDown } from "@tabler/icons-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -41,7 +41,7 @@ function ItemDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Select <ChevronDownIcon />
+        Select <IconChevronDown />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48" align="end">
         <DropdownMenuGroup>

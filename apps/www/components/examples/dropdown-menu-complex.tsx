@@ -2,32 +2,32 @@
 
 import * as React from "react"
 import {
-  BellIcon,
-  CreditCardIcon,
-  DownloadIcon,
-  EyeIcon,
-  FileCodeIcon,
-  FileIcon,
-  FileTextIcon,
-  FolderIcon,
-  FolderOpenIcon,
-  FolderSearchIcon,
-  HelpCircleIcon,
-  KeyboardIcon,
-  LanguagesIcon,
-  LayoutIcon,
-  LogOutIcon,
-  MailIcon,
-  MonitorIcon,
-  MoonIcon,
-  MoreHorizontalIcon,
-  PaletteIcon,
-  SaveIcon,
-  SettingsIcon,
-  ShieldIcon,
-  SunIcon,
-  UserIcon,
-} from "@/components/icons"
+  IconBell,
+  IconCreditCard,
+  IconDeviceDesktop,
+  IconDeviceFloppy,
+  IconDots,
+  IconDownload,
+  IconEye,
+  IconFile,
+  IconFileCode,
+  IconFileText,
+  IconFolder,
+  IconFolderOpen,
+  IconFolderSearch,
+  IconHelpCircle,
+  IconKeyboard,
+  IconLanguage,
+  IconLayout,
+  IconLogout,
+  IconMail,
+  IconMoon,
+  IconPalette,
+  IconSettings,
+  IconShield,
+  IconSun,
+  IconUser,
+} from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -65,18 +65,18 @@ function DropdownMenuComplex() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>File</DropdownMenuLabel>
           <DropdownMenuItem>
-            <FileIcon />
+            <IconFile />
             New File
             <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <FolderIcon />
+            <IconFolder />
             New Folder
             <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <FolderOpenIcon />
+              <IconFolderOpen />
               Open Recent
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -84,26 +84,26 @@ function DropdownMenuComplex() {
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
                   <DropdownMenuItem>
-                    <FileCodeIcon />
+                    <IconFileCode />
                     Project Alpha
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <FileCodeIcon />
+                    <IconFileCode />
                     Project Beta
                   </DropdownMenuItem>
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger>
-                      <MoreHorizontalIcon />
+                      <IconDots />
                       More Projects
                     </DropdownMenuSubTrigger>
                     <DropdownMenuPortal>
                       <DropdownMenuSubContent>
                         <DropdownMenuItem>
-                          <FileCodeIcon />
+                          <IconFileCode />
                           Project Gamma
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                          <FileCodeIcon />
+                          <IconFileCode />
                           Project Delta
                         </DropdownMenuItem>
                       </DropdownMenuSubContent>
@@ -113,7 +113,7 @@ function DropdownMenuComplex() {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <FolderSearchIcon />
+                    <IconFolderSearch />
                     Browse...
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
@@ -122,12 +122,12 @@ function DropdownMenuComplex() {
           </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <SaveIcon />
+            <IconDeviceFloppy />
             Save
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <DownloadIcon />
+            <IconDownload />
             Export
             <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -141,7 +141,7 @@ function DropdownMenuComplex() {
               setNotifications({ ...notifications, email: checked === true })
             }
           >
-            <EyeIcon />
+            <IconEye />
             Show Sidebar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
@@ -150,12 +150,12 @@ function DropdownMenuComplex() {
               setNotifications({ ...notifications, sms: checked === true })
             }
           >
-            <LayoutIcon />
+            <IconLayout />
             Show Status Bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <PaletteIcon />
+              <IconPalette />
               Theme
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -167,15 +167,15 @@ function DropdownMenuComplex() {
                     onValueChange={setTheme}
                   >
                     <DropdownMenuRadioItem value="light">
-                      <SunIcon />
+                      <IconSun />
                       Light
                     </DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="dark">
-                      <MoonIcon />
+                      <IconMoon />
                       Dark
                     </DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="system">
-                      <MonitorIcon />
+                      <IconDeviceDesktop />
                       System
                     </DropdownMenuRadioItem>
                   </DropdownMenuRadioGroup>
@@ -188,17 +188,17 @@ function DropdownMenuComplex() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Account</DropdownMenuLabel>
           <DropdownMenuItem>
-            <UserIcon />
+            <IconUser />
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCardIcon />
+            <IconCreditCard />
             Billing
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <SettingsIcon />
+              <IconSettings />
               Settings
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
@@ -206,16 +206,16 @@ function DropdownMenuComplex() {
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>Preferences</DropdownMenuLabel>
                   <DropdownMenuItem>
-                    <KeyboardIcon />
+                    <IconKeyboard />
                     Keyboard Shortcuts
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <LanguagesIcon />
+                    <IconLanguage />
                     Language
                   </DropdownMenuItem>
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger>
-                      <BellIcon />
+                      <IconBell />
                       Notifications
                     </DropdownMenuSubTrigger>
                     <DropdownMenuPortal>
@@ -233,7 +233,7 @@ function DropdownMenuComplex() {
                               })
                             }
                           >
-                            <BellIcon />
+                            <IconBell />
                             Push Notifications
                           </DropdownMenuCheckboxItem>
                           <DropdownMenuCheckboxItem
@@ -245,7 +245,7 @@ function DropdownMenuComplex() {
                               })
                             }
                           >
-                            <MailIcon />
+                            <IconMail />
                             Email Notifications
                           </DropdownMenuCheckboxItem>
                         </DropdownMenuGroup>
@@ -256,7 +256,7 @@ function DropdownMenuComplex() {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <ShieldIcon />
+                    <IconShield />
                     Privacy & Security
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
@@ -267,18 +267,18 @@ function DropdownMenuComplex() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <HelpCircleIcon />
+            <IconHelpCircle />
             Help & Support
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <FileTextIcon />
+            <IconFileText />
             Documentation
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive">
-            <LogOutIcon />
+            <IconLogout />
             Sign Out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>

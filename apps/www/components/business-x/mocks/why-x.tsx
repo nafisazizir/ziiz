@@ -1,13 +1,12 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowDown01Icon,
-  ChartBarLineIcon,
-  Coins01Icon,
-  Comment01Icon,
-  Cursor01Icon,
-  PlayIcon,
-  UserGroupIcon,
-} from "@hugeicons/core-free-icons"
+  IconChartHistogram,
+  IconChevronDown,
+  IconCoins,
+  IconMessageCircle,
+  IconPlayerPlay,
+  IconPointer,
+  IconUsersGroup,
+} from "@tabler/icons-react"
 
 import { Browser } from "@/components/business-x/mocks/browser"
 import { Badge } from "@/components/ui/badge"
@@ -16,28 +15,28 @@ import { Label } from "@/components/ui/label"
 
 const objectives = [
   {
-    icon: Coins01Icon,
+    icon: IconCoins,
     title: "Sales",
     copy: "Drive purchases, sign-ups, or other actions",
     recommended: true,
   },
   {
-    icon: UserGroupIcon,
+    icon: IconUsersGroup,
     title: "Reach",
     copy: "Show your ad to the most people",
   },
   {
-    icon: Comment01Icon,
+    icon: IconMessageCircle,
     title: "Engagements",
     copy: "Get people to engage with your posts",
   },
   {
-    icon: Cursor01Icon,
+    icon: IconPointer,
     title: "Website traffic",
     copy: "Send people to a website",
   },
   {
-    icon: PlayIcon,
+    icon: IconPlayerPlay,
     title: "Video views",
     copy: "Get people to watch your videos",
   },
@@ -53,11 +52,7 @@ export function AdsManagerMock() {
         <ol className="flex w-36 shrink-0 flex-col gap-3 text-label-12 text-gray-900">
           <li className="flex h-8 items-center justify-between rounded-md border border-gray-alpha-400 px-2 text-gray-1000">
             {`Campaign`}
-            <HugeiconsIcon
-              icon={ArrowDown01Icon}
-              strokeWidth={2}
-              className="size-3"
-            />
+            <IconChevronDown className="size-3" />
           </li>
           <li className="text-gray-1000">Ad group 1</li>
           <li className="pl-3 text-gray-1000">Details</li>
@@ -101,11 +96,7 @@ export function AdsManagerMock() {
                       <span className="size-2 rounded-full bg-gray-1000" />
                     )}
                   </span>
-                  <HugeiconsIcon
-                    icon={item.icon}
-                    strokeWidth={1.5}
-                    className="size-4 text-gray-900"
-                  />
+                  <item.icon stroke={1.5} className="size-4 text-gray-900" />
                   <div className="flex flex-1 flex-col">
                     <p className="text-label-13">{item.title}</p>
                     <p className="text-label-12 text-gray-900">{item.copy}</p>
@@ -115,7 +106,7 @@ export function AdsManagerMock() {
               ))}
             </ul>
           </section>
-          <HugeiconsIcon icon={ChartBarLineIcon} className="sr-only" />
+          <IconChartHistogram className="sr-only" />
         </div>
       </div>
     </Browser>

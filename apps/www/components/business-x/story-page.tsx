@@ -1,11 +1,10 @@
 import Link from "next/link"
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  Comment01Icon,
-  FavouriteIcon,
-  Link01Icon,
-  PlayIcon,
-} from "@hugeicons/core-free-icons"
+  IconHeart,
+  IconLink,
+  IconMessageCircle,
+  IconPlayerPlay,
+} from "@tabler/icons-react"
 
 import type {
   StoryDetail,
@@ -283,11 +282,7 @@ function EmbeddedPost({ post }: { post: StoryPost }) {
           >
             {post.media === "video" && (
               <span className="flex size-12 items-center justify-center rounded-full bg-gray-1000/70 text-background-100">
-                <HugeiconsIcon
-                  icon={PlayIcon}
-                  strokeWidth={2}
-                  className="size-5"
-                />
+                <IconPlayerPlay className="size-5" />
               </span>
             )}
           </AspectRatio>
@@ -298,27 +293,15 @@ function EmbeddedPost({ post }: { post: StoryPost }) {
         <p className="text-label-12 text-gray-900">{post.time}</p>
         <div className="flex items-center gap-4 border-t border-gray-alpha-400 pt-3 text-label-12 text-gray-900">
           <span className="flex items-center gap-1">
-            <HugeiconsIcon
-              icon={FavouriteIcon}
-              strokeWidth={1.5}
-              className="size-3.5"
-            />
+            <IconHeart stroke={1.5} className="size-3.5" />
             {post.likes}
           </span>
           <span className="flex items-center gap-1">
-            <HugeiconsIcon
-              icon={Comment01Icon}
-              strokeWidth={1.5}
-              className="size-3.5"
-            />
+            <IconMessageCircle stroke={1.5} className="size-3.5" />
             Reply
           </span>
           <span className="flex items-center gap-1">
-            <HugeiconsIcon
-              icon={Link01Icon}
-              strokeWidth={1.5}
-              className="size-3.5"
-            />
+            <IconLink stroke={1.5} className="size-3.5" />
             Copy link
           </span>
         </div>

@@ -1,11 +1,11 @@
 import {
-  CheckIcon,
-  CreditCardIcon,
-  InfoIcon,
-  MailIcon,
-  SearchIcon,
-  StarIcon,
-} from "@/components/icons"
+  IconCheck,
+  IconCreditCard,
+  IconInfoCircle,
+  IconMail,
+  IconSearch,
+  IconStar,
+} from "@tabler/icons-react"
 
 import {
   InputGroup,
@@ -19,29 +19,29 @@ export default function InputGroupIcon() {
       <InputGroup>
         <InputGroupInput placeholder="Search..." />
         <InputGroupAddon>
-          <SearchIcon />
+          <IconSearch />
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
         <InputGroupInput type="email" placeholder="Enter your email" />
         <InputGroupAddon>
-          <MailIcon />
+          <IconMail />
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
         <InputGroupInput placeholder="Card number" />
         <InputGroupAddon>
-          <CreditCardIcon />
+          <IconCreditCard />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <CheckIcon />
+          <IconCheck />
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
         <InputGroupInput placeholder="Card number" />
         <InputGroupAddon align="inline-end">
-          <StarIcon />
-          <InfoIcon />
+          <IconStar />
+          <IconInfoCircle />
         </InputGroupAddon>
       </InputGroup>
     </div>

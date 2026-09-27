@@ -1,4 +1,4 @@
-import { BoldIcon, ItalicIcon, UnderlineIcon } from "@/components/icons"
+import { IconBold, IconItalic, IconUnderline } from "@tabler/icons-react"
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
@@ -11,13 +11,13 @@ function ToggleGroupVertical() {
       defaultValue={["bold", "italic"]}
     >
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
-        <BoldIcon />
+        <IconBold />
       </ToggleGroupItem>
       <ToggleGroupItem value="italic" aria-label="Toggle italic">
-        <ItalicIcon />
+        <IconItalic />
       </ToggleGroupItem>
       <ToggleGroupItem value="underline" aria-label="Toggle underline">
-        <UnderlineIcon />
+        <IconUnderline />
       </ToggleGroupItem>
     </ToggleGroup>
   )

@@ -55,7 +55,7 @@ import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
 ```tsx showLineNumbers
 <Marker>
   <MarkerIcon>
-    <CheckIcon />
+    <IconCheck />
   </MarkerIcon>
   <MarkerContent>Explored 4 files</MarkerContent>
 </Marker>
@@ -180,7 +180,7 @@ A bordered marker keeps the same semantics as the default marker. The bottom bor
 ```tsx showLineNumbers
 <Marker variant="border">
   <MarkerIcon>
-    <FileTextIcon />
+    <IconFileText />
   </MarkerIcon>
   <MarkerContent>Opened implementation notes</MarkerContent>
 </Marker>
@@ -193,7 +193,7 @@ A bordered marker keeps the same semantics as the default marker. The bottom bor
 ```tsx showLineNumbers
 <Marker aria-label="Synced">
   <MarkerIcon>
-    <CheckIcon />
+    <IconCheck />
   </MarkerIcon>
 </Marker>
 ```
@@ -205,7 +205,7 @@ When a marker links or triggers an action, render it as a real `<button>` or `<a
 ```tsx showLineNumbers
 <Marker render={<a href="/files" />}>
   <MarkerIcon>
-    <FileTextIcon />
+    <IconFileText />
   </MarkerIcon>
   <MarkerContent>Explored 4 files</MarkerContent>
 </Marker>

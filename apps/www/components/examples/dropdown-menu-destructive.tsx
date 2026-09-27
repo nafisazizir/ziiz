@@ -1,6 +1,6 @@
 "use client"
 
-import { PencilIcon, ShareIcon, TrashIcon } from "@/components/icons"
+import { IconPencil, IconShare, IconTrash } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -21,18 +21,18 @@ function DropdownMenuDestructive() {
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <PencilIcon />
+            <IconPencil />
             Edit
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <ShareIcon />
+            <IconShare />
             Share
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive">
-            <TrashIcon />
+            <IconTrash />
             Delete
           </DropdownMenuItem>
         </DropdownMenuGroup>

@@ -1,5 +1,4 @@
-import { IconBell } from "@/components/icons"
-import { RefreshCcwIcon } from "@/components/icons"
+import { IconBell, IconRefresh } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -25,7 +24,7 @@ function EmptyMuted() {
       </EmptyHeader>
       <EmptyContent>
         <Button variant="outline">
-          <RefreshCcwIcon data-icon="inline-start" />
+          <IconRefresh data-icon="inline-start" />
           Refresh
         </Button>
       </EmptyContent>

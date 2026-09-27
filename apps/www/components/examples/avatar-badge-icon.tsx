@@ -1,4 +1,4 @@
-import { PlusIcon } from "@/components/icons"
+import { IconPlus } from "@tabler/icons-react"
 
 import {
   Avatar,
@@ -13,7 +13,7 @@ function AvatarBadgeIconExample() {
       <AvatarImage src="https://github.com/pranathip.png" alt="@pranathip" />
       <AvatarFallback>PP</AvatarFallback>
       <AvatarBadge>
-        <PlusIcon />
+        <IconPlus />
       </AvatarBadge>
     </Avatar>
   )

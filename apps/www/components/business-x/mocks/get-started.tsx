@@ -1,17 +1,16 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowLeft01Icon,
-  Calendar03Icon,
-  Home01Icon,
-  Image01Icon,
-  Link01Icon,
-  Location01Icon,
-  Mail01Icon,
-  Notification01Icon,
-  Search01Icon,
-  Settings01Icon,
-  SmileIcon,
-} from "@hugeicons/core-free-icons"
+  IconBell,
+  IconCalendar,
+  IconChevronLeft,
+  IconHome,
+  IconLink,
+  IconMail,
+  IconMapPin,
+  IconMoodSmile,
+  IconPhoto,
+  IconSearch,
+  IconSettings,
+} from "@tabler/icons-react"
 
 import { Phone } from "@/components/business-x/mocks/phone"
 import { Post } from "@/components/business-x/mocks/post"
@@ -36,22 +35,10 @@ export function ProfilePhone() {
   return (
     <Standing>
       <div className="flex items-center justify-between px-4 py-2 text-gray-1000">
-        <HugeiconsIcon
-          icon={ArrowLeft01Icon}
-          strokeWidth={2}
-          className="size-4"
-        />
+        <IconChevronLeft className="size-4" />
         <span className="flex gap-3">
-          <HugeiconsIcon
-            icon={Settings01Icon}
-            strokeWidth={2}
-            className="size-4"
-          />
-          <HugeiconsIcon
-            icon={Search01Icon}
-            strokeWidth={2}
-            className="size-4"
-          />
+          <IconSettings className="size-4" />
+          <IconSearch className="size-4" />
         </span>
       </div>
       <div className="h-20 bg-gray-200" />
@@ -70,15 +57,15 @@ export function ProfilePhone() {
         </p>
         <p className="flex flex-wrap gap-x-3 text-label-12 text-gray-900">
           <span className="flex items-center gap-1">
-            <HugeiconsIcon icon={Location01Icon} className="size-3" />
+            <IconMapPin className="size-3" />
             Palo Alto
           </span>
           <span className="flex items-center gap-1">
-            <HugeiconsIcon icon={Link01Icon} className="size-3" />
+            <IconLink className="size-3" />
             benji.org
           </span>
           <span className="flex items-center gap-1">
-            <HugeiconsIcon icon={Calendar03Icon} className="size-3" />
+            <IconCalendar className="size-3" />
             Joined July 2014
           </span>
         </p>
@@ -147,13 +134,8 @@ export function ComposerPhone() {
         </div>
       </div>
       <div className="mt-auto flex items-center gap-4 border-t border-gray-alpha-400 px-4 py-3 text-blue-700">
-        {[Image01Icon, SmileIcon, Location01Icon].map((icon, index) => (
-          <HugeiconsIcon
-            key={index}
-            icon={icon}
-            strokeWidth={1.5}
-            className="size-4"
-          />
+        {[IconPhoto, IconMoodSmile, IconMapPin].map((ItemIcon, index) => (
+          <ItemIcon key={index} stroke={1.5} className="size-4" />
         ))}
       </div>
     </Standing>
@@ -187,16 +169,9 @@ export function FeedPhone() {
         counts={["60", "1.9K", "20K", "1.5K"]}
       />
       <div className="mt-auto flex items-center justify-around border-t border-gray-alpha-400 px-4 py-3 text-gray-1000">
-        {[Home01Icon, Search01Icon, Notification01Icon, Mail01Icon].map(
-          (icon, index) => (
-            <HugeiconsIcon
-              key={index}
-              icon={icon}
-              strokeWidth={1.5}
-              className="size-5"
-            />
-          )
-        )}
+        {[IconHome, IconSearch, IconBell, IconMail].map((ItemIcon, index) => (
+          <ItemIcon key={index} stroke={1.5} className="size-5" />
+        ))}
       </div>
     </Standing>
   )

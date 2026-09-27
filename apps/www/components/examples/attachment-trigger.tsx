@@ -1,4 +1,4 @@
-import { CopyIcon, FileSearchIcon, XIcon } from "@/components/icons"
+import { IconCopy, IconFileSearch, IconX } from "@tabler/icons-react"
 
 import {
   Attachment,
@@ -25,7 +25,7 @@ function AttachmentTriggerDemo() {
       <Dialog>
         <Attachment className="w-full">
           <AttachmentMedia>
-            <FileSearchIcon />
+            <IconFileSearch />
           </AttachmentMedia>
           <AttachmentContent>
             <AttachmentTitle>research-summary.pdf</AttachmentTitle>
@@ -33,10 +33,10 @@ function AttachmentTriggerDemo() {
           </AttachmentContent>
           <AttachmentActions>
             <AttachmentAction aria-label="Copy link">
-              <CopyIcon />
+              <IconCopy />
             </AttachmentAction>
             <AttachmentAction aria-label="Remove research-summary.pdf">
-              <XIcon />
+              <IconX />
             </AttachmentAction>
           </AttachmentActions>
           <DialogTrigger

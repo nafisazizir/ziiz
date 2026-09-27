@@ -11,12 +11,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { HugeiconsIcon } from "@hugeicons/react"
-import {
-  ArrowDown01Icon,
-  Cancel01Icon,
-  Tick02Icon,
-} from "@hugeicons/core-free-icons"
+import { IconChevronDown, IconX, IconCheck } from "@tabler/icons-react"
 
 // The popup anchors to the whole field, not the inner input, so its width and
 // its items' text line up with the field's border box. An input rendered
@@ -60,11 +55,7 @@ function ComboboxTrigger({
       {...props}
     >
       {children}
-      <HugeiconsIcon
-        icon={ArrowDown01Icon}
-        strokeWidth={2}
-        className="pointer-events-none size-4 text-gray-900"
-      />
+      <IconChevronDown className="pointer-events-none size-4 text-gray-900" />
     </ComboboxPrimitive.Trigger>
   )
 }
@@ -77,11 +68,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       className={cn(className)}
       {...props}
     >
-      <HugeiconsIcon
-        icon={Cancel01Icon}
-        strokeWidth={2}
-        className="pointer-events-none"
-      />
+      <IconX className="pointer-events-none" />
     </ComboboxPrimitive.Clear>
   )
 }
@@ -201,11 +188,7 @@ function ComboboxItem({
           <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center in-data-[size=lg]:end-3" />
         }
       >
-        <HugeiconsIcon
-          icon={Tick02Icon}
-          strokeWidth={2}
-          className="pointer-events-none"
-        />
+        <IconCheck className="pointer-events-none" />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
   )
@@ -311,11 +294,7 @@ function ComboboxChip({
           className="-ml-1 opacity-50 hover:opacity-100"
           data-slot="combobox-chip-remove"
         >
-          <HugeiconsIcon
-            icon={Cancel01Icon}
-            strokeWidth={2}
-            className="pointer-events-none"
-          />
+          <IconX className="pointer-events-none" />
         </ComboboxPrimitive.ChipRemove>
       )}
     </ComboboxPrimitive.Chip>

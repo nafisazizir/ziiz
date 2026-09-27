@@ -2,30 +2,30 @@
 
 import * as React from "react"
 import {
-  BellIcon,
-  CalculatorIcon,
-  CalendarIcon,
-  ClipboardPasteIcon,
-  CodeIcon,
-  CopyIcon,
-  CreditCardIcon,
-  FileTextIcon,
-  FolderIcon,
-  FolderPlusIcon,
-  HelpCircleIcon,
-  HomeIcon,
-  ImageIcon,
-  InboxIcon,
-  LayoutGridIcon,
-  ListIcon,
-  PlusIcon,
-  ScissorsIcon,
-  SettingsIcon,
-  TrashIcon,
-  UserIcon,
-  ZoomInIcon,
-  ZoomOutIcon,
-} from "@/components/icons"
+  IconBell,
+  IconCalculator,
+  IconCalendar,
+  IconClipboard,
+  IconCode,
+  IconCopy,
+  IconCreditCard,
+  IconFileText,
+  IconFolder,
+  IconFolderPlus,
+  IconHelpCircle,
+  IconHome,
+  IconInbox,
+  IconLayoutGrid,
+  IconList,
+  IconPhoto,
+  IconPlus,
+  IconScissors,
+  IconSettings,
+  IconTrash,
+  IconUser,
+  IconZoomIn,
+  IconZoomOut,
+} from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -55,22 +55,22 @@ function CommandManyItems() {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Navigation">
               <CommandItem>
-                <HomeIcon />
+                <IconHome />
                 <span>Home</span>
                 <CommandShortcut>⌘H</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <InboxIcon />
+                <IconInbox />
                 <span>Inbox</span>
                 <CommandShortcut>⌘I</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <FileTextIcon />
+                <IconFileText />
                 <span>Documents</span>
                 <CommandShortcut>⌘D</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <FolderIcon />
+                <IconFolder />
                 <span>Folders</span>
                 <CommandShortcut>⌘F</CommandShortcut>
               </CommandItem>
@@ -78,32 +78,32 @@ function CommandManyItems() {
             <CommandSeparator />
             <CommandGroup heading="Actions">
               <CommandItem>
-                <PlusIcon />
+                <IconPlus />
                 <span>New File</span>
                 <CommandShortcut>⌘N</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <FolderPlusIcon />
+                <IconFolderPlus />
                 <span>New Folder</span>
                 <CommandShortcut>⇧⌘N</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <CopyIcon />
+                <IconCopy />
                 <span>Copy</span>
                 <CommandShortcut>⌘C</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <ScissorsIcon />
+                <IconScissors />
                 <span>Cut</span>
                 <CommandShortcut>⌘X</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <ClipboardPasteIcon />
+                <IconClipboard />
                 <span>Paste</span>
                 <CommandShortcut>⌘V</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <TrashIcon />
+                <IconTrash />
                 <span>Delete</span>
                 <CommandShortcut>⌫</CommandShortcut>
               </CommandItem>
@@ -111,20 +111,20 @@ function CommandManyItems() {
             <CommandSeparator />
             <CommandGroup heading="View">
               <CommandItem>
-                <LayoutGridIcon />
+                <IconLayoutGrid />
                 <span>Grid View</span>
               </CommandItem>
               <CommandItem>
-                <ListIcon />
+                <IconList />
                 <span>List View</span>
               </CommandItem>
               <CommandItem>
-                <ZoomInIcon />
+                <IconZoomIn />
                 <span>Zoom In</span>
                 <CommandShortcut>⌘+</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <ZoomOutIcon />
+                <IconZoomOut />
                 <span>Zoom Out</span>
                 <CommandShortcut>⌘-</CommandShortcut>
               </CommandItem>
@@ -132,45 +132,45 @@ function CommandManyItems() {
             <CommandSeparator />
             <CommandGroup heading="Account">
               <CommandItem>
-                <UserIcon />
+                <IconUser />
                 <span>Profile</span>
                 <CommandShortcut>⌘P</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <CreditCardIcon />
+                <IconCreditCard />
                 <span>Billing</span>
                 <CommandShortcut>⌘B</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <SettingsIcon />
+                <IconSettings />
                 <span>Settings</span>
                 <CommandShortcut>⌘S</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <BellIcon />
+                <IconBell />
                 <span>Notifications</span>
               </CommandItem>
               <CommandItem>
-                <HelpCircleIcon />
+                <IconHelpCircle />
                 <span>Help & Support</span>
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Tools">
               <CommandItem>
-                <CalculatorIcon />
+                <IconCalculator />
                 <span>Calculator</span>
               </CommandItem>
               <CommandItem>
-                <CalendarIcon />
+                <IconCalendar />
                 <span>Calendar</span>
               </CommandItem>
               <CommandItem>
-                <ImageIcon />
+                <IconPhoto />
                 <span>Image Editor</span>
               </CommandItem>
               <CommandItem>
-                <CodeIcon />
+                <IconCode />
                 <span>Code Editor</span>
               </CommandItem>
             </CommandGroup>

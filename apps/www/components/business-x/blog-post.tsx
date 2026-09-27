@@ -8,7 +8,7 @@ import {
   StatLabel,
   StatValue,
 } from "@/components/business-x/stat"
-import { ArrowLeftIcon } from "@/components/icons"
+import { IconArrowLeft } from "@tabler/icons-react"
 import { TextSkeleton, TypesetSkeleton } from "@/components/text-skeleton"
 import {
   Accordion,
@@ -56,7 +56,7 @@ export function BlogPost({ post }: { post: Post }) {
             className="-ml-3 text-gray-900"
             render={<Link href="/business-x/blog" />}
           >
-            <ArrowLeftIcon />
+            <IconArrowLeft />
           </Button>
           <Breadcrumb className="min-w-0">
             <BreadcrumbList className="flex-nowrap">

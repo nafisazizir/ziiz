@@ -1,4 +1,4 @@
-import { CheckCircle2Icon, InfoIcon } from "@/components/icons"
+import { IconCircleCheck, IconInfoCircle } from "@tabler/icons-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
@@ -6,7 +6,7 @@ export default function AlertDemo() {
   return (
     <div className="grid w-full max-w-md items-start gap-4">
       <Alert>
-        <CheckCircle2Icon />
+        <IconCircleCheck />
         <AlertTitle>Payment successful</AlertTitle>
         <AlertDescription>
           Your payment of $29.99 has been processed. A receipt has been sent to
@@ -14,7 +14,7 @@ export default function AlertDemo() {
         </AlertDescription>
       </Alert>
       <Alert>
-        <InfoIcon />
+        <IconInfoCircle />
         <AlertTitle>New feature available</AlertTitle>
         <AlertDescription>
           We&apos;ve added dark mode support. You can enable it in your account

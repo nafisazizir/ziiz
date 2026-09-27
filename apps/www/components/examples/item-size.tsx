@@ -1,4 +1,4 @@
-import { InboxIcon } from "@/components/icons"
+import { IconInbox } from "@tabler/icons-react"
 
 import {
   Item,
@@ -13,7 +13,7 @@ function ItemSizeDemo() {
     <div className="flex w-full max-w-md flex-col gap-6">
       <Item variant="outline">
         <ItemMedia variant="icon">
-          <InboxIcon />
+          <IconInbox />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Default Size</ItemTitle>
@@ -24,7 +24,7 @@ function ItemSizeDemo() {
       </Item>
       <Item variant="outline" size="sm">
         <ItemMedia variant="icon">
-          <InboxIcon />
+          <IconInbox />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Small Size</ItemTitle>
@@ -33,7 +33,7 @@ function ItemSizeDemo() {
       </Item>
       <Item variant="outline" size="xs">
         <ItemMedia variant="icon">
-          <InboxIcon />
+          <IconInbox />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Extra Small Size</ItemTitle>

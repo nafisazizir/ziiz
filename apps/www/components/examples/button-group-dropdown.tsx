@@ -1,15 +1,15 @@
 "use client"
 
 import {
-  AlertTriangleIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  CopyIcon,
-  ShareIcon,
-  TrashIcon,
-  UserRoundXIcon,
-  VolumeOffIcon,
-} from "@/components/icons"
+  IconAlertTriangle,
+  IconCheck,
+  IconChevronDown,
+  IconCopy,
+  IconShare,
+  IconTrash,
+  IconUserX,
+  IconVolumeOff,
+} from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -30,39 +30,39 @@ export default function ButtonGroupDropdown() {
         <DropdownMenuTrigger
           render={<Button variant="outline" className="pl-2!" />}
         >
-          <ChevronDownIcon />
+          <IconChevronDown />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-44">
           <DropdownMenuGroup>
             <DropdownMenuItem>
-              <VolumeOffIcon />
+              <IconVolumeOff />
               Mute Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <CheckIcon />
+              <IconCheck />
               Mark as Read
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <AlertTriangleIcon />
+              <IconAlertTriangle />
               Report Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <UserRoundXIcon />
+              <IconUserX />
               Block User
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <ShareIcon />
+              <IconShare />
               Share Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <CopyIcon />
+              <IconCopy />
               Copy Conversation
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem variant="destructive">
-              <TrashIcon />
+              <IconTrash />
               Delete Conversation
             </DropdownMenuItem>
           </DropdownMenuGroup>

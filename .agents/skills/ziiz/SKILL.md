@@ -22,6 +22,7 @@ npx shadcn@latest init --preset vega        # skip if components.json exists
 
 ```json title="components.json"
 {
+  "iconLibrary": "tabler",
   "registries": {
     "@ziiz": "https://raw.githubusercontent.com/nafisazizir/ziiz/main/apps/www/public/r/{name}.json"
   }
@@ -145,6 +146,11 @@ to roles with a fixed rhythm. Mark a subtree `not-typeset` to opt out.
     or `InputGroup` sizes the field and its popup together, and a lg menu
     wants a `size="lg"` button as its trigger. Padding is logical: `ps`,
     `pe`, `start`, `end`, never `pl`, `pr`, `left`, `right`.
+12. Icons are `@tabler/icons-react` (`IconCheck`, `IconChevronDown`,
+    `IconX`), the library the components ship with. Keep `iconLibrary` set
+    to `tabler` in components.json so `shadcn add` writes the same names
+    into stock items, and leave the stroke at Tabler's default inside
+    controls.
 
 ## Components
 

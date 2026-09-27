@@ -1,4 +1,4 @@
-import { XIcon } from "@/components/icons"
+import { IconX } from "@tabler/icons-react"
 
 import {
   Attachment,
@@ -49,7 +49,7 @@ function AttachmentImage() {
             </AttachmentContent>
             <AttachmentActions>
               <AttachmentAction aria-label={`Remove ${image.name}`}>
-                <XIcon />
+                <IconX />
               </AttachmentAction>
             </AttachmentActions>
             <AttachmentTrigger

@@ -1,4 +1,4 @@
-import { InfoIcon } from "@/components/icons"
+import { IconInfoCircle } from "@tabler/icons-react"
 
 import { Bubble, BubbleContent, BubbleReactions } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
@@ -31,7 +31,7 @@ function BubblePopoverDemo() {
                 />
               }
             >
-              <InfoIcon />
+              <IconInfoCircle />
             </PopoverTrigger>
             <PopoverContent>
               <PopoverHeader>

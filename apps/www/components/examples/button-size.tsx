@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "@/components/icons"
+import { IconArrowUpRight } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 
@@ -10,7 +10,7 @@ export default function ButtonSize() {
           Extra Small
         </Button>
         <Button size="icon-xs" aria-label="Submit" variant="outline">
-          <ArrowUpRightIcon />
+          <IconArrowUpRight />
         </Button>
       </div>
       <div className="flex items-start gap-2">
@@ -18,13 +18,13 @@ export default function ButtonSize() {
           Small
         </Button>
         <Button size="icon-sm" aria-label="Submit" variant="outline">
-          <ArrowUpRightIcon />
+          <IconArrowUpRight />
         </Button>
       </div>
       <div className="flex items-start gap-2">
         <Button variant="outline">Default</Button>
         <Button size="icon" aria-label="Submit" variant="outline">
-          <ArrowUpRightIcon />
+          <IconArrowUpRight />
         </Button>
       </div>
       <div className="flex items-start gap-2">
@@ -32,7 +32,7 @@ export default function ButtonSize() {
           Large
         </Button>
         <Button size="icon-lg" aria-label="Submit" variant="outline">
-          <ArrowUpRightIcon />
+          <IconArrowUpRight />
         </Button>
       </div>
     </div>

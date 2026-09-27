@@ -1,4 +1,4 @@
-import { InboxIcon } from "@/components/icons"
+import { IconInbox } from "@tabler/icons-react"
 
 import {
   Item,
@@ -13,7 +13,7 @@ function ItemVariant() {
     <div className="flex w-full max-w-md flex-col gap-6">
       <Item>
         <ItemMedia variant="icon">
-          <InboxIcon />
+          <IconInbox />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Default Variant</ItemTitle>
@@ -24,7 +24,7 @@ function ItemVariant() {
       </Item>
       <Item variant="outline">
         <ItemMedia variant="icon">
-          <InboxIcon />
+          <IconInbox />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Outline Variant</ItemTitle>
@@ -35,7 +35,7 @@ function ItemVariant() {
       </Item>
       <Item variant="muted">
         <ItemMedia variant="icon">
-          <InboxIcon />
+          <IconInbox />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Muted Variant</ItemTitle>

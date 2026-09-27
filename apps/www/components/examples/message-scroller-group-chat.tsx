@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { RotateCwIcon } from "@/components/icons"
+import { IconRotateClockwise } from "@tabler/icons-react"
 
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
@@ -130,7 +130,7 @@ function MessageScrollerGroupChat() {
                     />
                   }
                 >
-                  <RotateCwIcon />
+                  <IconRotateClockwise />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Reset</p>

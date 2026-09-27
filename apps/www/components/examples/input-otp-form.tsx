@@ -1,4 +1,4 @@
-import { RefreshCwIcon } from "@/components/icons"
+import { IconRefresh } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -34,7 +34,7 @@ function InputOTPForm() {
               Verification code
             </FieldLabel>
             <Button variant="outline" size="xs">
-              <RefreshCwIcon />
+              <IconRefresh />
               Resend Code
             </Button>
           </div>

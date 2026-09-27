@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import {
-  EyeIcon,
-  HeadsetIcon,
-  Megaphone01Icon,
-  Rocket01Icon,
-  UserGroupIcon,
-} from "@hugeicons/core-free-icons"
+  IconEye,
+  IconHeadset,
+  IconRocket,
+  IconSpeakerphone,
+  IconUsersGroup,
+} from "@tabler/icons-react"
 
 import { FieldLines } from "@/components/art/banners/field-lines"
 import { AudienceCloud } from "@/components/art/marks/audience-cloud"
@@ -103,7 +103,7 @@ const benefits: Benefit[] = [
 
 const help: IconRow[] = [
   {
-    icon: UserGroupIcon,
+    icon: IconUsersGroup,
     title: "Build your following",
     copy: (
       <p>
@@ -120,7 +120,7 @@ const help: IconRow[] = [
     ),
   },
   {
-    icon: Rocket01Icon,
+    icon: IconRocket,
     title: "Bring your launches to >x<",
     copy: (
       <p>
@@ -137,7 +137,7 @@ const help: IconRow[] = [
     ),
   },
   {
-    icon: HeadsetIcon,
+    icon: IconHeadset,
     title: "Provide timely customer service",
     copy: (
       <p>
@@ -148,7 +148,7 @@ const help: IconRow[] = [
     ),
   },
   {
-    icon: EyeIcon,
+    icon: IconEye,
     title: "Monitor your competition",
     copy: (
       <p>
@@ -161,7 +161,7 @@ const help: IconRow[] = [
     ),
   },
   {
-    icon: Megaphone01Icon,
+    icon: IconSpeakerphone,
     title: "Leverage the power of ads",
     copy: (
       <p>

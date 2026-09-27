@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { DotIcon } from "@/components/icons"
+import { IconPointFilled } from "@tabler/icons-react"
 
 import {
   Breadcrumb,
@@ -18,7 +18,7 @@ function BreadcrumbSeparatorDemo() {
           <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <DotIcon />
+          <IconPointFilled />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink render={<Link href="/components" />}>
@@ -26,7 +26,7 @@ function BreadcrumbSeparatorDemo() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <DotIcon />
+          <IconPointFilled />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

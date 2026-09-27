@@ -1,4 +1,4 @@
-import { SearchIcon } from "@/components/icons"
+import { IconSearch } from "@tabler/icons-react"
 
 import {
   Empty,
@@ -28,7 +28,7 @@ export default function EmptyInputGroup() {
         <InputGroup className="sm:w-3/4">
           <InputGroupInput placeholder="Try searching for pages..." />
           <InputGroupAddon>
-            <SearchIcon />
+            <IconSearch />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">
             <Kbd>/</Kbd>

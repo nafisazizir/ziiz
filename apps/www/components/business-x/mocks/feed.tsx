@@ -1,12 +1,11 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  Home01Icon,
-  Mail01Icon,
-  Notification01Icon,
-  PlayIcon,
-  Search01Icon,
-  UserMultipleIcon,
-} from "@hugeicons/core-free-icons"
+  IconBell,
+  IconHome,
+  IconMail,
+  IconPlayerPlay,
+  IconSearch,
+  IconUsers,
+} from "@tabler/icons-react"
 
 import { Phone } from "@/components/business-x/mocks/phone"
 import { Post, type PostProps } from "@/components/business-x/mocks/post"
@@ -72,20 +71,15 @@ export function FeedPhone({
         {children}
       </div>
       <div className="flex shrink-0 items-center justify-around border-t border-gray-alpha-400 px-2 pt-3 pb-5 text-gray-1000">
-        {[
-          Home01Icon,
-          Search01Icon,
-          UserMultipleIcon,
-          Notification01Icon,
-          Mail01Icon,
-        ].map((icon, index) => (
-          <HugeiconsIcon
-            key={index}
-            icon={icon}
-            strokeWidth={index === 0 ? 2.5 : 1.5}
-            className="size-5"
-          />
-        ))}
+        {[IconHome, IconSearch, IconUsers, IconBell, IconMail].map(
+          (ItemIcon, index) => (
+            <ItemIcon
+              key={index}
+              stroke={index === 0 ? 2.5 : 1.5}
+              className="size-5"
+            />
+          )
+        )}
       </div>
     </Phone>
   )
@@ -201,7 +195,7 @@ function Media({
       {label && <Badge className="absolute top-2 left-2">{label}</Badge>}
       {play && (
         <span className="flex size-12 items-center justify-center rounded-full bg-gray-1000/70 text-background-100">
-          <HugeiconsIcon icon={PlayIcon} strokeWidth={2} className="size-5" />
+          <IconPlayerPlay className="size-5" />
         </span>
       )}
     </AspectRatio>

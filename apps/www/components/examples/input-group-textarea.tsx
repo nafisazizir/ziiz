@@ -3,7 +3,7 @@ import {
   IconCopy,
   IconCornerDownLeft,
   IconRefresh,
-} from "@/components/icons"
+} from "@tabler/icons-react"
 
 import {
   InputGroup,

@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { Body } from "@/components/business-x/section"
 import { XText } from "@/components/business-x/runs"
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons"
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -62,7 +62,7 @@ export function StepsTabs({
             disabled={index === 0}
             onClick={() => setIndex((i) => Math.max(0, i - 1))}
           >
-            <ChevronLeftIcon />
+            <IconChevronLeft />
           </Button>
           <Button
             variant="ghost"
@@ -72,7 +72,7 @@ export function StepsTabs({
             disabled={index === steps.length - 1}
             onClick={() => setIndex((i) => Math.min(steps.length - 1, i + 1))}
           >
-            <ChevronRightIcon />
+            <IconChevronRight />
           </Button>
         </div>
       </div>

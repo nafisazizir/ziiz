@@ -1,4 +1,4 @@
-import { IconCloud } from "@/components/icons"
+import { IconCloud } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {

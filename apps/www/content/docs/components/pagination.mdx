@@ -29,7 +29,7 @@ npx shadcn@latest add @ziiz/pagination
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @hugeicons/core-free-icons @hugeicons/react
+npm install @tabler/icons-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -180,7 +180,7 @@ If you're upgrading from a previous version of the `Pagination` component, you'l
         className={cn("cn-pagination-previous", className)}
         {...props}
       >
-        <ChevronLeftIcon />
+        <IconChevronLeft />
         <span className="cn-pagination-previous-text hidden sm:block">
 -         Previous
 +         {text}
@@ -208,7 +208,7 @@ If you're upgrading from a previous version of the `Pagination` component, you'l
       >
 -       <span className="cn-pagination-next-text hidden sm:block">Next</span>
 +       <span className="cn-pagination-next-text hidden sm:block">{text}</span>
-        <ChevronRightIcon />
+        <IconChevronRight />
       </PaginationLink>
     )
   }

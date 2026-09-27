@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { formatDate, type BlogPost } from "@/lib/blog"
-import { ArrowLeftIcon } from "@/components/icons"
+import { IconArrowLeft } from "@tabler/icons-react"
 import { TextSkeleton } from "@/components/text-skeleton"
 import {
   Breadcrumb,
@@ -33,7 +33,7 @@ export function BlogPostHeader({ post }: { post: BlogPost }) {
             className="-ml-3 text-gray-900"
             render={<Link href="/blog" />}
           >
-            <ArrowLeftIcon />
+            <IconArrowLeft />
           </Button>
           <Breadcrumb className="min-w-0">
             <BreadcrumbList className="flex-nowrap">

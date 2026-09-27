@@ -1,4 +1,4 @@
-import { SearchIcon } from "@/components/icons"
+import { IconSearch } from "@tabler/icons-react"
 
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
 import {
@@ -14,7 +14,7 @@ function InputGroupInlineStart() {
       <InputGroup>
         <InputGroupInput id="inline-start-input" placeholder="Search..." />
         <InputGroupAddon align="inline-start">
-          <SearchIcon className="text-gray-900" />
+          <IconSearch className="text-gray-900" />
         </InputGroupAddon>
       </InputGroup>
       <FieldDescription>Icon positioned at the start.</FieldDescription>

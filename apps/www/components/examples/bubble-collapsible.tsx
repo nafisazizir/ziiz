@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ChevronDownIcon } from "@/components/icons"
+import { IconChevronDown } from "@tabler/icons-react"
 
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
@@ -39,7 +39,7 @@ function BubbleCollapsible() {
                 }
               >
                 {open ? "Show less" : "Show more"}
-                <ChevronDownIcon
+                <IconChevronDown
                   data-icon="inline-end"
                   className="group-data-panel-open/button:rotate-180"
                 />

@@ -1,6 +1,6 @@
 "use client"
 
-import { GlobeIcon } from "@/components/icons"
+import { IconWorld } from "@tabler/icons-react"
 
 import {
   Combobox,
@@ -56,7 +56,7 @@ function ComboxboxInputGroup() {
     <Combobox items={timezones}>
       <ComboboxInput placeholder="Select a timezone">
         <InputGroupAddon>
-          <GlobeIcon />
+          <IconWorld />
         </InputGroupAddon>
       </ComboboxInput>
       <ComboboxContent>

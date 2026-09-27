@@ -10,8 +10,7 @@
       "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -139,8 +138,7 @@
       "description": "Displays the path to the current resource using a hierarchy of links.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -216,8 +214,7 @@
       "title": "Calendar",
       "description": "A calendar component that allows users to select a date or a range of dates.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
+        "@tabler/icons-react",
         "react-day-picker"
       ],
       "registryDependencies": [
@@ -252,8 +249,7 @@
       "title": "Carousel",
       "description": "A carousel with motion and swipe built using Embla.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
+        "@tabler/icons-react",
         "embla-carousel-react"
       ],
       "registryDependencies": [
@@ -292,8 +288,7 @@
       "description": "A control that allows the user to toggle between checked and not checked.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -327,8 +322,7 @@
       "description": "Autocomplete input with a list of suggestions.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -348,8 +342,7 @@
       "title": "Command",
       "description": "Command menu for search and quick actions.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
+        "@tabler/icons-react",
         "cmdk"
       ],
       "registryDependencies": [
@@ -371,8 +364,7 @@
       "description": "Displays a menu of actions triggered by a right click.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -391,8 +383,7 @@
       "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -445,8 +436,7 @@
       "description": "Displays a menu to the user, such as a set of actions or functions, triggered by a button.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -541,8 +531,7 @@
       "title": "Input OTP",
       "description": "Accessible one-time password component with copy-paste functionality.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
+        "@tabler/icons-react",
         "input-otp"
       ],
       "registryDependencies": [
@@ -649,8 +638,7 @@
       "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "dropdown-menu",
@@ -669,9 +657,8 @@
       "title": "Message Scroller",
       "description": "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
-        "@shadcn/react"
+        "@shadcn/react",
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -705,8 +692,7 @@
       "title": "Native Select",
       "description": "A styled native HTML select element with consistent design system integration.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -725,8 +711,7 @@
       "description": "Site navigation with grouped links and text-only states, for docs and marketing rails.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -745,8 +730,7 @@
       "description": "A collection of links for navigating websites.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
+        "@tabler/icons-react",
         "class-variance-authority"
       ],
       "registryDependencies": [
@@ -765,8 +749,7 @@
       "title": "Pagination",
       "description": "Pagination with page navigation, next and previous links.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -821,9 +804,8 @@
       "title": "Questionnaire",
       "description": "A multi-step questionnaire with single-choice, multiple-choice, freeform, and skippable questions.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
-        "@shadcn/react"
+        "@shadcn/react",
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -897,8 +879,7 @@
       "description": "Displays a list of options for the user to pick from, triggered by a button.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -935,8 +916,7 @@
       "description": "Extends the Dialog component to display content that complements the main content of the screen.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -956,8 +936,7 @@
       "description": "A composable, themeable and customizable sidebar component.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
+        "@tabler/icons-react",
         "class-variance-authority"
       ],
       "registryDependencies": [
@@ -1016,8 +995,7 @@
       "title": "Sonner",
       "description": "An opinionated toast component, wired to the active theme.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react",
+        "@tabler/icons-react",
         "next-themes",
         "sonner"
       ],
@@ -1034,8 +1012,7 @@
       "title": "Spinner",
       "description": "An indicator that can be used to show a loading state.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils"
@@ -1121,8 +1098,7 @@
       "description": "A succinct message that is displayed temporarily.",
       "dependencies": [
         "@base-ui/react",
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -1198,8 +1174,7 @@
       "title": "Callout",
       "description": "A titled aside for notes and warnings inside prose.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "alert",
@@ -1219,8 +1194,7 @@
       "title": "Code Block",
       "description": "The chrome around a pre with a title bar and a copy button.",
       "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button"

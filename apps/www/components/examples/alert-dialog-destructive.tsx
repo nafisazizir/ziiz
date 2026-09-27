@@ -1,4 +1,4 @@
-import { Trash2Icon } from "@/components/icons"
+import { IconTrash } from "@tabler/icons-react"
 
 import {
   AlertDialog,
@@ -23,7 +23,7 @@ function AlertDialogDestructive() {
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia className="bg-red-100 text-red-800">
-            <Trash2Icon />
+            <IconTrash />
           </AlertDialogMedia>
           <AlertDialogTitle>Delete chat?</AlertDialogTitle>
           <AlertDialogDescription>

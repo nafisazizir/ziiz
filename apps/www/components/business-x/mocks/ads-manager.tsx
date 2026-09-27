@@ -1,17 +1,16 @@
 "use client"
 
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  Analytics01Icon,
-  AppleIcon,
-  Calendar03Icon,
-  FilterHorizontalIcon,
-  GoogleIcon,
-  Mail01Icon,
-  Search01Icon,
-  Settings01Icon,
-  UserMultipleIcon,
-} from "@hugeicons/core-free-icons"
+  IconAdjustmentsHorizontal,
+  IconBrandApple,
+  IconBrandGoogle,
+  IconCalendar,
+  IconChartBar,
+  IconMail,
+  IconSearch,
+  IconSettings,
+  IconUsers,
+} from "@tabler/icons-react"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import { Browser } from "@/components/business-x/mocks/browser"
@@ -64,9 +63,9 @@ function SignIn() {
       </h3>
       <div className="relative mt-6 flex w-44 flex-col gap-2">
         {[
-          { icon: GoogleIcon, label: "Continue with Google" },
-          { icon: AppleIcon, label: "Continue with Apple" },
-          { icon: Mail01Icon, label: "Continue with your Mail" },
+          { icon: IconBrandGoogle, label: "Continue with Google" },
+          { icon: IconBrandApple, label: "Continue with Apple" },
+          { icon: IconMail, label: "Continue with your Mail" },
         ].map((item) => (
           <Button
             key={item.label}
@@ -74,11 +73,7 @@ function SignIn() {
             variant="secondary"
             size="xs"
           >
-            <HugeiconsIcon
-              icon={item.icon}
-              strokeWidth={2}
-              data-icon="inline-start"
-            />
+            <item.icon data-icon="inline-start" />
             {item.label}
           </Button>
         ))}
@@ -326,7 +321,7 @@ function Results() {
       <div className="flex items-center gap-2 rounded-lg bg-background-100 p-2 text-label-12">
         <InputGroup className="max-w-48">
           <InputGroupAddon align="inline-start">
-            <HugeiconsIcon icon={Search01Icon} strokeWidth={2} />
+            <IconSearch />
           </InputGroupAddon>
           <InputGroupInput
             placeholder="Search by campaign name or ID"
@@ -334,19 +329,11 @@ function Results() {
           />
         </InputGroup>
         <Button size="xs" variant="outline">
-          <HugeiconsIcon
-            icon={FilterHorizontalIcon}
-            strokeWidth={2}
-            data-icon="inline-start"
-          />
+          <IconAdjustmentsHorizontal data-icon="inline-start" />
           Filters
         </Button>
         <Button size="xs" variant="outline" className="ml-auto">
-          <HugeiconsIcon
-            icon={Calendar03Icon}
-            strokeWidth={2}
-            data-icon="inline-start"
-          />
+          <IconCalendar data-icon="inline-start" />
           Aug 21, 2026 to Aug 24, 2026
         </Button>
         <Button size="xs">Create Campaign</Button>
@@ -385,11 +372,7 @@ function Results() {
           </BarChart>
         </ChartContainer>
         <div className="flex items-center gap-2 rounded-lg border border-gray-alpha-400 px-3 py-2 text-label-12 text-gray-1000">
-          <HugeiconsIcon
-            icon={UserMultipleIcon}
-            strokeWidth={2}
-            className="size-3.5"
-          />
+          <IconUsers className="size-3.5" />
           Audience Insights
         </div>
         <Tabs value="Campaigns" className="gap-0">
@@ -412,4 +395,7 @@ function Results() {
   )
 }
 
-export const adsManagerIcons = { Analytics01Icon, Settings01Icon }
+export const adsManagerIcons = {
+  Analytics01Icon: IconChartBar,
+  Settings01Icon: IconSettings,
+}

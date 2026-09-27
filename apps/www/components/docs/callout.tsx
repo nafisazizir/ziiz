@@ -1,18 +1,17 @@
 import {
-  Alert02Icon,
-  AlertCircleIcon,
-  InformationCircleIcon,
-} from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+  IconAlertCircle,
+  IconAlertTriangle,
+  IconInfoCircle,
+} from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const icons = {
   default: null,
-  info: InformationCircleIcon,
-  warning: Alert02Icon,
-  danger: AlertCircleIcon,
+  info: IconInfoCircle,
+  warning: IconAlertTriangle,
+  danger: IconAlertCircle,
 }
 
 // A prose-level aside. Alert, opted out of the typeset so the text roles
@@ -41,7 +40,7 @@ function Callout({
       )}
       {...props}
     >
-      {icon ?? (Icon ? <HugeiconsIcon icon={Icon} strokeWidth={2} /> : null)}
+      {icon ?? (Icon ? <Icon /> : null)}
       {title ? <AlertTitle>{title}</AlertTitle> : null}
       <AlertDescription>{children}</AlertDescription>
     </Alert>

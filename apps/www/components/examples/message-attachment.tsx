@@ -1,6 +1,6 @@
 "use client"
 
-import { DownloadIcon, FileTextIcon } from "@/components/icons"
+import { IconDownload, IconFileText } from "@tabler/icons-react"
 
 import {
   Attachment,
@@ -45,7 +45,7 @@ function MessageAttachmentDemo() {
           </Bubble>
           <Attachment>
             <AttachmentMedia>
-              <FileTextIcon />
+              <IconFileText />
             </AttachmentMedia>
             <AttachmentContent>
               <AttachmentTitle>sales-dashboard.pdf</AttachmentTitle>
@@ -59,7 +59,7 @@ function MessageAttachmentDemo() {
                 size="icon-sm"
                 variant="secondary"
               >
-                <DownloadIcon />
+                <IconDownload />
               </AttachmentAction>
             </AttachmentActions>
           </Attachment>

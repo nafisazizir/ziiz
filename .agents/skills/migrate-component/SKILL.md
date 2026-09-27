@@ -113,6 +113,15 @@ in-data-[size=lg]:py-2` (36px rows, indicators at `end-3`, inset at
    40 tall at 4 + 12 in the popup).
    `/playground/inset` measures every control and popup in both directions.
    Sidebar and Nav rows keep their own list rhythm and are not covered.
+10. **Icons are Tabler.** Components import `@tabler/icons-react` directly
+    (`IconCheck`, `IconChevronDown`, `IconSelector`, `IconX`, `IconDots`,
+    `IconLoader`); there is no icon wrapper, and `iconLibrary` in
+    components.json is `tabler` so `shadcn add` writes the same names into
+    stock items. Stroke stays at Tabler's default 2 inside controls;
+    `stroke={1.5}` is for dense mock UI only. Disclosure, sub-menu,
+    pagination, breadcrumb and carousel arrows are `IconChevron*`;
+    `IconArrow*` marks real direction (message-scroller). Adopted
+    2026-09-27, replacing hugeicons and the `components/icons` shim.
 
 ## Order
 

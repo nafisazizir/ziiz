@@ -1,9 +1,9 @@
 import {
-  CopyIcon,
-  RefreshCcwIcon,
-  ThumbsDownIcon,
-  ThumbsUpIcon,
-} from "@/components/icons"
+  IconCopy,
+  IconRefresh,
+  IconThumbDown,
+  IconThumbUp,
+} from "@tabler/icons-react"
 
 import { Bubble, BubbleContent } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
@@ -21,10 +21,10 @@ function MessageActionsDemo() {
           </Bubble>
           <MessageFooter>
             <Button variant="ghost" size="icon" aria-label="Copy" title="Copy">
-              <CopyIcon />
+              <IconCopy />
             </Button>
             <Button variant="ghost" size="icon" aria-label="Like" title="Like">
-              <ThumbsUpIcon />
+              <IconThumbUp />
             </Button>
             <Button
               variant="ghost"
@@ -32,7 +32,7 @@ function MessageActionsDemo() {
               aria-label="Dislike"
               title="Dislike"
             >
-              <ThumbsDownIcon />
+              <IconThumbDown />
             </Button>
           </MessageFooter>
         </MessageContent>
@@ -50,7 +50,7 @@ function MessageActionsDemo() {
               title="Retry"
               aria-label="Retry"
             >
-              <RefreshCcwIcon />
+              <IconRefresh />
             </Button>
           </MessageFooter>
         </MessageContent>

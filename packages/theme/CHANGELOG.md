@@ -1,5 +1,11 @@
 # @ziiz/theme
 
+## 0.1.2
+
+- The prose `details` marker is drawn from the Tabler chevron path now that
+  the components use `@tabler/icons-react`, so summaries match the
+  accordion and select chevrons.
+
 ## 0.1.1
 
 - `cn` now runs on the `cn` package (`createCn`/`createTwMerge` from

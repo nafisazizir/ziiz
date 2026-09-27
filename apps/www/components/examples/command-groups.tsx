@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import {
-  CalculatorIcon,
-  CalendarIcon,
-  CreditCardIcon,
-  SettingsIcon,
-  SmileIcon,
-  UserIcon,
-} from "@/components/icons"
+  IconCalculator,
+  IconCalendar,
+  IconCreditCard,
+  IconMoodSmile,
+  IconSettings,
+  IconUser,
+} from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -38,32 +38,32 @@ function CommandWithGroups() {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Suggestions">
               <CommandItem>
-                <CalendarIcon />
+                <IconCalendar />
                 <span>Calendar</span>
               </CommandItem>
               <CommandItem>
-                <SmileIcon />
+                <IconMoodSmile />
                 <span>Search Emoji</span>
               </CommandItem>
               <CommandItem>
-                <CalculatorIcon />
+                <IconCalculator />
                 <span>Calculator</span>
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Settings">
               <CommandItem>
-                <UserIcon />
+                <IconUser />
                 <span>Profile</span>
                 <CommandShortcut>⌘P</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <CreditCardIcon />
+                <IconCreditCard />
                 <span>Billing</span>
                 <CommandShortcut>⌘B</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <SettingsIcon />
+                <IconSettings />
                 <span>Settings</span>
                 <CommandShortcut>⌘S</CommandShortcut>
               </CommandItem>

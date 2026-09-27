@@ -1,4 +1,4 @@
-import { Search } from "@/components/icons"
+import { IconSearch } from "@tabler/icons-react"
 
 import {
   InputGroup,
@@ -11,7 +11,7 @@ function InputGroupDemo() {
     <InputGroup className="max-w-xs">
       <InputGroupInput placeholder="Search..." />
       <InputGroupAddon>
-        <Search />
+        <IconSearch />
       </InputGroupAddon>
       <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
     </InputGroup>

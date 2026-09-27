@@ -1,14 +1,13 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowDown01Icon,
-  ArrowLeft01Icon,
-  ArrowRight01Icon,
-  AudioWave01Icon,
-  Cancel01Icon,
-  CheckmarkBadge02Icon,
-  MoreHorizontalIcon,
-  Share08Icon,
-} from "@hugeicons/core-free-icons"
+  IconChevronDown,
+  IconChevronLeft,
+  IconChevronRight,
+  IconDots,
+  IconRosetteDiscountCheck,
+  IconShare,
+  IconWaveSine,
+  IconX,
+} from "@tabler/icons-react"
 
 import { Phone } from "@/components/business-x/mocks/phone"
 import { XLogo } from "@/components/business-x/x-logo"
@@ -45,32 +44,16 @@ export function SpacePhone({
   return (
     <Phone className={cn("bg-gray-100", className)}>
       <div className="flex items-center justify-between px-4 py-2 text-gray-700">
-        <HugeiconsIcon
-          icon={ArrowLeft01Icon}
-          strokeWidth={2}
-          className="size-4"
-        />
+        <IconChevronLeft className="size-4" />
         <span className="text-label-12">Spaces</span>
         <span className="size-4" />
       </div>
       <div className="mt-auto flex flex-col gap-4 material-modal rounded-t-2xl bg-background-100 px-4 pt-3 pb-4">
         <div className="flex items-center justify-between text-gray-1000">
-          <HugeiconsIcon
-            icon={ArrowDown01Icon}
-            strokeWidth={2}
-            className="size-4"
-          />
+          <IconChevronDown className="size-4" />
           <span className="flex items-center gap-3">
-            <HugeiconsIcon
-              icon={Share08Icon}
-              strokeWidth={2}
-              className="size-4"
-            />
-            <HugeiconsIcon
-              icon={MoreHorizontalIcon}
-              strokeWidth={2}
-              className="size-4"
-            />
+            <IconShare className="size-4" />
+            <IconDots className="size-4" />
           </span>
         </div>
         <p className="text-heading-16 text-gray-1000">{title}</p>
@@ -85,11 +68,7 @@ export function SpacePhone({
               </Avatar>
               <span className="flex max-w-full items-center gap-0.5 text-label-12 text-gray-1000">
                 <span className="truncate">{name}</span>
-                <HugeiconsIcon
-                  icon={CheckmarkBadge02Icon}
-                  strokeWidth={2}
-                  className="size-3 shrink-0 text-amber-700"
-                />
+                <IconRosetteDiscountCheck className="size-3 shrink-0 text-amber-700" />
               </span>
               <span className="text-label-12 text-gray-700">{role}</span>
             </li>
@@ -97,11 +76,7 @@ export function SpacePhone({
         </ul>
         <div className="flex items-center justify-between rounded-lg border border-gray-alpha-400 px-3 py-2 text-label-12 text-gray-1000">
           +224.8k other listeners
-          <HugeiconsIcon
-            icon={ArrowRight01Icon}
-            strokeWidth={2}
-            className="size-3.5"
-          />
+          <IconChevronRight className="size-3.5" />
         </div>
         <p className="text-center text-label-12 text-gray-700">
           Your mic will be off to start
@@ -120,19 +95,11 @@ export function ListenPhone({ className }: { className?: string }) {
     <Phone className={className}>
       <div className="flex items-center justify-between px-4 py-2 text-gray-1000">
         <span className="flex size-8 items-center justify-center rounded-full bg-gray-100">
-          <HugeiconsIcon
-            icon={Cancel01Icon}
-            strokeWidth={2}
-            className="size-4"
-          />
+          <IconX className="size-4" />
         </span>
         <XLogo className="size-5" />
         <span className="flex size-8 items-center justify-center rounded-full bg-gray-100">
-          <HugeiconsIcon
-            icon={MoreHorizontalIcon}
-            strokeWidth={2}
-            className="size-4"
-          />
+          <IconDots className="size-4" />
         </span>
       </div>
       <div className="flex flex-col gap-2 px-6 pt-6">
@@ -175,11 +142,7 @@ function Speaker({
       </span>
       {live && (
         <span className="absolute -right-1 -bottom-1 flex size-6 items-center justify-center material-small rounded-full bg-background-100 text-gray-1000">
-          <HugeiconsIcon
-            icon={AudioWave01Icon}
-            strokeWidth={2}
-            className="size-3.5"
-          />
+          <IconWaveSine className="size-3.5" />
         </span>
       )}
     </span>

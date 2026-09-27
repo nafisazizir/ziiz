@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ChevronsUpDown } from "@/components/icons"
+import { IconSelector } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -24,7 +24,7 @@ export default function CollapsibleDemo() {
         <CollapsibleTrigger
           render={<Button variant="ghost" size="icon" className="size-8" />}
         >
-          <ChevronsUpDown />
+          <IconSelector />
           <span className="sr-only">Toggle details</span>
         </CollapsibleTrigger>
       </div>

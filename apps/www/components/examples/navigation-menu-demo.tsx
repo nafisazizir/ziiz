@@ -3,10 +3,10 @@
 import * as React from "react"
 import Link from "next/link"
 import {
-  CircleAlertIcon,
-  CircleCheckIcon,
-  CircleDashedIcon,
-} from "@/components/icons"
+  IconAlertCircle,
+  IconCircleCheck,
+  IconCircleDashed,
+} from "@tabler/icons-react"
 
 import {
   NavigationMenu,
@@ -102,7 +102,7 @@ export default function NavigationMenuDemo() {
                     <Link href="#" className="flex-row items-center gap-2" />
                   }
                 >
-                  <CircleAlertIcon />
+                  <IconAlertCircle />
                   Backlog
                 </NavigationMenuLink>
                 <NavigationMenuLink
@@ -110,7 +110,7 @@ export default function NavigationMenuDemo() {
                     <Link href="#" className="flex-row items-center gap-2" />
                   }
                 >
-                  <CircleDashedIcon />
+                  <IconCircleDashed />
                   To Do
                 </NavigationMenuLink>
                 <NavigationMenuLink
@@ -118,7 +118,7 @@ export default function NavigationMenuDemo() {
                     <Link href="#" className="flex-row items-center gap-2" />
                   }
                 >
-                  <CircleCheckIcon />
+                  <IconCircleCheck />
                   Done
                 </NavigationMenuLink>
               </li>

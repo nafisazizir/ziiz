@@ -3,7 +3,7 @@ title: Sidebar
 description: A composable, themeable and customizable sidebar component.
 ---
 
-import { ExternalLinkIcon } from "@/components/icons"
+import { IconExternalLink } from "@tabler/icons-react"
 
 <figure className="flex flex-col gap-4">
   <ComponentPreview name="sidebar-demo" type="block" className="w-full" />
@@ -44,7 +44,7 @@ npx shadcn@latest add @ziiz/sidebar
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @base-ui/react @hugeicons/core-free-icons @hugeicons/react class-variance-authority
+npm install @base-ui/react @tabler/icons-react class-variance-authority
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -602,8 +602,8 @@ Add `className="rtl:rotate-180"` to the icon in `SidebarTrigger` to flip it in R
 
 ```diff
   <Button ...>
--   <PanelLeftIcon />
-+   <PanelLeftIcon className="rtl:rotate-180" />
+-   <IconLayoutSidebar />
++   <IconLayoutSidebar className="rtl:rotate-180" />
     <span className="sr-only">Toggle Sidebar</span>
   </Button>
 ```

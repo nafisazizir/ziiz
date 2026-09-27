@@ -1,4 +1,4 @@
-import { AudioLinesIcon, PlusIcon } from "@/components/icons"
+import { IconPlus, IconWaveSine } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -18,7 +18,7 @@ function ButtonGroupNested() {
     <ButtonGroup>
       <ButtonGroup>
         <Button variant="outline" size="icon">
-          <PlusIcon />
+          <IconPlus />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
@@ -26,7 +26,7 @@ function ButtonGroupNested() {
           <InputGroupInput placeholder="Send a message..." />
           <Tooltip>
             <TooltipTrigger render={<InputGroupAddon align="inline-end" />}>
-              <AudioLinesIcon />
+              <IconWaveSine />
             </TooltipTrigger>
             <TooltipContent>Voice Mode</TooltipContent>
           </Tooltip>

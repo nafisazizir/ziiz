@@ -1,4 +1,4 @@
-import { BadgeCheckIcon, ChevronRightIcon } from "@/components/icons"
+import { IconChevronRight, IconRosetteDiscountCheck } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -28,13 +28,13 @@ function ItemDemo() {
       </Item>
       <Item variant="outline" size="sm" render={<a href="#" />}>
         <ItemMedia>
-          <BadgeCheckIcon className="size-5" />
+          <IconRosetteDiscountCheck className="size-5" />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Your profile has been verified.</ItemTitle>
         </ItemContent>
         <ItemActions>
-          <ChevronRightIcon className="size-4" />
+          <IconChevronRight className="size-4" />
         </ItemActions>
       </Item>
     </div>

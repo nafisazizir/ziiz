@@ -1,5 +1,4 @@
-import { IconFolderCode } from "@/components/icons"
-import { ArrowUpRightIcon } from "@/components/icons"
+import { IconArrowUpRight, IconFolderCode } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -35,7 +34,7 @@ export default function EmptyDemo() {
         size="sm"
         nativeButton={false}
       >
-        Learn More <ArrowUpRightIcon />
+        Learn More <IconArrowUpRight />
       </Button>
     </Empty>
   )

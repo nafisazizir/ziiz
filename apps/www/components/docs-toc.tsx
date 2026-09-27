@@ -4,6 +4,7 @@ import * as React from "react"
 import { AnchorProvider, TOCItem, type TOCItemType } from "fumadocs-core/toc"
 
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/components/ui/skeleton"
 
 // The page's section list as the right rail, a sibling of the sidebar with
 // the same sticky frame and the same group label. Below that breakpoint the
@@ -36,25 +37,58 @@ export function DocsTocProvider({
   )
 }
 
+const railClassName =
+  "sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block"
+const navClassName =
+  "-mx-2 h-full scrollbar-none overflow-y-auto px-2 pt-(--content-top) pb-10"
+const labelClassName = "flex h-8 items-center text-heading-14 text-gray-1000"
+
 export function DocsTocRail() {
   const items = React.use(TocContext)
 
   return (
-    <aside
-      data-slot="docs-toc"
-      className="sticky top-(--header-height) hidden h-[calc(100svh-var(--header-height))] w-60 shrink-0 lg:block"
-    >
+    <aside data-slot="docs-toc" className={railClassName}>
       {items.length > 0 ? (
-        <nav
-          aria-label="On this page"
-          className="-mx-2 h-full scrollbar-none overflow-y-auto px-2 pt-(--content-top) pb-10"
-        >
-          <div className="flex h-8 items-center text-heading-14 text-gray-1000">
-            On this page
-          </div>
+        <nav aria-label="On this page" className={navClassName}>
+          <div className={labelClassName}>On this page</div>
           <TocList items={items} className="mt-1" />
         </nav>
       ) : null}
+    </aside>
+  )
+}
+
+// The rail while the page streams: the label is the same on every page, so
+// it is set; under it, a component page's usual entries as bars in the
+// rows' own geometry, the last three a level in.
+const skeletonRows: [width: string, indent?: string][] = [
+  ["w-18"],
+  ["w-10"],
+  ["w-14"],
+  ["w-16", "pl-3"],
+  ["w-12", "pl-3"],
+  ["w-20", "pl-3"],
+]
+
+export function DocsTocRailSkeleton() {
+  return (
+    <aside data-slot="docs-toc" aria-hidden className={railClassName}>
+      <div className={navClassName}>
+        <div className={labelClassName}>On this page</div>
+        <ul className="mt-1 flex flex-col">
+          {skeletonRows.map(([width, indent], index) => (
+            <li
+              key={index}
+              className={cn(
+                "flex min-h-7 items-center py-1 pr-2 text-label-13",
+                indent
+              )}
+            >
+              <Skeleton className={cn("h-[0.75em]", width)} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </aside>
   )
 }

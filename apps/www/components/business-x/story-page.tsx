@@ -13,6 +13,7 @@ import type {
   StoryQuote,
 } from "@/components/business-x/data/success-stories"
 import { XText } from "@/components/business-x/runs"
+import { TextSkeleton } from "@/components/text-skeleton"
 import { XLogo } from "@/components/business-x/x-logo"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -28,40 +29,33 @@ import { cn } from "@/lib/utils"
 export function StoryPage({ story }: { story: StoryDetail }) {
   return (
     <article className="flex w-full flex-col max-lg:gap-0">
-      <section className="flex flex-col gap-5 pt-4 lg:pt-20">
-        <div className="flex flex-col gap-2">
+      <Opening
+        brand={
           <h1 className="text-heading-48 text-gray-1000">
             <XText>{story.brand}</XText>
           </h1>
+        }
+        deck={
           <p className="text-heading-32 text-balance text-gray-900">
             <XText>{story.deck}</XText>
           </p>
-        </div>
-        <div className="flex h-70 items-center justify-center gap-6 overflow-hidden bg-gray-100 md:h-90 lg:h-[438px]">
-          <XLogo className="size-16 text-gray-1000" />
-          <span className="h-9 w-0.5 bg-gray-alpha-400" />
-          <span aria-hidden className="h-16 w-16 bg-gray-alpha-300" />
-        </div>
-      </section>
+        }
+      >
+        <XLogo className="size-16 text-gray-1000" />
+        <span className="h-9 w-0.5 bg-gray-alpha-400" />
+        <span aria-hidden className="h-16 w-16 bg-gray-alpha-300" />
+      </Opening>
       {story.stats.length > 0 && (
-        <section className="py-6">
-          <ul className="flex flex-col md:flex-row">
-            {story.stats.map((stat, index) => (
-              <li
-                key={index}
-                className={cn(
-                  "flex flex-1 flex-col items-center gap-3 border-gray-alpha-400 p-6 text-center",
-                  index > 0 && "border-t md:border-t-0 md:border-l"
-                )}
-              >
-                <p className="text-heading-32 text-gray-1000">{stat.value}</p>
-                <p className="text-label-13 text-balance text-gray-900">
-                  <XText>{stat.label}</XText>
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <Stats>
+          {story.stats.map((stat, index) => (
+            <Stat key={index} index={index}>
+              <p className="text-heading-32 text-gray-1000">{stat.value}</p>
+              <p className="text-label-13 text-balance text-gray-900">
+                <XText>{stat.label}</XText>
+              </p>
+            </Stat>
+          ))}
+        </Stats>
       )}
       <Split>
         <Prose blocks={story.blocks} />
@@ -126,6 +120,96 @@ export function StoryPage({ story }: { story: StoryDetail }) {
         <p className="pt-10 text-label-12 text-gray-700">{story.source}</p>
       )}
     </article>
+  )
+}
+
+// The same opening while the story streams: a one-line brand, two deck
+// lines and the lockup box, then three figures, each a line box of its own
+// role, so the page lands on it without moving.
+export function StoryPageSkeleton() {
+  return (
+    <article aria-hidden className="flex w-full flex-col max-lg:gap-0">
+      <Opening
+        brand={
+          <div className="text-heading-48">
+            <TextSkeleton lines={["w-1/3"]} />
+          </div>
+        }
+        deck={
+          <div className="text-heading-32">
+            <TextSkeleton
+              lines={["w-4/5", "w-3/5"]}
+              className="max-md:hidden"
+            />
+            <TextSkeleton
+              lines={["w-full", "w-full", "w-full", "w-3/5"]}
+              className="md:hidden"
+            />
+          </div>
+        }
+      />
+      <Stats>
+        {[0, 1, 2].map((index) => (
+          <Stat key={index} index={index}>
+            <div className="text-heading-32">
+              <TextSkeleton lines={["w-20"]} />
+            </div>
+            <div className="text-label-13">
+              <TextSkeleton lines={["w-40"]} />
+            </div>
+          </Stat>
+        ))}
+      </Stats>
+    </article>
+  )
+}
+
+function Opening({
+  brand,
+  deck,
+  children,
+}: {
+  brand: React.ReactNode
+  deck: React.ReactNode
+  children?: React.ReactNode
+}) {
+  return (
+    <section className="flex flex-col gap-5 pt-4 lg:pt-20">
+      <div className="flex flex-col gap-2">
+        {brand}
+        {deck}
+      </div>
+      <div className="flex h-70 items-center justify-center gap-6 overflow-hidden bg-gray-100 md:h-90 lg:h-[438px]">
+        {children}
+      </div>
+    </section>
+  )
+}
+
+function Stats({ children }: { children: React.ReactNode }) {
+  return (
+    <section className="py-6">
+      <ul className="flex flex-col md:flex-row">{children}</ul>
+    </section>
+  )
+}
+
+function Stat({
+  index,
+  children,
+}: {
+  index: number
+  children: React.ReactNode
+}) {
+  return (
+    <li
+      className={cn(
+        "flex flex-1 flex-col items-center gap-3 border-gray-alpha-400 p-6 text-center",
+        index > 0 && "border-t md:border-t-0 md:border-l"
+      )}
+    >
+      {children}
+    </li>
   )
 }
 

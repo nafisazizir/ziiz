@@ -48,6 +48,16 @@ import { Skeleton } from "@/components/ui/skeleton"
 <Skeleton className="h-[20px] w-[100px] rounded-full" />
 ```
 
+A bar that stands in for text takes the text's measurements from its type role. Give the container the role, make each line one line box, `h-[1lh]`, and set the bar to cap height, `h-[0.75em]`. The skeleton is then exactly as tall as the text it replaces, in any role, and nothing moves when the text lands.
+
+```tsx
+<div className="text-copy-14">
+  <div className="flex h-[1lh] items-center">
+    <Skeleton className="h-[0.75em] w-full" />
+  </div>
+</div>
+```
+
 ## Avatar
 
 <ComponentPreview name="skeleton-avatar" />

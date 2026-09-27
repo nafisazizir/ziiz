@@ -137,6 +137,11 @@ to roles with a fixed rhythm. Mark a subtree `not-typeset` to opt out.
 10. Compose with the registry's components before writing new markup. When
     a new component is needed, build it from the same vocabulary and the
     same focus signature.
+11. One text inset. A control at 32 or 36px pads `px-3`, 24px pads
+    `px-2.5`, 40px pads `px-3.5`, square or pill alike, and popup items pad `px-2` inside a
+    `p-1` content with a transparent 1px border, so menu text lines up
+    with whatever opened it. Padding is logical: `ps`, `pe`, `start`,
+    `end`, never `pl`, `pr`, `left`, `right`.
 
 ## Components
 

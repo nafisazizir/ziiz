@@ -18,7 +18,24 @@ import {
   Tick02Icon,
 } from "@hugeicons/core-free-icons"
 
-const Combobox = ComboboxPrimitive.Root
+// The popup anchors to the whole field, not the inner input, so its width and
+// its items' text line up with the field's border box. An input rendered
+// inside the popup (the trigger-button variant) never becomes the anchor.
+const AnchorContext = React.createContext<
+  [HTMLDivElement | null, (el: HTMLDivElement | null) => void]
+>([null, () => {}])
+const InsideContent = React.createContext(false)
+
+function Combobox<Value, Multiple extends boolean | undefined = false>(
+  props: ComboboxPrimitive.Root.Props<Value, Multiple>
+) {
+  const anchor = React.useState<HTMLDivElement | null>(null)
+  return (
+    <AnchorContext.Provider value={anchor}>
+      <ComboboxPrimitive.Root {...props} />
+    </AnchorContext.Provider>
+  )
+}
 
 function ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props) {
   return <ComboboxPrimitive.Value data-slot="combobox-value" {...props} />
@@ -73,8 +90,13 @@ function ComboboxInput({
   showTrigger?: boolean
   showClear?: boolean
 }) {
+  const [, setAnchor] = React.useContext(AnchorContext)
+  const inside = React.useContext(InsideContent)
   return (
-    <InputGroup className={cn("w-auto", className)}>
+    <InputGroup
+      ref={inside ? undefined : setAnchor}
+      className={cn("w-auto", className)}
+    >
       <ComboboxPrimitive.Input
         render={<InputGroupInput disabled={disabled} />}
         {...props}
@@ -110,27 +132,29 @@ function ComboboxContent({
     ComboboxPrimitive.Positioner.Props,
     "side" | "align" | "sideOffset" | "alignOffset" | "anchor"
   >) {
+  const [field] = React.useContext(AnchorContext)
   return (
-    <ComboboxPrimitive.Portal>
-      <ComboboxPrimitive.Positioner
-        side={side}
-        sideOffset={sideOffset}
-        align={align}
-        alignOffset={alignOffset}
-        anchor={anchor}
-        className="isolate z-50"
-      >
-        <ComboboxPrimitive.Popup
-          data-slot="combobox-content"
-          data-chips={!!anchor}
-          className={cn(
-            "group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden material-menu text-gray-1000 duration-100 data-[chips=true]:min-w-(--anchor-width) data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-gray-alpha-400/30 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
-            className
-          )}
-          {...props}
-        />
-      </ComboboxPrimitive.Positioner>
-    </ComboboxPrimitive.Portal>
+    <InsideContent.Provider value>
+      <ComboboxPrimitive.Portal>
+        <ComboboxPrimitive.Positioner
+          side={side}
+          sideOffset={sideOffset}
+          align={align}
+          alignOffset={alignOffset}
+          anchor={anchor ?? field ?? undefined}
+          className="isolate z-50"
+        >
+          <ComboboxPrimitive.Popup
+            data-slot="combobox-content"
+            className={cn(
+              "group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) origin-(--transform-origin) overflow-hidden material-menu border border-transparent text-gray-1000 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-gray-alpha-400/30 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+              className
+            )}
+            {...props}
+          />
+        </ComboboxPrimitive.Positioner>
+      </ComboboxPrimitive.Portal>
+    </InsideContent.Provider>
   )
 }
 
@@ -156,7 +180,7 @@ function ComboboxItem({
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-label-14 outline-hidden select-none active:bg-gray-alpha-200 data-highlighted:bg-gray-alpha-100 data-highlighted:text-gray-1000 not-data-[variant=destructive]:data-highlighted:**:text-gray-1000 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none active:bg-gray-alpha-200 data-highlighted:bg-gray-alpha-100 data-highlighted:text-gray-1000 not-data-[variant=destructive]:data-highlighted:**:text-gray-1000 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -164,7 +188,7 @@ function ComboboxItem({
       {children}
       <ComboboxPrimitive.ItemIndicator
         render={
-          <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
+          <span className="pointer-events-none absolute end-2 flex size-4 items-center justify-center" />
         }
       >
         <HugeiconsIcon
@@ -241,7 +265,7 @@ function ComboboxChips({
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
       className={cn(
-        "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-gray-alpha-400 bg-background-100 bg-clip-padding px-2.5 py-1.5 text-label-14 transition-[color,border-color,box-shadow] focus-within:border-gray-600 focus-within:ring-3 focus-within:ring-gray-600/50 not-focus-within:not-has-aria-invalid:hover:border-gray-alpha-500 has-aria-invalid:border-red-800 has-aria-invalid:bg-red-100 has-aria-invalid:ring-3 has-aria-invalid:ring-red-800/20 has-data-[slot=combobox-chip]:px-1.5",
+        "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-gray-alpha-400 bg-background-100 bg-clip-padding px-3 py-1.5 text-label-14 transition-[color,border-color,box-shadow] focus-within:border-gray-600 focus-within:ring-3 focus-within:ring-gray-600/50 not-focus-within:not-has-aria-invalid:hover:border-gray-alpha-500 has-aria-invalid:border-red-800 has-aria-invalid:bg-red-100 has-aria-invalid:ring-3 has-aria-invalid:ring-red-800/20 has-data-[slot=combobox-chip]:px-1.5",
         className
       )}
       {...props}

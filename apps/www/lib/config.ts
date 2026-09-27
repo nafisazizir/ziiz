@@ -30,6 +30,7 @@ export const siteConfig = {
         { name: "Palette generator", href: "/playground" },
         { name: "X Business clone", href: "/business-x" },
         { name: "X art", href: "/playground/x-art" },
+        { name: "Inset check", href: "/playground/inset" },
       ],
     },
     // Generated from content/docs/components by scripts/build-registry.ts.

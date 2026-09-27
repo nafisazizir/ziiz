@@ -39,8 +39,22 @@ export const siteConfig = {
   ],
 }
 
-// A nested page keeps its parent's entry marked (a blog post lights up "All
-// posts"), so both navigations always show where you are.
-export function isActiveHref(pathname: string, href: string) {
+const navHrefs = siteConfig.navGroups.flatMap((group) =>
+  group.items.map((item) => item.href)
+)
+
+function covers(pathname: string, href: string) {
   return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`))
+}
+
+// A nested page keeps its parent's entry marked (a blog post lights up "All
+// posts") unless a longer entry claims it, so /playground/inset marks "Inset
+// check" alone and not the palette generator that lives at /playground.
+export function isActiveHref(pathname: string, href: string) {
+  return (
+    covers(pathname, href) &&
+    !navHrefs.some(
+      (other) => other.length > href.length && covers(pathname, other)
+    )
+  )
 }

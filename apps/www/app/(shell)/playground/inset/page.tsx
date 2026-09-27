@@ -23,7 +23,7 @@ export default function InsetPlaygroundPage() {
             {`from the edge`}
           </>
         }
-        description={`Buttons, fields and menu items put their text 12px in from a 32px or taller box. Each specimen below measures that distance live, and a popup measures its first item against the control that opened it.`}
+        description={`Buttons, fields and menu items put their text 12px in from a 32 or 36px box and 16px in from a 40px one. Each specimen below measures that distance live, and a popup measures its first item against the control that opened it.`}
       >
         <TimelineFrame
           variant="wide"

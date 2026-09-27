@@ -227,9 +227,15 @@ function MenuItems() {
   )
 }
 
-function OpenMenu({ trigger }: { trigger: React.ReactElement }) {
+function OpenMenu({
+  trigger,
+  size,
+}: {
+  trigger: React.ReactElement
+  size?: "default" | "lg"
+}) {
   return (
-    <DropdownMenu open modal={false} onOpenChange={() => {}}>
+    <DropdownMenu open modal={false} onOpenChange={() => {}} size={size}>
       <DropdownMenuTrigger render={trigger} />
       <DropdownMenuContent className="min-w-48">
         <MenuItems />
@@ -238,9 +244,15 @@ function OpenMenu({ trigger }: { trigger: React.ReactElement }) {
   )
 }
 
-function OpenSelect({ children }: { children: React.ReactNode }) {
+function OpenSelect({
+  children,
+  size,
+}: {
+  children: React.ReactNode
+  size?: "sm" | "default" | "lg"
+}) {
   return (
-    <Select open modal={false} onOpenChange={() => {}}>
+    <Select open modal={false} onOpenChange={() => {}} size={size}>
       <SelectTrigger className="w-full" data-box>
         <SelectValue placeholder="Select a country" />
       </SelectTrigger>
@@ -255,13 +267,13 @@ const sizes = [
   { size: "xs", inset: 11, icon: 9 },
   { size: "sm", inset: 13, icon: 11 },
   { size: "default", inset: 13, icon: 11 },
-  { size: "lg", inset: 15, icon: 13 },
+  { size: "lg", inset: 17, icon: 15 },
 ] as const
 
 const groups: Group[] = [
   {
     title: "Sizes",
-    lede: "Square and pill share one padding per size, 10, 12, 12 and 14; the icon side sits a half step in.",
+    lede: "Square and pill share one padding per size, 10, 12, 12 and 16; the icon side sits a half step in.",
     specs: sizes.flatMap(({ size, inset, icon }) => [
       {
         label: `${size} · square`,
@@ -306,12 +318,100 @@ const groups: Group[] = [
   },
   {
     title: "Fields",
-    lede: "Inside an input group an icon starts at the inset and the text 6px after it.",
+    lede: "Inside an input group an icon starts at the inset and the text 6px after it. Large fields sit their text 16px in, like a large button.",
     specs: [
       {
         label: "Input",
         expect: 13,
         render: () => <Input placeholder="Jane" />,
+      },
+      {
+        label: "Input · lg",
+        expect: 17,
+        render: () => <Input size="lg" placeholder="Jane" />,
+      },
+      {
+        label: "Textarea · lg",
+        expect: 17,
+        render: () => <Textarea size="lg" placeholder="Looking for help" />,
+      },
+      {
+        label: "Native select · lg",
+        expect: 17,
+        render: () => (
+          <NativeSelect
+            size="lg"
+            className="w-full"
+            data-box
+            data-text
+            defaultValue=""
+          >
+            <NativeSelectOption value="">Select a country</NativeSelectOption>
+            <NativeSelectOption value="au">Australia</NativeSelectOption>
+          </NativeSelect>
+        ),
+      },
+      {
+        label: "Select · lg",
+        expect: 17,
+        render: () => (
+          <Select size="lg">
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select a country" />
+            </SelectTrigger>
+          </Select>
+        ),
+      },
+      {
+        label: "Input group · lg icon",
+        expect: 17 + 16 + 6,
+        render: () => (
+          <InputGroup size="lg">
+            <InputGroupAddon>
+              <HugeiconsIcon icon={Search01Icon} />
+            </InputGroupAddon>
+            <InputGroupInput data-text placeholder="Search" />
+          </InputGroup>
+        ),
+      },
+      {
+        label: "Input group · lg button",
+        expect: 17,
+        render: () => (
+          <InputGroup size="lg">
+            <InputGroupAddon>
+              <InputGroupButton size="sm" data-text>
+                Copy
+              </InputGroupButton>
+            </InputGroupAddon>
+            <InputGroupInput placeholder="https://" />
+          </InputGroup>
+        ),
+      },
+      {
+        label: "Input group · lg icon button",
+        expect: 17,
+        render: () => (
+          <InputGroup size="lg">
+            <InputGroupAddon>
+              <InputGroupButton size="icon-sm" aria-label="Search">
+                <HugeiconsIcon icon={Search01Icon} data-text />
+              </InputGroupButton>
+            </InputGroupAddon>
+            <InputGroupInput placeholder="Search" />
+          </InputGroup>
+        ),
+      },
+      {
+        label: "Combobox chips · lg",
+        expect: 17,
+        render: () => (
+          <Combobox items={fruits} multiple size="lg">
+            <ComboboxChips className="w-full">
+              <ComboboxChipsInput data-text placeholder="Add fruit" />
+            </ComboboxChips>
+          </Combobox>
+        ),
       },
       {
         label: "Textarea",
@@ -438,7 +538,7 @@ const groups: Group[] = [
   },
   {
     title: "Popups",
-    lede: "Held open. The second number is the first item's text against the control that opened it.",
+    lede: "Held open. The second number is the first item's text against the control that opened it; a large root sizes its popup with its trigger.",
     tall: true,
     specs: [
       {
@@ -524,6 +624,72 @@ const groups: Group[] = [
         expect: 13,
         render: () => (
           <Combobox items={fruits} open modal={false} onOpenChange={() => {}}>
+            <ComboboxInput data-text placeholder="Select a fruit" />
+            <ComboboxContent>
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
+        ),
+      },
+      {
+        label: "Menu · lg",
+        expect: 17,
+        render: () => (
+          <OpenMenu
+            size="lg"
+            trigger={
+              <Button size="lg" variant="outline" data-box>
+                Options
+              </Button>
+            }
+          />
+        ),
+      },
+      {
+        label: "Menu · lg pill",
+        expect: 17,
+        render: () => (
+          <OpenMenu
+            size="lg"
+            trigger={
+              <Button size="lg" shape="rounded" data-box>
+                Options
+              </Button>
+            }
+          />
+        ),
+      },
+      {
+        label: "Select · lg",
+        expect: 17,
+        render: () => (
+          <OpenSelect size="lg">
+            <SelectGroup>
+              <SelectLabel>Oceania</SelectLabel>
+              <SelectItem value="au">Australia</SelectItem>
+              <SelectItem value="nz">New Zealand</SelectItem>
+            </SelectGroup>
+          </OpenSelect>
+        ),
+      },
+      {
+        label: "Combobox · lg",
+        expect: 17,
+        render: () => (
+          <Combobox
+            items={fruits}
+            open
+            modal={false}
+            onOpenChange={() => {}}
+            size="lg"
+          >
             <ComboboxInput data-text placeholder="Select a fruit" />
             <ComboboxContent>
               <ComboboxEmpty>No items found.</ComboboxEmpty>

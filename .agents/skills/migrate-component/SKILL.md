@@ -87,18 +87,30 @@ focus-visible:ring-ring/50` cluster (`--ring` already resolves to
    controls to `transition-colors` (or drop it if nothing transitions).
    Functional motion is unaffected: switch thumb travel, accordion collapse,
    overlay enter/exit stay as shipped.
-9. **One text inset: 12px.** Every control at 32 and 36px sits its text
-   12px in (`px-3`), 10px at 24px (`px-2.5`), 14px at 40px (`px-3.5`): buttons square or pill (no padding
-   compounds; `shape="rounded"` changes only the radius), toggles, fields
-   (input, textarea, select and native-select triggers, input-group,
+9. **One text inset per height: 12px, 16px at 40.** Every control at 32
+   and 36px sits its text 12px in (`px-3`), 10px at 24px (`px-2.5`), 16px
+   at 40px (`px-4`, x.com's field number): buttons square or pill (no
+   padding compounds; `shape="rounded"` changes only the radius), toggles,
+   fields (input, textarea, select and native-select triggers, input-group,
    button-group text, combobox chips). Icon sides sit a half step in
-   (`ps-2.5`). Popup contents carry `p-1` plus `border border-transparent`
-   and items keep `px-2`, so item text lands at 1 + 4 + 8 = 13, exactly a
-   bordered trigger's 1 + 12; the material's ring still draws the edge.
+   (`ps-2.5`, `ps-3.5` at lg). Popup contents carry `p-1` plus
+   `border border-transparent` and items keep `px-2`, so item text lands at
+   1 + 4 + 8 = 13, exactly a bordered trigger's 1 + 12; the material's
+   ring still draws the edge. Fields and popups take a `size` axis
+   (`sm | default | lg`) set once on the root (`Select`, `Combobox`,
+   `DropdownMenu`, `InputGroup`) and passed by context: the root puts
+   `data-size` on its content and items pad `in-data-[size=lg]:px-3
+in-data-[size=lg]:py-2` (36px rows, indicators at `end-3`, inset at
+   `ps-9`), so lg item text lands at 1 + 4 + 12 = 17 under a 1 + 16
+   trigger. `sm` never changes a popup; items stay 32px under a 32px
+   trigger. Stack `data-inset:in-data-[size=lg]:` for inset items, since a
+   plain `in-*` variant sorts before `data-inset:` in Tailwind's output.
    Padding and indicator offsets on controls and items are logical (`ps`,
    `pe`, `start`, `end`), never physical. Adopted 2026-09-27 after
    measuring Geist (fields 36/12), the Vercel dashboard (36/12) and the
-   Claude app (32/12); x.com's 40/16 was tried at 36 and read too wide.
+   Claude app (32/12); x.com's 40/16 was tried at 36 and read too wide,
+   then adopted as the lg step on 2026-09-27 (x.com: field 40/16, items
+   40 tall at 4 + 12 in the popup).
    `/playground/inset` measures every control and popup in both directions.
    Sidebar and Nav rows keep their own list rhythm and are not covered.
 

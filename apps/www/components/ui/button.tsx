@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-// Text sits 12px in at 32 and 36px (10 at 24, 14 at 40), square or pill
+// Text sits 12px in at 32 and 36px (10 at 24, 16 at 40), square or pill
 // alike, the same inset as fields and one popup edge + padding + item away
 // from menu text. The icon side sits a half step in.
 const buttonVariants = cva(
@@ -27,7 +27,7 @@ const buttonVariants = cva(
           "h-9 gap-1.5 px-3 in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5",
         xs: "h-6 gap-1 rounded-[min(var(--radius-md),8px)] px-2.5 text-button-12 in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-8 gap-1 rounded-[min(var(--radius-md),10px)] px-3 in-data-[slot=button-group]:rounded-md has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5",
-        lg: "h-10 gap-1.5 px-3.5 has-data-[icon=inline-end]:pe-3 has-data-[icon=inline-start]:ps-3",
+        lg: "h-10 gap-1.5 px-4 has-data-[icon=inline-end]:pe-3.5 has-data-[icon=inline-start]:ps-3.5",
         icon: "size-9",
         "icon-xs":
           "size-6 rounded-[min(var(--radius-md),8px)] in-data-[slot=button-group]:rounded-md [&_svg:not([class*='size-'])]:size-3",

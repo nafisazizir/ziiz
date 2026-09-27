@@ -118,13 +118,13 @@ function MenubarCheckboxItem({
       data-slot="menubar-checkbox-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
+      <span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center in-data-[size=lg]:start-3 [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.CheckboxItemIndicator>
           <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
         </MenuPrimitive.CheckboxItemIndicator>
@@ -153,12 +153,12 @@ function MenubarRadioItem({
       data-slot="menubar-radio-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
+      <span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center in-data-[size=lg]:start-3 [&_svg:not([class*='size-'])]:size-4">
         <MenuPrimitive.RadioItemIndicator>
           <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
         </MenuPrimitive.RadioItemIndicator>

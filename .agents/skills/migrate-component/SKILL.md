@@ -87,6 +87,20 @@ focus-visible:ring-ring/50` cluster (`--ring` already resolves to
    controls to `transition-colors` (or drop it if nothing transitions).
    Functional motion is unaffected: switch thumb travel, accordion collapse,
    overlay enter/exit stay as shipped.
+9. **One text inset: 12px.** Every control from 32px up sits its text 12px
+   in (`px-3`), 10px at 24px (`px-2.5`): buttons square or pill (no padding
+   compounds; `shape="rounded"` changes only the radius), toggles, fields
+   (input, textarea, select and native-select triggers, input-group,
+   button-group text, combobox chips). Icon sides sit a half step in
+   (`ps-2.5`). Popup contents carry `p-1` plus `border border-transparent`
+   and items keep `px-2`, so item text lands at 1 + 4 + 8 = 13, exactly a
+   bordered trigger's 1 + 12; the material's ring still draws the edge.
+   Padding and indicator offsets on controls and items are logical (`ps`,
+   `pe`, `start`, `end`), never physical. Adopted 2026-09-27 after
+   measuring Geist (fields 36/12), the Vercel dashboard (36/12) and the
+   Claude app (32/12); x.com's 40/16 was tried at 36 and read too wide.
+   `/playground/inset` measures every control and popup in both directions.
+   Sidebar and Nav rows keep their own list rhythm and are not covered.
 
 ## Order
 

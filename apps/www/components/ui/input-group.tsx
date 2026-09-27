@@ -14,7 +14,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="input-group"
       role="group"
       className={cn(
-        "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border border-gray-alpha-400 bg-background-100 transition-[color,border-color,box-shadow] outline-none hover:border-gray-alpha-500 in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-[[data-slot=input-group-control]:focus-visible]:border-gray-600 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-gray-600/50 has-[[data-slot][aria-invalid=true]]:border-red-800 has-[[data-slot][aria-invalid=true]]:bg-red-100 has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-red-800/20 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5",
+        "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border border-gray-alpha-400 bg-background-100 transition-[color,border-color,box-shadow] outline-none hover:border-gray-alpha-500 in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-[[data-slot=input-group-control]:focus-visible]:border-gray-600 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-gray-600/50 has-[[data-slot][aria-invalid=true]]:border-red-800 has-[[data-slot][aria-invalid=true]]:bg-red-100 has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-red-800/20 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
         className
       )}
       {...props}
@@ -28,13 +28,13 @@ const inputGroupAddonVariants = cva(
     variants: {
       align: {
         "inline-start":
-          "order-first pl-2 has-[>button]:-ml-1 has-[>kbd]:ml-[-0.15rem]",
+          "order-first ps-3 has-[>button]:-ms-2.75 has-[>button[data-size^=icon]]:-ms-1 has-[>kbd]:ms-[-0.15rem]",
         "inline-end":
-          "order-last pr-2 has-[>button]:-mr-1 has-[>kbd]:mr-[-0.15rem]",
+          "order-last pe-3 has-[>button]:-me-2.75 has-[>button[data-size^=icon]]:-me-1 has-[>kbd]:me-[-0.15rem]",
         "block-start":
-          "order-first w-full justify-start px-2.5 pt-2 group-has-[>input]/input-group:pt-2 [.border-b]:pb-2",
+          "order-first w-full justify-start px-3 pt-2 group-has-[>input]/input-group:pt-2 [.border-b]:pb-2",
         "block-end":
-          "order-last w-full justify-start px-2.5 pb-2 group-has-[>input]/input-group:pb-2 [.border-t]:pt-2",
+          "order-last w-full justify-start px-3 pb-2 group-has-[>input]/input-group:pb-2 [.border-t]:pt-2",
       },
     },
     defaultVariants: {
@@ -66,12 +66,11 @@ function InputGroupAddon({
 }
 
 // These classes land after Button's own, so shape has to be restated here
-// for the sizes that carry their own radius and padding (xs, icon-xs); sm and
-// icon-sm fall through to Button's rounded compounds.
+// for the sizes that carry their own radius (xs, icon-xs).
 const inputGroupButtonVariants = cva("flex items-center gap-2 text-button-14", {
   variants: {
     size: {
-      xs: "h-6 gap-1 rounded-[min(var(--radius-md),8px)] px-1.5 [&>svg:not([class*='size-'])]:size-3.5",
+      xs: "h-6 gap-1 rounded-[min(var(--radius-md),8px)] px-2.5 has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 [&>svg:not([class*='size-'])]:size-3.5",
       sm: "",
       "icon-xs":
         "size-6 rounded-[min(var(--radius-md),8px)] p-0 has-[>svg]:p-0",
@@ -86,8 +85,7 @@ const inputGroupButtonVariants = cva("flex items-center gap-2 text-button-14", {
     {
       shape: "rounded",
       size: "xs",
-      className:
-        "rounded-full px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+      className: "rounded-full",
     },
     {
       shape: "rounded",

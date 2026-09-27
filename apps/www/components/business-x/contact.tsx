@@ -81,6 +81,7 @@ export function Contact() {
                 id={`business-x-${field.id}`}
                 type={field.type}
                 placeholder={field.placeholder}
+                size="lg"
               />
             </Field>
           ))}
@@ -108,6 +109,7 @@ export function Contact() {
               id="business-x-help"
               placeholder="Looking for help with ads"
               rows={2}
+              size="lg"
             />
           </Field>
         </FieldGroup>

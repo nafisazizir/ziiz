@@ -71,6 +71,7 @@ export function Newsletter({
               id="newsletter-email"
               type="email"
               placeholder="benji@email.com"
+              size="lg"
             />
           </Field>
           <Field className={cn(!agency && "col-span-full")}>

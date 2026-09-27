@@ -48,38 +48,67 @@ const sites = [
   { name: "Help Center", domain: "help.x.com", icon: HelpIcon },
 ]
 
-const nav: { title: string; items?: string[] }[] = [
-  { title: "Introduction" },
+type NavEntry = { title: string; href: string }
+const nav: (NavEntry & { items?: NavEntry[] })[] = [
+  { title: "Introduction", href: "/business-x" },
   {
     title: "Basics",
-    items: ["Overview", "Why X", "Get your business started with X"],
+    href: "/business-x/basics",
+    items: [
+      { title: "Overview", href: "/business-x/basics" },
+      { title: "Why X", href: "/business-x/basics/intro-x-for-business" },
+      {
+        title: "Get your business started with X",
+        href: "/business-x/basics/get-your-business-started-with-x",
+      },
+    ],
   },
   {
     title: "Advertising",
+    href: "/business-x/advertising",
     items: [
-      "Overview",
-      "Get started",
-      "Best practices",
-      "Measurement",
-      "Success Stories",
+      { title: "Overview", href: "/business-x/advertising" },
+      {
+        title: "Get started",
+        href: "/business-x/advertising/get-started-with-twitter-ads",
+      },
+      {
+        title: "Best practices",
+        href: "/business-x/advertising/creative-best-practices",
+      },
+      { title: "Measurement", href: "/business-x/advertising/measurement" },
+      { title: "Success Stories", href: "/business-x/success-stories" },
     ],
   },
   {
     title: "Products",
+    href: "/business-x/products",
     items: [
-      "Overview",
-      "Vertical Video Ads",
-      "X Spaces",
-      "Amplify Sponsorships",
-      "X Shopping",
-      "Timeline Takeovers",
-      "Spotlight Takeovers",
+      { title: "Overview", href: "/business-x/products" },
+      {
+        title: "Vertical Video Ads",
+        href: "/business-x/products/vertical-video-ads",
+      },
+      { title: "X Spaces", href: "/business-x/products/x-spaces" },
+      {
+        title: "Amplify Sponsorships",
+        href: "/business-x/products/amplify-sponsorships",
+      },
+      { title: "X Shopping", href: "/business-x/products/shopping" },
+      {
+        title: "Timeline Takeovers",
+        href: "/business-x/products/timeline-takeovers",
+      },
+      {
+        title: "Spotlight Takeovers",
+        href: "/business-x/products/spotlight-takeovers",
+      },
     ],
   },
-  { title: "Resources" },
-  { title: "Help Center" },
-  { title: "Blog" },
-  { title: "Premium Business" },
+  { title: "Resources", href: "/business-x/resources" },
+  { title: "Help Center", href: "/business-x/help" },
+  { title: "Blog", href: "/business-x/blog" },
+  { title: "Premium Business", href: "https://x.com/i/premium_business" },
 ]
 
 // x.com's rail is the first column of a centred frame, not pinned to the
@@ -146,23 +175,19 @@ export function BusinessMobileNav() {
   )
 }
 
-// Where the clone's plain links go. Anything not listed is a stub.
-const routes: Record<string, string> = {
-  Introduction: "/business-x",
-  Blog: "/business-x/blog",
-}
-
-// One section open at a time: opening another closes the one before.
+// One section open at a time: opening another closes the one before, and
+// the section holding the current page starts open.
 function RailLinks({ onNavigate }: { onNavigate?: () => void }) {
-  const [openSection, setOpenSection] = React.useState<string | null>(null)
   const pathname = usePathname()
-  const isActive = (title: string) => {
-    const route = routes[title]
-    if (!route) return false
-    return route === "/business-x"
-      ? pathname === route
-      : pathname === route || pathname.startsWith(`${route}/`)
-  }
+  const current = (href: string) =>
+    href === "/business-x"
+      ? pathname === href
+      : pathname === href || pathname.startsWith(`${href}/`)
+  const within = (item: (typeof nav)[number]) =>
+    item.items?.some((sub) => current(sub.href)) ?? false
+  const [openSection, setOpenSection] = React.useState<string | null>(
+    () => nav.find(within)?.title ?? null
+  )
 
   return (
     <NavList>
@@ -177,9 +202,12 @@ function RailLinks({ onNavigate }: { onNavigate?: () => void }) {
             <NavCollapsibleContent>
               <NavSub>
                 {item.items.map((sub) => (
-                  <NavSubItem key={sub}>
-                    <NavLink render={<Link href="#" onClick={onNavigate} />}>
-                      {sub}
+                  <NavSubItem key={sub.title}>
+                    <NavLink
+                      active={current(sub.href)}
+                      render={<Link href={sub.href} onClick={onNavigate} />}
+                    >
+                      {sub.title}
                     </NavLink>
                   </NavSubItem>
                 ))}
@@ -189,10 +217,8 @@ function RailLinks({ onNavigate }: { onNavigate?: () => void }) {
         ) : (
           <NavItem key={item.title}>
             <NavLink
-              active={isActive(item.title)}
-              render={
-                <Link href={routes[item.title] ?? "#"} onClick={onNavigate} />
-              }
+              active={current(item.href)}
+              render={<Link href={item.href} onClick={onNavigate} />}
             >
               {item.title}
             </NavLink>

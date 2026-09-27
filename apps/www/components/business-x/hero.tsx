@@ -1,20 +1,31 @@
+import type { ArtProps } from "@/components/art/props"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 
+type Banner = (
+  props: ArtProps & { variant?: "wide" | "narrow" }
+) => React.ReactNode
+
 // The screen-opening hero business.x.com puts on its section landings: a
-// six-column headline, an animation panel, then a short description in
-// columns five to seven with, sometimes, a pair of actions under it.
+// six-column headline, a drawing in a grey panel, then a short description
+// in columns five to seven with, sometimes, a pair of actions under it.
 //
-// The site loops an animation in the panel; it is left empty on purpose so
-// nothing but layout is under test. Its ratio steps with the viewport the
-// way x.com's does: 5/3, 2/1 from md, 11/4 from lg.
+// The panel's ratio steps with the viewport the way x.com's does: 5/3, 2/1
+// from md, 11/4 from lg. The drawing is one of the banners in components/art:
+// its wide variant from md and its narrow one below, each filling the panel
+// edge to edge (x.com slices them too).
 export function Hero({
   title,
   description,
   actions,
+  art: Art,
+  panel = true,
 }: {
   title: React.ReactNode
   description: React.ReactNode
   actions?: React.ReactNode
+  art?: Banner
+  // Pages x.com serves without a drawing (Resources, Help) drop the panel.
+  panel?: boolean
 }) {
   return (
     <section className="flex flex-col pt-4 pb-4 lg:pt-20 lg:pb-16">
@@ -23,8 +34,26 @@ export function Hero({
           {title}
         </h1>
       </div>
-      <div className="mt-6 bg-gray-100">
-        <AspectRatio ratio={5 / 3} className="md:aspect-2/1 lg:aspect-11/4" />
+      <div
+        className="mt-6 overflow-hidden bg-gray-100 text-gray-1000"
+        hidden={!panel}
+      >
+        <AspectRatio ratio={5 / 3} className="md:aspect-2/1 lg:aspect-11/4">
+          {Art && (
+            <>
+              <Art
+                variant="wide"
+                preserveAspectRatio="xMidYMid slice"
+                className="absolute inset-0 hidden size-full md:block"
+              />
+              <Art
+                variant="narrow"
+                preserveAspectRatio="xMidYMid slice"
+                className="absolute inset-0 size-full md:hidden"
+              />
+            </>
+          )}
+        </AspectRatio>
       </div>
       <div className="mt-6 grid grid-cols-8 gap-4">
         <div className="col-span-7 flex flex-col items-start gap-8 lg:col-span-3 lg:col-start-5 lg:gap-4">

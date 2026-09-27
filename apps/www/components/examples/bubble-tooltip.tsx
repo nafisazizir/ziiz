@@ -1,4 +1,4 @@
-import { CheckIcon } from "@/components/icons"
+import { IconCheck } from "@tabler/icons-react"
 
 import { Bubble, BubbleContent, BubbleReactions } from "@/components/ui/bubble"
 import { Button } from "@/components/ui/button"
@@ -19,7 +19,7 @@ function BubbleTooltipDemo() {
         <BubbleReactions>
           <Tooltip>
             <TooltipTrigger render={<Button variant="ghost" size="icon-xs" />}>
-              <CheckIcon />
+              <IconCheck />
             </TooltipTrigger>
             <TooltipContent>Read on Jan 5, 2026 at 4:32 PM</TooltipContent>
           </Tooltip>

@@ -1,11 +1,11 @@
 import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "@/components/icons"
+  IconCalculator,
+  IconCalendar,
+  IconCreditCard,
+  IconMoodSmile,
+  IconSettings,
+  IconUser,
+} from "@tabler/icons-react"
 
 import {
   Command,
@@ -26,32 +26,32 @@ function CommandDemo() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>
-            <Calendar />
+            <IconCalendar />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <Smile />
+            <IconMoodSmile />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem disabled>
-            <Calculator />
+            <IconCalculator />
             <span>Calculator</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
           <CommandItem>
-            <User />
+            <IconUser />
             <span>Profile</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <CreditCard />
+            <IconCreditCard />
             <span>Billing</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <Settings />
+            <IconSettings />
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>

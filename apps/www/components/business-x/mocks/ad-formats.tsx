@@ -1,19 +1,18 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowRight01Icon,
-  Bookmark01Icon,
-  Camera01Icon,
-  ChartBarLineIcon,
-  CheckmarkBadge02Icon,
-  Comment01Icon,
-  FavouriteIcon,
-  LaptopIcon,
-  PlayIcon,
-  RepeatIcon,
-  Share08Icon,
-  SmartPhone01Icon,
-  Watch01Icon,
-} from "@hugeicons/core-free-icons"
+  IconBookmark,
+  IconCamera,
+  IconChartHistogram,
+  IconChevronRight,
+  IconDeviceLaptop,
+  IconDeviceMobile,
+  IconDeviceWatch,
+  IconHeart,
+  IconMessageCircle,
+  IconPlayerPlay,
+  IconRepeat,
+  IconRosetteDiscountCheck,
+  IconShare,
+} from "@tabler/icons-react"
 
 import { Post } from "@/components/business-x/mocks/post"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
@@ -40,11 +39,7 @@ function AdHeader({
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <span className="flex items-center gap-1 text-label-12 text-gray-1000">
           {name}
-          <HugeiconsIcon
-            icon={CheckmarkBadge02Icon}
-            strokeWidth={2}
-            className="size-3 text-amber-700"
-          />
+          <IconRosetteDiscountCheck className="size-3 text-amber-700" />
         </span>
         {subtitle ? (
           <span className="text-label-12 text-gray-900">{subtitle}</span>
@@ -82,11 +77,7 @@ export function AmplifyMock() {
     <div className="relative h-48 w-64">
       <Card size="sm" className="absolute top-8 right-0 h-36 w-56 py-0" />
       <div className="absolute top-0 left-0 flex aspect-3/2 w-52 items-center justify-center rounded-lg bg-gray-200">
-        <HugeiconsIcon
-          icon={PlayIcon}
-          strokeWidth={2}
-          className="size-6 text-gray-700"
-        />
+        <IconPlayerPlay className="size-6 text-gray-700" />
         <span className="absolute bottom-2 left-2 text-label-12 text-gray-900">
           Your AD
         </span>
@@ -123,7 +114,12 @@ export function CarouselMock() {
 
 // 03 Collection + shoppable: a hero picture, lines, a row of product tiles.
 export function CollectionMock() {
-  const icons = [Camera01Icon, Watch01Icon, LaptopIcon, SmartPhone01Icon]
+  const icons = [
+    IconCamera,
+    IconDeviceWatch,
+    IconDeviceLaptop,
+    IconDeviceMobile,
+  ]
   return (
     <Card size="sm" className="w-48">
       <CardHeader>
@@ -136,16 +132,12 @@ export function CollectionMock() {
           <Skeleton className="h-1.5 w-1/2" />
         </div>
         <div className="grid grid-cols-4 gap-1.5">
-          {icons.map((icon, i) => (
+          {icons.map((ItemIcon, i) => (
             <span
               key={i}
               className="flex aspect-square items-center justify-center rounded-md bg-gray-100 text-gray-900"
             >
-              <HugeiconsIcon
-                icon={icon}
-                strokeWidth={1.5}
-                className="size-3.5"
-              />
+              <ItemIcon stroke={1.5} className="size-3.5" />
             </span>
           ))}
         </div>
@@ -206,11 +198,7 @@ export function DynamicMock() {
                 key={i}
                 className="flex aspect-square w-2/5 shrink-0 items-center justify-center rounded-md bg-gray-100 text-gray-900"
               >
-                <HugeiconsIcon
-                  icon={SmartPhone01Icon}
-                  strokeWidth={1.5}
-                  className="size-4"
-                />
+                <IconDeviceMobile stroke={1.5} className="size-4" />
               </span>
             ))}
           </div>
@@ -225,10 +213,10 @@ export function DynamicMock() {
 // 06 Boost existing posts: a post with its action counts, in a timeline.
 export function BoostMock() {
   const counts = [
-    [Comment01Icon, "3k"],
-    [RepeatIcon, "888"],
-    [FavouriteIcon, "5k"],
-    [Bookmark01Icon, "1k"],
+    [IconMessageCircle, "3k"],
+    [IconRepeat, "888"],
+    [IconHeart, "5k"],
+    [IconBookmark, "1k"],
   ] as const
   return (
     <div className="flex w-56 flex-col gap-3">
@@ -238,13 +226,9 @@ export function BoostMock() {
           <AdHeader />
         </CardHeader>
         <CardContent className="flex items-center justify-between text-label-12 text-gray-900">
-          {counts.map(([icon, n], i) => (
+          {counts.map(([ItemIcon, n], i) => (
             <span key={i} className="flex items-center gap-1">
-              <HugeiconsIcon
-                icon={icon}
-                strokeWidth={1.5}
-                className="size-3.5"
-              />
+              <ItemIcon stroke={1.5} className="size-3.5" />
               {n}
             </span>
           ))}
@@ -265,11 +249,7 @@ export function MentionsMock() {
           <div className="flex flex-col gap-1">
             <span className="flex items-center gap-1 text-label-12 text-gray-1000">
               Benji Taylor
-              <HugeiconsIcon
-                icon={CheckmarkBadge02Icon}
-                strokeWidth={2}
-                className="size-3 text-blue-700"
-              />
+              <IconRosetteDiscountCheck className="size-3 text-blue-700" />
             </span>
             <span className="flex gap-1">
               <Skeleton className="h-1.5 w-6" />
@@ -284,11 +264,7 @@ export function MentionsMock() {
           <span className="text-gray-1000">Business</span>
           <span className="ml-auto flex items-center gap-0.5 text-gray-900">
             Visit
-            <HugeiconsIcon
-              icon={ArrowRight01Icon}
-              strokeWidth={2}
-              className="size-3"
-            />
+            <IconChevronRight className="size-3" />
           </span>
         </div>
         <span className="text-label-12 text-gray-1000">
@@ -340,18 +316,13 @@ function FadedPost() {
       </CardHeader>
       <CardContent className="flex gap-6 text-gray-900">
         {[
-          Comment01Icon,
-          RepeatIcon,
-          FavouriteIcon,
-          ChartBarLineIcon,
-          Share08Icon,
-        ].map((icon, i) => (
-          <HugeiconsIcon
-            key={i}
-            icon={icon}
-            strokeWidth={1.5}
-            className="size-3.5"
-          />
+          IconMessageCircle,
+          IconRepeat,
+          IconHeart,
+          IconChartHistogram,
+          IconShare,
+        ].map((ItemIcon, i) => (
+          <ItemIcon key={i} stroke={1.5} className="size-3.5" />
         ))}
       </CardContent>
     </Card>

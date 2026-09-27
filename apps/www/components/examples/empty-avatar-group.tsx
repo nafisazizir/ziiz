@@ -1,4 +1,4 @@
-import { PlusIcon } from "@/components/icons"
+import { IconPlus } from "@tabler/icons-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -44,7 +44,7 @@ export default function EmptyAvatarGroup() {
       </EmptyHeader>
       <EmptyContent>
         <Button size="sm">
-          <PlusIcon />
+          <IconPlus />
           Invite Members
         </Button>
       </EmptyContent>

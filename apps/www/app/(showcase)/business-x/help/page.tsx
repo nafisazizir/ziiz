@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { ArrowRight02Icon, Search01Icon } from "@hugeicons/core-free-icons"
+import { IconArrowRight, IconSearch } from "@tabler/icons-react"
 
 import { BusinessFrame } from "@/components/business-x/frame"
 import { Hero } from "@/components/business-x/hero"
@@ -144,7 +143,7 @@ export default function HelpPage() {
         actions={
           <InputGroup className="w-full max-w-100">
             <InputGroupAddon align="inline-start">
-              <HugeiconsIcon icon={Search01Icon} strokeWidth={2} />
+              <IconSearch />
             </InputGroupAddon>
             <InputGroupInput
               placeholder="Search"
@@ -215,7 +214,7 @@ export default function HelpPage() {
                     nativeButton={false}
                     render={<a href={item.href} />}
                   >
-                    <HugeiconsIcon icon={ArrowRight02Icon} strokeWidth={2} />
+                    <IconArrowRight />
                   </Button>
                 </CardFooter>
               </Card>
@@ -242,7 +241,7 @@ export default function HelpPage() {
                     nativeButton={false}
                     render={<a href={item.href} />}
                   >
-                    <HugeiconsIcon icon={ArrowRight02Icon} strokeWidth={2} />
+                    <IconArrowRight />
                   </Button>
                 </CardFooter>
               </Card>

@@ -1,4 +1,4 @@
-import { MoreHorizontalIcon } from "@/components/icons"
+import { IconDots } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -38,7 +38,7 @@ function TableActions() {
                   <Button variant="ghost" size="icon" className="size-8" />
                 }
               >
-                <MoreHorizontalIcon />
+                <IconDots />
                 <span className="sr-only">Open menu</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -62,7 +62,7 @@ function TableActions() {
                   <Button variant="ghost" size="icon" className="size-8" />
                 }
               >
-                <MoreHorizontalIcon />
+                <IconDots />
                 <span className="sr-only">Open menu</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -86,7 +86,7 @@ function TableActions() {
                   <Button variant="ghost" size="icon" className="size-8" />
                 }
               >
-                <MoreHorizontalIcon />
+                <IconDots />
                 <span className="sr-only">Open menu</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Clock2Icon } from "@/components/icons"
+import { IconClock } from "@tabler/icons-react"
 
 import { Calendar } from "@/components/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
@@ -40,7 +40,7 @@ function CalendarWithTime() {
                 className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
               />
               <InputGroupAddon>
-                <Clock2Icon className="text-gray-900" />
+                <IconClock className="text-gray-900" />
               </InputGroupAddon>
             </InputGroup>
           </Field>
@@ -55,7 +55,7 @@ function CalendarWithTime() {
                 className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
               />
               <InputGroupAddon>
-                <Clock2Icon className="text-gray-900" />
+                <IconClock className="text-gray-900" />
               </InputGroupAddon>
             </InputGroup>
           </Field>

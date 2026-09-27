@@ -1,11 +1,11 @@
-import { ItalicIcon } from "@/components/icons"
+import { IconItalic } from "@tabler/icons-react"
 
 import { Toggle } from "@/components/ui/toggle"
 
 function ToggleText() {
   return (
     <Toggle aria-label="Toggle italic">
-      <ItalicIcon />
+      <IconItalic />
       Italic
     </Toggle>
   )

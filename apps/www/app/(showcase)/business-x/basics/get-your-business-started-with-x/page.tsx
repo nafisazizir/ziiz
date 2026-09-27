@@ -1,9 +1,5 @@
 import type { Metadata } from "next"
-import {
-  Calendar03Icon,
-  Share08Icon,
-  UserAdd01Icon,
-} from "@hugeicons/core-free-icons"
+import { IconCalendar, IconShare, IconUserPlus } from "@tabler/icons-react"
 
 import { CircleChain } from "@/components/art/banners/circle-chain"
 import { ClosingCta } from "@/components/business-x/closing-cta"
@@ -135,7 +131,7 @@ const steps: Step[] = [
 
 const grow: IconRow[] = [
   {
-    icon: UserAdd01Icon,
+    icon: IconUserPlus,
     title: "Follow and engage",
     copy: (
       <p>
@@ -145,7 +141,7 @@ const grow: IconRow[] = [
     ),
   },
   {
-    icon: Share08Icon,
+    icon: IconShare,
     title: "Share your @handle",
     copy: (
       <p>
@@ -155,7 +151,7 @@ const grow: IconRow[] = [
     ),
   },
   {
-    icon: Calendar03Icon,
+    icon: IconCalendar,
     title: "Post consistently",
     copy: <p>Give people a reason to follow you by sharing frequently.</p>,
   },

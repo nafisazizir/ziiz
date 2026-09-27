@@ -1,5 +1,4 @@
-import { HugeiconsIcon } from "@hugeicons/react"
-import type { IconSvgElement } from "@hugeicons/react"
+import { type Icon } from "@tabler/icons-react"
 
 import type { ArtProps } from "@/components/art/props"
 import { XText } from "@/components/business-x/runs"
@@ -11,7 +10,7 @@ export type Benefit = {
   title: string
   copy: React.ReactNode
   mark?: Mark
-  icon?: IconSvgElement
+  icon?: Icon
   // Where the item sits on the three-column grid; the first row on
   // "Why advertise" starts one column in.
   start?: 2 | 3
@@ -103,11 +102,7 @@ export function IconGrid({
           className="flex flex-col gap-4 border-t border-gray-alpha-400 max-lg:py-6 lg:pt-6 lg:pb-10"
         >
           {item.icon && (
-            <HugeiconsIcon
-              icon={item.icon}
-              strokeWidth={1.5}
-              className="size-6 text-gray-1000"
-            />
+            <item.icon stroke={1.5} className="size-6 text-gray-1000" />
           )}
           {item.mark && <item.mark className="size-6 text-gray-1000" />}
           <div className="flex flex-col gap-1">

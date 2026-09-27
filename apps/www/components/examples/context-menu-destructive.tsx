@@ -1,4 +1,4 @@
-import { PencilIcon, ShareIcon, TrashIcon } from "@/components/icons"
+import { IconPencil, IconShare, IconTrash } from "@tabler/icons-react"
 
 import {
   ContextMenu,
@@ -23,18 +23,18 @@ function ContextMenuDestructive() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuItem>
-            <PencilIcon />
+            <IconPencil />
             Edit
           </ContextMenuItem>
           <ContextMenuItem>
-            <ShareIcon />
+            <IconShare />
             Share
           </ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
           <ContextMenuItem variant="destructive">
-            <TrashIcon />
+            <IconTrash />
             Delete
           </ContextMenuItem>
         </ContextMenuGroup>

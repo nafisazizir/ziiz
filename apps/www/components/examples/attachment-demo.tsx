@@ -1,4 +1,4 @@
-import { FileCodeIcon, XIcon } from "@/components/icons"
+import { IconFileCode, IconX } from "@tabler/icons-react"
 
 import {
   Attachment,
@@ -60,13 +60,13 @@ function AttachmentDemo() {
         </AttachmentContent>
         <AttachmentActions>
           <AttachmentAction aria-label="Cancel upload">
-            <XIcon />
+            <IconX />
           </AttachmentAction>
         </AttachmentActions>
       </Attachment>
       <Attachment className="w-full">
         <AttachmentMedia>
-          <FileCodeIcon />
+          <IconFileCode />
         </AttachmentMedia>
         <AttachmentContent>
           <AttachmentTitle>message-renderer.tsx</AttachmentTitle>
@@ -74,7 +74,7 @@ function AttachmentDemo() {
         </AttachmentContent>
         <AttachmentActions>
           <AttachmentAction aria-label="Remove message-renderer.tsx">
-            <XIcon />
+            <IconX />
           </AttachmentAction>
         </AttachmentActions>
       </Attachment>

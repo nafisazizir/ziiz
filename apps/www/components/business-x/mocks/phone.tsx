@@ -1,9 +1,4 @@
-import { HugeiconsIcon } from "@hugeicons/react"
-import {
-  BatteryFullIcon,
-  SignalFull01Icon,
-  Wifi01Icon,
-} from "@hugeicons/core-free-icons"
+import { IconAntennaBars5, IconBattery4, IconWifi } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 
@@ -31,21 +26,9 @@ export function Phone({
           className="absolute top-2.5 left-1/2 h-7 w-24 -translate-x-1/2 rounded-full bg-gray-1000"
         />
         <span className="flex items-center gap-1">
-          <HugeiconsIcon
-            icon={SignalFull01Icon}
-            strokeWidth={2}
-            className="size-3.5"
-          />
-          <HugeiconsIcon
-            icon={Wifi01Icon}
-            strokeWidth={2}
-            className="size-3.5"
-          />
-          <HugeiconsIcon
-            icon={BatteryFullIcon}
-            strokeWidth={2}
-            className="size-4"
-          />
+          <IconAntennaBars5 className="size-3.5" />
+          <IconWifi className="size-3.5" />
+          <IconBattery4 className="size-4" />
         </span>
       </div>
       <div className="flex min-h-0 flex-1 flex-col overflow-hidden">

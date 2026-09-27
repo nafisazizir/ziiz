@@ -29,7 +29,7 @@ npx shadcn@latest add @ziiz/spinner
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @hugeicons/core-free-icons @hugeicons/react
+npm install @tabler/icons-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -62,11 +62,11 @@ You can replace the default spinner icon with any other icon by editing the `Spi
 
 ```tsx showLineNumbers title="components/ui/spinner.tsx"
 import { cn } from "@/lib/utils"
-import { LoaderIcon } from "@/components/icons"
+import { IconLoader } from "@tabler/icons-react"
 
 function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
   return (
-    <LoaderIcon
+    <IconLoader
       role="status"
       aria-label="Loading"
       className={cn("size-4 animate-spin", className)}

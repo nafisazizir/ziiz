@@ -1,4 +1,4 @@
-import { FileTextIcon } from "@/components/icons"
+import { IconFileText } from "@tabler/icons-react"
 
 import {
   Attachment,
@@ -13,7 +13,7 @@ function AttachmentSizes() {
     <div className="mx-auto flex w-full max-w-sm flex-col gap-3 py-12">
       <Attachment size="default" className="w-full">
         <AttachmentMedia>
-          <FileTextIcon />
+          <IconFileText />
         </AttachmentMedia>
         <AttachmentContent>
           <AttachmentTitle>Default attachment</AttachmentTitle>
@@ -22,7 +22,7 @@ function AttachmentSizes() {
       </Attachment>
       <Attachment size="sm" className="w-full">
         <AttachmentMedia>
-          <FileTextIcon />
+          <IconFileText />
         </AttachmentMedia>
         <AttachmentContent>
           <AttachmentTitle>Small attachment</AttachmentTitle>
@@ -31,7 +31,7 @@ function AttachmentSizes() {
       </Attachment>
       <Attachment size="xs" className="w-full">
         <AttachmentMedia>
-          <FileTextIcon />
+          <IconFileText />
         </AttachmentMedia>
         <AttachmentContent>
           <AttachmentTitle>Extra small attachment</AttachmentTitle>

@@ -13,11 +13,7 @@ import { IconGrid } from "@/components/business-x/benefit-grid"
 import { ResourceCards } from "@/components/business-x/resource-cards"
 import { Section, SectionHeading } from "@/components/business-x/section"
 import { Button } from "@/components/ui/button"
-import {
-  Award01Icon,
-  Calendar03Icon,
-  StarIcon,
-} from "@hugeicons/core-free-icons"
+import { IconAward, IconCalendar, IconStar } from "@tabler/icons-react"
 
 export const metadata: Metadata = {
   title: "Amplify Sponsorships | X Business",
@@ -64,7 +60,7 @@ const rows = [
 const moments = [
   {
     title: "Major Sporting Events",
-    icon: StarIcon,
+    icon: IconStar,
     copy: (
       <p>
         Connect your brand with highly engaged audiences during the biggest
@@ -74,7 +70,7 @@ const moments = [
   },
   {
     title: "Award Shows and Premieres",
-    icon: Award01Icon,
+    icon: IconAward,
     copy: (
       <p>
         Show up alongside entertainment’s most talked-about events and real-time
@@ -84,7 +80,7 @@ const moments = [
   },
   {
     title: "Lifestyle Moments",
-    icon: Calendar03Icon,
+    icon: IconCalendar,
     copy: (
       <p>
         Reach audiences around cultural, seasonal, and lifestyle moments that

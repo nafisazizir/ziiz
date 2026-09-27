@@ -1,4 +1,4 @@
-import { Bold, Italic, Underline } from "@/components/icons"
+import { IconBold, IconItalic, IconUnderline } from "@tabler/icons-react"
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
@@ -6,13 +6,13 @@ function ToggleGroupDemo() {
   return (
     <ToggleGroup variant="outline" multiple>
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
-        <Bold />
+        <IconBold />
       </ToggleGroupItem>
       <ToggleGroupItem value="italic" aria-label="Toggle italic">
-        <Italic />
+        <IconItalic />
       </ToggleGroupItem>
       <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
-        <Underline />
+        <IconUnderline />
       </ToggleGroupItem>
     </ToggleGroup>
   )

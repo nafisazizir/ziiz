@@ -1,11 +1,11 @@
 "use client"
 
 import {
-  CreditCardIcon,
-  LogOutIcon,
-  SettingsIcon,
-  UserIcon,
-} from "@/components/icons"
+  IconCreditCard,
+  IconLogout,
+  IconSettings,
+  IconUser,
+} from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -24,20 +24,20 @@ function DropdownMenuIcons() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <UserIcon />
+          <IconUser />
           Profile
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <CreditCardIcon />
+          <IconCreditCard />
           Billing
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <SettingsIcon />
+          <IconSettings />
           Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
-          <LogOutIcon />
+          <IconLogout />
           Log out
         </DropdownMenuItem>
       </DropdownMenuContent>

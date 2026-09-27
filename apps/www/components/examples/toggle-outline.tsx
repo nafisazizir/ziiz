@@ -1,4 +1,4 @@
-import { BoldIcon, ItalicIcon } from "@/components/icons"
+import { IconBold, IconItalic } from "@tabler/icons-react"
 
 import { Toggle } from "@/components/ui/toggle"
 
@@ -6,11 +6,11 @@ function ToggleOutline() {
   return (
     <div className="flex flex-wrap items-center gap-2">
       <Toggle variant="outline" aria-label="Toggle italic">
-        <ItalicIcon />
+        <IconItalic />
         Italic
       </Toggle>
       <Toggle variant="outline" aria-label="Toggle bold">
-        <BoldIcon />
+        <IconBold />
         Bold
       </Toggle>
     </div>

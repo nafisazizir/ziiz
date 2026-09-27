@@ -4,8 +4,7 @@
   "title": "Spinner",
   "description": "An indicator that can be used to show a loading state.",
   "dependencies": [
-    "@hugeicons/core-free-icons",
-    "@hugeicons/react"
+    "@tabler/icons-react"
   ],
   "registryDependencies": [
     "utils"
@@ -13,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/spinner.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\nimport { HugeiconsIcon } from \"@hugeicons/react\"\nimport { Loading03Icon } from \"@hugeicons/core-free-icons\"\n\nfunction Spinner({\n  className,\n  ...props\n}: Omit<React.ComponentProps<\"svg\">, \"strokeWidth\">) {\n  return (\n    <HugeiconsIcon\n      icon={Loading03Icon}\n      strokeWidth={2}\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { IconLoader } from \"@tabler/icons-react\"\n\nfunction Spinner({\n  className,\n  ...props\n}: Omit<React.ComponentProps<\"svg\">, \"strokeWidth\">) {\n  return (\n    <IconLoader\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
       "type": "registry:ui"
     }
   ],

@@ -1,11 +1,11 @@
 "use client"
 
 import {
-  BadgeCheckIcon,
-  BellIcon,
-  CreditCardIcon,
-  LogOutIcon,
-} from "@/components/icons"
+  IconBell,
+  IconCreditCard,
+  IconLogout,
+  IconRosetteDiscountCheck,
+} from "@tabler/icons-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -32,21 +32,21 @@ function DropdownMenuAvatar() {
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <BadgeCheckIcon />
+            <IconRosetteDiscountCheck />
             Account
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCardIcon />
+            <IconCreditCard />
             Billing
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <BellIcon />
+            <IconBell />
             Notifications
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOutIcon />
+          <IconLogout />
           Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>

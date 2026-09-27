@@ -1,4 +1,4 @@
-import { CircleFadingPlusIcon } from "@/components/icons"
+import { IconCirclePlus } from "@tabler/icons-react"
 
 import {
   AlertDialog,
@@ -23,7 +23,7 @@ function AlertDialogWithMedia() {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogMedia>
-            <CircleFadingPlusIcon />
+            <IconCirclePlus />
           </AlertDialogMedia>
           <AlertDialogTitle>Share this project?</AlertDialogTitle>
           <AlertDialogDescription>

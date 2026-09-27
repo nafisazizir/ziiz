@@ -1,4 +1,4 @@
-import { ShieldAlertIcon } from "@/components/icons"
+import { IconShieldExclamation } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -15,7 +15,7 @@ function ItemIcon() {
     <div className="flex w-full max-w-lg flex-col gap-6">
       <Item variant="outline">
         <ItemMedia variant="icon">
-          <ShieldAlertIcon />
+          <IconShieldExclamation />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Security Alert</ItemTitle>

@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@/components/icons"
+import { IconChevronDown } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -16,7 +16,7 @@ function CollapsibleBasic() {
             render={<Button variant="ghost" className="w-full" />}
           >
             Product details
-            <ChevronDownIcon className="ml-auto group-data-panel-open/button:rotate-180" />
+            <IconChevronDown className="ml-auto group-data-panel-open/button:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent className="flex flex-col items-start gap-2 p-2.5 pt-0 text-sm">
             <div>

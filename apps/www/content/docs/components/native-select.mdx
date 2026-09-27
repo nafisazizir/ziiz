@@ -3,9 +3,12 @@ title: Native Select
 description: A styled native HTML select element with consistent design system integration.
 ---
 
-import { InfoIcon } from "@/components/icons"
+import { IconInfoCircle } from "@tabler/icons-react"
 
-<Callout variant="info" icon={<InfoIcon className="translate-y-[3px]!" />}>
+<Callout
+  variant="info"
+  icon={<IconInfoCircle className="translate-y-[3px]!" />}
+>
   For a styled select component, see the [Select](/components/select) component.
 </Callout>
 
@@ -35,7 +38,7 @@ npx shadcn@latest add @ziiz/native-select
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @hugeicons/core-free-icons @hugeicons/react
+npm install @tabler/icons-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CreditCardIcon, SettingsIcon, UserIcon } from "@/components/icons"
+import { IconCreditCard, IconSettings, IconUser } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -30,17 +30,17 @@ function CommandWithShortcuts() {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Settings">
               <CommandItem>
-                <UserIcon />
+                <IconUser />
                 <span>Profile</span>
                 <CommandShortcut>⌘P</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <CreditCardIcon />
+                <IconCreditCard />
                 <span>Billing</span>
                 <CommandShortcut>⌘B</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <SettingsIcon />
+                <IconSettings />
                 <span>Settings</span>
                 <CommandShortcut>⌘S</CommandShortcut>
               </CommandItem>

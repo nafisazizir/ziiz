@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { ChevronDownIcon } from "@/components/icons"
+import { IconChevronDown } from "@tabler/icons-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -63,7 +63,7 @@ export function FormDropdown({
           }}
         />
         <InputGroupAddon align="inline-end">
-          <ChevronDownIcon />
+          <IconChevronDown />
         </InputGroupAddon>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

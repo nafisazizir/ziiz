@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Copy01Icon, Tick02Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 
@@ -69,11 +68,11 @@ function CodeBlock({
         data-copy-button
         onClick={() => void copy()}
       >
-        <HugeiconsIcon
-          icon={copied ? Tick02Icon : Copy01Icon}
-          strokeWidth={2}
-          data-icon="inline-start"
-        />
+        {copied ? (
+          <IconCheck data-icon="inline-start" />
+        ) : (
+          <IconCopy data-icon="inline-start" />
+        )}
         <span className="sr-only" aria-live="polite">
           {copied ? "Copied" : ""}
         </span>

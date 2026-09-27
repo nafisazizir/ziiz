@@ -1,19 +1,19 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import {
-  Analytics01Icon,
-  Car01Icon,
-  ChartLineData01Icon,
-  Cursor01Icon,
-  EyeIcon,
-  Location01Icon,
-  PieChart01Icon,
-  Rocket01Icon,
-  ShoppingCart01Icon,
-  SmartPhone01Icon,
-  Tv01Icon,
-  UserGroupIcon,
-} from "@hugeicons/core-free-icons"
+  IconCar,
+  IconChartBar,
+  IconChartLine,
+  IconChartPie,
+  IconDeviceMobile,
+  IconDeviceTv,
+  IconEye,
+  IconMapPin,
+  IconPointer,
+  IconRocket,
+  IconShoppingCart,
+  IconUsersGroup,
+} from "@tabler/icons-react"
 
 import { GrowthGraph } from "@/components/art/banners/growth-graph"
 import { IconGrid, type Benefit } from "@/components/business-x/benefit-grid"
@@ -46,7 +46,7 @@ const link = (href: string, label: string) => (
 const solutions: Benefit[] = [
   {
     title: "Campaign performance in Ads Manager",
-    icon: Analytics01Icon,
+    icon: IconChartBar,
     copy: (
       <>
         <p>
@@ -64,7 +64,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Audience Measurement",
-    icon: UserGroupIcon,
+    icon: IconUsersGroup,
     copy: (
       <p>
         Get a demographic breakdown of your X Ads campaigns and use those
@@ -76,7 +76,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Incremental Reach",
-    icon: ChartLineData01Icon,
+    icon: IconChartLine,
     copy: (
       <p>
         Get a detailed look at how much additional reach your X Ads campaigns
@@ -87,7 +87,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Viewability",
-    icon: EyeIcon,
+    icon: IconEye,
     copy: (
       <p>
         Find out if your ad was seen by accessing viewability metrics in X’s Ads
@@ -98,7 +98,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Brand Lift",
-    icon: Rocket01Icon,
+    icon: IconRocket,
     copy: (
       <>
         <p>
@@ -119,7 +119,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Website Conversion Tracking",
-    icon: Cursor01Icon,
+    icon: IconPointer,
     copy: (
       <>
         <p>
@@ -140,7 +140,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Mobile App Measurement",
-    icon: SmartPhone01Icon,
+    icon: IconDeviceMobile,
     copy: (
       <>
         <p>
@@ -159,7 +159,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Location Measurement",
-    icon: Location01Icon,
+    icon: IconMapPin,
     copy: (
       <p>
         Quantify the impact of X Ads in driving in-store foot traffic.
@@ -170,7 +170,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Buy-Through Rate",
-    icon: Car01Icon,
+    icon: IconCar,
     copy: (
       <p>
         Understand how exposure to X Ads correlates with car sales and use the
@@ -182,7 +182,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "TV Tune-In",
-    icon: Tv01Icon,
+    icon: IconDeviceTv,
     copy: (
       <p>
         Measure the effectiveness of X in driving TV tune-ins. Use this
@@ -194,7 +194,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Sales Impact",
-    icon: ShoppingCart01Icon,
+    icon: IconShoppingCart,
     copy: (
       <p>
         Through sales impact studies, marketers can measure the impact of X Ads
@@ -206,7 +206,7 @@ const solutions: Benefit[] = [
   },
   {
     title: "Marketing Mix Modeling (MMM)",
-    icon: PieChart01Icon,
+    icon: IconChartPie,
     copy: (
       <p>
         MMM quantifies the impact of several marketing inputs (e.g. media

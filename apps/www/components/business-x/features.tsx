@@ -1,12 +1,11 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowDataTransferVerticalIcon,
-  Cancel01Icon,
-  CheckmarkBadge02Icon,
-  CompassIcon,
-  Location01Icon,
-  Wallet01Icon,
-} from "@/components/icons/hugeicons"
+  IconArrowsUpDown,
+  IconCompass,
+  IconMapPin,
+  IconRosetteDiscountCheck,
+  IconWallet,
+  IconX,
+} from "@tabler/icons-react"
 
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import {
@@ -85,16 +84,16 @@ export function Features() {
 // place of a subtitle. CardHeader is a grid already; the tile takes both
 // rows and the title and bars stack beside it.
 function MockHeader({
-  icon,
+  icon: ItemIcon,
   children,
 }: {
-  icon: typeof Location01Icon
+  icon: typeof IconMapPin
   children: React.ReactNode
 }) {
   return (
     <>
       <span className="row-span-2 flex size-7 items-center justify-center bg-gray-100">
-        <HugeiconsIcon icon={icon} strokeWidth={2} className="size-4" />
+        <ItemIcon className="size-4" />
       </span>
       <CardTitle>{children}</CardTitle>
       <MockLines />
@@ -117,13 +116,13 @@ function LocationsMock() {
   return (
     <Card size="sm" className="w-full max-w-56">
       <CardHeader className="grid-cols-[auto_1fr] gap-x-3">
-        <MockHeader icon={Location01Icon}>Locations</MockHeader>
+        <MockHeader icon={IconMapPin}>Locations</MockHeader>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-1.5">
         {locations.map((place) => (
           <Badge key={place} variant="secondary">
             {place}
-            <HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} />
+            <IconX />
           </Badge>
         ))}
       </CardContent>
@@ -135,7 +134,7 @@ function BudgetMock() {
   return (
     <Card size="sm" className="w-full max-w-56">
       <CardHeader className="grid-cols-[auto_1fr] gap-x-3">
-        <MockHeader icon={Wallet01Icon}>Budget</MockHeader>
+        <MockHeader icon={IconWallet}>Budget</MockHeader>
       </CardHeader>
       <CardContent className="relative flex flex-col gap-2">
         <BudgetField id="business-x-amount" label="Amount" unit="USD" />
@@ -145,7 +144,7 @@ function BudgetMock() {
           size="icon-xs"
           className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
         >
-          <HugeiconsIcon icon={ArrowDataTransferVerticalIcon} strokeWidth={2} />
+          <IconArrowsUpDown />
           <span className="sr-only">Swap</span>
         </Button>
         <BudgetField id="business-x-audience" label="Audience" unit="Views" />
@@ -185,11 +184,7 @@ function AdMock() {
         <span className="row-span-2 size-7 bg-gray-100" />
         <CardTitle className="flex items-center gap-1">
           Business
-          <HugeiconsIcon
-            icon={CheckmarkBadge02Icon}
-            strokeWidth={2}
-            className="size-4 text-amber-700"
-          />
+          <IconRosetteDiscountCheck className="size-4 text-amber-700" />
           <span className="ml-auto text-label-12 text-gray-900">Ad</span>
         </CardTitle>
         <MockLines />
@@ -200,11 +195,7 @@ function AdMock() {
             ratio={3 / 1}
             className="flex items-center justify-center"
           >
-            <HugeiconsIcon
-              icon={CompassIcon}
-              strokeWidth={1.5}
-              className="size-8 text-gray-700"
-            />
+            <IconCompass stroke={1.5} className="size-8 text-gray-700" />
           </AspectRatio>
         </div>
       </CardContent>

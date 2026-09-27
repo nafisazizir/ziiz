@@ -1,9 +1,9 @@
 import {
-  ClipboardPasteIcon,
-  CopyIcon,
-  ScissorsIcon,
-  TrashIcon,
-} from "@/components/icons"
+  IconClipboard,
+  IconCopy,
+  IconScissors,
+  IconTrash,
+} from "@tabler/icons-react"
 
 import {
   ContextMenu,
@@ -28,22 +28,22 @@ function ContextMenuIcons() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuItem>
-            <CopyIcon />
+            <IconCopy />
             Copy
           </ContextMenuItem>
           <ContextMenuItem>
-            <ScissorsIcon />
+            <IconScissors />
             Cut
           </ContextMenuItem>
           <ContextMenuItem>
-            <ClipboardPasteIcon />
+            <IconClipboard />
             Paste
           </ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
           <ContextMenuItem variant="destructive">
-            <TrashIcon />
+            <IconTrash />
             Delete
           </ContextMenuItem>
         </ContextMenuGroup>

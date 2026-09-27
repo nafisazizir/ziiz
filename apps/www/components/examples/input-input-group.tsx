@@ -1,4 +1,4 @@
-import { InfoIcon } from "@/components/icons"
+import { IconInfoCircle } from "@tabler/icons-react"
 
 import { Field, FieldLabel } from "@/components/ui/field"
 import {
@@ -18,7 +18,7 @@ function InputInputGroup() {
           <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <InfoIcon />
+          <IconInfoCircle />
         </InputGroupAddon>
       </InputGroup>
     </Field>

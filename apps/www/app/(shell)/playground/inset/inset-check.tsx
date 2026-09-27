@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { Add01Icon, Search01Icon } from "@hugeicons/core-free-icons"
+import { IconPlus, IconSearch } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -216,7 +215,7 @@ function MenuItems() {
           Apple <DropdownMenuShortcut>⌘A</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <HugeiconsIcon icon={Add01Icon} strokeWidth={2} />
+          <IconPlus />
           Add fruit
         </DropdownMenuItem>
         <DropdownMenuItem inset>Inset item</DropdownMenuItem>
@@ -294,11 +293,7 @@ const groups: Group[] = [
         expect: icon,
         render: () => (
           <Button size={size} variant="secondary">
-            <HugeiconsIcon
-              icon={Add01Icon}
-              data-icon="inline-start"
-              data-text
-            />
+            <IconPlus data-icon="inline-start" data-text />
             Label
           </Button>
         ),
@@ -368,7 +363,7 @@ const groups: Group[] = [
         render: () => (
           <InputGroup size="lg">
             <InputGroupAddon>
-              <HugeiconsIcon icon={Search01Icon} />
+              <IconSearch />
             </InputGroupAddon>
             <InputGroupInput data-text placeholder="Search" />
           </InputGroup>
@@ -395,7 +390,7 @@ const groups: Group[] = [
           <InputGroup size="lg">
             <InputGroupAddon>
               <InputGroupButton size="icon-sm" aria-label="Search">
-                <HugeiconsIcon icon={Search01Icon} data-text />
+                <IconSearch data-text />
               </InputGroupButton>
             </InputGroupAddon>
             <InputGroupInput placeholder="Search" />
@@ -445,7 +440,7 @@ const groups: Group[] = [
         render: () => (
           <InputGroup>
             <InputGroupAddon>
-              <HugeiconsIcon icon={Search01Icon} />
+              <IconSearch />
             </InputGroupAddon>
             <InputGroupInput data-text placeholder="Search" />
           </InputGroup>
@@ -482,7 +477,7 @@ const groups: Group[] = [
           <InputGroup>
             <InputGroupAddon>
               <InputGroupButton size="icon-xs" aria-label="Search">
-                <HugeiconsIcon icon={Search01Icon} data-text />
+                <IconSearch data-text />
               </InputGroupButton>
             </InputGroupAddon>
             <InputGroupInput placeholder="Search" />

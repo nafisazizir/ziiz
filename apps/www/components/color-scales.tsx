@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Tick02Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { IconCheck } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -61,11 +60,7 @@ export function Swatch({
         }}
       >
         {copied ? (
-          <HugeiconsIcon
-            icon={Tick02Icon}
-            strokeWidth={2}
-            className="size-4 text-white mix-blend-difference"
-          />
+          <IconCheck className="size-4 text-white mix-blend-difference" />
         ) : null}
       </TooltipTrigger>
       <TooltipContent>

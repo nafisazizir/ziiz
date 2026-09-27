@@ -1,11 +1,11 @@
-import { CheckCircle2Icon } from "@/components/icons"
+import { IconCircleCheck } from "@tabler/icons-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export default function AlertBasic() {
   return (
     <Alert className="max-w-md">
-      <CheckCircle2Icon />
+      <IconCircleCheck />
       <AlertTitle>Account updated successfully</AlertTitle>
       <AlertDescription>
         Your profile information has been saved. Changes will be reflected

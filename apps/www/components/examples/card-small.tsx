@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "@/components/icons"
+import { IconChevronRight } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -24,15 +24,15 @@ function CardSmall() {
       <CardContent>
         <ul className="grid gap-2 py-2 text-sm">
           <li className="flex gap-2">
-            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-gray-900" />
+            <IconChevronRight className="mt-0.5 size-4 shrink-0 text-gray-900" />
             <span>Choose a schedule (daily, or weekly).</span>
           </li>
           <li className="flex gap-2">
-            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-gray-900" />
+            <IconChevronRight className="mt-0.5 size-4 shrink-0 text-gray-900" />
             <span>Send to channels or specific teammates.</span>
           </li>
           <li className="flex gap-2">
-            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-gray-900" />
+            <IconChevronRight className="mt-0.5 size-4 shrink-0 text-gray-900" />
             <span>Include charts, tables, and key metrics.</span>
           </li>
         </ul>

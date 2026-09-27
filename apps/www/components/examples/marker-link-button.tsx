@@ -1,6 +1,6 @@
 "use client"
 
-import { GitBranchIcon, RotateCcwIcon } from "@/components/icons"
+import { IconGitBranch, IconRotate } from "@tabler/icons-react"
 import { toast } from "sonner"
 
 import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker"
@@ -10,7 +10,7 @@ function MarkerLinkButtonDemo() {
     <div className="flex w-full max-w-sm flex-col gap-8 py-12">
       <Marker render={<a href="#links-and-buttons" />}>
         <MarkerIcon>
-          <GitBranchIcon />
+          <IconGitBranch />
         </MarkerIcon>
         <MarkerContent>View the pull request</MarkerContent>
       </Marker>
@@ -24,7 +24,7 @@ function MarkerLinkButtonDemo() {
         }
       >
         <MarkerIcon>
-          <RotateCcwIcon />
+          <IconRotate />
         </MarkerIcon>
         <MarkerContent>Revert this change</MarkerContent>
       </Marker>

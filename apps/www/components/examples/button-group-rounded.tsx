@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@/components/icons"
+import { IconChevronDown } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
@@ -28,7 +28,7 @@ export default function ButtonGroupRounded() {
           <DropdownMenuTrigger
             render={<Button shape="rounded" size="icon" aria-label="More" />}
           >
-            <ChevronDownIcon />
+            <IconChevronDown />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuGroup>

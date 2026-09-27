@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Building2Icon, CreditCardIcon, WalletIcon } from "@/components/icons"
+import { IconBuilding, IconCreditCard, IconWallet } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -30,15 +30,15 @@ function DropdownMenuRadioIcons() {
             onValueChange={setPaymentMethod}
           >
             <DropdownMenuRadioItem value="card">
-              <CreditCardIcon />
+              <IconCreditCard />
               Credit Card
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="paypal">
-              <WalletIcon />
+              <IconWallet />
               PayPal
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="bank">
-              <Building2Icon />
+              <IconBuilding />
               Bank Transfer
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>

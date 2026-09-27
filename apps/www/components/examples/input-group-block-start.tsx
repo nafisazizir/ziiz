@@ -1,4 +1,4 @@
-import { CopyIcon, FileCodeIcon } from "@/components/icons"
+import { IconCopy, IconFileCode } from "@tabler/icons-react"
 
 import {
   Field,
@@ -40,10 +40,10 @@ function InputGroupBlockStart() {
             className="font-mono text-sm"
           />
           <InputGroupAddon align="block-start">
-            <FileCodeIcon className="text-gray-900" />
+            <IconFileCode className="text-gray-900" />
             <InputGroupText className="font-mono">script.js</InputGroupText>
             <InputGroupButton size="icon-xs" className="ml-auto">
-              <CopyIcon />
+              <IconCopy />
               <span className="sr-only">Copy</span>
             </InputGroupButton>
           </InputGroupAddon>

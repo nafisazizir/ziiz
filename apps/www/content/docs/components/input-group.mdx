@@ -3,7 +3,7 @@ title: Input Group
 description: Add addons, buttons, and helper content to inputs.
 ---
 
-import { IconInfoCircle } from "@/components/icons"
+import { IconInfoCircle } from "@tabler/icons-react"
 
 <ComponentPreview name="input-group-demo" />
 
@@ -63,7 +63,7 @@ import {
 <InputGroup>
   <InputGroupInput placeholder="Search..." />
   <InputGroupAddon>
-    <SearchIcon />
+    <IconSearch />
   </InputGroupAddon>
 </InputGroup>
 ```
@@ -186,7 +186,7 @@ Displays icons, text, buttons, or other content alongside inputs.
 
 ```tsx
 <InputGroupAddon align="inline-end">
-  <SearchIcon />
+  <IconSearch />
 </InputGroupAddon>
 ```
 
@@ -215,7 +215,7 @@ Displays buttons within input groups.
 ```tsx
 <InputGroupButton>Button</InputGroupButton>
 <InputGroupButton size="icon-xs" aria-label="Copy">
-  <CopyIcon />
+  <IconCopy />
 </InputGroupButton>
 ```
 
@@ -233,7 +233,7 @@ All other props are passed through to the underlying `<Input />` component.
 <InputGroup>
   <InputGroupInput placeholder="Enter text..." />
   <InputGroupAddon>
-    <SearchIcon />
+    <IconSearch />
   </InputGroupAddon>
 </InputGroup>
 ```

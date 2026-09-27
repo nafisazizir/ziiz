@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDownIcon, MoreHorizontal } from "@/components/icons"
+import { IconChevronDown, IconDots } from "@tabler/icons-react"
 
 import {
   DropdownMenu,
@@ -32,7 +32,7 @@ function InputGroupDropdown() {
                 />
               }
             >
-              <MoreHorizontal />
+              <IconDots />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
               <DropdownMenuGroup>
@@ -53,7 +53,7 @@ function InputGroupDropdown() {
                 <InputGroupButton variant="ghost" className="pr-1.5! text-xs" />
               }
             >
-              Search In... <ChevronDownIcon className="size-3" />
+              Search In... <IconChevronDown className="size-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
               <DropdownMenuGroup>

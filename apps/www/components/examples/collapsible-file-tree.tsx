@@ -1,4 +1,4 @@
-import { ChevronRightIcon, FileIcon, FolderIcon } from "@/components/icons"
+import { IconChevronRight, IconFile, IconFolder } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -77,8 +77,8 @@ function CollapsibleFileTree() {
               />
             }
           >
-            <ChevronRightIcon className="transition-transform group-data-[state=open]:rotate-90" />
-            <FolderIcon />
+            <IconChevronRight className="transition-transform group-data-[state=open]:rotate-90" />
+            <IconFolder />
             {fileItem.name}
           </CollapsibleTrigger>
           <CollapsibleContent className="style-lyra:ml-4 mt-1 ml-5">
@@ -96,7 +96,7 @@ function CollapsibleFileTree() {
         size="sm"
         className="w-full justify-start gap-2 text-gray-1000"
       >
-        <FileIcon />
+        <IconFile />
         <span>{fileItem.name}</span>
       </Button>
     )

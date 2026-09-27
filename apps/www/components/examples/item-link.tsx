@@ -1,4 +1,4 @@
-import { ChevronRightIcon, ExternalLinkIcon } from "@/components/icons"
+import { IconChevronRight, IconExternalLink } from "@tabler/icons-react"
 
 import {
   Item,
@@ -19,7 +19,7 @@ function ItemLink() {
           </ItemDescription>
         </ItemContent>
         <ItemActions>
-          <ChevronRightIcon className="size-4" />
+          <IconChevronRight className="size-4" />
         </ItemActions>
       </Item>
       <Item
@@ -33,7 +33,7 @@ function ItemLink() {
           </ItemDescription>
         </ItemContent>
         <ItemActions>
-          <ExternalLinkIcon className="size-4" />
+          <IconExternalLink className="size-4" />
         </ItemActions>
       </Item>
     </div>

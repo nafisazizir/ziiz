@@ -6,11 +6,11 @@ import { useTheme } from "next-themes"
 import { XcomWordmark } from "@/components/art/sections/xcom-wordmark"
 import { XText } from "@/components/business-x/runs"
 import {
-  ChevronDownIcon,
-  MonitorIcon,
-  MoonIcon,
-  SunIcon,
-} from "@/components/icons"
+  IconChevronDown,
+  IconDeviceDesktop,
+  IconMoon,
+  IconSun,
+} from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -146,9 +146,9 @@ export function Footer() {
 }
 
 const themes = [
-  { value: "system", label: "System theme", Icon: MonitorIcon },
-  { value: "light", label: "Light theme", Icon: SunIcon },
-  { value: "dark", label: "Dark theme", Icon: MoonIcon },
+  { value: "system", label: "System theme", Icon: IconDeviceDesktop },
+  { value: "light", label: "Light theme", Icon: IconSun },
+  { value: "dark", label: "Dark theme", Icon: IconMoon },
 ]
 
 // The picker reads the theme after hydration; until then it shows System so
@@ -195,7 +195,7 @@ function LanguageMenu() {
         render={<Button variant="outline" shape="rounded" size="sm" />}
       >
         {language}
-        <ChevronDownIcon data-icon="inline-end" />
+        <IconChevronDown data-icon="inline-end" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" side="top">
         <DropdownMenuRadioGroup

@@ -1,4 +1,4 @@
-import { SearchIcon } from "@/components/icons"
+import { IconSearch } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -9,7 +9,7 @@ export default function ButtonGroupInput() {
     <ButtonGroup>
       <Input placeholder="Search..." />
       <Button variant="outline" aria-label="Search">
-        <SearchIcon />
+        <IconSearch />
       </Button>
     </ButtonGroup>
   )

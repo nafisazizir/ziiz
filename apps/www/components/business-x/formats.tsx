@@ -12,8 +12,7 @@ import {
 } from "@/components/business-x/mocks/feed"
 import { XText } from "@/components/business-x/runs"
 import { Body } from "@/components/business-x/section"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { ArrowDown01Icon, ArrowUp01Icon } from "@hugeicons/core-free-icons"
+import { IconChevronDown, IconChevronUp } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { Nav, NavItem, NavLink, NavList } from "@/components/ui/nav"
@@ -171,7 +170,7 @@ export function FormatsExplorer({
             disabled={index === 0}
             onClick={() => select(index - 1)}
           >
-            <HugeiconsIcon icon={ArrowUp01Icon} strokeWidth={2} />
+            <IconChevronUp />
           </Button>
           <Button
             variant="ghost"
@@ -181,7 +180,7 @@ export function FormatsExplorer({
             disabled={index === formats.length - 1}
             onClick={() => select(index + 1)}
           >
-            <HugeiconsIcon icon={ArrowDown01Icon} strokeWidth={2} />
+            <IconChevronDown />
           </Button>
         </div>
       </div>

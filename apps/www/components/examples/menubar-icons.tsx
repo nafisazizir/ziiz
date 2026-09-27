@@ -1,11 +1,11 @@
 import {
-  FileIcon,
-  FolderIcon,
-  HelpCircleIcon,
-  SaveIcon,
-  SettingsIcon,
-  TrashIcon,
-} from "@/components/icons"
+  IconDeviceFloppy,
+  IconFile,
+  IconFolder,
+  IconHelpCircle,
+  IconSettings,
+  IconTrash,
+} from "@tabler/icons-react"
 
 import {
   Menubar,
@@ -25,16 +25,16 @@ function MenubarIcons() {
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            <FileIcon />
+            <IconFile />
             New File <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            <FolderIcon />
+            <IconFolder />
             Open Folder
           </MenubarItem>
           <MenubarSeparator />
           <MenubarItem>
-            <SaveIcon />
+            <IconDeviceFloppy />
             Save <MenubarShortcut>⌘S</MenubarShortcut>
           </MenubarItem>
         </MenubarContent>
@@ -44,16 +44,16 @@ function MenubarIcons() {
         <MenubarContent>
           <MenubarGroup>
             <MenubarItem>
-              <SettingsIcon />
+              <IconSettings />
               Settings
             </MenubarItem>
             <MenubarItem>
-              <HelpCircleIcon />
+              <IconHelpCircle />
               Help
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem variant="destructive">
-              <TrashIcon />
+              <IconTrash />
               Delete
             </MenubarItem>
           </MenubarGroup>

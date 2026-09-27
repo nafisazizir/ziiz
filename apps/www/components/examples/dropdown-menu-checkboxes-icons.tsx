@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { BellIcon, MailIcon, MessageSquareIcon } from "@/components/icons"
+import { IconBell, IconMail, IconMessage } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -34,7 +34,7 @@ function DropdownMenuCheckboxesIcons() {
               setNotifications({ ...notifications, email: checked === true })
             }
           >
-            <MailIcon />
+            <IconMail />
             Email notifications
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
@@ -43,7 +43,7 @@ function DropdownMenuCheckboxesIcons() {
               setNotifications({ ...notifications, sms: checked === true })
             }
           >
-            <MessageSquareIcon />
+            <IconMessage />
             SMS notifications
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
@@ -52,7 +52,7 @@ function DropdownMenuCheckboxesIcons() {
               setNotifications({ ...notifications, push: checked === true })
             }
           >
-            <BellIcon />
+            <IconBell />
             Push notifications
           </DropdownMenuCheckboxItem>
         </DropdownMenuGroup>

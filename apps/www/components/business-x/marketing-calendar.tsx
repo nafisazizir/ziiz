@@ -8,7 +8,7 @@ import {
 } from "@/components/business-x/data/marketing-calendar"
 import { FormDropdown } from "@/components/business-x/form-dropdown"
 import { XText } from "@/components/business-x/runs"
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons"
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -77,7 +77,7 @@ export function MarketingCalendar() {
         aria-label="Previous month"
         onClick={() => step(-1)}
       >
-        <ChevronLeftIcon />
+        <IconChevronLeft />
       </Button>
       <Button
         variant="ghost"
@@ -86,7 +86,7 @@ export function MarketingCalendar() {
         aria-label="Next month"
         onClick={() => step(1)}
       >
-        <ChevronRightIcon />
+        <IconChevronRight />
       </Button>
     </div>
   )

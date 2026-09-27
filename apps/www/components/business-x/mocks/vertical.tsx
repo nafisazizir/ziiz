@@ -1,15 +1,14 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowLeft01Icon,
-  Bookmark01Icon,
-  ChartBarLineIcon,
-  CheckmarkBadge02Icon,
-  Comment01Icon,
-  FavouriteIcon,
-  MoreHorizontalIcon,
-  RepeatIcon,
-  Share08Icon,
-} from "@hugeicons/core-free-icons"
+  IconBookmark,
+  IconChartHistogram,
+  IconChevronLeft,
+  IconDots,
+  IconHeart,
+  IconMessageCircle,
+  IconRepeat,
+  IconRosetteDiscountCheck,
+  IconShare,
+} from "@tabler/icons-react"
 
 import { Phone } from "@/components/business-x/mocks/phone"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -38,18 +37,10 @@ export function VerticalPhone({
       <div className="relative flex flex-1 flex-col justify-between bg-gray-200 p-4">
         <div className="flex items-center justify-between text-gray-1000">
           <span className="flex size-8 items-center justify-center rounded-full bg-background-100/70">
-            <HugeiconsIcon
-              icon={ArrowLeft01Icon}
-              strokeWidth={2}
-              className="size-4"
-            />
+            <IconChevronLeft className="size-4" />
           </span>
           <span className="flex size-8 items-center justify-center rounded-full bg-background-100/70">
-            <HugeiconsIcon
-              icon={MoreHorizontalIcon}
-              strokeWidth={2}
-              className="size-4"
-            />
+            <IconDots className="size-4" />
           </span>
         </div>
         <div className="flex flex-col gap-3 text-gray-1000">
@@ -64,11 +55,7 @@ export function VerticalPhone({
             <div className="flex min-w-0 flex-1 flex-col text-label-12">
               <span className="flex items-center gap-1">
                 <span className="truncate text-label-13">{name}</span>
-                <HugeiconsIcon
-                  icon={CheckmarkBadge02Icon}
-                  strokeWidth={2}
-                  className="size-3.5 text-amber-700"
-                />
+                <IconRosetteDiscountCheck className="size-3.5 text-amber-700" />
                 <span className="truncate text-gray-900">{handle}</span>
                 {ad && <span className="ml-auto text-gray-900">Ad</span>}
               </span>
@@ -83,19 +70,14 @@ export function VerticalPhone({
           )}
           <div className="flex items-center justify-between text-gray-1000">
             {[
-              Comment01Icon,
-              RepeatIcon,
-              FavouriteIcon,
-              ChartBarLineIcon,
-              Share08Icon,
-              Bookmark01Icon,
-            ].map((icon, index) => (
-              <HugeiconsIcon
-                key={index}
-                icon={icon}
-                strokeWidth={1.5}
-                className="size-4"
-              />
+              IconMessageCircle,
+              IconRepeat,
+              IconHeart,
+              IconChartHistogram,
+              IconShare,
+              IconBookmark,
+            ].map((ItemIcon, index) => (
+              <ItemIcon key={index} stroke={1.5} className="size-4" />
             ))}
           </div>
         </div>

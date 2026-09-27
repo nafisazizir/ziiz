@@ -906,7 +906,7 @@
       height: 1rem;
       margin-inline-start: auto;
       background-color: var(--ds-gray-900);
-      mask: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 9C18 9 13.5811 15 12 15C10.4188 15 6 9 6 9'/%3E%3C/svg%3E")
+      mask: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6l6 -6'/%3E%3C/svg%3E")
         center / contain no-repeat;
     }
     &:where(details[open] > summary)::after {

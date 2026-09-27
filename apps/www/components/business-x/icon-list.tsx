@@ -1,11 +1,10 @@
-import { HugeiconsIcon } from "@hugeicons/react"
-import type { IconSvgElement } from "@hugeicons/react"
+import { type Icon } from "@tabler/icons-react"
 
 import { XText } from "@/components/business-x/runs"
 import { cn } from "@/lib/utils"
 
 export type IconRow = {
-  icon: IconSvgElement
+  icon: Icon
   title: string
   copy: React.ReactNode
 }
@@ -27,9 +26,8 @@ export function IconList({
           className="flex flex-col not-first:border-t not-first:border-gray-alpha-400 not-first:pt-6"
         >
           <div className="flex items-center gap-4">
-            <HugeiconsIcon
-              icon={item.icon}
-              strokeWidth={1.5}
+            <item.icon
+              stroke={1.5}
               className="size-5 shrink-0 text-gray-1000"
             />
             <h3 className="text-label-13 text-gray-1000">

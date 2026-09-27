@@ -4,10 +4,12 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { HugeiconsIcon } from "@hugeicons/react"
-import { Book02Icon, Dollar01Icon } from "@hugeicons/core-free-icons"
+import {
+  IconBook2,
+  IconCurrencyDollar,
+  IconSelector,
+} from "@tabler/icons-react"
 
-import { ChevronsUpDown } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -250,7 +252,7 @@ function SiteSwitcher() {
           className="h-3 data-vertical:self-center"
         />
         Business
-        <ChevronsUpDown className="ml-auto text-gray-900" />
+        <IconSelector className="ml-auto text-gray-900" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
@@ -278,9 +280,9 @@ function SiteSwitcher() {
 }
 
 function MoneyIcon({ className }: { className?: string }) {
-  return <HugeiconsIcon icon={Dollar01Icon} className={className} />
+  return <IconCurrencyDollar className={className} />
 }
 
 function HelpIcon({ className }: { className?: string }) {
-  return <HugeiconsIcon icon={Book02Icon} className={className} />
+  return <IconBook2 className={className} />
 }

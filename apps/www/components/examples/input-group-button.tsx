@@ -6,7 +6,7 @@ import {
   IconCopy,
   IconInfoCircle,
   IconStar,
-} from "@/components/icons"
+} from "@tabler/icons-react"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import {

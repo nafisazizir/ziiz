@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ArrowRightIcon } from "@/components/icons"
+import { IconArrowRight } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -47,7 +47,7 @@ export default function ButtonGroupSelect() {
       </ButtonGroup>
       <ButtonGroup>
         <Button aria-label="Send" size="icon" variant="outline">
-          <ArrowRightIcon />
+          <IconArrowRight />
         </Button>
       </ButtonGroup>
     </ButtonGroup>

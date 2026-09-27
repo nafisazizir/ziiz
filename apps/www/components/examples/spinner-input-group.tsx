@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from "@/components/icons"
+import { IconArrowUp } from "@tabler/icons-react"
 
 import {
   InputGroup,
@@ -23,7 +23,7 @@ function SpinnerInputGroup() {
         <InputGroupAddon align="block-end">
           <Spinner /> Validating...
           <InputGroupButton className="ml-auto" variant="default">
-            <ArrowUpIcon />
+            <IconArrowUp />
             <span className="sr-only">Send</span>
           </InputGroupButton>
         </InputGroupAddon>

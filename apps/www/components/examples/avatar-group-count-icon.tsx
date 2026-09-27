@@ -1,4 +1,4 @@
-import { PlusIcon } from "@/components/icons"
+import { IconPlus } from "@tabler/icons-react"
 
 import {
   Avatar,
@@ -27,7 +27,7 @@ function AvatarGroupCountIconExample() {
         <AvatarFallback>ER</AvatarFallback>
       </Avatar>
       <AvatarGroupCount>
-        <PlusIcon />
+        <IconPlus />
       </AvatarGroupCount>
     </AvatarGroup>
   )

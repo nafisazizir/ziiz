@@ -1,4 +1,4 @@
-import { Plus } from "@/components/icons"
+import { IconPlus } from "@tabler/icons-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -32,7 +32,7 @@ function ItemAvatar() {
             className="rounded-full"
             aria-label="Invite"
           >
-            <Plus />
+            <IconPlus />
           </Button>
         </ItemActions>
       </Item>

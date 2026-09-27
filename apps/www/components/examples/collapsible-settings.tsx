@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { MaximizeIcon, MinimizeIcon } from "@/components/icons"
+import { IconMaximize, IconMinimize } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -63,7 +63,7 @@ function CollapsibleSettings() {
             </CollapsibleContent>
           </FieldGroup>
           <CollapsibleTrigger render={<Button variant="outline" size="icon" />}>
-            {isOpen ? <MinimizeIcon /> : <MaximizeIcon />}
+            {isOpen ? <IconMinimize /> : <IconMaximize />}
           </CollapsibleTrigger>
         </Collapsible>
       </CardContent>

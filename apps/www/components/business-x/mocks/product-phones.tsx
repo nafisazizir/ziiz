@@ -1,12 +1,11 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  ArrowLeft01Icon,
-  CheckmarkBadge02Icon,
-  MoreHorizontalIcon,
-  PlayIcon,
-  Search01Icon,
-  ShoppingBag01Icon,
-} from "@hugeicons/core-free-icons"
+  IconChevronLeft,
+  IconDots,
+  IconPlayerPlay,
+  IconRosetteDiscountCheck,
+  IconSearch,
+  IconShoppingBag,
+} from "@tabler/icons-react"
 
 import {
   AdPost,
@@ -125,11 +124,7 @@ export function ExplorePhone({ className }: { className?: string }) {
               <span className="h-2 w-16 rounded-full bg-gray-200" />
               <span className="h-2 w-24 rounded-full bg-gray-100" />
             </span>
-            <HugeiconsIcon
-              icon={MoreHorizontalIcon}
-              strokeWidth={2}
-              className="size-4 text-gray-700"
-            />
+            <IconDots className="size-4 text-gray-700" />
           </li>
         ))}
       </ul>
@@ -159,13 +154,9 @@ export function ShopPhone({
   return (
     <Phone className={className}>
       <div className="flex items-center justify-between px-4 py-2 text-gray-1000">
-        <HugeiconsIcon
-          icon={ArrowLeft01Icon}
-          strokeWidth={2}
-          className="size-4"
-        />
+        <IconChevronLeft className="size-4" />
         <span className="text-label-13">Shop</span>
-        <HugeiconsIcon icon={Search01Icon} strokeWidth={2} className="size-4" />
+        <IconSearch className="size-4" />
       </div>
       <div className="flex items-center gap-3 px-4 py-2">
         <Avatar size="lg">
@@ -174,18 +165,10 @@ export function ShopPhone({
         <div className="flex flex-col">
           <span className="flex items-center gap-1 text-label-13 text-gray-1000">
             {title}
-            <HugeiconsIcon
-              icon={CheckmarkBadge02Icon}
-              strokeWidth={2}
-              className="size-3.5 text-amber-700"
-            />
+            <IconRosetteDiscountCheck className="size-3.5 text-amber-700" />
           </span>
           <span className="text-label-12 text-gray-900">
-            <HugeiconsIcon
-              icon={ShoppingBag01Icon}
-              strokeWidth={2}
-              className="mr-1 inline size-3"
-            />
+            <IconShoppingBag className="mr-1 inline size-3" />
             50 products
           </span>
         </div>
@@ -218,7 +201,7 @@ export function LivePhone({ className }: { className?: string }) {
           <span className="text-label-12 text-gray-900">12.4K watching</span>
         </span>
         <span className="flex size-12 items-center justify-center self-center rounded-full bg-gray-1000/70 text-background-100">
-          <HugeiconsIcon icon={PlayIcon} strokeWidth={2} className="size-5" />
+          <IconPlayerPlay className="size-5" />
         </span>
         <div className="flex items-center gap-3 rounded-lg bg-background-100 p-2">
           <span className="size-12 rounded bg-gray-100" />

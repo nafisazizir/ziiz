@@ -1,15 +1,14 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
-  Bookmark01Icon,
-  ChartBarLineIcon,
-  CheckmarkBadge02Icon,
-  Comment01Icon,
-  FavouriteIcon,
-  MoreHorizontalIcon,
-  PlayIcon,
-  RepeatIcon,
-  Share08Icon,
-} from "@hugeicons/core-free-icons"
+  IconBookmark,
+  IconChartHistogram,
+  IconDots,
+  IconHeart,
+  IconMessageCircle,
+  IconPlayerPlay,
+  IconRepeat,
+  IconRosetteDiscountCheck,
+  IconShare,
+} from "@tabler/icons-react"
 
 import { XText } from "@/components/business-x/runs"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
@@ -70,20 +69,12 @@ export function Post({
           <div className="flex items-center gap-1 text-label-13">
             <span className="truncate text-gray-1000">{name}</span>
             {verified && (
-              <HugeiconsIcon
-                icon={CheckmarkBadge02Icon}
-                strokeWidth={2}
-                className="size-3.5 shrink-0 text-amber-700"
-              />
+              <IconRosetteDiscountCheck className="size-3.5 shrink-0 text-amber-700" />
             )}
             <span className="truncate text-gray-900">{handle}</span>
             {time && <span className="text-gray-900">{`· ${time}`}</span>}
             <span className="ml-auto text-label-12 text-gray-900">
-              {ad ? (
-                "Ad"
-              ) : (
-                <HugeiconsIcon icon={MoreHorizontalIcon} className="size-4" />
-              )}
+              {ad ? "Ad" : <IconDots className="size-4" />}
             </span>
           </div>
           {text && (
@@ -98,11 +89,7 @@ export function Post({
             >
               {video && (
                 <span className="flex size-12 items-center justify-center rounded-full bg-gray-1000/70 text-background-100">
-                  <HugeiconsIcon
-                    icon={PlayIcon}
-                    strokeWidth={2}
-                    className="size-5"
-                  />
+                  <IconPlayerPlay className="size-5" />
                 </span>
               )}
             </AspectRatio>
@@ -138,26 +125,18 @@ export function Post({
 
 // Reply, repost, like, views, then bookmark and share on the far right.
 function Actions({ counts }: { counts: [string, string, string, string] }) {
-  const icons = [Comment01Icon, RepeatIcon, FavouriteIcon, ChartBarLineIcon]
+  const icons = [IconMessageCircle, IconRepeat, IconHeart, IconChartHistogram]
   return (
     <div className="flex items-center justify-between pl-11 text-label-12 text-gray-900">
-      {icons.map((icon, index) => (
+      {icons.map((ItemIcon, index) => (
         <span key={index} className="flex items-center gap-1">
-          <HugeiconsIcon icon={icon} strokeWidth={1.5} className="size-4" />
+          <ItemIcon stroke={1.5} className="size-4" />
           {counts[index]}
         </span>
       ))}
       <span className="flex items-center gap-2">
-        <HugeiconsIcon
-          icon={Bookmark01Icon}
-          strokeWidth={1.5}
-          className="size-4"
-        />
-        <HugeiconsIcon
-          icon={Share08Icon}
-          strokeWidth={1.5}
-          className="size-4"
-        />
+        <IconBookmark stroke={1.5} className="size-4" />
+        <IconShare stroke={1.5} className="size-4" />
       </span>
     </div>
   )

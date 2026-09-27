@@ -1,5 +1,5 @@
 import * as React from "react"
-import { PlusIcon } from "@/components/icons"
+import { IconPlus } from "@tabler/icons-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -48,7 +48,7 @@ function ItemGroupExample() {
           </ItemContent>
           <ItemActions>
             <Button variant="ghost" size="icon" shape="rounded">
-              <PlusIcon />
+              <IconPlus />
             </Button>
           </ItemActions>
         </Item>

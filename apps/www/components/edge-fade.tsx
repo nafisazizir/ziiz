@@ -21,7 +21,9 @@ const LAYERS = [
 
 // Sticky rather than fixed so the strip belongs to the page's own column.
 // It spans the full width, above both rails, so the sidebar and the table of
-// contents fade with everything else.
+// contents fade with everything else. The strip hangs under --header-height
+// and dissolves into --edge-fade, the page background unless the frame it
+// sits in paints its own (business-x paints background-100).
 export function EdgeFade({ side }: { side: "top" | "bottom" }) {
   const away = side === "top" ? "bottom" : "top"
 
@@ -53,7 +55,7 @@ export function EdgeFade({ side }: { side: "top" | "bottom" }) {
       })}
       <div
         className={cn(
-          "absolute inset-0 from-background to-transparent",
+          "absolute inset-0 from-(--edge-fade,var(--color-background)) to-transparent",
           side === "top" ? "bg-linear-to-b" : "bg-linear-to-t"
         )}
       />

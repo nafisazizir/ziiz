@@ -59,7 +59,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
         onValueChange={select}
         className="grid grid-cols-8 gap-x-4 gap-y-8"
       >
-        <div className="col-span-8 -mx-4 bg-background-100 px-4 pt-3 max-lg:sticky max-lg:top-14 max-lg:z-20 lg:hidden">
+        <div className="col-span-8 -mx-4 bg-background-100 px-4 pt-3 max-lg:sticky max-lg:top-14 max-lg:z-30 lg:hidden">
           <div className="relative">
             <Separator className="absolute inset-x-0 bottom-0" />
             <TabsList

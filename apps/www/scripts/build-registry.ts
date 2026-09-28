@@ -7,7 +7,7 @@
 //   components/docs/<name>.tsx  -> registry:component, installed to
 //                                  components/docs/ (explicit target)
 //   hooks/use-mobile.ts         -> registry:hook (sidebar imports it)
-//   lib/utils.ts                -> registry:lib (`cn` from ziiz/cn)
+//   lib/utils.ts                -> registry:lib (`cn` from @nafisazizir/ziiz/cn)
 //   theme                       -> registry:theme, no files: installs the
 //                                  packages and CSS imports an app needs
 //   ../../.agents/skills/ziiz/  -> registry:file, the consumer skill,
@@ -82,9 +82,9 @@ const DESCRIPTIONS: Record<string, string> = {
   steps: "Numbered steps for an installation or setup sequence.",
   "use-mobile": "A hook that reports whether the viewport is below 768px.",
   utils:
-    "The cn helper from ziiz/cn, built on the cn package with the type roles and materials registered.",
+    "The cn helper from @nafisazizir/ziiz/cn, built on the cn package with the type roles and materials registered.",
   theme:
-    "The ziiz design layer: installs ziiz with the stylesheets and cn a ziiz app needs.",
+    "The ziiz design layer: installs @nafisazizir/ziiz with the stylesheets and cn a ziiz app needs.",
   skill:
     "The ziiz agent skill: vocabulary, rules and checks for building UI on the system, installed to .agents/skills/ziiz.",
 }
@@ -260,18 +260,18 @@ function buildItems(): RegistryItem[] {
     type: "registry:theme",
     title: "Theme",
     description: describe("theme", "registry:theme"),
-    dependencies: ["ziiz", "shadcn", "tw-animate-css"],
+    dependencies: ["@nafisazizir/ziiz", "shadcn", "tw-animate-css"],
     registryDependencies: ["utils"],
     files: [],
     css: {
       '@import "tw-animate-css"': {},
       '@import "shadcn/tailwind.css"': {},
-      '@import "ziiz/theme.css"': {},
+      '@import "@nafisazizir/ziiz/theme.css"': {},
     },
     docs: [
       "Set --font-sans and --font-mono on html or :root (next/font's variable option does this); without them the Tailwind default stacks apply.",
       'Dark mode is the .dark class on html: next-themes with attribute="class".',
-      'Add @import "ziiz/shadcn.css" only if the app also runs stock shadcn/ui components.',
+      'Add @import "@nafisazizir/ziiz/shadcn.css" only if the app also runs stock shadcn/ui components.',
     ].join("\n"),
   }
 

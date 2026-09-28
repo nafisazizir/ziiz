@@ -2,14 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "utils",
   "title": "Utils",
-  "description": "The cn helper from ziiz/cn, built on the cn package with the type roles and materials registered.",
+  "description": "The cn helper from @nafisazizir/ziiz/cn, built on the cn package with the type roles and materials registered.",
   "dependencies": [
-    "ziiz"
+    "@nafisazizir/ziiz"
   ],
   "files": [
     {
       "path": "lib/utils.ts",
-      "content": "export { cn } from \"ziiz/cn\"\n",
+      "content": "export { cn } from \"@nafisazizir/ziiz/cn\"\n",
       "type": "registry:lib"
     }
   ],

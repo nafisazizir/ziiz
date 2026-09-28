@@ -1,7 +1,7 @@
 /* ziiz design layer: ramp tokens, Tailwind theme mapping, base styles,
    materials, type roles and the prose layer. Import-free on purpose (only
    Tailwind directives and plain CSS), so a consuming app can pull in the whole
-   design system with a single `@import "ziiz/theme.css"` without
+   design system with a single `@import "@nafisazizir/ziiz/theme.css"` without
    re-bundling Tailwind, animation presets or the shadcn slot bridge (that
    lives in ./shadcn.css). */
 

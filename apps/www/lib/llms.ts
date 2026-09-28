@@ -80,7 +80,7 @@ export function llmsIndex() {
 
   return `# ${siteConfig.name}
 
-> ${siteConfig.description} The token foundation (a ten-step color ramp, 31 named type roles, eight materials and a prose layer) ships as the npm package \`ziiz\`. The components ship as a shadcn registry served from GitHub.
+> ${siteConfig.description} The token foundation (a ten-step color ramp, 31 named type roles, eight materials and a prose layer) ships as the npm package \`@nafisazizir/ziiz\`. The components ship as a shadcn registry served from GitHub.
 
 Setup for an app: add the registry to components.json and run \`npx shadcn@latest add @ziiz/theme --overwrite\`, then \`npx shadcn@latest add @ziiz/<name>\` for components. The guide below has the details.
 

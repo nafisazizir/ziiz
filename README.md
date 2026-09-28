@@ -6,7 +6,7 @@ Live docs: https://ziiz.vercel.app
 
 ```
 apps/www          Next.js app: foundation docs, blog, registry
-packages/theme    ziiz: theme.css (the design layer) + shadcn.css (slot bridge)
+packages/theme    @nafisazizir/ziiz: theme.css (the design layer) + shadcn.css (slot bridge)
 ```
 
 ```bash
@@ -30,7 +30,7 @@ from this repo, then takes the design layer and the components from it:
 ```
 
 ```bash
-npx shadcn@latest add @ziiz/theme --overwrite   # the ziiz package, the stylesheets, cn
+npx shadcn@latest add @ziiz/theme --overwrite   # @nafisazizir/ziiz, the stylesheets, cn
 npx shadcn@latest add @ziiz/button
 ```
 
@@ -62,11 +62,11 @@ content/blog         Dated posts; /blog, /blog/<slug>, /rss.xml
 scripts              build-registry, check-docs
 ```
 
-## Releasing ziiz
+## Releasing @nafisazizir/ziiz
 
 1. Bump `version` in `packages/theme/package.json` and add the entry to
    `packages/theme/CHANGELOG.md`.
 2. Commit, then tag and push: `git tag theme-v<version> && git push origin theme-v<version>`.
 3. `.github/workflows/release.yml` builds and publishes to npm with provenance.
    It needs an `NPM_TOKEN` repository secret (a granular automation token
-   for the `ziiz` package).
+   for the `@nafisazizir/ziiz` package).

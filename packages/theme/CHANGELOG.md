@@ -1,4 +1,4 @@
-# ziiz
+# @nafisazizir/ziiz
 
 ## 0.1.0
 
@@ -15,8 +15,8 @@ First release, a beta preview. Expect breaking changes in 0.x minors.
 - `shiki`: `ziizShikiTheme` and `ziizShikiOptions`, a Shiki theme that
   resolves to the ramp's CSS variables so highlighted code follows the page
   theme.
-- `.` resolves to `theme.css`, so `@import "ziiz"` is the same as
-  `@import "ziiz/theme.css"`.
+- `.` resolves to `theme.css`, so `@import "@nafisazizir/ziiz"` is the same as
+  `@import "@nafisazizir/ziiz/theme.css"`.
 - `cn`: `cn`, `twMerge`, `typeRoles` and `materials`, built on the `cn`
   package (`createCn`/`createTwMerge` from `cn/config`). The merger treats
   the 31 type roles as one font-size group and the eight materials as one

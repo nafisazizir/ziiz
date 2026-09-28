@@ -1,4 +1,4 @@
-import { ziizShikiOptions } from "ziiz/shiki"
+import { ziizShikiOptions } from "@nafisazizir/ziiz/shiki"
 import { defineConfig, defineDocs } from "fumadocs-mdx/config"
 
 import {

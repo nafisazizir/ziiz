@@ -1,1 +1,1 @@
-export { cn } from "ziiz/cn"
+export { cn } from "@nafisazizir/ziiz/cn"

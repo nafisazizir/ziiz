@@ -1,12 +1,12 @@
 ---
 name: ziiz
-description: Build or review UI in an app that uses ziiz (the @ziiz shadcn registry and the ziiz npm package). Use when adding ziiz components, choosing a color, type role or elevation, setting ziiz up in a project, or checking UI code for classes that are off the system.
+description: Build or review UI in an app that uses ziiz (the @ziiz shadcn registry and the @nafisazizir/ziiz npm package). Use when adding ziiz components, choosing a color, type role or elevation, setting ziiz up in a project, or checking UI code for classes that are off the system.
 ---
 
 # ziiz
 
 ziiz is a design layer on top of Tailwind v4 and shadcn: one stylesheet
-(the `ziiz` package) that defines a ten-step color ramp, 31 named type roles,
+(the `@nafisazizir/ziiz` package) that defines a ten-step color ramp, 31 named type roles,
 eight materials and a prose class, plus a registry of shadcn components
 rewritten to speak only that vocabulary. An app takes the theme as a
 package and the components as source it owns.
@@ -33,9 +33,9 @@ npx shadcn@latest init --preset vega        # skip if components.json exists
 npx shadcn@latest add @ziiz/theme --overwrite
 ```
 
-The theme item installs `ziiz`, `tw-animate-css` and `shadcn`, adds
+The theme item installs `@nafisazizir/ziiz`, `tw-animate-css` and `shadcn`, adds
 their imports to the Tailwind entry in order, and replaces `lib/utils.ts`
-with `export { cn } from "ziiz/cn"`. `--overwrite` is required for
+with `export { cn } from "@nafisazizir/ziiz/cn"`. `--overwrite` is required for
 that last file. If `init` wrote a stock theme block into `globals.css`,
 delete everything below the imports except `@custom-variant dark`.
 
@@ -47,7 +47,7 @@ Then two things the item cannot do:
 - Dark mode. It is the `.dark` class on `html`: next-themes with
   `attribute="class"`.
 
-Add `@import "ziiz/shadcn.css"` only if the app also runs stock
+Add `@import "@nafisazizir/ziiz/shadcn.css"` only if the app also runs stock
 shadcn components; ziiz components do not need the slot bridge.
 
 ## Vocabulary
@@ -132,7 +132,7 @@ to roles with a fixed rhythm. Mark a subtree `not-typeset` to opt out.
    No arbitrary pixel radii or border widths.
 8. No press animation on buttons. Transitions are `transition-colors`, not
    `transition-all`.
-9. `cn` comes from `@/lib/utils`, which re-exports `ziiz/cn`. Its
+9. `cn` comes from `@/lib/utils`, which re-exports `@nafisazizir/ziiz/cn`. Its
    merge knows the roles and materials, so `cn("text-label-14", className)`
    resolves an override correctly. A stock `cn` does not.
 10. Compose with the registry's components before writing new markup. When

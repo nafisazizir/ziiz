@@ -37,7 +37,7 @@ The registry is served straight from the repository, so there is no deploy betwe
 npx shadcn@latest add @ziiz/theme --overwrite
 ```
 
-One item does the setup. It installs the `ziiz` package, `tw-animate-css` and `shadcn`, adds their three imports to the Tailwind entry in the right order, and replaces `lib/utils.ts` with a `cn` that understands the type roles. `--overwrite` is what lets it replace that file; without the flag the CLI stops to ask.
+One item does the setup. It installs the `@nafisazizir/ziiz` package, `tw-animate-css` and `shadcn`, adds their three imports to the Tailwind entry in the right order, and replaces `lib/utils.ts` with a `cn` that understands the type roles. `--overwrite` is what lets it replace that file; without the flag the CLI stops to ask.
 
 <Step>Set the fonts.</Step>
 
@@ -74,9 +74,9 @@ After that, every Tailwind utility speaks the ramp (`bg-gray-100`, `text-gray-10
   Type roles are single utilities, so the stock `cn` does not know that
   `text-label-14` and `text-copy-16` conflict. It keeps both, and stylesheet
   order decides which one paints, so a `className` override on a component works
-  or fails by accident. `ziiz/cn` builds on the `cn` package with the roles as
-  one font-size group and the materials as another. The `utils` item is a
-  one-line re-export of it, and every component depends on it.
+  or fails by accident. `@nafisazizir/ziiz/cn` builds on the `cn` package with
+  the roles as one font-size group and the materials as another. The `utils`
+  item is a one-line re-export of it, and every component depends on it.
 </Callout>
 
 ## Manual setup
@@ -88,7 +88,7 @@ The theme item is a shortcut for four edits. Doing them by hand gives the same r
 <Step>Install the packages.</Step>
 
 ```bash
-npm install ziiz tw-animate-css shadcn
+npm install @nafisazizir/ziiz tw-animate-css shadcn
 ```
 
 `tw-animate-css` provides the enter and exit animations (`animate-in`, `fade-in-0`) that overlays use; `shadcn/tailwind.css` provides the `data-open:` and `data-closed:` variants and the accordion keyframes. Both are required, not optional.
@@ -99,13 +99,13 @@ npm install ziiz tw-animate-css shadcn
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "ziiz/theme.css";
+@import "@nafisazizir/ziiz/theme.css";
 ```
 
 <Step>Re-export `cn`.</Step>
 
 ```ts title="lib/utils.ts"
-export { cn } from "ziiz/cn"
+export { cn } from "@nafisazizir/ziiz/cn"
 ```
 
 <Step>Fonts and dark mode, as above.</Step>
@@ -113,9 +113,9 @@ export { cn } from "ziiz/cn"
 </Steps>
 
 <Callout variant="info" title="Running stock shadcn/ui components too?">
-  Add a fifth import, `ziiz/shadcn.css`. It maps shadcn's slot names
-  (`bg-background`, `text-muted-foreground`, `border-input`) onto the ramp so
-  components written against that vocabulary render on it unchanged. ziiz
+  Add a fifth import, `@nafisazizir/ziiz/shadcn.css`. It maps shadcn's slot
+  names (`bg-background`, `text-muted-foreground`, `border-input`) onto the ramp
+  so components written against that vocabulary render on it unchanged. ziiz
   components speak the ramp directly and do not need it.
 </Callout>
 

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises"
 import path from "node:path"
-import { ziizShikiOptions } from "ziiz/shiki"
+import { ziizShikiOptions } from "@nafisazizir/ziiz/shiki"
 import { codeToHtml } from "shiki"
 
 import { cn } from "@/lib/utils"

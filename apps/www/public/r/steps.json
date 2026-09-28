@@ -4,7 +4,7 @@
   "title": "Steps",
   "description": "Numbered steps for an installation or setup sequence.",
   "registryDependencies": [
-    "utils"
+    "@ziiz/utils"
   ],
   "files": [
     {

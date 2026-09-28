@@ -4,7 +4,7 @@
   "title": "Aspect Ratio",
   "description": "Displays content within a desired ratio.",
   "registryDependencies": [
-    "utils"
+    "@ziiz/utils"
   ],
   "files": [
     {

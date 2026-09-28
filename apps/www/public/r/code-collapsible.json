@@ -4,8 +4,8 @@
   "title": "Code Collapsible",
   "description": "A code block that opens from a short preview to its full height.",
   "registryDependencies": [
-    "button",
-    "utils"
+    "@ziiz/button",
+    "@ziiz/utils"
   ],
   "files": [
     {

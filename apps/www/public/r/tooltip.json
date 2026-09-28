@@ -7,7 +7,7 @@
     "@base-ui/react"
   ],
   "registryDependencies": [
-    "utils"
+    "@ziiz/utils"
   ],
   "files": [
     {

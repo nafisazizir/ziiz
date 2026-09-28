@@ -8,8 +8,8 @@
     "embla-carousel-react"
   ],
   "registryDependencies": [
-    "button",
-    "utils"
+    "@ziiz/button",
+    "@ziiz/utils"
   ],
   "files": [
     {

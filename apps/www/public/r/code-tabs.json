@@ -4,8 +4,8 @@
   "title": "Code Tabs",
   "description": "Tabs that switch between code samples, such as install commands.",
   "registryDependencies": [
-    "tabs",
-    "utils"
+    "@ziiz/tabs",
+    "@ziiz/utils"
   ],
   "files": [
     {

@@ -9,14 +9,14 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "button",
-    "input",
-    "separator",
-    "sheet",
-    "skeleton",
-    "tooltip",
-    "use-mobile",
-    "utils"
+    "@ziiz/button",
+    "@ziiz/input",
+    "@ziiz/separator",
+    "@ziiz/sheet",
+    "@ziiz/skeleton",
+    "@ziiz/tooltip",
+    "@ziiz/use-mobile",
+    "@ziiz/utils"
   ],
   "files": [
     {

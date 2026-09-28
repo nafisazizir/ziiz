@@ -7,9 +7,9 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "label",
-    "separator",
-    "utils"
+    "@ziiz/label",
+    "@ziiz/separator",
+    "@ziiz/utils"
   ],
   "files": [
     {

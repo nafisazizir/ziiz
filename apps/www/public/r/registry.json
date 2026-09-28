@@ -13,7 +13,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -31,8 +31,8 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -50,7 +50,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -65,7 +65,7 @@
       "title": "Aspect Ratio",
       "description": "Displays content within a desired ratio.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -84,8 +84,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -103,7 +103,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -122,7 +122,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -141,7 +141,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -160,7 +160,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -179,8 +179,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "separator",
-        "utils"
+        "@ziiz/separator",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -199,7 +199,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -218,8 +218,8 @@
         "react-day-picker"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -234,7 +234,7 @@
       "title": "Card",
       "description": "Displays a card with header, content, and footer.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -253,8 +253,8 @@
         "embla-carousel-react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -272,7 +272,7 @@
         "recharts"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -291,7 +291,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -325,9 +325,9 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button",
-        "input-group",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/input-group",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -346,9 +346,9 @@
         "cmdk"
       ],
       "registryDependencies": [
-        "dialog",
-        "input-group",
-        "utils"
+        "@ziiz/dialog",
+        "@ziiz/input-group",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -367,7 +367,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -386,8 +386,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -420,7 +420,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -439,7 +439,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -457,7 +457,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -475,9 +475,9 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "label",
-        "separator",
-        "utils"
+        "@ziiz/label",
+        "@ziiz/separator",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -495,7 +495,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -513,10 +513,10 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "button",
-        "input",
-        "textarea",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/input",
+        "@ziiz/textarea",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -535,7 +535,7 @@
         "input-otp"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -553,7 +553,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -572,8 +572,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "separator",
-        "utils"
+        "@ziiz/separator",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -588,7 +588,7 @@
       "title": "Kbd",
       "description": "Used to display textual user input from keyboard.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -603,7 +603,7 @@
       "title": "Label",
       "description": "Renders an accessible label associated with controls.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -622,7 +622,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -641,8 +641,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "dropdown-menu",
-        "utils"
+        "@ziiz/dropdown-menu",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -661,8 +661,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -677,7 +677,7 @@
       "title": "Message",
       "description": "Displays a message in a conversation, with optional avatar, header, footer, and alignment.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -695,7 +695,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -714,7 +714,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -734,7 +734,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -752,8 +752,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -771,7 +771,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -789,7 +789,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -808,8 +808,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -827,7 +827,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -845,7 +845,7 @@
         "react-resizable-panels"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -863,7 +863,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -882,7 +882,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -900,7 +900,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -919,8 +919,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -940,14 +940,14 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "button",
-        "input",
-        "separator",
-        "sheet",
-        "skeleton",
-        "tooltip",
-        "use-mobile",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/input",
+        "@ziiz/separator",
+        "@ziiz/sheet",
+        "@ziiz/skeleton",
+        "@ziiz/tooltip",
+        "@ziiz/use-mobile",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -962,7 +962,7 @@
       "title": "Skeleton",
       "description": "Use to show a placeholder while content is loading.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -980,7 +980,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1015,7 +1015,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1033,7 +1033,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1048,7 +1048,7 @@
       "title": "Table",
       "description": "A responsive table component.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1067,7 +1067,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1082,7 +1082,7 @@
       "title": "Textarea",
       "description": "Displays a form textarea or a component that looks like a textarea.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1101,8 +1101,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1121,8 +1121,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "toggle",
-        "utils"
+        "@ziiz/toggle",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1141,7 +1141,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1159,7 +1159,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1177,8 +1177,8 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "alert",
-        "utils"
+        "@ziiz/alert",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1197,7 +1197,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
-        "button"
+        "@ziiz/button"
       ],
       "files": [
         {
@@ -1213,8 +1213,8 @@
       "title": "Code Collapsible",
       "description": "A code block that opens from a short preview to its full height.",
       "registryDependencies": [
-        "button",
-        "utils"
+        "@ziiz/button",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1230,8 +1230,8 @@
       "title": "Code Tabs",
       "description": "Tabs that switch between code samples, such as install commands.",
       "registryDependencies": [
-        "tabs",
-        "utils"
+        "@ziiz/tabs",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1247,8 +1247,8 @@
       "title": "Component Preview",
       "description": "Renders a component example above its collapsible source.",
       "registryDependencies": [
-        "code-collapsible",
-        "utils"
+        "@ziiz/code-collapsible",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1265,14 +1265,12 @@
       "description": "Reads a registry item's source at build time and shows it highlighted.",
       "dependencies": [
         "@nafisazizir/ziiz",
-        "node:fs",
-        "node:path",
         "shiki"
       ],
       "registryDependencies": [
-        "code-block",
-        "code-collapsible",
-        "utils"
+        "@ziiz/code-block",
+        "@ziiz/code-collapsible",
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1288,7 +1286,7 @@
       "title": "Steps",
       "description": "Numbered steps for an installation or setup sequence.",
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [
         {
@@ -1327,7 +1325,7 @@
     },
     {
       "name": "theme",
-      "type": "registry:theme",
+      "type": "registry:item",
       "title": "Theme",
       "description": "The ziiz design layer: installs @nafisazizir/ziiz with the stylesheets and cn a ziiz app needs.",
       "dependencies": [
@@ -1336,7 +1334,7 @@
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "utils"
+        "@ziiz/utils"
       ],
       "files": [],
       "css": {

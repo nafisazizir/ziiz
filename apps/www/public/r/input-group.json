@@ -7,10 +7,10 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "button",
-    "input",
-    "textarea",
-    "utils"
+    "@ziiz/button",
+    "@ziiz/input",
+    "@ziiz/textarea",
+    "@ziiz/utils"
   ],
   "files": [
     {

@@ -8,8 +8,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "button",
-    "utils"
+    "@ziiz/button",
+    "@ziiz/utils"
   ],
   "files": [
     {

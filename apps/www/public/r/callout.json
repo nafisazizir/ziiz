@@ -7,8 +7,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "alert",
-    "utils"
+    "@ziiz/alert",
+    "@ziiz/utils"
   ],
   "files": [
     {

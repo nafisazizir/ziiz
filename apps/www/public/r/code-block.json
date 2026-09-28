@@ -7,7 +7,7 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "button"
+    "@ziiz/button"
   ],
   "files": [
     {

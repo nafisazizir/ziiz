@@ -7,7 +7,7 @@
     "react-resizable-panels"
   ],
   "registryDependencies": [
-    "utils"
+    "@ziiz/utils"
   ],
   "files": [
     {

@@ -8,8 +8,8 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "dropdown-menu",
-    "utils"
+    "@ziiz/dropdown-menu",
+    "@ziiz/utils"
   ],
   "files": [
     {

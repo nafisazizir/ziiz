@@ -8,9 +8,9 @@
     "@tabler/icons-react"
   ],
   "registryDependencies": [
-    "button",
-    "input-group",
-    "utils"
+    "@ziiz/button",
+    "@ziiz/input-group",
+    "@ziiz/utils"
   ],
   "files": [
     {

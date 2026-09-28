@@ -4,8 +4,8 @@
   "title": "Component Preview",
   "description": "Renders a component example above its collapsible source.",
   "registryDependencies": [
-    "code-collapsible",
-    "utils"
+    "@ziiz/code-collapsible",
+    "@ziiz/utils"
   ],
   "files": [
     {

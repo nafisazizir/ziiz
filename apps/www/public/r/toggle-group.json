@@ -8,8 +8,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "toggle",
-    "utils"
+    "@ziiz/toggle",
+    "@ziiz/utils"
   ],
   "files": [
     {

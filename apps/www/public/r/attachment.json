@@ -8,8 +8,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "button",
-    "utils"
+    "@ziiz/button",
+    "@ziiz/utils"
   ],
   "files": [
     {

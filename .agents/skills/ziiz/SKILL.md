@@ -45,7 +45,7 @@ Then two things the item cannot do:
   (next/font's `variable` option). Without them Tailwind's default stacks
   apply.
 - Dark mode. It is the `.dark` class on `html`: next-themes with
-  `attribute="class"`.
+  `attribute="class"`, and `suppressHydrationWarning` on `html`.
 
 Add `@import "@nafisazizir/ziiz/shadcn.css"` only if the app also runs stock
 shadcn components; ziiz components do not need the slot bridge.

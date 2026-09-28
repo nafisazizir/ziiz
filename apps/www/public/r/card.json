@@ -4,7 +4,7 @@
   "title": "Card",
   "description": "Displays a card with header, content, and footer.",
   "registryDependencies": [
-    "utils"
+    "@ziiz/utils"
   ],
   "files": [
     {

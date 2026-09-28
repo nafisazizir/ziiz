@@ -8,8 +8,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "separator",
-    "utils"
+    "@ziiz/separator",
+    "@ziiz/utils"
   ],
   "files": [
     {

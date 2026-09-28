@@ -5,14 +5,12 @@
   "description": "Reads a registry item's source at build time and shows it highlighted.",
   "dependencies": [
     "@nafisazizir/ziiz",
-    "node:fs",
-    "node:path",
     "shiki"
   ],
   "registryDependencies": [
-    "code-block",
-    "code-collapsible",
-    "utils"
+    "@ziiz/code-block",
+    "@ziiz/code-collapsible",
+    "@ziiz/utils"
   ],
   "files": [
     {

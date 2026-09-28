@@ -8,16 +8,18 @@
 //                                  components/docs/ (explicit target)
 //   hooks/use-mobile.ts         -> registry:hook (sidebar imports it)
 //   lib/utils.ts                -> registry:lib (`cn` from @nafisazizir/ziiz/cn)
-//   theme                       -> registry:theme, no files: installs the
+//   theme                       -> registry:item, no files: installs the
 //                                  packages and CSS imports an app needs
 //   ../../.agents/skills/ziiz/  -> registry:file, the consumer skill,
 //                                  installed to the same path in the app
 //
 // Dependencies are read off each file's imports: `@/components/ui/x` becomes
-// a registryDependency on `x`, `@/lib/utils` one on `utils`, a bare
-// specifier becomes an npm dependency. react and next are the consumer's
-// own and never listed. Any other `@/` alias inside a published file fails
-// the build.
+// a registryDependency on `@ziiz/x`, `@/lib/utils` one on `@ziiz/utils`, a
+// bare specifier other than a `node:` builtin becomes an npm dependency.
+// Registry dependencies carry the namespace because the CLI resolves a bare
+// name against shadcn/ui's own registry, which would install the stock
+// component. react and next are the consumer's own and never listed. Any
+// other `@/` alias inside a published file fails the build.
 //
 // Every item carries a description: a ui item takes the `description`
 // frontmatter of its page under content/docs/components, the rest are
@@ -35,14 +37,15 @@ import { execFileSync } from "node:child_process"
 const ROOT = process.cwd()
 const REGISTRY_JSON = path.join(ROOT, "registry.json")
 const REGISTRY_OUT = path.join(ROOT, "public/r")
+const NAMESPACE = "@ziiz"
 
 type ItemType =
   | "registry:ui"
   | "registry:component"
   | "registry:hook"
   | "registry:lib"
-  | "registry:theme"
   | "registry:file"
+  | "registry:item"
 
 type RegistryFile = {
   path: string
@@ -138,17 +141,18 @@ function collectDependencies(
 
   for (const file of files) {
     for (const specifier of readImports(file)) {
-      if (specifier.startsWith(".")) continue
+      if (specifier.startsWith(".") || specifier.startsWith("node:")) continue
 
       if (specifier.startsWith("@/")) {
         const ui = specifier.match(/^@\/components\/(?:ui|docs)\/([a-z0-9-]+)$/)
         if (ui) {
-          if (ui[1] !== self) registryDependencies.add(ui[1])
+          if (ui[1] !== self) registryDependencies.add(`${NAMESPACE}/${ui[1]}`)
           continue
         }
         const mapped = ALIAS_TO_ITEM[specifier]
         if (mapped) {
-          if (mapped !== self) registryDependencies.add(mapped)
+          if (mapped !== self)
+            registryDependencies.add(`${NAMESPACE}/${mapped}`)
           continue
         }
         throw new Error(`${rel(file)}: unmapped alias import "${specifier}"`)
@@ -257,11 +261,11 @@ function buildItems(): RegistryItem[] {
   // components speak ramp vocabulary and do not need the slot bridge.
   const theme: RegistryItem = {
     name: "theme",
-    type: "registry:theme",
+    type: "registry:item",
     title: "Theme",
-    description: describe("theme", "registry:theme"),
+    description: describe("theme", "registry:item"),
     dependencies: ["@nafisazizir/ziiz", "shadcn", "tw-animate-css"],
-    registryDependencies: ["utils"],
+    registryDependencies: [`${NAMESPACE}/utils`],
     files: [],
     css: {
       '@import "tw-animate-css"': {},
@@ -312,7 +316,7 @@ function verifyCoverage(items: RegistryItem[]) {
   }
   for (const i of items) {
     for (const dep of i.registryDependencies ?? []) {
-      if (!names.has(dep)) {
+      if (!names.has(dep.slice(NAMESPACE.length + 1))) {
         throw new Error(`${i.name}: registryDependency "${dep}" has no item`)
       }
     }

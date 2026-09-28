@@ -8,9 +8,9 @@
     "cmdk"
   ],
   "registryDependencies": [
-    "dialog",
-    "input-group",
-    "utils"
+    "@ziiz/dialog",
+    "@ziiz/input-group",
+    "@ziiz/utils"
   ],
   "files": [
     {

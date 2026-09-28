@@ -52,10 +52,16 @@ const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
 <Step>Set up dark mode.</Step>
 
-Dark mode is the `.dark` class on `html`. With next-themes, that is `attribute="class"` on the provider; without it, toggle the class yourself.
+Dark mode is the `.dark` class on `html`. With next-themes (`npm install next-themes`), that is `attribute="class"` on the provider, plus `suppressHydrationWarning` on `html` because the class is set before React hydrates. Without it, toggle the class yourself.
 
 ```tsx title="app/layout.tsx"
-<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+<html suppressHydrationWarning>
+  <body>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      {children}
+    </ThemeProvider>
+  </body>
+</html>
 ```
 
 <Step>Add components.</Step>

@@ -1264,10 +1264,10 @@
       "title": "Component Source",
       "description": "Reads a registry item's source at build time and shows it highlighted.",
       "dependencies": [
-        "@ziiz/theme",
         "node:fs",
         "node:path",
-        "shiki"
+        "shiki",
+        "ziiz"
       ],
       "registryDependencies": [
         "code-block",
@@ -1314,9 +1314,9 @@
       "name": "utils",
       "type": "registry:lib",
       "title": "Utils",
-      "description": "The cn helper from @ziiz/theme/cn, built on the cn package with the type roles and materials registered.",
+      "description": "The cn helper from ziiz/cn, built on the cn package with the type roles and materials registered.",
       "dependencies": [
-        "@ziiz/theme"
+        "ziiz"
       ],
       "files": [
         {
@@ -1329,9 +1329,9 @@
       "name": "theme",
       "type": "registry:theme",
       "title": "Theme",
-      "description": "The ziiz design layer: installs @ziiz/theme with the stylesheets and cn a ziiz app needs.",
+      "description": "The ziiz design layer: installs ziiz with the stylesheets and cn a ziiz app needs.",
       "dependencies": [
-        "@ziiz/theme",
+        "ziiz",
         "shadcn",
         "tw-animate-css"
       ],
@@ -1342,9 +1342,9 @@
       "css": {
         "@import \"tw-animate-css\"": {},
         "@import \"shadcn/tailwind.css\"": {},
-        "@import \"@ziiz/theme/theme.css\"": {}
+        "@import \"ziiz/theme.css\"": {}
       },
-      "docs": "Set --font-sans and --font-mono on html or :root (next/font's variable option does this); without them the Tailwind default stacks apply.\nDark mode is the .dark class on html: next-themes with attribute=\"class\".\nAdd @import \"@ziiz/theme/shadcn.css\" only if the app also runs stock shadcn/ui components."
+      "docs": "Set --font-sans and --font-mono on html or :root (next/font's variable option does this); without them the Tailwind default stacks apply.\nDark mode is the .dark class on html: next-themes with attribute=\"class\".\nAdd @import \"ziiz/shadcn.css\" only if the app also runs stock shadcn/ui components."
     },
     {
       "name": "skill",

@@ -1,16 +1,16 @@
 {
-  "name": "ziiz",
+  "name": "ziiz-monorepo",
   "version": "0.0.1",
   "type": "module",
   "private": true,
   "packageManager": "pnpm@10.33.4",
   "scripts": {
-    "dev": "pnpm --filter @ziiz/theme build && pnpm --parallel --filter @ziiz/theme --filter www dev",
+    "dev": "pnpm --filter ziiz build && pnpm --parallel --filter ziiz --filter www dev",
     "build": "pnpm -r build",
     "start": "pnpm --filter www start",
     "lint": "pnpm -r lint",
     "docs:check": "pnpm --filter www registry:build && pnpm --filter www docs:check",
-    "typecheck": "pnpm --filter @ziiz/theme build && pnpm -r typecheck",
+    "typecheck": "pnpm --filter ziiz build && pnpm -r typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,css,md,mdx,mjs,json,yaml,yml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,css,md,mdx,mjs,json,yaml,yml}\""
   },

@@ -1,4 +1,4 @@
-import { ziizShikiOptions } from "@ziiz/theme/shiki"
+import { ziizShikiOptions } from "ziiz/shiki"
 import { defineConfig, defineDocs } from "fumadocs-mdx/config"
 
 import {

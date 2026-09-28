@@ -1,1 +1,1 @@
-export { cn } from "@ziiz/theme/cn"
+export { cn } from "ziiz/cn"

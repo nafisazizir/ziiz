@@ -1,29 +1,31 @@
-# @ziiz/theme
+# ziiz
 
 The ziiz design layer as one import-free stylesheet: the Geist-style ramp,
 31 named type roles, eight materials and the `typeset` prose layer, all as
 Tailwind v4 utilities and CSS custom properties. Docs and the component
 registry live at [ziiz.vercel.app](https://ziiz.vercel.app).
 
+Beta preview: 0.x minors may break things, patches will not.
+
 ```bash
-npm install @ziiz/theme
+npm install ziiz
 ```
 
 ```css
 @import "tailwindcss";
-@import "@ziiz/theme";
-@import "@ziiz/theme/shadcn.css"; /* only if you run stock shadcn/ui components */
+@import "ziiz";
+@import "ziiz/shadcn.css"; /* only if you run stock shadcn/ui components */
 ```
 
 ## Entry points
 
-| Import                   | What it is                                                                                         |
-| ------------------------ | -------------------------------------------------------------------------------------------------- |
-| `@ziiz/theme`            | The design layer. Ramp tokens, type roles, materials, prose. Disables the stock Tailwind palette.  |
-| `@ziiz/theme/theme.css`  | The same file by its full path.                                                                    |
-| `@ziiz/theme/shadcn.css` | Maps shadcn's slot names (`bg-background`, `text-muted-foreground`) onto the ramp. Optional.       |
-| `@ziiz/theme/cn`         | `cn`, `twMerge`, `typeRoles`, `materials`: a class merger that knows the type roles and materials. |
-| `@ziiz/theme/shiki`      | `ziizShikiTheme` and `ziizShikiOptions`: a Shiki theme that resolves to the ramp's CSS variables.  |
+| Import            | What it is                                                                                         |
+| ----------------- | -------------------------------------------------------------------------------------------------- |
+| `ziiz`            | The design layer. Ramp tokens, type roles, materials, prose. Disables the stock Tailwind palette.  |
+| `ziiz/theme.css`  | The same file by its full path.                                                                    |
+| `ziiz/shadcn.css` | Maps shadcn's slot names (`bg-background`, `text-muted-foreground`) onto the ramp. Optional.       |
+| `ziiz/cn`         | `cn`, `twMerge`, `typeRoles`, `materials`: a class merger that knows the type roles and materials. |
+| `ziiz/shiki`      | `ziizShikiTheme` and `ziizShikiOptions`: a Shiki theme that resolves to the ramp's CSS variables.  |
 
 ## Fonts
 
@@ -42,7 +44,7 @@ another, so the last one in the class list wins. Re-export it from the
 app's `lib/utils.ts`; the registry's `utils` item does exactly that.
 
 ```ts
-export { cn } from "@ziiz/theme/cn"
+export { cn } from "ziiz/cn"
 ```
 
 ## Components

@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm registry:build && next dev",
-    "build": "pnpm --filter @ziiz/theme build && pnpm registry:build && next build",
+    "build": "pnpm --filter ziiz build && pnpm registry:build && next build",
     "start": "next start",
     "lint": "eslint",
     "registry:build": "node scripts/build-registry.ts",
@@ -16,7 +16,7 @@
     "@base-ui/react": "^1.7.0",
     "@shadcn/react": "^0.3.0",
     "@tabler/icons-react": "^3.48.0",
-    "@ziiz/theme": "workspace:*",
+    "ziiz": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.4.0",

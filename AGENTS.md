@@ -7,13 +7,13 @@ This version has breaking changes: APIs, conventions, and file structure may all
 
 # ziiz
 
-A design system in two deliverables: `@ziiz/theme`, an npm package holding
+A design system in two deliverables: `ziiz`, an npm package holding
 the design layer as CSS (ramp, type roles, materials, prose) plus `cn` and
 a Shiki theme, and a shadcn registry of components served straight from
 this repository. `apps/www` is the docs site that dogfoods both.
 
 ```
-packages/theme        @ziiz/theme: theme.css, shadcn.css, src/cn.ts, src/shiki.ts
+packages/theme        ziiz: theme.css, shadcn.css, src/cn.ts, src/shiki.ts
 apps/www/components   ui/ (published), docs/ (published primitives), examples/, mdx/
 apps/www/content      docs/ (foundation pages, components/<name>.mdx), blog/
 apps/www/scripts      build-registry.ts, check-docs.ts

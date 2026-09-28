@@ -17,11 +17,11 @@ The **token layer** is the ramp, the type roles, the materials and the prose rul
 
 The **components** are the opposite. An app wants to own its button. It edits the file, adds a variant, deletes what it does not need. A component that updates itself from upstream is a component nobody trusts.
 
-So ziiz ships them differently. The token layer is a package, `@ziiz/theme`, and it is one stylesheet:
+So ziiz ships them differently. The token layer is a package, `ziiz`, and it is one stylesheet:
 
 ```css title="app/globals.css"
 @import "tailwindcss";
-@import "@ziiz/theme/theme.css";
+@import "ziiz/theme.css";
 ```
 
 The components are a [shadcn registry](/installation#components). You point `components.json` at it and add what you need by name. What you get is a file.

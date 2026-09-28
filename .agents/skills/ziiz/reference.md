@@ -1,7 +1,7 @@
 # ziiz reference
 
 The tables behind [SKILL.md](SKILL.md). Source of truth is
-`@ziiz/theme/theme.css`; the docs at https://ziiz.vercel.app/colors,
+`ziiz/theme.css`; the docs at https://ziiz.vercel.app/colors,
 /typography, /materials and /prose render the same data with reasoning.
 
 ## Ramp
@@ -166,7 +166,7 @@ a subtree marked `not-typeset` or `data-not-typeset` opts out.
 
 ## shadcn slot bridge
 
-`@ziiz/theme/shadcn.css` is optional. It maps the stock shadcn variables
+`ziiz/shadcn.css` is optional. It maps the stock shadcn variables
 onto the ramp so components written in that vocabulary render on it
 unchanged. Useful for reading old code, never for writing new ziiz code.
 
@@ -208,7 +208,7 @@ code-collapsible, code-tabs, component-preview, component-source, steps.
 
 Hooks: use-mobile.
 
-Package exports: `@ziiz/theme` and `@ziiz/theme/theme.css` (the design
-layer), `@ziiz/theme/shadcn.css` (the slot bridge), `@ziiz/theme/cn` (`cn`,
-`twMerge`, `typeRoles`, `materials`), `@ziiz/theme/shiki` (a Shiki theme
+Package exports: `ziiz` and `ziiz/theme.css` (the design
+layer), `ziiz/shadcn.css` (the slot bridge), `ziiz/cn` (`cn`,
+`twMerge`, `typeRoles`, `materials`), `ziiz/shiki` (a Shiki theme
 that resolves to the ramp's variables).

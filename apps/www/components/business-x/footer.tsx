@@ -35,7 +35,7 @@ const groups = [
       { label: "Status", href: "https://docs.x.com/status" },
       {
         label: "Accessibility",
-        href: "https://help.x.com/resources/accessibility",
+        href: "/help-x/resources/accessibility",
       },
       { label: "Embed a post", href: "https://publish.x.com" },
       { label: "Privacy center", href: "https://privacy.x.com" },
@@ -60,17 +60,17 @@ const groups = [
   {
     title: "Help",
     links: [
-      { label: "Help Center", href: "https://help.x.com" },
-      { label: "Using >x<", href: "https://help.x.com/using-x" },
+      { label: "Help Center", href: "/help-x" },
+      { label: "Using >x<", href: "/help-x/using-x" },
       {
         label: "Managing your account",
-        href: "https://help.x.com/managing-your-account",
+        href: "/help-x/managing-your-account",
       },
       {
         label: "Rules and policies",
-        href: "https://help.x.com/rules-and-policies",
+        href: "/help-x/rules-and-policies",
       },
-      { label: "Contact us", href: "https://help.x.com/forms" },
+      { label: "Contact us", href: "/help-x/forms" },
     ],
   },
   {

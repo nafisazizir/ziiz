@@ -20,8 +20,13 @@ const ctx = await browser.newContext({
 fs.mkdirSync("live", { recursive: true })
 for (const width of [1512, 390]) {
   for (const u of urls) {
+    // business.x.com pages keep their bare path; other sites lead with
+    // their subdomain (help__using-x).
+    const [, host, rest] = u.match(/^https:\/\/(\w+)\.x\.com\/en\/?(.*)$/)
     const f = (
-      u.replace(/^https:\/\/business\.x\.com\/en\/?/, "") || "home"
+      host === "business"
+        ? rest || "home"
+        : [host, rest].filter(Boolean).join("/")
     ).replace(/\//g, "__")
     const page = await ctx.newPage()
     await page.setViewportSize({ width, height: 982 })

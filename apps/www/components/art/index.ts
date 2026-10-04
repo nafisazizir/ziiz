@@ -51,6 +51,12 @@ import { BlogSpread } from "./blog/spread"
 import { BlogQuadrant } from "./blog/quadrant"
 import { BlogSlots } from "./blog/slots"
 import { BlogColumns } from "./blog/columns"
+import { Shelf } from "./help/shelf"
+import { SweepRings } from "./help/sweep-rings"
+import { PanelStack } from "./help/panel-stack"
+import { EclipsePair } from "./help/eclipse-pair"
+import { RelayPair } from "./help/relay-pair"
+import { PrismRays } from "./help/prism-rays"
 
 export type ArtCategory = keyof typeof categories
 
@@ -74,6 +80,10 @@ export const categories = {
   blog: {
     label: "Blog cards",
     note: "patterns the blog rotates behind its cards",
+  },
+  help: {
+    label: "Help Center",
+    note: "help.x.com's shelf and its five category drawings",
   },
 } as const
 
@@ -572,6 +582,57 @@ export const art = [
     variants: [{ variant: "default", viewBox: "0 0 398 245" }],
     Component: BlogColumns,
   },
+  {
+    name: "Shelf",
+    label: "Shelf",
+    category: "help",
+    source: "help.x.com home",
+    variants: [
+      { variant: "wide", viewBox: "0 0 982 450" },
+      { variant: "narrow", viewBox: "0 0 404 424" },
+    ],
+    Component: Shelf,
+  },
+  {
+    name: "SweepRings",
+    label: "Sweep rings",
+    category: "help",
+    source: "help.x.com rules-and-policies",
+    variants: [{ variant: "default", viewBox: "0 0 320 224" }],
+    Component: SweepRings,
+  },
+  {
+    name: "PanelStack",
+    label: "Panel stack",
+    category: "help",
+    source: "help.x.com managing-your-account",
+    variants: [{ variant: "default", viewBox: "0 0 320 224" }],
+    Component: PanelStack,
+  },
+  {
+    name: "EclipsePair",
+    label: "Eclipse pair",
+    category: "help",
+    source: "help.x.com using-x",
+    variants: [{ variant: "default", viewBox: "0 0 320 224" }],
+    Component: EclipsePair,
+  },
+  {
+    name: "RelayPair",
+    label: "Relay pair",
+    category: "help",
+    source: "help.x.com safety-and-security",
+    variants: [{ variant: "default", viewBox: "0 0 320 224" }],
+    Component: RelayPair,
+  },
+  {
+    name: "PrismRays",
+    label: "Prism rays",
+    category: "help",
+    source: "help.x.com business-and-advertising",
+    variants: [{ variant: "default", viewBox: "0 0 320 224" }],
+    Component: PrismRays,
+  },
 ] satisfies ArtEntry[]
 
 export {
@@ -628,4 +689,10 @@ export {
   BlogQuadrant,
   BlogSlots,
   BlogColumns,
+  Shelf,
+  SweepRings,
+  PanelStack,
+  EclipsePair,
+  RelayPair,
+  PrismRays,
 }

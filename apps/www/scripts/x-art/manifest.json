@@ -710,5 +710,87 @@
         "key": "create-and-launch-sales-campaigns-in-minutes.light.svg"
       }
     ]
+  },
+  {
+    "name": "Shelf",
+    "file": "help/shelf",
+    "source": "home \u00b7 the shelf of categories",
+    "note": "Ported from help.x.com: home \u00b7 the shelf of categories.",
+    "variants": [
+      {
+        "variant": "wide",
+        "key": "e835a798"
+      },
+      {
+        "variant": "narrow",
+        "key": "b6420f35"
+      }
+    ],
+    "category": "help"
+  },
+  {
+    "name": "SweepRings",
+    "file": "help/sweep-rings",
+    "source": "rules-and-policies",
+    "note": "Ported from help.x.com: rules-and-policies.",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "638063cb"
+      }
+    ],
+    "category": "help"
+  },
+  {
+    "name": "PanelStack",
+    "file": "help/panel-stack",
+    "source": "managing-your-account",
+    "note": "Ported from help.x.com: managing-your-account.",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "73cb667b"
+      }
+    ],
+    "category": "help"
+  },
+  {
+    "name": "EclipsePair",
+    "file": "help/eclipse-pair",
+    "source": "using-x",
+    "note": "Ported from help.x.com: using-x.",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "a6f727a8"
+      }
+    ],
+    "category": "help"
+  },
+  {
+    "name": "RelayPair",
+    "file": "help/relay-pair",
+    "source": "safety-and-security",
+    "note": "Ported from help.x.com: safety-and-security.",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "b4970d48"
+      }
+    ],
+    "category": "help"
+  },
+  {
+    "name": "PrismRays",
+    "file": "help/prism-rays",
+    "source": "business-and-advertising",
+    "note": "Ported from help.x.com: business-and-advertising.",
+    "variants": [
+      {
+        "variant": "default",
+        "key": "2a5d9dea"
+      }
+    ],
+    "category": "help"
   }
 ]

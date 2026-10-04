@@ -11,15 +11,18 @@ const WORK = process.env.X_ART_WORK ?? ".x-art"
 process.chdir(WORK)
 import fs from "node:fs"
 const OUT = process.argv[2] ?? "../components/art"
+// X_ART_ONLY=help generates just those categories from a partial capture
+// and leaves index.ts alone; add the new entries to it by hand from the
+// index.json this writes.
+const only = process.env.X_ART_ONLY?.split(",")
 const manifest = JSON.parse(
   fs.readFileSync(new URL("./manifest.json", import.meta.url), "utf8")
-)
+).filter((m) => !only || only.includes(m.category))
 const catalogue = Object.fromEntries(
   JSON.parse(fs.readFileSync("catalogue.json", "utf8")).map((c) => [c.key, c])
 )
 const cardart = Object.fromEntries(
-  fs
-    .readdirSync("cardart")
+  (fs.existsSync("cardart") ? fs.readdirSync("cardart") : [])
     .filter((f) => f.endsWith(".light.svg"))
     .map((f) => [f, fs.readFileSync(`cardart/${f}`, "utf8")])
 )
@@ -30,6 +33,7 @@ const TOKENS = {
   "var(--x-fg-secondary)": "var(--ds-gray-900)",
   "var(--x-fg-secondary, #70707b)": "var(--ds-gray-900)",
   "var(--x-fg-tertiary)": "var(--ds-gray-600)",
+  "var(--x-fg-alpha-10)": "var(--ds-gray-alpha-300)",
   "var(--x-fg-brand)": "var(--ds-blue-700)",
   "var(--x-bg-primary)": "var(--ds-background-100)",
   "var(--x-bg-secondary)": "var(--ds-gray-100)",
@@ -111,11 +115,22 @@ const toJsx = async (html) => {
           usesId = true
           return `url(#\${id}-${slug(i)})`
         })
-      const slug = (s) =>
-        s
-          .replace(/^_R_[a-z0-9]+_-?/, "")
-          .replace(/[^a-zA-Z0-9]+/g, "-")
-          .replace(/^-|-$/g, "") || "ref"
+      // Two source ids can reduce to one slug (every shelf box has a
+      // "belly" clip); the later ones take a number.
+      const slugs = new Map()
+      const slug = (s) => {
+        if (slugs.has(s)) return slugs.get(s)
+        const base =
+          s
+            .replace(/^_R_[a-z0-9]+_-?/, "")
+            .replace(/[^a-zA-Z0-9]+/g, "-")
+            .replace(/^-|-$/g, "") || "ref"
+        const taken = new Set(slugs.values())
+        let name = base
+        for (let n = 2; taken.has(name); n++) name = `${base}-${n}`
+        slugs.set(s, name)
+        return name
+      }
       const token = (v) => {
         const bare = v.replace(/var\((--[a-z-]+), [^)]+\)/g, "var($1)")
         return (
@@ -234,8 +249,18 @@ const toJsx = async (html) => {
           const x = +node.getAttribute("x"),
             y = +node.getAttribute("y"),
             h = +node.getAttribute("height")
+          // The inline logo placeholder has no glyph in SVG text; the
+          // double-struck X stands in for it.
+          node.querySelectorAll("span").forEach((s) => {
+            if (s.textContent === ">x<") s.replaceWith("\u{1D54F}")
+          })
           const div = node.firstElementChild
           const st = div?.getAttribute("style") || ""
+          // A label centred in its box anchors on the box's middle.
+          const centred = /\b(text-center|justify-center)\b/.test(
+            div?.getAttribute("class") || ""
+          )
+          const tx = centred ? x + +node.getAttribute("width") / 2 : x
           const fs = +(st.match(/font-size:(\d+)/) || [0, 13])[1],
             lh = +(st.match(/line-height:(\d+)/) || [0, fs * 1.5])[1]
           const spans = [...node.querySelectorAll("span")].filter(
@@ -269,10 +294,10 @@ const toJsx = async (html) => {
           const body = lines
             .map(
               (l, i) =>
-                `<tspan x=${esc(String(x))} y=${esc(String(+(y0 + i * lh).toFixed(2)))}>${l.map((p) => (p.w || p.c ? `<tspan${p.w ? ` fontWeight=${esc(p.w)}` : ""}${p.c ? ` fill=${esc(p.c)}` : ""}>${esc(p.t) ? `{${esc(p.t)}}` : ""}</tspan>` : `{${esc(p.t)}}`)).join("")}</tspan>`
+                `<tspan x=${esc(String(tx))} y=${esc(String(+(y0 + i * lh).toFixed(2)))}>${l.map((p) => (p.w || p.c ? `<tspan${p.w ? ` fontWeight=${esc(p.w)}` : ""}${p.c ? ` fill=${esc(p.c)}` : ""}>${esc(p.t) ? `{${esc(p.t)}}` : ""}</tspan>` : `{${esc(p.t)}}`)).join("")}</tspan>`
             )
             .join("")
-          return `<text fill="currentColor" fontSize=${esc(String(fs))}${/font-weight:5/.test(st) ? ' fontWeight="500"' : ""} data-part="label">${body}</text>`
+          return `<text fill="currentColor" stroke="none" fontSize=${esc(String(fs))}${/font-weight:5/.test(st) ? ' fontWeight="500"' : ""}${centred ? ' textAnchor="middle"' : ""} data-part="label">${body}</text>`
         }
         const kids = [...node.childNodes].map(walk).join("")
         const t = tag === "a" ? "g" : tag
@@ -378,6 +403,6 @@ export {
 ${index.map((m) => `  ${m.name},`).join("\n")}
 }
 `
-fs.writeFileSync(`${OUT}/index.ts`, ts)
+if (!only) fs.writeFileSync(`${OUT}/index.ts`, ts)
 await browser.close()
 console.log("generated", manifest.length)

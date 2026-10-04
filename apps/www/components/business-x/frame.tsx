@@ -1,13 +1,13 @@
 import { FloatingBar } from "@/components/business-x/floating-bar"
 import { Footer } from "@/components/business-x/footer"
-import {
-  BusinessMobileNav,
-  BusinessRail,
-} from "@/components/business-x/sidebar"
+import { SiteMobileNav, SiteRail } from "@/components/business-x/sidebar"
+import type { SiteKey } from "@/components/business-x/sites"
 import { EdgeFade } from "@/components/edge-fade"
 import { cn } from "@/lib/utils"
 
-// The page frame every business.x.com screen sits in. Geometry is x.com's: a
+// The page frame every x.com site screen sits in: business.x.com's, which
+// money.x.com and help.x.com share down to the rail and the footer. Only
+// Business floats the pill bar. Geometry is x.com's: a
 // 1440px centred frame, a 208px rail, then an article capped at 1152px and
 // centred in what is left, with 16px of gutter either side. At 1512px that is
 // the 1120px column with 56px gutters measured earlier; below 1360px the
@@ -25,10 +25,12 @@ import { cn } from "@/lib/utils"
 // the 32px site switcher, 24px of gap. Anything in the article that should
 // line up with the rail's rows (the blog filter, the post breadcrumb)
 // hangs off it.
-export function BusinessFrame({
+export function SiteFrame({
+  site,
   className,
   children,
 }: {
+  site: SiteKey
   className?: string
   children: React.ReactNode
 }) {
@@ -43,9 +45,9 @@ export function BusinessFrame({
         } as React.CSSProperties
       }
     >
-      <BusinessRail />
+      <SiteRail site={site} />
       <main className="flex min-w-0 flex-1 flex-col">
-        <BusinessMobileNav />
+        <SiteMobileNav site={site} />
         <EdgeFade side="top" />
         <div
           className={cn(
@@ -58,7 +60,21 @@ export function BusinessFrame({
         <Footer />
         <EdgeFade side="bottom" />
       </main>
-      <FloatingBar />
+      {site === "business" && <FloatingBar />}
     </div>
   )
+}
+
+type FrameProps = Omit<React.ComponentProps<typeof SiteFrame>, "site">
+
+export function BusinessFrame(props: FrameProps) {
+  return <SiteFrame site="business" {...props} />
+}
+
+export function MoneyFrame(props: FrameProps) {
+  return <SiteFrame site="money" {...props} />
+}
+
+export function HelpFrame(props: FrameProps) {
+  return <SiteFrame site="help" {...props} />
 }

@@ -42,3 +42,4 @@ next-env.d.ts
 
 # x art pipeline work dir
 .x-art/
+.x-help/

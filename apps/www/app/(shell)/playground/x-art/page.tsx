@@ -18,6 +18,7 @@ const layout: Record<ArtCategory, string> = {
   marks: "grid-cols-3 sm:grid-cols-4 lg:grid-cols-6",
   cards: "grid-cols-2 lg:grid-cols-3",
   blog: "grid-cols-2 lg:grid-cols-3",
+  help: "grid-cols-2 lg:grid-cols-3",
 }
 
 function size(viewBox: string) {

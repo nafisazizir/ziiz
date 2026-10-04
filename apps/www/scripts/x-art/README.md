@@ -17,5 +17,12 @@ settled drawings can be re-captured when the site changes.
    ids scoped with `useId`, `foreignObject` labels rewritten as `<text>`,
    photos replaced by grey placeholder rects. Then run prettier.
 
+The help.x.com pieces (`help/`) were added on 2026-10-04 from a capture of
+that site alone: put its URLs in `urls.txt`, run capture and catalogue, add
+the entries to `manifest.json`, then `X_ART_ONLY=help node
+scripts/x-art/generate.mjs`. That writes only that category's components and
+leaves `index.ts` to be extended by hand, since the business.x.com captures
+are not kept.
+
 `<work>` defaults to `apps/www/.x-art` (gitignored); set `X_ART_WORK` to
 move it. Playwright comes from the global npm root (`NPMROOT`).

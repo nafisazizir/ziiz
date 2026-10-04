@@ -3,7 +3,13 @@ import { posts } from "@/components/business-x/blog-posts"
 // The shape business.x.com's blog reduces to: a header plus one run of
 // blocks, set by ziiz's own article prose. Media is dimensions only; the
 // clone draws grey panels at the right ratio.
-export type Run = string | { b: Run[] } | { i: Run[] } | { a: string; r: Run[] }
+export type Run =
+  | string
+  | { b: Run[] }
+  | { i: Run[] }
+  | { a: string; r: Run[] }
+  | { sup: Run[] }
+  | { code: string }
 
 export type Block =
   | { type: "heading"; level: 2 | 3 | 4; text: string }

@@ -29,6 +29,8 @@ export const siteConfig = {
       items: [
         { name: "Palette generator", href: "/playground" },
         { name: "X Business clone", href: "/business-x" },
+        { name: "X Money clone", href: "/money-x" },
+        { name: "X Help Center clone", href: "/help-x" },
         { name: "X art", href: "/playground/x-art" },
         { name: "Inset check", href: "/playground/inset" },
       ],

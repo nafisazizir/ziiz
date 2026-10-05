@@ -129,7 +129,10 @@ to roles with a fixed rhythm. Mark a subtree `not-typeset` to opt out.
 6. No `dark:` color overrides. Both themes share the token names; the ramp
    flips underneath.
 7. Radius uses the generic `rounded-*` scale, which derives from `--radius`.
-   No arbitrary pixel radii or border widths.
+   No arbitrary pixel radii or border widths. Corners draw as squircles
+   where supported, with the scale grown by `--radius-scale` (1.4 there);
+   a pill or circle is `rounded-full`, which stays round. A px cap on a
+   radius scales too: `rounded-[min(var(--radius-md),calc(10px*var(--radius-scale)))]`.
 8. No press animation on buttons. Transitions are `transition-colors`, not
    `transition-all`.
 9. `cn` comes from `@/lib/utils`, which re-exports `@nafisazizir/ziiz/cn`. Its

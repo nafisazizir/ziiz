@@ -69,7 +69,11 @@ focus-visible:ring-ring/50` cluster (`--ring` already resolves to
 4. **Radius: keep the generic `rounded-*` scale.** No semantic shape tokens.
    The scale resolves through `--radius: 0.875rem` (Large); migration never
    changes a component's radius classes unless they visibly break on
-   `/preview`, and that's a stop-and-resolve, not a silent fix.
+   `/preview`, and that's a stop-and-resolve, not a silent fix. Corners
+   draw as squircles at `--radius-scale` (1.4 where squircles draw); a px
+   cap multiplies by it, `min(var(--radius-md),calc(10px*var(--radius-scale)))`.
+   A pill or circle must be `rounded-full`, since a token radius that
+   clamps to a pill draws a flat-ended capsule.
 5. **Hover steps the ramp, never opacity-mixes.** `hover:bg-x/80` and
    `color-mix()` hovers are replaced by the adjacent hand-tuned ramp step.
 6. **Fields rest on the page surface.** Field-style controls (input,

@@ -1,6 +1,6 @@
 {
   "name": "@nafisazizir/ziiz",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "ziiz design layer: ramp tokens, type roles, materials, prose, Shiki, and the shadcn slot bridge.",
   "license": "MIT",
   "repository": {

@@ -119,7 +119,7 @@ function QuestionnaireChoice({
       <span
         aria-hidden="true"
         data-slot="questionnaire-choice-indicator"
-        className="pointer-events-none relative flex size-4 shrink-0 translate-y-[--spacing(0.45)] items-center justify-center rounded-[min(var(--radius-md),4px)] border border-gray-alpha-400 bg-background-100 group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 group-data-[type=radio]/questionnaire-choice:rounded-full group-data-checked/questionnaire-choice:border-gray-1000 group-data-checked/questionnaire-choice:bg-gray-1000 group-data-checked/questionnaire-choice:text-background-100"
+        className="pointer-events-none relative flex size-4 shrink-0 translate-y-[--spacing(0.45)] items-center justify-center rounded-[min(var(--radius-md),calc(4px*var(--radius-scale)))] border border-gray-alpha-400 bg-background-100 group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5 group-data-[type=radio]/questionnaire-choice:rounded-full group-data-checked/questionnaire-choice:border-gray-1000 group-data-checked/questionnaire-choice:bg-gray-1000 group-data-checked/questionnaire-choice:text-background-100"
       >
         <span
           data-slot="questionnaire-choice-indicator-dot"

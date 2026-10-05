@@ -73,7 +73,7 @@ function EndpointField({
         />
         <InputGroupAddon>
           <label
-            className="size-4 shrink-0 cursor-pointer rounded-[min(var(--radius-sm),6px)] ring-1 ring-gray-alpha-400 ring-inset"
+            className="size-4 shrink-0 cursor-pointer rounded-[min(var(--radius-sm),calc(6px*var(--radius-scale)))] ring-1 ring-gray-alpha-400 ring-inset"
             style={{ backgroundColor: hex }}
           >
             <input

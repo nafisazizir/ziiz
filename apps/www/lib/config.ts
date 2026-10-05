@@ -32,6 +32,7 @@ export const siteConfig = {
         { name: "X Money clone", href: "/money-x" },
         { name: "X Help Center clone", href: "/help-x" },
         { name: "X art", href: "/playground/x-art" },
+        { name: "Pattern art", href: "/playground/pattern-art" },
         { name: "Inset check", href: "/playground/inset" },
       ],
     },

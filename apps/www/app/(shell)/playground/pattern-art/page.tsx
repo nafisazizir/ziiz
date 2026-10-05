@@ -42,7 +42,11 @@ export default function PatternArtPage() {
         title="Pattern art"
         description={`${patterns.length} patterns in nine families, each drawn once on a 384×120 frame and placed in any container. The rules are in components/patterns/README.md.`}
       >
-        <PatternStage pattern={PatternColumns} className="absolute inset-0" />
+        <PatternStage
+          pattern={PatternColumns}
+          animate
+          className="absolute inset-0"
+        />
       </BlogHero>
       <Separator className="mt-10 lg:mt-0" />
       <div className="flex flex-col gap-20 py-10 lg:gap-30 lg:py-20">

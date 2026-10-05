@@ -7,6 +7,7 @@
    components and call sites that still speak that vocabulary. */
 @import "@nafisazizir/ziiz/theme.css";
 @import "@nafisazizir/ziiz/shadcn.css";
+@import "../components/patterns/motion.css";
 
 :root {
   --shiki-token-parameter: var(--shiki-color-text);

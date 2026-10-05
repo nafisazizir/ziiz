@@ -3,6 +3,8 @@
 import * as React from "react"
 
 import { families, patterns, PatternStage } from "@/components/patterns"
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // The containers every pattern is tried in. Frame shows the 384×120 frame
@@ -19,9 +21,11 @@ const views = [
 
 // The view tabs ride in a bar stuck to the top of the column. The bar is
 // opaque from the viewport edge down to its rule, so the art scrolls under a
-// clean cut, and its tabs sit level with the sidebar's first row.
+// clean cut, and its tabs sit level with the sidebar's first row. Motion
+// runs every pattern's idle loop.
 export function PatternCatalogue() {
   const [view, setView] = React.useState("cover")
+  const [animate, setAnimate] = React.useState(true)
   const { ratio } = views.find((v) => v.value === view) ?? views[0]
 
   return (
@@ -30,10 +34,10 @@ export function PatternCatalogue() {
       onValueChange={(value) => setView(value as string)}
       className="gap-20 lg:gap-30"
     >
-      <div className="sticky top-(--header-height) z-40 border-b border-gray-alpha-400 bg-background pt-(--content-top)">
+      <div className="sticky top-(--header-height) z-40 flex items-end gap-4 border-b border-gray-alpha-400 bg-background pt-(--content-top)">
         <TabsList
           variant="line"
-          className="max-w-full overflow-x-auto group-data-horizontal/tabs:h-8"
+          className="max-w-full min-w-0 overflow-x-auto group-data-horizontal/tabs:h-8"
         >
           {views.map((v) => (
             <TabsTrigger key={v.value} value={v.value}>
@@ -41,6 +45,10 @@ export function PatternCatalogue() {
             </TabsTrigger>
           ))}
         </TabsList>
+        <Label className="ms-auto h-8 shrink-0 text-label-13">
+          <Switch size="sm" checked={animate} onCheckedChange={setAnimate} />
+          Motion
+        </Label>
       </div>
       {families.map((family) => {
         const entries = patterns.filter((p) => p.family === family.name)
@@ -62,6 +70,7 @@ export function PatternCatalogue() {
                     pattern={entry.Component}
                     anchor={view === "cover" ? "top" : "center"}
                     outline={view === "frame"}
+                    animate={animate}
                     style={{ aspectRatio: ratio }}
                   >
                     {view === "cover" && (

@@ -1,5 +1,24 @@
 # @nafisazizir/ziiz
 
+## 0.2.0
+
+- Squircle corners. `theme.css` sets `corner-shape` on every element, so
+  each `rounded-*` corner draws as a squircle in browsers that support
+  `corner-shape` and typed arithmetic. Others keep the round corner.
+  `rounded-full` and a `--radius` of 4rem or more (the
+  `[--radius:9999px]` pill) stay round. Write `[corner-shape:round]` to opt
+  one element out.
+- `--radius-scale` multiplies the `rounded-*` scale. It is 1, and 1.4 where
+  squircles draw, because a squircle reads tighter than a round corner at
+  the same radius. Set it to 1 to keep the round radii under squircles.
+- The radius caps in Button, Checkbox, InputGroup, Kbd, Nav and
+  Questionnaire (`rounded-[min(var(--radius-md),10px)]` and the like), and
+  Sonner's toast radius, follow `--radius-scale`. Components installed
+  earlier keep their unscaled caps.
+- Badge now uses `rounded-full`. A Badge installed earlier still has
+  `rounded-4xl` and draws a squircle capsule; change it to `rounded-full`
+  for round ends.
+
 ## 0.1.0
 
 First release, a beta preview. Expect breaking changes in 0.x minors.

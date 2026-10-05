@@ -15,14 +15,15 @@
 @theme inline {
   --font-heading: var(--font-sans);
 
-  /* Multiplicative radius scale off --radius; materials pin onto it. */
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Multiplicative radius scale off --radius; materials pin onto it.
+     --radius-scale grows it where corners draw as squircles. */
+  --radius-sm: calc(var(--radius) * 0.6 * var(--radius-scale));
+  --radius-md: calc(var(--radius) * 0.8 * var(--radius-scale));
+  --radius-lg: calc(var(--radius) * var(--radius-scale));
+  --radius-xl: calc(var(--radius) * 1.4 * var(--radius-scale));
+  --radius-2xl: calc(var(--radius) * 1.8 * var(--radius-scale));
+  --radius-3xl: calc(var(--radius) * 2.2 * var(--radius-scale));
+  --radius-4xl: calc(var(--radius) * 2.6 * var(--radius-scale));
 }
 
 /* ziiz theme tokens */
@@ -149,6 +150,7 @@
 
 :root {
   --radius: 0.875rem;
+  --radius-scale: 1;
   --ds-black: oklch(0 0 0);
   --ds-white: oklch(1 0 0);
   --ds-background-100: oklch(1 0 0);
@@ -453,6 +455,15 @@
     0 0 0 2px var(--ds-background-100), 0 0 0 4px var(--ds-blue-900);
 }
 
+/* A squircle reads tighter than a round corner at the same radius, so the
+   scale grows where squircles draw. The condition matches the corner-shape
+   rule below: corner-shape plus typed arithmetic. */
+@supports (corner-shape: superellipse(calc(2px / 1px))) {
+  :root {
+    --radius-scale: 1.4;
+  }
+}
+
 /* Shiki syntax highlighting palette */
 :root {
   --shiki-color-text: var(--ds-gray-1000);
@@ -472,6 +483,13 @@
   * {
     @apply border-gray-alpha-400 outline-gray-600/50;
   }
+  /* Squircle corners where supported, round elsewhere. A --radius of 4rem
+     or more is a pill, which stays round. */
+  *,
+  ::before,
+  ::after {
+    corner-shape: superellipse(clamp(1, 1 + (4rem - var(--radius)) / 1px, 2));
+  }
   body {
     @apply bg-background-100 text-gray-1000;
   }
@@ -488,6 +506,11 @@
     font-optical-sizing: auto;
     font-feature-settings: "ss03" 1 /* round quotes & commas */;
   }
+}
+
+/* A squircle turns a circle into a rounded square; full stays round. */
+@utility rounded-full {
+  corner-shape: round;
 }
 
 /* Material */
@@ -922,7 +945,7 @@
     /* Keyboard keys. */
     /* Keyboard keys, matching the ui Kbd component. */
     &:where(kbd) {
-      @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--radius-sm),6px)] bg-gray-100 px-1 text-label-12 text-gray-900;
+      @apply inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--radius-sm),calc(6px*var(--radius-scale)))] bg-gray-100 px-1 text-label-12 text-gray-900;
     }
 
     /* Definition lists. */
@@ -946,7 +969,7 @@
 
     /* Inline code. */
     &:where(:not(pre) > code) {
-      @apply rounded-[min(var(--radius-sm),6px)] bg-gray-100 text-copy-13-mono;
+      @apply rounded-[min(var(--radius-sm),calc(6px*var(--radius-scale)))] bg-gray-100 text-copy-13-mono;
       padding: 0.125rem 0.25rem;
     }
 

@@ -34,7 +34,7 @@ function InputGroup({
 }
 
 const inputGroupAddonVariants = cva(
-  "flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-label-14 text-gray-900 select-none group-data-[disabled=true]/input-group:opacity-50 **:data-[slot=kbd]:rounded-[min(var(--radius-sm),6px)] [&>svg:not([class*='size-'])]:size-4",
+  "flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-label-14 text-gray-900 select-none group-data-[disabled=true]/input-group:opacity-50 **:data-[slot=kbd]:rounded-[min(var(--radius-sm),calc(6px*var(--radius-scale)))] [&>svg:not([class*='size-'])]:size-4",
   {
     variants: {
       align: {
@@ -81,10 +81,10 @@ function InputGroupAddon({
 const inputGroupButtonVariants = cva("flex items-center gap-2 text-button-14", {
   variants: {
     size: {
-      xs: "h-6 gap-1 rounded-[min(var(--radius-md),8px)] px-2.5 has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 [&>svg:not([class*='size-'])]:size-3.5",
+      xs: "h-6 gap-1 rounded-[min(var(--radius-md),calc(8px*var(--radius-scale)))] px-2.5 has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 [&>svg:not([class*='size-'])]:size-3.5",
       sm: "",
       "icon-xs":
-        "size-6 rounded-[min(var(--radius-md),8px)] p-0 has-[>svg]:p-0",
+        "size-6 rounded-[min(var(--radius-md),calc(8px*var(--radius-scale)))] p-0 has-[>svg]:p-0",
       "icon-sm": "size-8 p-0 has-[>svg]:p-0",
     },
     shape: {

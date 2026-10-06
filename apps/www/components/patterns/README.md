@@ -166,7 +166,10 @@ pattern is the static drawing.
   changes shape, and a run along a chart's outline is not a reading.
 
 Parts that only exist to move carry `opacity="0"` so the static drawing is
-untouched. Scrub a loop by pausing the svg's animation and setting its
+untouched. A pattern takes no hooks of its own: anything that needs an id
+(a mask, a clip) comes from a helper in `motion.tsx` (`Flip`, `Clip`,
+`Reveal`), so a renderer that walks the tree outside React, such as an Open
+Graph route, can draw every helper it knows. Scrub a loop by pausing the svg's animation and setting its
 `currentTime`.
 
 ## Adding one

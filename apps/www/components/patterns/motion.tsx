@@ -202,6 +202,42 @@ export function Clip({
   )
 }
 
+// Shows its children only inside a rectangle of the frame that moves: a
+// mask whose rect carries a motion (a swing, a slide), for a share that
+// grows and shrinks behind a cursor. A static Clip is cheaper.
+export function Reveal({
+  x,
+  y,
+  width,
+  height,
+  motion,
+  children,
+}: {
+  x: number
+  y: number
+  width: number
+  height: number
+  motion?: object
+  children: React.ReactNode
+}) {
+  const id = React.useId()
+  return (
+    <>
+      <mask id={id} {...area}>
+        <rect
+          x={x}
+          y={y}
+          width={width}
+          height={height}
+          fill="#fff"
+          {...motion}
+        />
+      </mask>
+      <g mask={`url(#${id})`}>{children}</g>
+    </>
+  )
+}
+
 // A polyline route: its path, how far along it each vertex falls, and its
 // length.
 export function route(points: [number, number][]) {

@@ -12,3 +12,12 @@ export function getExample(name: string) {
 export function getExampleSource(name: string) {
   return `components/examples/${name}.tsx`
 }
+
+/**
+ * Examples that take the whole viewport, like a sidebar. The docs render
+ * these through an iframe onto `/view/<name>`, where `fixed` and `h-svh`
+ * mean the frame rather than the docs page.
+ */
+export const blockNames = exampleNames.filter((name) =>
+  name.startsWith("sidebar-")
+)

@@ -1,4 +1,5 @@
 import { getExample, getExampleSource } from "@/lib/examples"
+import { cn } from "@/lib/utils"
 import { Callout } from "@/components/docs/callout"
 import { ComponentPreview as Preview } from "@/components/docs/component-preview"
 import { CachedComponentSource } from "@/components/mdx/component-source"
@@ -6,14 +7,38 @@ import { CachedComponentSource } from "@/components/mdx/component-source"
 // The app side of ComponentPreview: an example name resolves to the live
 // component and to its own source file. There is one component set and one
 // icon set here, so the name is the whole address: no style or base to
-// disambiguate, and nothing is rendered through an iframe.
+// disambiguate. A block takes the whole viewport, so it renders through an
+// iframe onto its own /view page instead, at a desktop width from md up.
 export function ComponentPreview({
   name,
+  type,
+  className,
   ...props
 }: Omit<React.ComponentProps<typeof Preview>, "source" | "children"> & {
   name: string
+  type?: "block"
 }) {
   const Example = getExample(name)
+
+  if (type === "block" && Example) {
+    return (
+      <div
+        data-slot="component-preview"
+        data-not-typeset
+        className={cn(
+          "relative mt-(--typeset-flow,1.5rem) aspect-[4/2.5] w-full overflow-hidden rounded-lg border border-gray-alpha-400 bg-background-100",
+          className
+        )}
+      >
+        <iframe
+          src={`/view/${name}`}
+          title={name}
+          loading="lazy"
+          className="absolute inset-0 size-full md:w-[1600px]"
+        />
+      </div>
+    )
+  }
 
   if (!Example) {
     return (
@@ -26,6 +51,7 @@ export function ComponentPreview({
 
   return (
     <Preview
+      className={className}
       source={
         <CachedComponentSource
           src={getExampleSource(name)}

@@ -217,7 +217,7 @@ function TeamSwitcher({
             render={
               <SidebarMenuButton
                 size="lg"
-                className="data-[state=open]:bg-gray-100 data-[state=open]:text-gray-1000"
+                className="data-popup-open:bg-gray-alpha-100 data-popup-open:text-gray-1000"
               />
             }
           >
@@ -231,7 +231,7 @@ function TeamSwitcher({
             <IconSelector className="ml-auto" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            className="w-(--anchor-width) min-w-56 rounded-lg"
             align="start"
             side={isMobile ? "bottom" : "right"}
             sideOffset={4}
@@ -300,7 +300,7 @@ function NavMain({
               >
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
-                <IconChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                <IconChevronRight className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90" />
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarMenuSub>
@@ -399,7 +399,7 @@ function NavUser({
             render={
               <SidebarMenuButton
                 size="lg"
-                className="data-[state=open]:bg-gray-100 data-[state=open]:text-gray-1000"
+                className="data-popup-open:bg-gray-alpha-100 data-popup-open:text-gray-1000"
               />
             }
           >
@@ -414,7 +414,7 @@ function NavUser({
             <IconSelector className="ml-auto size-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            className="w-(--anchor-width) min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}

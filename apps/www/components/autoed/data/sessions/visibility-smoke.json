@@ -1,0 +1,29 @@
+{
+ "id": "visibility-smoke",
+ "backend": "claude",
+ "title": "Reply with exactly the sentence: Automation visibility test",
+ "cwd": "~/Documents/personal/ziiz",
+ "model": "claude-fable-5-1",
+ "updates": [
+  {
+   "sessionUpdate": "user_message_chunk",
+   "content": {
+    "type": "text",
+    "text": "Reply with exactly the sentence: Automation visibility test OK. Do not use any tools."
+   },
+   "_meta": {
+    "at": "2026-09-25T01:17:44.503Z"
+   }
+  },
+  {
+   "sessionUpdate": "agent_message_chunk",
+   "content": {
+    "type": "text",
+    "text": "Automation visibility test OK."
+   },
+   "_meta": {
+    "at": "2026-09-25T01:17:46.920Z"
+   }
+  }
+ ]
+}

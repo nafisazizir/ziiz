@@ -43,26 +43,38 @@ export default function InputGroupButtonExample() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup className="[--radius:9999px]">
-        <Popover>
-          <PopoverTrigger render={<InputGroupAddon />}>
-            <InputGroupButton variant="secondary" size="icon-xs">
+        <InputGroupAddon>
+          <Popover>
+            <PopoverTrigger
+              render={
+                <InputGroupButton
+                  variant="secondary"
+                  size="icon-xs"
+                  aria-label="Connection info"
+                />
+              }
+            >
               <IconInfoCircle />
-            </InputGroupButton>
-          </PopoverTrigger>
-          <PopoverContent
-            align="start"
-            className="flex flex-col gap-1 rounded-xl text-sm"
-          >
-            <p className="font-medium">Your connection is not secure.</p>
-            <p>You should not enter any sensitive information on this site.</p>
-          </PopoverContent>
-        </Popover>
+            </PopoverTrigger>
+            <PopoverContent
+              align="start"
+              className="flex flex-col gap-1 rounded-xl text-sm"
+            >
+              <p className="font-medium">Your connection is not secure.</p>
+              <p>
+                You should not enter any sensitive information on this site.
+              </p>
+            </PopoverContent>
+          </Popover>
+        </InputGroupAddon>
         <InputGroupAddon className="pl-1.5 text-gray-900">
           https://
         </InputGroupAddon>
         <InputGroupInput id="input-secure-19" />
         <InputGroupAddon align="inline-end">
           <InputGroupButton
+            aria-label="Favorite"
+            aria-pressed={isFavorite}
             onClick={() => setIsFavorite(!isFavorite)}
             size="icon-xs"
           >

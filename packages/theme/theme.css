@@ -154,7 +154,7 @@
   --ds-black: oklch(0 0 0);
   --ds-white: oklch(1 0 0);
   --ds-background-100: oklch(1 0 0);
-  --ds-background-200: oklch(0.984 0 0);
+  --ds-background-200: oklch(0.991 0 0);
   --ds-gray-100: oklch(0.961 0 0);
   --ds-gray-200: oklch(0.94 0 0);
   --ds-gray-300: oklch(0.925 0 0);
@@ -305,7 +305,7 @@
 
 .dark {
   --ds-background-100: oklch(0 0 0);
-  --ds-background-200: oklch(0.027 0 0);
+  --ds-background-200: oklch(0.134 0 0);
   --ds-gray-100: oklch(0.218 0 0);
   --ds-gray-200: oklch(0.239 0 0);
   --ds-gray-300: oklch(0.281 0 0);

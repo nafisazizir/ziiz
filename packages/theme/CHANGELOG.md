@@ -22,6 +22,10 @@
 - Badge now uses `rounded-full`. A Badge installed earlier still has
   `rounded-4xl` and draws a squircle capsule; change it to `rounded-full`
   for round ends.
+- `background-200` sits closer to `background-100` in light mode and
+  lifts off it in dark: `oklch(0.991 0 0)`, `#fcfcfc` (was `0.984`,
+  `#fafafa`), and `oklch(0.134 0 0)`, `#080808` (was `0.027`, which
+  rounds to `#000000` and drew no lift at all).
 
 ## 0.1.0
 

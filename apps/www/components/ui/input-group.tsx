@@ -76,34 +76,21 @@ function InputGroupAddon({
   )
 }
 
-// These classes land after Button's own, so shape has to be restated here
-// for the sizes that carry their own radius (xs, icon-xs).
 const inputGroupButtonVariants = cva("flex items-center gap-2 text-button-14", {
   variants: {
     size: {
       xs: "h-6 gap-1 rounded-[min(var(--radius-md),calc(8px*var(--radius-scale)))] px-2.5 has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 [&>svg:not([class*='size-'])]:size-3.5",
-      sm: "",
+      sm: "h-8 gap-1 rounded-[min(var(--radius-md),calc(10px*var(--radius-scale)))] px-3 has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5",
       "icon-xs":
         "size-6 rounded-[min(var(--radius-md),calc(8px*var(--radius-scale)))] p-0 has-[>svg]:p-0",
-      "icon-sm": "size-8 p-0 has-[>svg]:p-0",
+      "icon-sm":
+        "size-8 rounded-[min(var(--radius-md),calc(10px*var(--radius-scale)))] p-0 has-[>svg]:p-0",
     },
     shape: {
       default: "",
-      rounded: "",
+      rounded: "rounded-full",
     },
   },
-  compoundVariants: [
-    {
-      shape: "rounded",
-      size: "xs",
-      className: "rounded-full",
-    },
-    {
-      shape: "rounded",
-      size: "icon-xs",
-      className: "rounded-full",
-    },
-  ],
   defaultVariants: {
     size: "xs",
     shape: "default",

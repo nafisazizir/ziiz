@@ -17,10 +17,10 @@
 
   /* Multiplicative radius scale off --radius; materials pin onto it.
      --radius-scale grows it where corners draw as squircles. */
-  --radius-sm: calc(var(--radius) * 0.6 * var(--radius-scale));
-  --radius-md: calc(var(--radius) * 0.8 * var(--radius-scale));
-  --radius-lg: calc(var(--radius) * var(--radius-scale));
-  --radius-xl: calc(var(--radius) * 1.4 * var(--radius-scale));
+  --radius-sm: calc(var(--radius) * var(--radius-scale));
+  --radius-md: calc(var(--radius) * 1.3 * var(--radius-scale));
+  --radius-lg: calc(var(--radius) * 1.5 * var(--radius-scale));
+  --radius-xl: calc(var(--radius) * 1.6 * var(--radius-scale));
   --radius-2xl: calc(var(--radius) * 1.8 * var(--radius-scale));
   --radius-3xl: calc(var(--radius) * 2.2 * var(--radius-scale));
   --radius-4xl: calc(var(--radius) * 2.6 * var(--radius-scale));

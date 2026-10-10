@@ -11,6 +11,10 @@
 - `--radius-scale` multiplies the `rounded-*` scale. It is 1, and 1.4 where
   squircles draw, because a squircle reads tighter than a round corner at
   the same radius. Set it to 1 to keep the round radii under squircles.
+- A rounder scale. The `sm` to `xl` multipliers on `--radius` are 1, 1.3,
+  1.5 and 1.6 (they were 0.6, 0.8, 1 and 1.4): 19.6, 25.5, 29.4 and
+  31.4px where squircles draw. Buttons, fields, tabs and menu items from
+  24px to 40px tall now draw as capsules. `2xl` to `4xl` are unchanged.
 - The radius caps in Button, Checkbox, InputGroup, Kbd, Nav and
   Questionnaire (`rounded-[min(var(--radius-md),10px)]` and the like), and
   Sonner's toast radius, follow `--radius-scale`. Components installed

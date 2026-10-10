@@ -9,10 +9,17 @@ import { IconMinus } from "@tabler/icons-react"
 function InputOTP({
   className,
   containerClassName,
+  value,
+  defaultValue,
+  onChange,
   ...props
 }: React.ComponentProps<typeof OTPInput> & {
   containerClassName?: string
 }) {
+  // input-otp spreads defaultValue onto its controlled <input>, so hold it here.
+  const [uncontrolledValue, setUncontrolledValue] = React.useState(
+    typeof defaultValue === "string" ? defaultValue : ""
+  )
   return (
     <OTPInput
       data-slot="input-otp"
@@ -22,6 +29,11 @@ function InputOTP({
       )}
       spellCheck={false}
       className={cn("disabled:cursor-not-allowed", className)}
+      value={value ?? uncontrolledValue}
+      onChange={(next) => {
+        if (value == null) setUncontrolledValue(next)
+        onChange?.(next)
+      }}
       {...props}
     />
   )

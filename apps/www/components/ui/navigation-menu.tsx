@@ -1,7 +1,10 @@
+"use client"
+
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu"
 import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+import { useGlide } from "@/hooks/use-glide"
 import { IconChevronDown } from "@tabler/icons-react"
 
 function NavigationMenu({
@@ -28,17 +31,33 @@ function NavigationMenu({
 
 function NavigationMenuList({
   className,
+  children,
   ...props
 }: React.ComponentPropsWithRef<typeof NavigationMenuPrimitive.List>) {
+  const glide = useGlide(
+    ":is([data-slot=navigation-menu-trigger],[data-slot=navigation-menu-link]):hover",
+    "[data-slot=navigation-menu-trigger][data-popup-open]",
+    ":is([data-slot=navigation-menu-trigger],[data-slot=navigation-menu-link]):focus-visible"
+  )
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
       className={cn(
-        "group flex flex-1 list-none items-center justify-center gap-0",
+        "group relative isolate flex flex-1 list-none items-center justify-center gap-0",
         className
       )}
       {...props}
-    />
+    >
+      {children}
+      <li
+        ref={glide}
+        aria-hidden
+        role="presentation"
+        data-hidden=""
+        data-slot="navigation-menu-highlight"
+        className="pointer-events-none absolute top-0 left-0 -z-1 bg-gray-alpha-100 transition-[translate,width,height,opacity,background-color] duration-150 ease-out data-hidden:opacity-0 data-hidden:delay-50 data-pressed:bg-gray-alpha-200 motion-reduce:transition-[opacity]"
+      />
+    </NavigationMenuPrimitive.List>
   )
 }
 
@@ -56,7 +75,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-button-14 transition-colors outline-none hover:bg-gray-alpha-100 focus:bg-gray-alpha-100 focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 active:bg-gray-alpha-200 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-gray-alpha-100 data-open:bg-gray-alpha-100"
+  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-button-14 transition-colors outline-none focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50"
 )
 
 function NavigationMenuTrigger({
@@ -81,17 +100,31 @@ function NavigationMenuTrigger({
 
 function NavigationMenuContent({
   className,
+  children,
   ...props
 }: NavigationMenuPrimitive.Content.Props) {
+  const glide = useGlide(
+    "[data-slot=navigation-menu-link]:hover",
+    "[data-slot=navigation-menu-link]:focus-visible"
+  )
   return (
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        "data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] h-full w-auto p-2 pr-2.5 transition-[opacity,transform,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[viewport=false]/navigation-menu:material-menu group-data-[viewport=false]/navigation-menu:text-gray-1000 group-data-[viewport=false]/navigation-menu:duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0 data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:data-open:animate-in group-data-[viewport=false]/navigation-menu:data-open:fade-in-0 group-data-[viewport=false]/navigation-menu:data-open:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-closed:animate-out group-data-[viewport=false]/navigation-menu:data-closed:fade-out-0 group-data-[viewport=false]/navigation-menu:data-closed:zoom-out-95",
+        "data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] relative isolate h-full w-auto p-2 pr-2.5 transition-[opacity,transform,translate] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[viewport=false]/navigation-menu:material-menu group-data-[viewport=false]/navigation-menu:text-gray-1000 group-data-[viewport=false]/navigation-menu:duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0 data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:data-open:animate-in group-data-[viewport=false]/navigation-menu:data-open:fade-in-0 group-data-[viewport=false]/navigation-menu:data-open:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-closed:animate-out group-data-[viewport=false]/navigation-menu:data-closed:fade-out-0 group-data-[viewport=false]/navigation-menu:data-closed:zoom-out-95",
         className
       )}
       {...props}
-    />
+    >
+      {children}
+      <span
+        ref={glide}
+        aria-hidden
+        data-hidden=""
+        data-slot="navigation-menu-highlight"
+        className="pointer-events-none absolute top-0 left-0 -z-1 bg-gray-alpha-100 transition-[translate,width,height,opacity,background-color] duration-150 ease-out data-hidden:opacity-0 data-hidden:delay-50 data-pressed:bg-gray-alpha-200 motion-reduce:transition-[opacity]"
+      />
+    </NavigationMenuPrimitive.Content>
   )
 }
 
@@ -132,7 +165,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex items-center gap-1.5 rounded-md p-2 text-label-14 transition-colors outline-none hover:bg-gray-alpha-100 focus:bg-gray-alpha-100 focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 active:bg-gray-alpha-200 in-data-[slot=navigation-menu-content]:rounded-sm data-[active=true]:bg-gray-alpha-200 data-[active=true]:hover:bg-gray-alpha-300 [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-1.5 rounded-md p-2 text-label-14 transition-colors outline-none focus-visible:ring-3 focus-visible:ring-gray-600/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-sm data-[active=true]:bg-gray-alpha-200 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

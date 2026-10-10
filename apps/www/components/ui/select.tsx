@@ -4,6 +4,7 @@ import * as React from "react"
 import { Select as SelectPrimitive } from "@base-ui/react/select"
 
 import { cn } from "@/lib/utils"
+import { useGlide } from "@/hooks/use-glide"
 import {
   IconSelector,
   IconCheck,
@@ -90,6 +91,7 @@ function SelectContent({
     SelectPrimitive.Positioner.Props,
     "align" | "alignOffset" | "side" | "sideOffset" | "alignItemWithTrigger"
   >) {
+  const glide = useGlide("[role=option][data-highlighted]")
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Positioner
@@ -111,8 +113,15 @@ function SelectContent({
           {...props}
         >
           <SelectScrollUpButton />
-          <SelectPrimitive.List className="p-1">
+          <SelectPrimitive.List className="relative isolate p-1">
             {children}
+            <span
+              ref={glide}
+              aria-hidden
+              data-hidden=""
+              data-slot="select-highlight"
+              className="pointer-events-none absolute top-0 left-0 -z-1 bg-gray-alpha-100 transition-[translate,width,height,opacity,background-color] duration-150 ease-out data-hidden:opacity-0 data-hidden:delay-50 data-pressed:bg-gray-alpha-200 data-[variant=destructive]:bg-red-100 data-[variant=destructive]:data-pressed:bg-red-200 motion-reduce:transition-[opacity]"
+            />
           </SelectPrimitive.List>
           <SelectScrollDownButton />
         </SelectPrimitive.Popup>
@@ -146,7 +155,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 not-data-[variant=destructive]:focus:**:text-gray-1000 active:bg-gray-alpha-200 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-3 in-data-[size=lg]:pe-9 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none focus:text-gray-1000 not-data-[variant=destructive]:focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-3 in-data-[size=lg]:pe-9 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         className
       )}
       {...props}

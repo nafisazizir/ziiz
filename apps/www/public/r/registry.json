@@ -327,6 +327,7 @@
       "registryDependencies": [
         "@ziiz/button",
         "@ziiz/input-group",
+        "@ziiz/use-glide",
         "@ziiz/utils"
       ],
       "files": [
@@ -367,6 +368,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
+        "@ziiz/use-glide",
         "@ziiz/utils"
       ],
       "files": [
@@ -439,6 +441,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
+        "@ziiz/use-glide",
         "@ziiz/utils"
       ],
       "files": [
@@ -642,6 +645,7 @@
       ],
       "registryDependencies": [
         "@ziiz/dropdown-menu",
+        "@ziiz/use-glide",
         "@ziiz/utils"
       ],
       "files": [
@@ -734,6 +738,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
+        "@ziiz/use-glide",
         "@ziiz/utils"
       ],
       "files": [
@@ -882,6 +887,7 @@
         "@tabler/icons-react"
       ],
       "registryDependencies": [
+        "@ziiz/use-glide",
         "@ziiz/utils"
       ],
       "files": [
@@ -1067,6 +1073,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
+        "@ziiz/use-glide",
         "@ziiz/utils"
       ],
       "files": [
@@ -1293,6 +1300,18 @@
           "path": "components/docs/steps.tsx",
           "type": "registry:component",
           "target": "components/docs/steps.tsx"
+        }
+      ]
+    },
+    {
+      "name": "use-glide",
+      "type": "registry:hook",
+      "title": "Use Glide",
+      "description": "Slides a list's hover or selection highlight from the item it leaves to the item it enters.",
+      "files": [
+        {
+          "path": "hooks/use-glide.ts",
+          "type": "registry:hook"
         }
       ]
     },

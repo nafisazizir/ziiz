@@ -4,6 +4,7 @@ import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 
 import { cn } from "@/lib/utils"
+import { useGlide } from "@/hooks/use-glide"
 import { Button } from "@/components/ui/button"
 import {
   InputGroup,
@@ -155,16 +156,34 @@ function ComboboxContent({
   )
 }
 
-function ComboboxList({ className, ...props }: ComboboxPrimitive.List.Props) {
+function ComboboxList({
+  className,
+  children,
+  ...props
+}: ComboboxPrimitive.List.Props) {
+  const glide = useGlide("[role=option][data-highlighted]")
   return (
     <ComboboxPrimitive.List
       data-slot="combobox-list"
       className={cn(
-        "no-scrollbar max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0",
+        "relative isolate no-scrollbar max-h-[min(calc(--spacing(72)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0",
         className
       )}
       {...props}
-    />
+    >
+      {typeof children === "function" ? (
+        <ComboboxPrimitive.Collection>{children}</ComboboxPrimitive.Collection>
+      ) : (
+        children
+      )}
+      <span
+        ref={glide}
+        aria-hidden
+        data-hidden=""
+        data-slot="combobox-highlight"
+        className="pointer-events-none absolute top-0 left-0 -z-1 bg-gray-alpha-100 transition-[translate,width,height,opacity,background-color] duration-150 ease-out data-hidden:opacity-0 data-hidden:delay-50 data-pressed:bg-gray-alpha-200 data-[variant=destructive]:bg-red-100 data-[variant=destructive]:data-pressed:bg-red-200 motion-reduce:transition-[opacity]"
+      />
+    </ComboboxPrimitive.List>
   )
 }
 
@@ -177,7 +196,7 @@ function ComboboxItem({
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none active:bg-gray-alpha-200 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-3 in-data-[size=lg]:pe-9 data-highlighted:bg-gray-alpha-100 data-highlighted:text-gray-1000 not-data-[variant=destructive]:data-highlighted:**:text-gray-1000 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none in-data-[size=lg]:py-2 in-data-[size=lg]:ps-3 in-data-[size=lg]:pe-9 data-highlighted:text-gray-1000 not-data-[variant=destructive]:data-highlighted:**:text-gray-1000 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

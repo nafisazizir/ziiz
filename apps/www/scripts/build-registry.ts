@@ -7,6 +7,7 @@
 //   components/docs/<name>.tsx  -> registry:component, installed to
 //                                  components/docs/ (explicit target)
 //   hooks/use-mobile.ts         -> registry:hook (sidebar imports it)
+//   hooks/use-glide.ts          -> registry:hook (tabs and menus import it)
 //   lib/utils.ts                -> registry:lib (`cn` from @nafisazizir/ziiz/cn)
 //   theme                       -> registry:item, no files: installs the
 //                                  packages and CSS imports an app needs
@@ -84,6 +85,8 @@ const DESCRIPTIONS: Record<string, string> = {
     "Reads a registry item's source at build time and shows it highlighted.",
   steps: "Numbered steps for an installation or setup sequence.",
   "use-mobile": "A hook that reports whether the viewport is below 768px.",
+  "use-glide":
+    "Slides a list's hover or selection highlight from the item it leaves to the item it enters.",
   utils:
     "The cn helper from @nafisazizir/ziiz/cn, built on the cn package with the type roles and materials registered.",
   theme:
@@ -100,6 +103,7 @@ const IMPLICIT_PACKAGES = new Set(["react", "react-dom", "next"])
 // `shadcn init` writes does not know the type roles, so components pull in
 // the one that does.
 const ALIAS_TO_ITEM: Record<string, string> = {
+  "@/hooks/use-glide": "use-glide",
   "@/hooks/use-mobile": "use-mobile",
   "@/lib/utils": "utils",
 }
@@ -248,6 +252,7 @@ function buildItems(): RegistryItem[] {
     )
 
   const hooks = [
+    item("use-glide", "registry:hook", [path.join(ROOT, "hooks/use-glide.ts")]),
     item("use-mobile", "registry:hook", [
       path.join(ROOT, "hooks/use-mobile.ts"),
     ]),

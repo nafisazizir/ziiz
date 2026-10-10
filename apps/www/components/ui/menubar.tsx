@@ -5,6 +5,7 @@ import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
 
 import { cn } from "@/lib/utils"
+import { useGlide } from "@/hooks/use-glide"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,16 +23,29 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { IconCheck } from "@tabler/icons-react"
 
-function Menubar({ className, ...props }: MenubarPrimitive.Props) {
+function Menubar({ className, children, ...props }: MenubarPrimitive.Props) {
+  const glide = useGlide(
+    "[data-slot=menubar-trigger][aria-expanded=true]",
+    "[data-slot=menubar-trigger]:hover:not([data-disabled])"
+  )
   return (
     <MenubarPrimitive
       data-slot="menubar"
       className={cn(
-        "flex h-9 items-center gap-1 rounded-md border border-gray-alpha-400 p-1",
+        "relative isolate flex h-9 items-center gap-1 rounded-md border border-gray-alpha-400 p-1",
         className
       )}
       {...props}
-    />
+    >
+      {children}
+      <span
+        ref={glide}
+        aria-hidden
+        data-hidden=""
+        data-slot="menubar-highlight"
+        className="pointer-events-none absolute top-0 left-0 -z-1 bg-gray-alpha-100 transition-[translate,width,height,opacity,background-color] duration-150 ease-out data-hidden:opacity-0 data-hidden:delay-50 data-pressed:bg-gray-alpha-200 motion-reduce:transition-[opacity]"
+      />
+    </MenubarPrimitive>
   )
 }
 
@@ -59,7 +73,7 @@ function MenubarTrigger({
     <DropdownMenuTrigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex items-center rounded-sm px-2 py-1 text-button-14 outline-hidden select-none hover:bg-gray-alpha-100 active:bg-gray-alpha-200 aria-expanded:bg-gray-alpha-100",
+        "flex items-center rounded-sm px-2 py-1 text-button-14 outline-hidden select-none",
         className
       )}
       {...props}
@@ -117,7 +131,7 @@ function MenubarCheckboxItem({
       data-slot="menubar-checkbox-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
@@ -152,7 +166,7 @@ function MenubarRadioItem({
       data-slot="menubar-radio-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:bg-gray-alpha-100 focus:text-gray-1000 focus:**:text-gray-1000 active:bg-gray-alpha-200 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

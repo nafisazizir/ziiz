@@ -30,7 +30,7 @@ function InputGroup({
           data-size={size}
           role="group"
           className={cn(
-            "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border transition-[color,background-color,border-color] outline-none in-data-[slot=combobox-content]:focus-within:border-inherit has-[[data-slot][aria-invalid=true]]:border-red-800 has-[[data-slot][aria-invalid=true]]:bg-red-100 has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:flex-col data-[size=lg]:h-10 data-[size=sm]:h-8 [&:has(>textarea,>[data-align^=block])]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
+            "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border transition-[color,background-color,border-color] outline-none [--input-group-gap:--spacing(1.25)] [--input-group-inset:--spacing(3)] in-data-[slot=combobox-content]:focus-within:border-inherit has-[[data-slot][aria-invalid=true]]:border-red-800 has-[[data-slot][aria-invalid=true]]:bg-red-100 has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:flex-col data-[size=lg]:h-10 data-[size=lg]:[--input-group-gap:--spacing(1.75)] data-[size=lg]:[--input-group-inset:--spacing(4)] data-[size=sm]:h-8 data-[size=sm]:[--input-group-gap:--spacing(0.75)] [&:has(>textarea,>[data-align^=block])]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
             inputVariants({ variant }),
             shape === "rounded" &&
               "[&:not(:has(>textarea,>[data-align^=block]))]:rounded-full",
@@ -49,13 +49,13 @@ const inputGroupAddonVariants = cva(
     variants: {
       align: {
         "inline-start":
-          "order-first ps-3 group-data-[size=lg]/input-group:ps-4 has-[>button]:-ms-2.75 has-[>button[data-size=icon-sm]]:-ms-2 has-[>button[data-size=icon-xs]]:-ms-1 has-[>button[data-size=sm]]:-ms-3.25 has-[>kbd]:ms-[-0.15rem]",
+          "order-first ps-(--input-group-inset) has-[>button]:ps-(--input-group-gap) has-[>button[data-size$=sm]]:ps-[calc(var(--input-group-gap)-4px)] has-[>kbd]:ms-[-0.15rem]",
         "inline-end":
-          "order-last pe-3 group-data-[size=lg]/input-group:pe-4 has-[>button]:-me-2.75 has-[>button[data-size=icon-sm]]:-me-2 has-[>button[data-size=icon-xs]]:-me-1 has-[>button[data-size=sm]]:-me-3.25 has-[>kbd]:me-[-0.15rem]",
+          "order-last pe-(--input-group-inset) has-[>button]:pe-(--input-group-gap) has-[>button[data-size$=sm]]:pe-[calc(var(--input-group-gap)-4px)] has-[>kbd]:me-[-0.15rem]",
         "block-start":
-          "order-first w-full justify-start px-3 pt-2 group-has-[>input]/input-group:pt-2 group-data-[size=lg]/input-group:px-4 [.border-b]:pb-2",
+          "order-first w-full justify-start px-(--input-group-inset) pt-2 group-has-[>input]/input-group:pt-2 [.border-b]:pb-2",
         "block-end":
-          "order-last w-full justify-start px-3 pb-2 group-has-[>input]/input-group:pb-2 group-data-[size=lg]/input-group:px-4 [.border-t]:pt-2",
+          "order-last w-full justify-start px-(--input-group-inset) pb-2 group-has-[>input]/input-group:pb-2 [.border-t]:pt-2",
       },
     },
     defaultVariants: {

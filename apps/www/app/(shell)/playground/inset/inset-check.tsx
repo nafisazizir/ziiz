@@ -385,7 +385,7 @@ const groups: Group[] = [
       },
       {
         label: "Input group · lg icon button",
-        expect: 17,
+        expect: 12,
         render: () => (
           <InputGroup size="lg">
             <InputGroupAddon>
@@ -460,7 +460,7 @@ const groups: Group[] = [
       },
       {
         label: "Input group · button",
-        expect: 13,
+        expect: 17,
         render: () => (
           <InputGroup>
             <InputGroupAddon>
@@ -472,7 +472,7 @@ const groups: Group[] = [
       },
       {
         label: "Input group · icon button",
-        expect: 13,
+        expect: 10,
         render: () => (
           <InputGroup>
             <InputGroupAddon>

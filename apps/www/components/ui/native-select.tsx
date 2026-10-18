@@ -1,15 +1,20 @@
 import * as React from "react"
+import { type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+import { inputVariants } from "@/components/ui/input"
 import { IconSelector } from "@tabler/icons-react"
 
-type NativeSelectProps = Omit<React.ComponentProps<"select">, "size"> & {
-  size?: "sm" | "default" | "lg"
-}
+type NativeSelectProps = Omit<React.ComponentProps<"select">, "size"> &
+  VariantProps<typeof inputVariants> & {
+    size?: "sm" | "default" | "lg"
+  }
 
 function NativeSelect({
   className,
   size = "default",
+  variant = "default",
+  shape = "default",
   ...props
 }: NativeSelectProps) {
   return (
@@ -24,7 +29,10 @@ function NativeSelect({
       <select
         data-slot="native-select"
         data-size={size}
-        className="h-9 w-full min-w-0 appearance-none rounded-md border border-gray-alpha-400 bg-background-100 py-1 ps-3 pe-8 text-label-14 transition-[color,border-color,box-shadow] outline-none select-none selection:bg-gray-1000 selection:text-background-100 placeholder:text-gray-900 hover:border-gray-alpha-500 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 data-[size=lg]:h-10 data-[size=lg]:ps-4 data-[size=lg]:pe-9.5 data-[size=sm]:h-8"
+        className={cn(
+          "h-9 w-full min-w-0 appearance-none rounded-md border py-1 ps-3 pe-8 text-label-14 transition-[color,background-color,border-color,box-shadow] outline-none select-none selection:bg-gray-1000 selection:text-background-100 placeholder:text-gray-900 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-red-800 aria-invalid:bg-red-100 data-[size=lg]:h-10 data-[size=lg]:ps-4 data-[size=lg]:pe-9.5 data-[size=sm]:h-8",
+          inputVariants({ variant, shape })
+        )}
         {...props}
       />
       <IconSelector

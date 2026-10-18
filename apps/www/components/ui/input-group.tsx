@@ -5,30 +5,40 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Input, inputVariants } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 type Size = "sm" | "default" | "lg"
+type Shape = NonNullable<VariantProps<typeof inputVariants>["shape"]>
 
 const SizeContext = React.createContext<Size>("default")
+const ShapeContext = React.createContext<Shape>("default")
 
 function InputGroup({
   className,
   size = "default",
+  variant = "default",
+  shape = "default",
   ...props
-}: React.ComponentProps<"div"> & { size?: Size }) {
+}: React.ComponentProps<"div"> &
+  VariantProps<typeof inputVariants> & { size?: Size }) {
   return (
     <SizeContext.Provider value={size}>
-      <div
-        data-slot="input-group"
-        data-size={size}
-        role="group"
-        className={cn(
-          "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border border-gray-alpha-400 bg-background-100 transition-[color,border-color,box-shadow] outline-none hover:border-gray-alpha-500 in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-[[data-slot=input-group-control]:focus-visible]:border-gray-600 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:ring-gray-600/50 has-[[data-slot][aria-invalid=true]]:border-red-800 has-[[data-slot][aria-invalid=true]]:bg-red-100 has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-red-800/20 has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:flex-col data-[size=lg]:h-10 data-[size=sm]:h-8 [&:has(>textarea,>[data-align^=block])]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
-          className
-        )}
-        {...props}
-      />
+      <ShapeContext.Provider value={shape ?? "default"}>
+        <div
+          data-slot="input-group"
+          data-size={size}
+          role="group"
+          className={cn(
+            "group/input-group relative flex h-9 w-full min-w-0 items-center rounded-md border transition-[color,background-color,border-color] outline-none in-data-[slot=combobox-content]:focus-within:border-inherit has-[[data-slot][aria-invalid=true]]:border-red-800 has-[[data-slot][aria-invalid=true]]:bg-red-100 has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:flex-col data-[size=lg]:h-10 data-[size=sm]:h-8 [&:has(>textarea,>[data-align^=block])]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
+            inputVariants({ variant }),
+            shape === "rounded" &&
+              "[&:not(:has(>textarea,>[data-align^=block]))]:rounded-full",
+            className
+          )}
+          {...props}
+        />
+      </ShapeContext.Provider>
     </SizeContext.Provider>
   )
 }
@@ -102,12 +112,14 @@ function InputGroupButton({
   type = "button",
   variant = "ghost",
   size = "xs",
-  shape = "default",
+  shape,
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "size" | "type"> &
   VariantProps<typeof inputGroupButtonVariants> & {
     type?: "button" | "submit" | "reset"
   }) {
+  const inherited = React.useContext(ShapeContext)
+  shape ??= inherited
   return (
     <Button
       type={type}
@@ -135,13 +147,13 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
 function InputGroupInput({
   className,
   ...props
-}: React.ComponentProps<typeof Input>) {
+}: Omit<React.ComponentProps<typeof Input>, "variant" | "shape">) {
   return (
     <Input
       size={React.useContext(SizeContext)}
       data-slot="input-group-control"
       className={cn(
-        "flex-1 rounded-none border-0 bg-transparent ring-0 focus-visible:ring-0 aria-invalid:bg-transparent aria-invalid:ring-0",
+        "flex-1 rounded-none border-0 bg-transparent aria-invalid:bg-transparent",
         className
       )}
       {...props}
@@ -152,13 +164,13 @@ function InputGroupInput({
 function InputGroupTextarea({
   className,
   ...props
-}: React.ComponentProps<typeof Textarea>) {
+}: Omit<React.ComponentProps<typeof Textarea>, "variant">) {
   return (
     <Textarea
       size={React.useContext(SizeContext)}
       data-slot="input-group-control"
       className={cn(
-        "flex-1 resize-none rounded-none border-0 bg-transparent py-2 ring-0 focus-visible:ring-0 aria-invalid:bg-transparent aria-invalid:ring-0",
+        "flex-1 resize-none rounded-none border-0 bg-transparent py-2 aria-invalid:bg-transparent",
         className
       )}
       {...props}

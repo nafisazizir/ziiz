@@ -2,10 +2,12 @@
 
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
+import { type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { useGlide } from "@/hooks/use-glide"
 import { Button } from "@/components/ui/button"
+import { inputVariants } from "@/components/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -23,18 +25,25 @@ const AnchorContext = React.createContext<
 const InsideContent = React.createContext(false)
 
 type Size = "sm" | "default" | "lg"
+type Look = VariantProps<typeof inputVariants>
 
 const SizeContext = React.createContext<Size>("default")
+const LookContext = React.createContext<Look>({})
 
 function Combobox<Value, Multiple extends boolean | undefined = false>({
   size = "default",
+  variant,
+  shape,
   ...props
-}: ComboboxPrimitive.Root.Props<Value, Multiple> & { size?: Size }) {
+}: ComboboxPrimitive.Root.Props<Value, Multiple> & Look & { size?: Size }) {
   const anchor = React.useState<HTMLDivElement | null>(null)
+  const look = React.useMemo(() => ({ variant, shape }), [variant, shape])
   return (
     <AnchorContext.Provider value={anchor}>
       <SizeContext.Provider value={size}>
-        <ComboboxPrimitive.Root {...props} />
+        <LookContext.Provider value={look}>
+          <ComboboxPrimitive.Root {...props} />
+        </LookContext.Provider>
       </SizeContext.Provider>
     </AnchorContext.Provider>
   )
@@ -88,10 +97,12 @@ function ComboboxInput({
   const [, setAnchor] = React.useContext(AnchorContext)
   const inside = React.useContext(InsideContent)
   const size = React.useContext(SizeContext)
+  const look = React.useContext(LookContext)
   return (
     <InputGroup
       ref={inside ? undefined : setAnchor}
       size={inside ? "sm" : size}
+      {...(!inside && look)}
       className={cn("w-auto", className)}
     >
       <ComboboxPrimitive.Input
@@ -281,7 +292,8 @@ function ComboboxChips({
       data-slot="combobox-chips"
       data-size={React.useContext(SizeContext)}
       className={cn(
-        "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-gray-alpha-400 bg-background-100 bg-clip-padding px-3 py-1.5 text-label-14 transition-[color,border-color,box-shadow] focus-within:border-gray-600 focus-within:ring-3 focus-within:ring-gray-600/50 not-focus-within:not-has-aria-invalid:hover:border-gray-alpha-500 has-aria-invalid:border-red-800 has-aria-invalid:bg-red-100 has-aria-invalid:ring-3 has-aria-invalid:ring-red-800/20 has-data-[slot=combobox-chip]:px-1.5 data-[size=lg]:min-h-10 data-[size=lg]:px-4 data-[size=lg]:has-data-[slot=combobox-chip]:px-2.5 data-[size=sm]:min-h-8 data-[size=sm]:py-1",
+        "flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border bg-clip-padding px-3 py-1.5 text-label-14 transition-[color,background-color,border-color] has-aria-invalid:border-red-800 has-aria-invalid:bg-red-100 has-data-[slot=combobox-chip]:px-1.5 data-[size=lg]:min-h-10 data-[size=lg]:px-4 data-[size=lg]:has-data-[slot=combobox-chip]:px-2.5 data-[size=sm]:min-h-8 data-[size=sm]:py-1",
+        inputVariants({ variant: React.useContext(LookContext).variant }),
         className
       )}
       {...props}
@@ -301,7 +313,7 @@ function ComboboxChip({
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"
       className={cn(
-        "flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-1 rounded-sm bg-gray-100 px-1.5 text-label-12 whitespace-nowrap text-gray-1000 has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0",
+        "flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-1 rounded-sm bg-gray-alpha-100 px-1.5 text-label-12 whitespace-nowrap text-gray-1000 has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-0",
         className
       )}
       {...props}

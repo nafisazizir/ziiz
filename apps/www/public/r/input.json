@@ -4,7 +4,8 @@
   "title": "Input",
   "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
   "dependencies": [
-    "@base-ui/react"
+    "@base-ui/react",
+    "class-variance-authority"
   ],
   "registryDependencies": [
     "@ziiz/utils"
@@ -12,7 +13,7 @@
   "files": [
     {
       "path": "components/ui/input.tsx",
-      "content": "import * as React from \"react\"\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({\n  className,\n  type,\n  size = \"default\",\n  ...props\n}: Omit<React.ComponentProps<\"input\">, \"size\"> & {\n  size?: \"sm\" | \"default\" | \"lg\"\n}) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      data-size={size}\n      className={cn(\n        \"h-9 w-full min-w-0 rounded-md border border-gray-alpha-400 bg-background-100 px-3 py-1 text-label-16 transition-[color,border-color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-button-14 file:text-gray-1000 placeholder:text-gray-900 hover:border-gray-alpha-500 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 data-[size=lg]:h-10 data-[size=lg]:px-4 data-[size=sm]:h-8 md:text-label-14\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "content": "import * as React from \"react\"\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Shared by the field-style controls. Focus darkens the default border and\n// leaves secondary and ghost as they rest; the caret shows it. A pill fits\n// single-line fields only.\nconst inputVariants = cva(\"\", {\n  variants: {\n    variant: {\n      default:\n        \"border-gray-alpha-400 bg-background-100 focus-within:border-gray-800 not-focus-within:hover:border-gray-alpha-500\",\n      secondary:\n        \"border-transparent bg-gray-100 not-focus-within:hover:bg-gray-200\",\n      ghost: \"border-transparent bg-transparent\",\n    },\n    shape: {\n      default: \"\",\n      rounded: \"rounded-full\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    shape: \"default\",\n  },\n})\n\nfunction Input({\n  className,\n  type,\n  size = \"default\",\n  variant = \"default\",\n  shape = \"default\",\n  ...props\n}: Omit<React.ComponentProps<\"input\">, \"size\"> &\n  VariantProps<typeof inputVariants> & {\n    size?: \"sm\" | \"default\" | \"lg\"\n  }) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      data-size={size}\n      className={cn(\n        \"h-9 w-full min-w-0 rounded-md border px-3 py-1 text-label-16 transition-[color,background-color,border-color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-button-14 file:text-gray-1000 placeholder:text-gray-900 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-red-800 aria-invalid:bg-red-100 data-[size=lg]:h-10 data-[size=lg]:px-4 data-[size=sm]:h-8 md:text-label-14\",\n        inputVariants({ variant, shape }),\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input, inputVariants }\n",
       "type": "registry:ui"
     }
   ],

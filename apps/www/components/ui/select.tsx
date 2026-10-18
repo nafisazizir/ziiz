@@ -2,9 +2,11 @@
 
 import * as React from "react"
 import { Select as SelectPrimitive } from "@base-ui/react/select"
+import { type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { useGlide } from "@/hooks/use-glide"
+import { inputVariants } from "@/components/ui/input"
 import {
   IconSelector,
   IconCheck,
@@ -13,16 +15,23 @@ import {
 } from "@tabler/icons-react"
 
 type Size = "sm" | "default" | "lg"
+type Look = VariantProps<typeof inputVariants>
 
 const SizeContext = React.createContext<Size>("default")
+const LookContext = React.createContext<Look>({})
 
 function Select<Value, Multiple extends boolean | undefined = false>({
   size = "default",
+  variant,
+  shape,
   ...props
-}: SelectPrimitive.Root.Props<Value, Multiple> & { size?: Size }) {
+}: SelectPrimitive.Root.Props<Value, Multiple> & Look & { size?: Size }) {
+  const look = React.useMemo(() => ({ variant, shape }), [variant, shape])
   return (
     <SizeContext.Provider value={size}>
-      <SelectPrimitive.Root data-slot="select" {...props} />
+      <LookContext.Provider value={look}>
+        <SelectPrimitive.Root data-slot="select" {...props} />
+      </LookContext.Provider>
     </SizeContext.Provider>
   )
 }
@@ -50,19 +59,26 @@ function SelectValue({ className, ...props }: SelectPrimitive.Value.Props) {
 function SelectTrigger({
   className,
   size,
+  variant,
+  shape,
   children,
   ...props
-}: SelectPrimitive.Trigger.Props & {
-  size?: Size
-}) {
+}: SelectPrimitive.Trigger.Props &
+  Look & {
+    size?: Size
+  }) {
   const inherited = React.useContext(SizeContext)
+  const look = React.useContext(LookContext)
   size ??= inherited
+  variant ??= look.variant
+  shape ??= look.shape
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "flex w-fit items-center justify-between gap-1.5 rounded-md border border-gray-alpha-400 bg-background-100 py-2 ps-3 pe-2.5 text-label-14 whitespace-nowrap transition-[color,border-color,box-shadow] outline-none hover:border-gray-alpha-500 focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-red-800 aria-invalid:bg-red-100 aria-invalid:ring-3 aria-invalid:ring-red-800/20 data-placeholder:text-gray-900 data-[size=default]:h-9 data-[size=lg]:h-10 data-[size=lg]:ps-4 data-[size=lg]:pe-3.5 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "flex w-fit items-center justify-between gap-1.5 rounded-md border py-2 ps-3 pe-2.5 text-label-14 whitespace-nowrap transition-[color,background-color,border-color,box-shadow] outline-none focus-visible:border-gray-600 focus-visible:ring-3 focus-visible:ring-gray-600/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-red-800 aria-invalid:bg-red-100 data-placeholder:text-gray-900 data-[size=default]:h-9 data-[size=lg]:h-10 data-[size=lg]:ps-4 data-[size=lg]:pe-3.5 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        inputVariants({ variant, shape }),
         className
       )}
       {...props}

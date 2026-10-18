@@ -4,6 +4,7 @@ import { Toaster as SonnerToaster } from "@/components/ui/sonner"
 import { Toaster } from "@/components/ui/toast"
 import { SiteSidebar } from "@/components/site-sidebar"
 import { SiteHeader } from "@/components/site-header"
+import { SiteCommand } from "@/components/site-command"
 import { EdgeFade } from "@/components/edge-fade"
 
 // The shell every page shares: the sidebar is the site's navigation, so it
@@ -38,6 +39,9 @@ export default function ShellLayout({
       {/* Both live here so a toast example fires from any component page. */}
       <Toaster />
       <SonnerToaster />
+      <Suspense>
+        <SiteCommand />
+      </Suspense>
     </div>
   )
 }

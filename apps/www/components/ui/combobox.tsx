@@ -103,7 +103,12 @@ function ComboboxInput({
       ref={inside ? undefined : setAnchor}
       size={inside ? "sm" : size}
       {...(!inside && look)}
-      className={cn("w-auto", className)}
+      className={cn(
+        "w-auto",
+        inside &&
+          "[--input-group-inset:calc(--spacing(2)-1px)] in-data-[size=lg]:[--input-group-inset:calc(--spacing(3)-1px)] [&>input]:ps-(--input-group-inset)",
+        className
+      )}
     >
       <ComboboxPrimitive.Input
         render={<InputGroupInput disabled={disabled} />}

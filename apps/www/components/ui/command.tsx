@@ -14,19 +14,27 @@ import {
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group"
 import { IconSearch, IconCheck } from "@tabler/icons-react"
 
+type Size = "sm" | "default" | "lg"
+
+const SizeContext = React.createContext<Size>("default")
+
 function Command({
   className,
+  size = "default",
   ...props
-}: React.ComponentProps<typeof CommandPrimitive>) {
+}: React.ComponentProps<typeof CommandPrimitive> & { size?: Size }) {
   return (
-    <CommandPrimitive
-      data-slot="command"
-      className={cn(
-        "flex size-full flex-col overflow-hidden rounded-xl! bg-background-100 p-1 text-gray-1000",
-        className
-      )}
-      {...props}
-    />
+    <SizeContext.Provider value={size}>
+      <CommandPrimitive
+        data-slot="command"
+        data-size={size}
+        className={cn(
+          "group/command flex size-full flex-col overflow-hidden rounded-xl! bg-background-100 p-1 text-gray-1000 [--command-inset:calc(--spacing(3)+1px)] data-[size=lg]:[--command-inset:calc(--spacing(4)+1px)]",
+          className
+        )}
+        {...props}
+      />
+    </SizeContext.Provider>
   )
 }
 
@@ -62,11 +70,20 @@ function CommandDialog({
 
 function CommandInput({
   className,
+  variant = "ghost",
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Input>) {
+}: React.ComponentProps<typeof CommandPrimitive.Input> &
+  Pick<React.ComponentProps<typeof InputGroup>, "variant">) {
   return (
     <div data-slot="command-input-wrapper" className="p-1 pb-0">
-      <InputGroup className="h-8! rounded-lg! border-gray-alpha-400/30 *:data-[slot=input-group-addon]:ps-3!">
+      <InputGroup
+        variant={variant}
+        size={React.useContext(SizeContext)}
+        className={cn(
+          "rounded-lg!",
+          variant === "default" && "border-gray-alpha-400/30"
+        )}
+      >
         <CommandPrimitive.Input
           data-slot="command-input"
           className={cn(
@@ -120,7 +137,7 @@ function CommandGroup({
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "overflow-hidden p-1 text-gray-1000 **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-label-12 **:[[cmdk-group-heading]]:text-gray-900",
+        "overflow-hidden p-1 text-gray-1000 **:[[cmdk-group-heading]]:px-(--command-inset) **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-label-12 **:[[cmdk-group-heading]]:text-gray-900",
         className
       )}
       {...props}
@@ -150,7 +167,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-label-14 outline-hidden select-none active:bg-gray-alpha-200 in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-gray-alpha-100 data-selected:text-gray-1000 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:**:[svg]:text-gray-1000",
+        "group/command-item relative flex cursor-default items-center gap-1.5 rounded-sm px-(--command-inset) py-1.5 text-label-14 outline-hidden select-none group-data-[size=lg]/command:py-2 active:bg-gray-alpha-200 in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-gray-alpha-100 data-selected:text-gray-1000 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:**:[svg]:text-gray-1000",
         className
       )}
       {...props}

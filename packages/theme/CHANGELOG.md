@@ -1,6 +1,6 @@
 # @nafisazizir/ziiz
 
-## 0.2.0
+## 0.1.1
 
 - Squircle corners. `theme.css` sets `corner-shape` on every element, so
   each `rounded-*` corner draws as a squircle in browsers that support

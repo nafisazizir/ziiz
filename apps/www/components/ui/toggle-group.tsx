@@ -16,6 +16,7 @@ const ToggleGroupContext = React.createContext<
 >({
   size: "default",
   variant: "default",
+  shape: "default",
   spacing: 2,
   orientation: "horizontal",
 })
@@ -24,6 +25,7 @@ function ToggleGroup({
   className,
   variant,
   size,
+  shape,
   spacing = 2,
   orientation = "horizontal",
   children,
@@ -38,17 +40,18 @@ function ToggleGroup({
       data-slot="toggle-group"
       data-variant={variant}
       data-size={size}
+      data-shape={shape}
       data-spacing={spacing}
       data-orientation={orientation}
       style={{ "--gap": spacing } as React.CSSProperties}
       className={cn(
-        "group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-md data-vertical:flex-col data-vertical:items-stretch",
+        "group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-md data-[shape=rounded]:rounded-full data-vertical:flex-col data-vertical:items-stretch",
         className
       )}
       {...props}
     >
       <ToggleGroupContext.Provider
-        value={{ variant, size, spacing, orientation }}
+        value={{ variant, size, shape, spacing, orientation }}
       >
         {children}
       </ToggleGroupContext.Provider>
@@ -61,6 +64,7 @@ function ToggleGroupItem({
   children,
   variant = "default",
   size = "default",
+  shape = "default",
   ...props
 }: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
   const context = React.useContext(ToggleGroupContext)
@@ -72,10 +76,11 @@ function ToggleGroupItem({
       data-size={context.size || size}
       data-spacing={context.spacing}
       className={cn(
-        "shrink-0 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2.5 focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:active:scale-100 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-end]:pe-2 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-start]:ps-2 group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-md group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-md group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-md group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-md group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t",
+        "shrink-0 group-data-[spacing=0]/toggle-group:px-2.5 focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:active:scale-100 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-end]:pe-2 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-start]:ps-2 group-data-horizontal/toggle-group:data-[spacing=0]:not-first:rounded-s-none group-data-horizontal/toggle-group:data-[spacing=0]:not-last:rounded-e-none group-data-vertical/toggle-group:data-[spacing=0]:not-first:rounded-t-none group-data-vertical/toggle-group:data-[spacing=0]:not-last:rounded-b-none group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:not-first:border-s-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:not-first:border-t-0",
         toggleVariants({
           variant: context.variant || variant,
           size: context.size || size,
+          shape: context.shape || shape,
         }),
         className
       )}

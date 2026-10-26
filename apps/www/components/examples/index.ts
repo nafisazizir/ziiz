@@ -448,10 +448,12 @@ export const examples: Record<string, React.ComponentType> = {
     () => import("./toggle-group-font-weight-selector")
   ),
   "toggle-group-outline": React.lazy(() => import("./toggle-group-outline")),
+  "toggle-group-rounded": React.lazy(() => import("./toggle-group-rounded")),
   "toggle-group-sizes": React.lazy(() => import("./toggle-group-sizes")),
   "toggle-group-spacing": React.lazy(() => import("./toggle-group-spacing")),
   "toggle-group-vertical": React.lazy(() => import("./toggle-group-vertical")),
   "toggle-outline": React.lazy(() => import("./toggle-outline")),
+  "toggle-rounded": React.lazy(() => import("./toggle-rounded")),
   "toggle-sizes": React.lazy(() => import("./toggle-sizes")),
   "toggle-text": React.lazy(() => import("./toggle-text")),
   "tooltip-demo": React.lazy(() => import("./tooltip-demo")),

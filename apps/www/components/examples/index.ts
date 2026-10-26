@@ -431,6 +431,7 @@ export const examples: Record<string, React.ComponentType> = {
   "tabs-disabled": React.lazy(() => import("./tabs-disabled")),
   "tabs-icons": React.lazy(() => import("./tabs-icons")),
   "tabs-line": React.lazy(() => import("./tabs-line")),
+  "tabs-rounded": React.lazy(() => import("./tabs-rounded")),
   "tabs-vertical": React.lazy(() => import("./tabs-vertical")),
   "textarea-button": React.lazy(() => import("./textarea-button")),
   "textarea-demo": React.lazy(() => import("./textarea-demo")),

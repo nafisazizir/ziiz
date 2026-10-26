@@ -52,6 +52,12 @@ import { Textarea } from "@/components/ui/textarea"
 
 A textarea has no fixed height, so `size` sets only its padding: 12px at `sm` and `default`, 16px at `lg`, matching the input of the same size.
 
+## Variant
+
+Use the `variant` prop to change the field's look. `default` is the outlined field, `secondary` a gray fill that darkens on hover, and `ghost` is transparent with no hover, for a field on a toolbar or a surface of its own. They match the `outline`, `secondary` and `ghost` button. A textarea has no `shape`, since a pill only fits a single line.
+
+<ComponentPreview name="textarea-variants" previewClassName="*:max-w-xs" />
+
 ## Field
 
 Use `Field`, `FieldLabel`, and `FieldDescription` to create a textarea with a label and description.

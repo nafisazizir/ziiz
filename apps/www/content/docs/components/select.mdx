@@ -143,6 +143,28 @@ Set `size` once on `Select`. The trigger and the popup follow together, so item 
 
 <ComponentPreview name="select-size" />
 
+## Variant
+
+Set `variant` on `Select` and the trigger follows. `default` is the outlined field, `secondary` a gray fill that darkens on hover, and `ghost` is transparent with no hover, for a field on a toolbar or a surface of its own. They match the `outline`, `secondary` and `ghost` button. The popup is the same in every variant.
+
+<ComponentPreview name="select-variants" />
+
+## Rounded
+
+Set `shape="rounded"` on `Select` for a pill trigger. Like `size` and `variant`, `SelectTrigger` accepts its own `shape` when one trigger has to differ.
+
+<ComponentPreview name="select-rounded" />
+
 ## API Reference
 
-See the [Base UI Select](https://base-ui.com/react/components/select#api-reference) documentation.
+### Select
+
+| Prop      | Type                                  | Default     |
+| --------- | ------------------------------------- | ----------- |
+| `size`    | `"sm" \| "default" \| "lg"`           | `"default"` |
+| `variant` | `"default" \| "secondary" \| "ghost"` | `"default"` |
+| `shape`   | `"default" \| "rounded"`              | `"default"` |
+
+`size`, `variant` and `shape` flow to `SelectTrigger`, which accepts each of them to override the root.
+
+See the [Base UI Select](https://base-ui.com/react/components/select#api-reference) documentation for the rest.

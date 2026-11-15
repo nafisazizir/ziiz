@@ -86,6 +86,12 @@ Use `orientation="vertical"` for vertical tabs.
 
 <ComponentPreview name="tabs-vertical" />
 
+## Rounded
+
+Use `shape="rounded"` on `TabsList` to make the triggers pills. A horizontal list becomes a pill around them; a vertical list keeps a corner concentric with its first and last trigger. The `line` variant keeps its square list and rounds only the focus ring.
+
+<ComponentPreview name="tabs-rounded" />
+
 ## Disabled
 
 <ComponentPreview name="tabs-disabled" />
@@ -96,4 +102,11 @@ Use `orientation="vertical"` for vertical tabs.
 
 ## API Reference
 
-See the [Base UI Tabs](https://base-ui.com/react/components/tabs#api-reference) documentation.
+### TabsList
+
+| Prop      | Type                     | Default     |
+| --------- | ------------------------ | ----------- |
+| `variant` | `"default" \| "line"`    | `"default"` |
+| `shape`   | `"default" \| "rounded"` | `"default"` |
+
+See the [Base UI Tabs](https://base-ui.com/react/components/tabs#api-reference) documentation for the rest.

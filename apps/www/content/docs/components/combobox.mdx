@@ -308,6 +308,26 @@ Set `size` on `Combobox`. The input, the chips and the popup follow, so item tex
 
 <ComponentPreview name="combobox-size" />
 
+## Variant
+
+Set `variant` on `Combobox`. The input and the chips follow. `default` is the outlined field, `secondary` a gray fill that darkens on hover, and `ghost` is transparent with no hover, for a field on a toolbar or a surface of its own. They match the `outline`, `secondary` and `ghost` button. The popup and its inner search are the same in every variant.
+
+<ComponentPreview name="combobox-variants" />
+
+## Rounded
+
+Set `shape="rounded"` on `Combobox` for a pill input. Chips wrap onto more lines, so `ComboboxChips` takes the variant but keeps its radius.
+
+<ComponentPreview name="combobox-rounded" />
+
 ## API Reference
+
+### Combobox
+
+| Prop      | Type                                  | Default     |
+| --------- | ------------------------------------- | ----------- |
+| `size`    | `"sm" \| "default" \| "lg"`           | `"default"` |
+| `variant` | `"default" \| "secondary" \| "ghost"` | `"default"` |
+| `shape`   | `"default" \| "rounded"`              | `"default"` |
 
 See the [Base UI](https://base-ui.com/react/components/combobox#api-reference) documentation for more information.

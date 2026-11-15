@@ -86,6 +86,12 @@ Use `spacing` to add spacing between toggle group items.
 
 <ComponentPreview name="toggle-group-spacing" />
 
+## Rounded
+
+Use `shape="rounded"` on the group to make every item a pill. With `spacing={0}` the group squares the seams between items and leaves the two ends round, so the group reads as one pill.
+
+<ComponentPreview name="toggle-group-rounded" />
+
 ## Vertical
 
 Use `orientation="vertical"` for vertical toggle groups.
@@ -107,7 +113,19 @@ A custom toggle group example.
 
 ## API Reference
 
-See the [Base UI Toggle Group](https://base-ui.com/react/components/toggle-group#api-reference) documentation.
+### ToggleGroup
+
+`variant`, `size` and `shape` set on the group apply to every item.
+
+| Prop          | Type                         | Default        |
+| ------------- | ---------------------------- | -------------- |
+| `variant`     | `"default" \| "outline"`     | `"default"`    |
+| `size`        | `"default" \| "sm" \| "lg"`  | `"default"`    |
+| `shape`       | `"default" \| "rounded"`     | `"default"`    |
+| `spacing`     | `number`                     | `2`            |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+
+See the [Base UI Toggle Group](https://base-ui.com/react/components/toggle-group#api-reference) documentation for the rest.
 
 ## Changelog
 

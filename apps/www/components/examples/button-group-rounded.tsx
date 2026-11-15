@@ -1,7 +1,11 @@
 import { IconChevronDown } from "@tabler/icons-react"
 
 import { Button } from "@/components/ui/button"
-import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from "@/components/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,6 +13,20 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+const TLDS = [
+  { label: ".com", value: ".com" },
+  { label: ".dev", value: ".dev" },
+]
 
 export default function ButtonGroupRounded() {
   return (
@@ -37,6 +55,24 @@ export default function ButtonGroupRounded() {
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
+      </ButtonGroup>
+      <ButtonGroup>
+        <ButtonGroupText shape="rounded">https://</ButtonGroupText>
+        <Input shape="rounded" placeholder="example" aria-label="Domain" />
+        <Select items={TLDS} defaultValue=".com" shape="rounded">
+          <SelectTrigger aria-label="Top-level domain">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent alignItemWithTrigger={false} align="end">
+            <SelectGroup>
+              {TLDS.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </ButtonGroup>
     </div>
   )

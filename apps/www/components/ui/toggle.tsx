@@ -20,10 +20,15 @@ const toggleVariants = cva(
         sm: "h-8 min-w-8 px-3 has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5",
         lg: "h-10 min-w-10 px-4 has-data-[icon=inline-end]:pe-3.5 has-data-[icon=inline-start]:ps-3.5",
       },
+      shape: {
+        default: "",
+        rounded: "rounded-full",
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      shape: "default",
     },
   }
 )
@@ -32,12 +37,13 @@ function Toggle({
   className,
   variant = "default",
   size = "default",
+  shape = "default",
   ...props
 }: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
   return (
     <TogglePrimitive
       data-slot="toggle"
-      className={cn(toggleVariants({ variant, size, className }))}
+      className={cn(toggleVariants({ variant, size, shape, className }))}
       {...props}
     />
   )

@@ -53,19 +53,27 @@ These are settled. Apply them; don't relitigate them mid-migration.
    rejected; the border/wash carries the edge. Elevation exists only on
    floating surfaces, and only as a `material-*` utility, never a bare
    `shadow-*` class.
-3. **Focus: the shadcn halo, kept, in gray, spelled in ramp vocabulary.**
-   One signature for every control, click or text-entry:
-   `focus-visible:border-gray-600 focus-visible:ring-3
-focus-visible:ring-gray-600/50`: the solid gray-600 border for the crisp
-   edge, the translucent 3px halo for the glow. This is a pure rename of
+3. **Focus: the shadcn halo on click controls, none on text fields.**
+   Click controls (buttons, toggles, tabs, checkboxes, select and
+   native-select triggers, OTP slots) keep shadcn's halo in ramp
+   vocabulary: `focus-visible:border-gray-600 focus-visible:ring-3
+focus-visible:ring-gray-600/50`, the solid gray-600 border for the crisp
+   edge, the translucent 3px halo for the glow. It is a pure rename of
    shadcn's `focus-visible:border-ring focus-visible:ring-3
 focus-visible:ring-ring/50` cluster (`--ring` already resolves to
-   `--ds-gray-600`), so migration changes focus vocabulary, never focus
-   pixels. There are no focus tokens. The `/50` is deliberate state opacity
-   (decision 5's carve-out), never swapped for a `gray-alpha-*` step; the
-   halo stays derived from the border color, and no alpha tier has a halo
-   role. An offset ring was prototyped on the pilot and rejected; don't
-   revisit.
+   `--ds-gray-600`). Text fields (input, textarea, input-group, combobox
+   input) drop the halo (2026-10-18, at the human's direction; it read as
+   noise while typing): the default field darkens its border with
+   `focus-within:border-gray-800` (gray-600 alone is 2.4:1 on white, under
+   3:1), secondary and ghost stay as they rest, and the caret carries
+   focus. Both live in `inputVariants`; never restate them. Invalid is
+   `aria-invalid:border-red-800 aria-invalid:ring-3
+aria-invalid:ring-red-800/20` on click controls and a red-800 border
+   plus `bg-red-100`, no ring, on fields and select triggers. There are no
+   focus tokens. The `/50` is deliberate state opacity (decision 5's
+   carve-out), never swapped for a `gray-alpha-*` step; the halo stays
+   derived from the border color, and no alpha tier has a halo role. An
+   offset ring was prototyped on the pilot and rejected; don't revisit.
 4. **Radius: keep the generic `rounded-*` scale.** No semantic shape tokens.
    The scale resolves through `--radius: 0.875rem` (Large); migration never
    changes a component's radius classes unless they visibly break on
@@ -76,11 +84,18 @@ focus-visible:ring-ring/50` cluster (`--ring` already resolves to
    clamps to a pill draws a flat-ended capsule.
 5. **Hover steps the ramp, never opacity-mixes.** `hover:bg-x/80` and
    `color-mix()` hovers are replaced by the adjacent hand-tuned ramp step.
-6. **Fields rest on the page surface.** Field-style controls (input,
-   textarea, select/native-select triggers, combobox chips, input-group,
-   input-otp slots, unchecked checkbox/radio/questionnaire indicators,
-   button-group text) carry `bg-background-100` in **both** themes: the
-   X-style flat field, no wash. (Reversed 2026-09-20: the earlier
+6. **Fields rest on the page surface, with the button's looks.** Fields
+   (input, textarea, select/native-select triggers, combobox input and
+   chips, input-group) take `inputVariants` from `input.tsx`: `default`
+   is the X-style flat field, `border-gray-alpha-400` on
+   `bg-background-100` in **both** themes, no wash; `secondary` is a
+   `gray-100` fill; `ghost` is transparent with no hover tint. They mirror
+   the outline, secondary and ghost buttons. `shape="rounded"` draws a pill
+   on single-line fields only; textarea and combobox chips take the
+   variant alone. Select and Combobox set both on the root and pass them
+   by context, like `size`. The other field-like surfaces (input-otp
+   slots, unchecked checkbox/radio/questionnaire indicators, button-group
+   text) stay on `bg-background-100`. (Reversed 2026-09-20: the earlier
    `bg-gray-alpha-400/30` wash was replaced at the human's direction.)
 7. **Light and dark share the same token names.** Theming happens underneath
    the ramp; migration never adds `dark:` color overrides; if a component
@@ -178,7 +193,7 @@ that's a stop-and-resolve.
 Then eliminate the opacity hacks (decision 5): each `hover:bg-x/80` or
 `color-mix()` hover becomes a ramp step, chosen on `/preview` and logged.
 Opacity kept deliberately as _state_ (`disabled:opacity-50`, the focus
-halo's `ring-gray-600/50`, the input wash `/30`) is fine; the rule targets
+halo's `ring-gray-600/50`) is fine; the rule targets
 color-mixing hovers, not state opacity.
 
 ### 2. Typography: utilities → roles
@@ -209,10 +224,11 @@ cluster.
 
 ### 4. Shape & interaction
 
-- **Focus: apply decision 3's signature.** Rename the shadcn focus cluster
-  to its ramp spelling: `focus-visible:border-gray-600 focus-visible:ring-3
-focus-visible:ring-gray-600/50`. Pixel-identical to stock; pass 5 confirms
-  no visible change on focus.
+- **Focus: apply decision 3.** On a click control, rename the shadcn focus
+  cluster to its ramp spelling: `focus-visible:border-gray-600
+focus-visible:ring-3 focus-visible:ring-gray-600/50`. Pixel-identical to
+  stock; pass 5 confirms no visible change on focus. A text field drops
+  the cluster and takes `inputVariants` instead.
 - **Radius: rename only (decision 4).** Radius classes stay exactly as
   shipped; don't redesign shape.
 - **States.** Keep `disabled:`, `aria-invalid:`, `aria-expanded:` behavior;
@@ -226,7 +242,8 @@ focus-visible:ring-gray-600/50`. Pixel-identical to stock; pass 5 confirms
    generic `rounded-*` scale and token-derived arbitraries stay sanctioned).
 2. `/preview`, both themes: passes 1/2/4 render pixel-identical; the only
    visible diffs are pass 3's shadow/material change. Tab through the
-   component to confirm focus still renders the shadcn halo unchanged.
+   component to confirm focus still renders the shadcn halo unchanged on
+   click controls, and the darker border with no halo on text fields.
 3. Visit the out-of-`ui` call sites listed on the row. If a caller passes
    alias classes into this component via `className`, migrate those overrides
    in the same pass.

@@ -119,6 +119,18 @@ Use `aria-invalid` to show validation errors and the `data-invalid` attribute to
 
 <ComponentPreview name="native-select-invalid" />
 
+## Variant
+
+Use the `variant` prop to change the field's look. `default` is the outlined field, `secondary` a gray fill that darkens on hover, and `ghost` is transparent with no hover, for a field on a toolbar or a surface of its own. They match the `outline`, `secondary` and `ghost` button.
+
+<ComponentPreview name="native-select-variants" />
+
+## Rounded
+
+Use `shape="rounded"` for a pill.
+
+<ComponentPreview name="native-select-rounded" />
+
 ## Native Select vs Select
 
 - Use `NativeSelect` for native browser behavior, better performance, or mobile-optimized dropdowns.
@@ -130,10 +142,12 @@ Use `aria-invalid` to show validation errors and the `data-invalid` attribute to
 
 The main select component that wraps the native HTML select element.
 
-| Prop        | Type                        | Default     |
-| ----------- | --------------------------- | ----------- |
-| `size`      | `"sm" \| "default" \| "lg"` | `"default"` |
-| `className` | `string`                    |             |
+| Prop        | Type                                  | Default     |
+| ----------- | ------------------------------------- | ----------- |
+| `size`      | `"sm" \| "default" \| "lg"`           | `"default"` |
+| `variant`   | `"default" \| "secondary" \| "ghost"` | `"default"` |
+| `shape`     | `"default" \| "rounded"`              | `"default"` |
+| `className` | `string`                              |             |
 
 ```tsx
 <NativeSelect>

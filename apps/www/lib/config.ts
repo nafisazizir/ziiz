@@ -28,6 +28,9 @@ export const siteConfig = {
       label: "Playground",
       items: [
         { name: "Palette generator", href: "/playground" },
+        { name: "Seed palette", href: "/playground/seed" },
+        { name: "Granola palette", href: "/playground/granola" },
+        { name: "Oat palette", href: "/playground/oat" },
         { name: "X Business clone", href: "/business-x" },
         { name: "X Money clone", href: "/money-x" },
         { name: "X Help Center clone", href: "/help-x" },

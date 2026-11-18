@@ -7,6 +7,7 @@ import {
   hexToOklch,
   oklchToHex,
   currentPalette,
+  paletteTokens,
   STEPS,
   uniformPalette,
   type Palette,
@@ -39,7 +40,7 @@ const lightnessOf = (hex: string, fallback: number) =>
 
 const neutralHex = (L: number) => oklchToHex(L / 100, 0, 0).toUpperCase()
 
-function EndpointField({
+export function EndpointField({
   id,
   label,
   hint,
@@ -105,7 +106,7 @@ function surfaceInk(surfaceHex: string) {
 
 // One palette on its own floor, captioned like an art piece: the step
 // numbers head the grid and each row is named in the surface's own ink.
-function PalettePanel({
+export function PalettePanel({
   palette,
   surface,
   label,
@@ -192,12 +193,9 @@ export function PaletteRemap() {
         lightnessOf(floor, CURRENT_ENDPOINTS[t].floor),
         lightnessOf(ceiling, CURRENT_ENDPOINTS[t].ceiling)
       )
-      const lines = built.rows.flatMap((row: PaletteRow) => {
-        const base = row.token.replace("-*", "")
-        return row.swatches
-          .filter((s) => s !== null)
-          .map((s) => `  ${base}-${s!.step}: ${s!.css};`)
-      })
+      const lines = Object.entries(paletteTokens(built)).map(
+        ([token, css]) => `  ${token}: ${css};`
+      )
       return `${selector} {\n${lines.join("\n")}\n}`
     }
     return `${block("light", ":root")}\n\n${block("dark", ".dark")}`

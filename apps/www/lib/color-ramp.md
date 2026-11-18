@@ -3,9 +3,9 @@
 How the palette is generated, why it is shaped the way it is, and what to do
 when you bring a new colour in.
 
-Implementation: `lib/color-ramp.ts`. Live tools: `/playground`, and
-`/playground/seed` for a theme from one colour, and `/playground/granola`
-for a tinted theme measured from a real product.
+Implementation: `lib/color-ramp.ts`. The library of finished palettes is
+`lib/palettes.ts`, live at `/playground`: pick one, preview it, copy its
+tokens or wear it across the site (`lib/site-palette.ts`).
 
 ---
 
@@ -281,7 +281,7 @@ the measurement as evidence; never take it from a declared token.
 ## 5. Seeding a palette from one colour
 
 `seedTheme(hex, { strength, matchSaturation })` in `lib/seed-palette.ts`. Live
-tool: `/playground/seed`.
+as the Custom card on `/playground`, which always matches saturation.
 
 - The seed's **hue tints the grays** at `strength`. Every component in
   `components/ui` speaks gray, so the kit follows without being edited.
@@ -313,6 +313,22 @@ to `#E1E1E1` reads as _dingy_, and it drags every tint down with it
 **Match `k` by softening the ink instead.** Hold the light page near-white and
 lighten the ceiling. `#242424` instead of `#1A1A1A` buys the same compression
 and keeps `blue-100` at `#EBF3FF`.
+
+### The library
+
+Every palette on `/playground` is a recipe in `lib/palettes.ts`: endpoints,
+a tint per theme, and optionally anchors and a brand. The page shows only
+the result; how each recipe was arrived at lives here.
+
+- **Oat** (2026-11-18) is designed, not measured: milk chocolate `#795533`
+  on a page halfway between warm paper and Cursor's olive cream (hue 84 at
+  0.11), softened hues, amber moved to gold, an espresso dark. It is the
+  palette that forced `TEXT_DEPTH` and the light-tint saturation rule.
+- **Custom** is one colour and a strength, through `seedTheme`.
+
+To add one, add a recipe to `LIBRARY`. To base one on a real product,
+measure it with `scripts/brand-colors` and fit the recipe to what it
+reports.
 
 ### Limits
 

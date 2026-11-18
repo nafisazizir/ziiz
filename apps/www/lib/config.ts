@@ -27,10 +27,7 @@ export const siteConfig = {
     {
       label: "Playground",
       items: [
-        { name: "Palette generator", href: "/playground" },
-        { name: "Seed palette", href: "/playground/seed" },
-        { name: "Granola palette", href: "/playground/granola" },
-        { name: "Oat palette", href: "/playground/oat" },
+        { name: "Palettes", href: "/playground" },
         { name: "X Business clone", href: "/business-x" },
         { name: "X Money clone", href: "/money-x" },
         { name: "X Help Center clone", href: "/help-x" },
@@ -55,7 +52,7 @@ function covers(pathname: string, href: string) {
 
 // A nested page keeps its parent's entry marked (a blog post lights up "All
 // posts") unless a longer entry claims it, so /playground/inset marks "Inset
-// check" alone and not the palette generator that lives at /playground.
+// check" alone and not the palettes that live at /playground.
 export function isActiveHref(pathname: string, href: string) {
   return (
     covers(pathname, href) &&

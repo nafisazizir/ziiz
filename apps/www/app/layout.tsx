@@ -4,6 +4,7 @@ import localFont from "next/font/local"
 
 import "./globals.css"
 import { siteConfig } from "@/lib/config"
+import { sitePaletteScript } from "@/lib/site-palette"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -49,6 +50,10 @@ export default function RootLayout({
         inter.variable
       )}
     >
+      <head>
+        {/* The palette picked on /playground, before first paint. */}
+        <script dangerouslySetInnerHTML={{ __html: sitePaletteScript }} />
+      </head>
       {/* The bar is mobile-only, so the rails sit flush at lg. */}
       <body className="[--header-height:--spacing(14)] lg:[--header-height:0px]">
         <ThemeProvider>{children}</ThemeProvider>

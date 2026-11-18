@@ -76,17 +76,7 @@ export function seedTheme(
   }
 }
 
-/** Starting points worth comparing. Strength is the knob to try first. */
-export const SEED_PRESETS = [
-  { name: "Pastel blue", hex: "#A7C7E7", strength: 0.2 },
-  { name: "Lavender", hex: "#B9A9E0", strength: 0.15 },
-  { name: "Sage", hex: "#9CAF88", strength: 0.12 },
-  { name: "Peach", hex: "#F4B393", strength: 0.1 },
-  { name: "Granola olive", hex: "#5B6F00", strength: 0.046 },
-  { name: "Slate blue", hex: "#3B6FD8", strength: 0.29 },
-] as const
-
-/** The /playground soft endpoints, k matched across themes. A tint cannot
+/** The soft endpoints, k matched across themes. A tint cannot
  *  reach pure black or white, since the gamut edge closes there, so the ink
  *  has to sit off black for gray-1000, and the primary button with it, to
  *  carry the hue. */

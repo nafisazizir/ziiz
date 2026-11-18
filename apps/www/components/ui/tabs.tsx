@@ -61,7 +61,6 @@ function TabsList({
   children,
   ...props
 }: TabsPrimitive.List.Props & VariantProps<typeof tabsListVariants>) {
-  const hover = useGlide("[data-slot=tabs-trigger]:hover:not([data-disabled])")
   const active = useGlide("[data-slot=tabs-trigger][data-active]")
   return (
     <TabsPrimitive.List
@@ -72,21 +71,12 @@ function TabsList({
       {...props}
     >
       {children}
-      {variant === "default" && (
-        <span
-          ref={hover}
-          aria-hidden
-          data-hidden=""
-          data-slot="tabs-hover"
-          className="pointer-events-none absolute top-0 left-0 -z-1 rounded-md bg-gray-alpha-100 transition-[translate,width,height,opacity,background-color] duration-150 ease-out group-data-[shape=rounded]/tabs-list:rounded-full data-hidden:opacity-0 data-hidden:delay-50 data-pressed:bg-gray-alpha-200 motion-reduce:transition-[opacity]"
-        />
-      )}
       <span
         ref={active}
         aria-hidden
         data-hidden=""
         data-slot="tabs-indicator"
-        className="pointer-events-none absolute top-0 left-0 -z-1 rounded-md bg-gray-alpha-200 transition-[translate,width,height,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-data-[shape=rounded]/tabs-list:rounded-full group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:after:absolute group-data-[variant=line]/tabs-list:after:bg-gray-1000 group-data-horizontal/tabs:after:inset-x-px group-data-horizontal/tabs:after:-bottom-1 group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-px group-data-vertical/tabs:after:-right-[3px] group-data-vertical/tabs:after:w-0.5 data-hidden:opacity-0 data-hidden:delay-50 motion-reduce:transition-[opacity]"
+        className="pointer-events-none absolute top-0 left-0 -z-1 rounded-md bg-gray-alpha-200 transition-[translate,width,height,opacity] duration-200 ease-[cubic-bezier(0.2,0,0,1)] group-data-[shape=rounded]/tabs-list:rounded-full group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:after:absolute group-data-[variant=line]/tabs-list:after:bg-gray-1000 group-data-horizontal/tabs:after:inset-x-px group-data-horizontal/tabs:after:-bottom-1 group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-px group-data-vertical/tabs:after:-right-[3px] group-data-vertical/tabs:after:w-0.5 data-hidden:opacity-0 data-hidden:delay-50 motion-reduce:transition-[opacity]"
       />
     </TabsPrimitive.List>
   )

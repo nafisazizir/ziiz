@@ -37,7 +37,7 @@ export function PatternCatalogue() {
       <div className="sticky top-(--header-height) z-40 flex items-end gap-4 border-b border-gray-alpha-400 bg-background pt-(--content-top)">
         <TabsList
           variant="line"
-          className="max-w-full min-w-0 overflow-x-auto group-data-horizontal/tabs:h-8"
+          className="max-w-full min-w-0 overflow-x-auto data-horizontal:h-8"
         >
           {views.map((v) => (
             <TabsTrigger key={v.value} value={v.value}>

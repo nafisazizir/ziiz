@@ -1,10 +1,10 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
-import { doubleStroke, letterSvg } from "@/lib/letters/double-stroke"
+import { letterSvg } from "@/lib/letters/double-stroke"
 import { letterStyles, type LetterStyle } from "@/lib/letters/glyphs"
 import { cn } from "@/lib/utils"
 
@@ -107,25 +107,42 @@ function Catalogue({
   )
 }
 
-export function LetterPlayground() {
+export function LetterPlayground({
+  initialGlyphs,
+}: {
+  initialGlyphs: Record<string, string>
+}) {
   const [selected, setSelected] = useState("Z")
   const [bandWidth, setBandWidth] = useState(90)
   const [lineWeight, setLineWeight] = useState(9)
   const [message, setMessage] = useState("")
-  const constructed = useMemo<LetterStyle>(
-    () => ({
-      id: "double-stroke",
-      label: "Double stroke",
-      family: "Double stroke",
-      glyphs: Object.fromEntries(
-        alphabet.map((letter) => [
-          letter,
-          doubleStroke(letter, bandWidth, lineWeight),
-        ])
-      ),
-    }),
-    [bandWidth, lineWeight]
-  )
+  const [workerError, setWorkerError] = useState(false)
+  const [result, setResult] = useState({
+    bandWidth: 90,
+    lineWeight: 9,
+    glyphs: initialGlyphs,
+  })
+  const isUpdating =
+    result.bandWidth !== bandWidth || result.lineWeight !== lineWeight
+  useEffect(() => {
+    const worker = new Worker(
+      new URL("./double-stroke.worker.ts", import.meta.url),
+      { type: "module" }
+    )
+    worker.onmessage = ({ data }: MessageEvent<Record<string, string>>) => {
+      setWorkerError(false)
+      setResult({ bandWidth, lineWeight, glyphs: data })
+    }
+    worker.onerror = () => setWorkerError(true)
+    worker.postMessage({ bandWidth, lineWeight })
+    return () => worker.terminate()
+  }, [bandWidth, lineWeight])
+  const constructed: LetterStyle = {
+    id: "double-stroke",
+    label: "Double stroke",
+    family: "Double stroke",
+    glyphs: result.glyphs,
+  }
   const styles = [constructed, ...letterStyles]
 
   async function copy(style: LetterStyle) {
@@ -187,7 +204,10 @@ export function LetterPlayground() {
                 <Button
                   variant="outline"
                   size="xs"
-                  disabled={!style.glyphs[selected]}
+                  disabled={
+                    !style.glyphs[selected] ||
+                    (style.id === "double-stroke" && isUpdating)
+                  }
                   onClick={() => copy(style)}
                 >
                   Copy SVG
@@ -195,7 +215,10 @@ export function LetterPlayground() {
                 <Button
                   variant="ghost"
                   size="xs"
-                  disabled={!style.glyphs[selected]}
+                  disabled={
+                    !style.glyphs[selected] ||
+                    (style.id === "double-stroke" && isUpdating)
+                  }
                   onClick={() => download(style)}
                 >
                   Download SVG
@@ -205,7 +228,12 @@ export function LetterPlayground() {
           ))}
         </div>
         <p role="status" className="min-h-5 text-copy-13 text-gray-900">
-          {message || "One path. Current colour. A square 1000 × 1000 viewBox."}
+          {workerError
+            ? "Could not update letterforms. Try adjusting the sliders again."
+            : isUpdating
+              ? "Updating double-stroke glyphs…"
+              : message ||
+                "One path. Current colour. A square 1000 × 1000 viewBox."}
         </p>
       </section>
       <section

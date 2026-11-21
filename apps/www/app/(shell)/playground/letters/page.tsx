@@ -13,6 +13,12 @@ export const metadata: Metadata = {
 }
 
 export default function LettersPage() {
+  const initialGlyphs = Object.fromEntries(
+    [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((letter) => [
+      letter,
+      doubleStroke(letter),
+    ])
+  )
   return (
     <>
       <BlogHero
@@ -34,7 +40,7 @@ export default function LettersPage() {
         </div>
       </BlogHero>
       <Separator className="mt-10 lg:mt-0" />
-      <LetterPlayground />
+      <LetterPlayground initialGlyphs={initialGlyphs} />
     </>
   )
 }

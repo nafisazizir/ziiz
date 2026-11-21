@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -424,7 +424,8 @@ function SidebarGroupAction({
     props: mergeProps<"button">(
       {
         className: cn(
-          "absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-gray-1000 outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 md:after:hidden [&>svg]:size-4 [&>svg]:shrink-0",
+          buttonVariants({ variant: "ghost", size: "icon-xs" }),
+          "absolute end-2.5 top-3 text-gray-1000 group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&_svg:not([class*='size-'])]:size-4",
           className
         ),
       },
@@ -475,7 +476,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-label-14 outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-has-[>[data-sidebar=menu-action]:is(:hover,[aria-expanded=true])]/menu-item:bg-gray-alpha-100 group-has-[>[data-sidebar=menu-action]:is(:hover,[aria-expanded=true])]/menu-item:text-gray-1000 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 active:text-gray-1000 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-open:hover:bg-gray-alpha-100 data-open:hover:text-gray-1000 data-active:bg-gray-alpha-200 data-active:text-button-14 data-active:text-gray-1000 data-active:group-has-[>[data-sidebar=menu-action]:is(:hover,[aria-expanded=true])]/menu-item:bg-gray-alpha-300 data-active:hover:bg-gray-alpha-300 [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",
+  "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-label-14 outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pe-8 group-has-[>[data-sidebar=menu-action]:is(:hover,[aria-expanded=true])]/menu-item:bg-gray-alpha-100 group-has-[>[data-sidebar=menu-action]:is(:hover,[aria-expanded=true])]/menu-item:text-gray-1000 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 active:text-gray-1000 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-open:hover:bg-gray-alpha-100 data-open:hover:text-gray-1000 data-active:bg-gray-alpha-200 data-active:text-button-14 data-active:text-gray-1000 data-active:group-has-[>[data-sidebar=menu-action]:is(:hover,[aria-expanded=true])]/menu-item:bg-gray-alpha-300 data-active:hover:bg-gray-alpha-300 [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",
   {
     variants: {
       variant: {
@@ -564,7 +565,8 @@ function SidebarMenuAction({
     props: mergeProps<"button">(
       {
         className: cn(
-          "absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-gray-1000 outline-hidden transition-transform group-data-[collapsible=icon]:hidden peer-hover/menu-button:text-gray-1000 peer-data-[size=default]/menu-button:top-1.5 peer-data-[size=lg]/menu-button:top-2.5 peer-data-[size=sm]/menu-button:top-1 after:absolute after:-inset-2 hover:bg-gray-alpha-100 hover:text-gray-1000 focus-visible:ring-3 focus-visible:ring-gray-600/50 active:bg-gray-alpha-200 md:after:hidden [&>svg]:size-4 [&>svg]:shrink-0",
+          buttonVariants({ variant: "ghost", size: "icon-xs" }),
+          "absolute end-1 top-1 text-gray-1000 group-data-[collapsible=icon]:hidden peer-hover/menu-button:text-gray-1000 peer-data-[size=lg]/menu-button:top-3 peer-data-[size=sm]/menu-button:top-0.5 after:absolute after:-inset-2 md:after:hidden [&_svg:not([class*='size-'])]:size-4",
           showOnHover &&
             "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 peer-data-active/menu-button:text-gray-1000 aria-expanded:opacity-100 md:opacity-0",
           className

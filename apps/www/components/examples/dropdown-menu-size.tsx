@@ -11,37 +11,33 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+const sizes = [
+  { size: "sm", label: "Small" },
+  { size: "default", label: "Default" },
+  { size: "lg", label: "Large" },
+] as const
+
 function DropdownMenuSize() {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <DropdownMenu>
-        <DropdownMenuTrigger render={<Button variant="outline" />}>
-          Default
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Log out</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <DropdownMenu size="lg">
-        <DropdownMenuTrigger render={<Button variant="outline" size="lg" />}>
-          Large
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Log out</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      {sizes.map(({ size, label }) => (
+        <DropdownMenu key={size} size={size}>
+          <DropdownMenuTrigger
+            render={<Button variant="outline" size={size} />}
+          >
+            {label}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem>Billing</DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Log out</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ))}
     </div>
   )
 }

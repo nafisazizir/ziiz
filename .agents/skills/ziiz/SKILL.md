@@ -151,9 +151,11 @@ to roles with a fixed rhythm. Mark a subtree `not-typeset` to opt out.
     24px pads `px-2.5`, 40px pads `px-4`, square or pill alike, and popup
     items pad `px-2` inside a `p-1` content with a transparent 1px border,
     so menu text lines up with whatever opened it. Pick a size for a form
-    and set it once: `size="lg"` on `Select`, `Combobox`, `DropdownMenu`
-    or `InputGroup` sizes the field and its popup together, and a lg menu
-    wants a `size="lg"` button as its trigger. Padding is logical: `ps`,
+    and set it once: `size` (`sm`, `default`, `lg`) on `Select`,
+    `Combobox`, `DropdownMenu`, `ContextMenu` or `InputGroup` sizes the
+    field and its popup together, and a menu wants a button of the same
+    size as its trigger. Popup rows run 4px under the trigger: 28px at
+    `sm`, 32 by default, 36 at `lg`. Padding is logical: `ps`,
     `pe`, `start`, `end`, never `pl`, `pr`, `left`, `right`.
 12. Icons are `@tabler/icons-react` (`IconCheck`, `IconChevronDown`,
     `IconX`), the library the components ship with. Keep `iconLibrary` set

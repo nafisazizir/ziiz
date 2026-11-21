@@ -117,12 +117,14 @@ aria-invalid:ring-red-800/20` on click controls and a red-800 border
    1 + 4 + 8 = 13, exactly a bordered trigger's 1 + 12; the material's
    ring still draws the edge. Fields and popups take a `size` axis
    (`sm | default | lg`) set once on the root (`Select`, `Combobox`,
-   `DropdownMenu`, `InputGroup`) and passed by context: the root puts
+   `DropdownMenu`, `ContextMenu`, `InputGroup`) and passed by context: the root puts
    `data-size` on its content and items pad `in-data-[size=lg]:px-3
 in-data-[size=lg]:py-2` (36px rows, indicators at `end-3`, inset at
    `ps-9`), so lg item text lands at 1 + 4 + 12 = 17 under a 1 + 16
-   trigger. `sm` never changes a popup; items stay 32px under a 32px
-   trigger. Stack `data-inset:in-data-[size=lg]:` for inset items, since a
+   trigger. `sm` keeps the 12px inset and pads rows `in-data-[size=sm]:py-1`,
+   so rows always run 4px under their trigger: 28 under 32, 32 under 36,
+   36 under 40 (claude.ai's menus, 28px rows of 14px text, measured
+   2026-11-20). `Command` does the same on `group-data-[size=sm]/command`. Stack `data-inset:in-data-[size=lg]:` for inset items, since a
    plain `in-*` variant sorts before `data-inset:` in Tailwind's output.
    Padding and indicator offsets on controls and items are logical (`ps`,
    `pe`, `start`, `end`), never physical. Adopted 2026-09-27 after

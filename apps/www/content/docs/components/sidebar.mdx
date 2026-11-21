@@ -385,6 +385,8 @@ The `SidebarMenuAction` component is used to render a menu action within a `Side
 </SidebarMenuItem>
 ```
 
+The row keeps its hover state while its action is hovered or while a menu opened from the action is open, so the pointer can move onto the action without the row going dark. The action has to be a direct child of `SidebarMenuItem`; wrapping it in `DropdownMenu` or `Tooltip` is fine, since those render no element of their own.
+
 ## SidebarMenuSub
 
 The `SidebarMenuSub` component is used to render a submenu within a `SidebarMenu`.

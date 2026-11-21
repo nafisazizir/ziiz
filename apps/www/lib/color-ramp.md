@@ -324,6 +324,18 @@ the result; how each recipe was arrived at lives here.
   on a page halfway between warm paper and Cursor's olive cream (hue 84 at
   0.11), softened hues, amber moved to gold, an espresso dark. It is the
   palette that forced `TEXT_DEPTH` and the light-tint saturation rule.
+- **Graphite** (2026-11-20) is measured from claude.ai's live `--cds-*`
+  tokens in both modes: pure gray, page `#FFFFFF` and `#191919`, ink at
+  90% and 93% (`#191919`, `#EFEFEF`), sidebar `#FAFAFA` and `#1F1F1F`,
+  which the generator lands on exactly as `background-200`. No brand: clay
+  `#D97757` marks only the logo, and Claude's on-colour is its blue, so the
+  ziiz ink on-states stand. Each hue's 700 and 800 are fitted to the app's
+  fill and fill hover (blue `#257DE0`, amber `#FBB315`, green `#10A122`,
+  aqua as teal `#019C7F`, violet as purple `#785EE8`, magenta as pink
+  `#CE447D`). Red is the light-mode fill `#C83839` in both themes, since
+  700 cannot vary by theme; white on it is 5.1:1. Not carried over: dark
+  menus lifted to `#303030` (ziiz materials paint `background-100`) and
+  the 4% dark hairline.
 - **Custom** is one colour and a strength, through `seedTheme`.
 
 To add one, add a recipe to `LIBRARY`. To base one on a real product,

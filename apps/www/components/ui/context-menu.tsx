@@ -7,8 +7,19 @@ import { cn } from "@/lib/utils"
 import { useGlide } from "@/hooks/use-glide"
 import { IconChevronRight, IconCheck } from "@tabler/icons-react"
 
-function ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props) {
-  return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
+type Size = "sm" | "default" | "lg"
+
+const SizeContext = React.createContext<Size>("default")
+
+function ContextMenu({
+  size = "default",
+  ...props
+}: ContextMenuPrimitive.Root.Props & { size?: Size }) {
+  return (
+    <SizeContext.Provider value={size}>
+      <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
+    </SizeContext.Provider>
+  )
 }
 
 function ContextMenuPortal({ ...props }: ContextMenuPrimitive.Portal.Props) {
@@ -58,6 +69,7 @@ function ContextMenuContent({
       >
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
+          data-size={React.useContext(SizeContext)}
           className={cn(
             "relative isolate z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto material-menu border border-transparent p-1 text-gray-1000 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
             className
@@ -96,7 +108,7 @@ function ContextMenuLabel({
       data-slot="context-menu-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-label-12 text-gray-900 data-inset:ps-8",
+        "px-2 py-1.5 text-label-12 text-gray-900 in-data-[size=lg]:px-3 in-data-[size=sm]:py-1 data-inset:ps-8 data-inset:in-data-[size=lg]:ps-9",
         className
       )}
       {...props}
@@ -119,7 +131,7 @@ function ContextMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "group/context-menu-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-label-14 outline-hidden select-none focus:text-gray-1000 not-data-[variant=destructive]:focus:**:text-gray-1000 data-inset:ps-8 data-[variant=destructive]:text-red-800 data-[variant=destructive]:focus:text-red-800 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-red-800",
+        "group/context-menu-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-label-14 outline-hidden select-none focus:text-gray-1000 not-data-[variant=destructive]:focus:**:text-gray-1000 in-data-[size=lg]:px-3 in-data-[size=lg]:py-2 in-data-[size=sm]:py-1 data-inset:ps-8 data-inset:in-data-[size=lg]:ps-9 data-[variant=destructive]:text-red-800 data-[variant=destructive]:focus:text-red-800 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-red-800",
         className
       )}
       {...props}
@@ -146,7 +158,7 @@ function ContextMenuSubTrigger({
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "flex cursor-default items-center rounded-sm px-2 py-1.5 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 data-inset:ps-8 data-popup-open:text-gray-1000 data-open:text-gray-1000 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "flex cursor-default items-center rounded-sm px-2 py-1.5 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:px-3 in-data-[size=lg]:py-2 in-data-[size=sm]:py-1 data-inset:ps-8 data-inset:in-data-[size=lg]:ps-9 data-popup-open:text-gray-1000 data-open:text-gray-1000 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -183,13 +195,13 @@ function ContextMenuCheckboxItem({
       data-slot="context-menu-checkbox-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-3 in-data-[size=lg]:pe-9 in-data-[size=sm]:py-1 data-inset:ps-8 data-inset:in-data-[size=lg]:ps-9 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       checked={checked}
       {...props}
     >
-      <span className="pointer-events-none absolute end-2">
+      <span className="pointer-events-none absolute end-2 in-data-[size=lg]:end-3">
         <ContextMenuPrimitive.CheckboxItemIndicator>
           <IconCheck />
         </ContextMenuPrimitive.CheckboxItemIndicator>
@@ -223,12 +235,12 @@ function ContextMenuRadioItem({
       data-slot="context-menu-radio-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2 rounded-sm py-1.5 ps-2 pe-8 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-3 in-data-[size=lg]:pe-9 in-data-[size=sm]:py-1 data-inset:ps-8 data-inset:in-data-[size=lg]:ps-9 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute end-2">
+      <span className="pointer-events-none absolute end-2 in-data-[size=lg]:end-3">
         <ContextMenuPrimitive.RadioItemIndicator>
           <IconCheck />
         </ContextMenuPrimitive.RadioItemIndicator>

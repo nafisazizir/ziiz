@@ -131,7 +131,7 @@ function MenubarCheckboxItem({
       data-slot="menubar-checkbox-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 in-data-[size=sm]:py-1 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
@@ -166,7 +166,7 @@ function MenubarRadioItem({
       data-slot="menubar-radio-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2 rounded-md py-1.5 ps-8 pe-2 text-label-14 outline-hidden select-none focus:text-gray-1000 focus:**:text-gray-1000 in-data-[size=lg]:py-2 in-data-[size=lg]:ps-9 in-data-[size=lg]:pe-3 in-data-[size=sm]:py-1 data-inset:ps-8 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

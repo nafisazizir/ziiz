@@ -167,6 +167,7 @@ export const examples: Record<string, React.ComponentType> = {
     () => import("./context-menu-shortcuts")
   ),
   "context-menu-sides": React.lazy(() => import("./context-menu-sides")),
+  "context-menu-size": React.lazy(() => import("./context-menu-size")),
   "context-menu-submenu": React.lazy(() => import("./context-menu-submenu")),
   "dialog-close-button": React.lazy(() => import("./dialog-close-button")),
   "dialog-demo": React.lazy(() => import("./dialog-demo")),

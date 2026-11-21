@@ -137,7 +137,7 @@ function CommandGroup({
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "overflow-hidden p-1 text-gray-1000 **:[[cmdk-group-heading]]:px-(--command-inset) **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-label-12 **:[[cmdk-group-heading]]:text-gray-900",
+        "overflow-hidden p-1 text-gray-1000 **:[[cmdk-group-heading]]:px-(--command-inset) **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-label-12 **:[[cmdk-group-heading]]:text-gray-900 group-data-[size=sm]/command:**:[[cmdk-group-heading]]:py-1",
         className
       )}
       {...props}
@@ -167,7 +167,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item relative flex cursor-default items-center gap-1.5 rounded-sm px-(--command-inset) py-1.5 text-label-14 outline-hidden select-none group-data-[size=lg]/command:py-2 active:bg-gray-alpha-200 in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-gray-alpha-100 data-selected:text-gray-1000 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:**:[svg]:text-gray-1000",
+        "group/command-item relative flex cursor-default items-center gap-1.5 rounded-sm px-(--command-inset) py-1.5 text-label-14 outline-hidden select-none group-data-[size=lg]/command:py-2 group-data-[size=sm]/command:py-1 active:bg-gray-alpha-200 in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-gray-alpha-100 data-selected:text-gray-1000 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:**:[svg]:text-gray-1000",
         className
       )}
       {...props}

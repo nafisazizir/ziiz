@@ -5,6 +5,7 @@
 import {
   currentPalette,
   hexToOklch,
+  NO_TINT,
   paletteTokens,
   uniformPalette,
   type Anchor,
@@ -93,6 +94,27 @@ const OAT: Recipe = {
   },
 }
 
+/* Graphite, measured from claude.ai 2026-11-20: pure gray, a white page and
+ * a #191919 dark one, ink at 90% and 93%. No brand: the app's clay marks
+ * only its logo. Each hue's 700 is the app's fill, its 800 the fill's
+ * hover; red takes the light-mode fill (#C83839) in both themes. */
+const GRAPHITE: Recipe = {
+  endpoints: {
+    light: { floor: "#FFFFFF", ceiling: "#191919" },
+    dark: { floor: "#191919", ceiling: "#EFEFEF" },
+  },
+  tint: { light: NO_TINT, dark: NO_TINT },
+  anchors: {
+    blue: { hue: 254.81, solid: 59.17, hover: 54.96, saturation: 0.888 },
+    red: { hue: 25, solid: 55.79, hover: 51.64, saturation: 0.801 },
+    amber: { hue: 78.54, solid: 81.38, hover: 75.22, saturation: 0.98 },
+    green: { hue: 143.71, solid: 61.68, hover: 57.14, saturation: 0.976 },
+    teal: { hue: 173.23, solid: 61.77, hover: 55.39, saturation: 0.998 },
+    purple: { hue: 287.18, solid: 58.14, hover: 53.98, saturation: 0.823 },
+    pink: { hue: 358.58, solid: 59.58, hover: 54.79, saturation: 0.744 },
+  },
+}
+
 export const LIBRARY: LibraryEntry[] = [
   {
     id: "ziiz",
@@ -100,6 +122,7 @@ export const LIBRARY: LibraryEntry[] = [
     palettes: { light: currentPalette("light"), dark: currentPalette("dark") },
   },
   { id: "oat", name: "Oat", palettes: recipePalettes(OAT) },
+  { id: "graphite", name: "Graphite", palettes: recipePalettes(GRAPHITE) },
 ]
 
 export const SHIPPED = LIBRARY[0]

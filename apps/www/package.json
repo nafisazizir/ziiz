@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "letters:generate": "python3 -B scripts/generate-letters.py && pnpm exec prettier --write lib/letters/glyphs.ts",
     "dev": "pnpm registry:build && next dev",
     "build": "pnpm --filter @nafisazizir/ziiz build && pnpm registry:build && next build",
     "start": "next start",

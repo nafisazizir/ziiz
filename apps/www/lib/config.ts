@@ -34,6 +34,7 @@ export const siteConfig = {
         { name: "Claude clone", href: "/claude-ai" },
         { name: "X art", href: "/playground/x-art" },
         { name: "Pattern art", href: "/playground/pattern-art" },
+        { name: "Letters", href: "/playground/letters" },
         { name: "Inset check", href: "/playground/inset" },
       ],
     },

@@ -4,8 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "letters:generate": "python3 scripts/generate-letters.py",
-    "letters:test": "node --experimental-strip-types --test lib/letters/double-stroke.test.mjs",
+    "letters:generate": "python3 -B scripts/generate-letters.py && pnpm exec prettier --write lib/letters/glyphs.ts",
     "dev": "pnpm registry:build && next dev",
     "build": "pnpm --filter @nafisazizir/ziiz build && pnpm registry:build && next build",
     "start": "next start",
@@ -28,7 +27,6 @@
     "input-otp": "^1.4.2",
     "next": "16.3.6",
     "next-themes": "^0.4.6",
-    "polyclip-ts": "^0.16.8",
     "react": "19.2.4",
     "react-day-picker": "^10.0.1",
     "react-dom": "19.2.4",

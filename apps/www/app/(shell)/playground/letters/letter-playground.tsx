@@ -1,14 +1,16 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { letterSvg } from "@/lib/letters/double-stroke"
 import { letterStyles, type LetterStyle } from "@/lib/letters/glyphs"
 import { cn } from "@/lib/utils"
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+
+function letterSvg(path: string): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="currentColor"><path d="${path}"/></svg>`
+}
 
 function Glyph({ path, className }: { path: string; className?: string }) {
   return (
@@ -43,31 +45,29 @@ function Catalogue({
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-heading-20 text-gray-1000">{style.label}</h3>
-        {style.id !== "double-stroke" && (
-          <div
-            className="flex gap-1"
-            role="group"
-            aria-label={`${style.label} letter case`}
+        <div
+          className="flex gap-1"
+          role="group"
+          aria-label={`${style.label} letter case`}
+        >
+          <Button
+            variant={lowercase ? "ghost" : "secondary"}
+            size="sm"
+            aria-pressed={!lowercase}
+            onClick={() => setLowercase(false)}
           >
-            <Button
-              variant={lowercase ? "ghost" : "secondary"}
-              size="sm"
-              aria-pressed={!lowercase}
-              onClick={() => setLowercase(false)}
-            >
-              Uppercase
-            </Button>
-            <Button
-              variant={lowercase ? "secondary" : "ghost"}
-              size="sm"
-              aria-pressed={lowercase}
-              disabled={!supportsLowercase}
-              onClick={() => setLowercase(true)}
-            >
-              Lowercase
-            </Button>
-          </div>
-        )}
+            Uppercase
+          </Button>
+          <Button
+            variant={lowercase ? "secondary" : "ghost"}
+            size="sm"
+            aria-pressed={lowercase}
+            disabled={!supportsLowercase}
+            onClick={() => setLowercase(true)}
+          >
+            Lowercase
+          </Button>
+        </div>
       </div>
       <ul className="grid grid-cols-4 gap-3 sm:grid-cols-6 lg:grid-cols-9 xl:grid-cols-13">
         {letters.map((letter) => (
@@ -107,43 +107,9 @@ function Catalogue({
   )
 }
 
-export function LetterPlayground({
-  initialGlyphs,
-}: {
-  initialGlyphs: Record<string, string>
-}) {
+export function LetterPlayground() {
   const [selected, setSelected] = useState("Z")
-  const [bandWidth, setBandWidth] = useState(90)
-  const [lineWeight, setLineWeight] = useState(9)
   const [message, setMessage] = useState("")
-  const [workerError, setWorkerError] = useState(false)
-  const [result, setResult] = useState({
-    bandWidth: 90,
-    lineWeight: 9,
-    glyphs: initialGlyphs,
-  })
-  const isUpdating =
-    result.bandWidth !== bandWidth || result.lineWeight !== lineWeight
-  useEffect(() => {
-    const worker = new Worker(
-      new URL("./double-stroke.worker.ts", import.meta.url),
-      { type: "module" }
-    )
-    worker.onmessage = ({ data }: MessageEvent<Record<string, string>>) => {
-      setWorkerError(false)
-      setResult({ bandWidth, lineWeight, glyphs: data })
-    }
-    worker.onerror = () => setWorkerError(true)
-    worker.postMessage({ bandWidth, lineWeight })
-    return () => worker.terminate()
-  }, [bandWidth, lineWeight])
-  const constructed: LetterStyle = {
-    id: "double-stroke",
-    label: "Double stroke",
-    family: "Double stroke",
-    glyphs: result.glyphs,
-  }
-  const styles = [constructed, ...letterStyles]
 
   async function copy(style: LetterStyle) {
     try {
@@ -183,7 +149,7 @@ export function LetterPlayground({
           </p>
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-4 xl:grid-cols-7">
-          {styles.map((style) => (
+          {letterStyles.map((style) => (
             <div key={style.id} className="flex min-w-0 flex-col gap-3">
               <div className="aspect-square bg-gray-100 text-gray-1000">
                 {style.glyphs[selected] ? (
@@ -204,10 +170,7 @@ export function LetterPlayground({
                 <Button
                   variant="outline"
                   size="xs"
-                  disabled={
-                    !style.glyphs[selected] ||
-                    (style.id === "double-stroke" && isUpdating)
-                  }
+                  disabled={!style.glyphs[selected]}
                   onClick={() => copy(style)}
                 >
                   Copy SVG
@@ -215,10 +178,7 @@ export function LetterPlayground({
                 <Button
                   variant="ghost"
                   size="xs"
-                  disabled={
-                    !style.glyphs[selected] ||
-                    (style.id === "double-stroke" && isUpdating)
-                  }
+                  disabled={!style.glyphs[selected]}
                   onClick={() => download(style)}
                 >
                   Download SVG
@@ -228,12 +188,7 @@ export function LetterPlayground({
           ))}
         </div>
         <p role="status" className="min-h-5 text-copy-13 text-gray-900">
-          {workerError
-            ? "Could not update letterforms. Try adjusting the sliders again."
-            : isUpdating
-              ? "Updating double-stroke glyphs…"
-              : message ||
-                "One path. Current colour. A square 1000 × 1000 viewBox."}
+          {message || "One path. Current colour. A square 1000 × 1000 viewBox."}
         </p>
       </section>
       <section
@@ -244,45 +199,18 @@ export function LetterPlayground({
           id="double-stroke-title"
           number="01"
           title="Double stroke"
-          note="X-logo construction · hollow bands and interrupted hairlines"
+          note="Sharp blackboard · square caps and sharp corners, derived from Latin Modern Math"
         />
-        <div className="grid max-w-2xl gap-8 sm:grid-cols-2">
-          <div className="flex flex-col gap-4">
-            <label id="band-label" className="text-label-14 text-gray-1000">
-              Band width <span className="text-gray-900">/ {bandWidth}</span>
-            </label>
-            <Slider
-              aria-labelledby="band-label"
-              value={[bandWidth]}
-              min={60}
-              max={130}
-              step={1}
-              onValueChange={(value) =>
-                setBandWidth(Array.isArray(value) ? value[0] : value)
-              }
+        {letterStyles
+          .filter((style) => style.family === "Double stroke")
+          .map((style) => (
+            <Catalogue
+              key={style.id}
+              style={style}
+              selected={selected}
+              onSelect={setSelected}
             />
-          </div>
-          <div className="flex flex-col gap-4">
-            <label id="weight-label" className="text-label-14 text-gray-1000">
-              Line weight <span className="text-gray-900">/ {lineWeight}</span>
-            </label>
-            <Slider
-              aria-labelledby="weight-label"
-              value={[lineWeight]}
-              min={4}
-              max={18}
-              step={1}
-              onValueChange={(value) =>
-                setLineWeight(Array.isArray(value) ? value[0] : value)
-              }
-            />
-          </div>
-        </div>
-        <Catalogue
-          style={constructed}
-          selected={selected}
-          onSelect={setSelected}
-        />
+          ))}
       </section>
       <section className="flex flex-col gap-10" aria-labelledby="cm-title">
         <SectionTitle

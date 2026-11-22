@@ -5,7 +5,6 @@
 
 ```sh
 pnpm --filter www letters:generate
-pnpm exec prettier --write apps/www/lib/letters/glyphs.ts
 ```
 
 The generator reads the system Latin Modern installation. Override `LM_FONT_DIR`
@@ -36,9 +35,17 @@ their original proportions. Font curves remain curves, not traced polygons.
   Donald E. Knuth chose for the Computer Modern fonts.” Only available alphabet
   characters are extracted; unavailable lowercase glyphs are not synthesized.
 
-`double-stroke.ts` is an original set of hand-authored skeletons. Cubics are
-sampled, offset into hollow bands, combined with polyclip-ts (the arbitrary-
-precision successor to polygon-clipping), and cut at
-the cap line and baseline (except Q's tail). Hairlines are subtracted from band
-interiors before the final union. Exports are one filled compound path, with
-holes preserved by winding, and no font dependency.
+## Sharp blackboard
+
+The first style, `sharp-blackboard`, is derived from the same Latin Modern Math
+double-struck outlines as Math blackboard, including the Unicode letterlike-symbol
+holes and the available lowercase alphabet. `scripts/sharpen_letters.py` replaces
+short rounded cap and corner runs with straight segments: square caps, mitred
+corners clipped to the original local bounds, and diagonal ends cut flush at the
+glyph's vertical bounds. Larger bowl curves retain their original Bézier outlines.
+The generator applies the same shared cap-height and baseline normalization as
+the unmodified font styles, then commits the result as SVG path data.
+
+All styles are static glyph data. There is no procedural alphabet, runtime polygon
+clipping, worker, or slider dependency. Exports are one filled compound path, with
+holes preserved by winding, and no runtime font dependency.
